@@ -1,0 +1,20 @@
+<!doctype html>  
+  <head>
+    <title>Foodo | Restuarant Inpsection Results</title>
+  </head>
+  <body>
+    <div>Foodo     <a href="/">Home</a> | 
+ 		 <a href=#>About</a>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    	{% for message in messages %}
+    		<li>{{ message }}</li>
+    	{% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    	
+    {% block content %}{% endblock %}
+  </body>

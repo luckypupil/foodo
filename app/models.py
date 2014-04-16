@@ -16,11 +16,11 @@ class Rest(db.Model):
     def __repr__(self):
         return '{}'.format(self.name)
     
-    def getscore(self,codelist):
-        pass
+    def name_slug(self):
+        return self.name
         
 class Comment(db.Model):
-    code_to_badge = {1:'rat badge',2:'roaches badge',3:'warm food'}
+    
     
     id = db.Column(db.Integer, primary_key = True)
     restnm = db.Column(db.String, db.ForeignKey('rest.name'))

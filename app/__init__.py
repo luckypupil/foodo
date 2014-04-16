@@ -13,4 +13,4 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 
-from app import views, models, forms
+from app import views, models, forms, helper

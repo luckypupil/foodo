@@ -13,7 +13,8 @@ def calc_pg_num(resultsnum):
         return (1 if resultsnum == 1 else (resultsnum-1)*20+1)
 
 def dict_to_txt(from_dict):
-
+    ### Takes dictionary of restaurant inspection information and converts to 2 different CSV files: 1) Restuarant table (Fields: Name, Street, Zip) and 2)Inspections Table (Fields: Name, Date of insepction, comment, comment code )###
+    
     # Create 'Restuarants' table#
     print "***Creating 'Restuarant' table***"
     resttbl_list = []
@@ -25,8 +26,8 @@ def dict_to_txt(from_dict):
         w = csv.writer(csvfile, delimiter=',')
         w.writerows([i for i in resttbl_list])
     
-    # Create 'Inspections' table#
-    print "***Creating 'Inspections' table***"
+    # Create 'Comments/Insepctions' table#
+    print "***Creating 'Comments' table***"
     inspect_list = []
     for restnm in from_dict:
         for dated in from_dict[restnm]['inspections']:
@@ -42,6 +43,8 @@ def dict_to_txt(from_dict):
         w.writerows([i for i in inspect_list])       
 
 def scrape_html(base_url,url_ext='search.cfm?facType=7&subType=Any&',pg_num=2,num_of_pgs=1,zipcd='',filenm='rest_list.html'):#'facType=7&subType=Any' filters listing to restuarant subcategory
+    ###Given key search parameters and the number of pages to scrape, this program looks up the appropriate result(s) pages for inspection listings, goes to each of the restaurants on that page and compiles a dictionary of all the pertinent inspection information in the format {'Name': {'Inspections': {Date: [comments,]}},{'location':{'street':address},{'zip':zipcode}}}###
+    
     Master_Rest_dict ={}
    
     for num in xrange(pg_num,pg_num+num_of_pgs):
@@ -95,7 +98,7 @@ def scrape_html(base_url,url_ext='search.cfm?facType=7&subType=Any&',pg_num=2,nu
                 resultz = []
                 for content in results:
                     for result in content.contents:
-                        resultz.append(str(result.encode('utf-8').strip())) #result format is unicode.  Need to convert to utf-8
+                        resultz.append(str(result.encode('utf-8').strip())) #Convert unicode to utf-8
                 
                 inspec_hist[date] = resultz          
              

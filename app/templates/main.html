@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Restuarants can be dangerous</h1>
+<img src=#>
+<p> Here are the restaurants in your area! </p>
+<ol>{% for rest in rests %}
+	<li> <b>{{ rest.name }}</b> - ({{ rest.id }})</li>
+	Uniqu Codes- {{ scores[rest.id] }}
+			<ul>{% for comment in rest.comments.all() %}
+				<li>{{ comment.quote }} ({{ comment.date }})</li> 
+				{% endfor %}</ul>
+	{% endfor %}
+</ol>	
+{% endblock %}
