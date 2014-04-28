@@ -50,7 +50,7 @@ def scrape_html(base_url,url_ext='search.cfm?facType=7&subType=Any&',pg_num=2,nu
     for num in xrange(pg_num,pg_num+num_of_pgs):
         ###Scrape URL of list of restaurants associated with given search query params (resultspg and zip) and writes to html file###
         print '***Generating restuarant index results for page num {}***'.format(num)
-        start_query = calc_pg_num(num) # converts page ruslts num to search query param
+        start_query = calc_pg_num(num) # converts page results num to search query param
         srch_query = '{}start={}&zc={}'.format(url_ext,start_query,zipcd)
         r = requests.get(base_url + srch_query)
         f = open(filenm,'w')
@@ -59,7 +59,7 @@ def scrape_html(base_url,url_ext='search.cfm?facType=7&subType=Any&',pg_num=2,nu
         f.close()    
 
 
-        ###Takes an html file of restuarant lists and scrubs for relevant links to each restuarant's inpsection report histroy page 
+        ###Takes an html file of restuarant lists and scrubs for relevant links to each restuarant's inpsection report history page 
         ###ie. 'estab.cfm?facilityID=77229900-DB52-36A2-8A651920C80A7A7B'###
         print '***Getting links to inspection overview pages for each restaurant in results list***'
         soup = BeautifulSoup(open('rest_list.html'))
@@ -98,7 +98,7 @@ def scrape_html(base_url,url_ext='search.cfm?facType=7&subType=Any&',pg_num=2,nu
                 resultz = []
                 for content in results:
                     for result in content.contents:
-                        resultz.append(str(result.encode('utf-8').strip())) #Convert unicode to utf-8
+                        resultz.append(str(result.encode('utf-8').strip()).lower()) #Convert unicode to utf-8
                 
                 inspec_hist[date] = resultz          
              
