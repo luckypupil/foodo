@@ -18,17 +18,25 @@ def addtodb():
     cur.close()
     conn.close()
 
+def create_badge_list():
+    badge_list = {}
+    with open('tmp/badges.csv','r') as badges:
+        i = 1
+        for line in badges:
+            badge_list.setdefault(i,line.encode('utf-8'))
+            i+=1
+    return badge_list
+
 def make_badges():
     print 'Making badge dict'
     
-    code_dct = helper.create_badge_list() 
+    code_dct = create_badge_list() 
     
     for k in code_dct:
         if not Badge.query.filter_by(code=k).first():
             db.session.add(Badge(k,code_dct[k]))
     db.session.commit()
             
-
     
 if __name__ == "__main__":
 #     addtodb()
