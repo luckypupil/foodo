@@ -3,6 +3,7 @@ import datetime
 import re
 import requests
 import csv
+import os
 from pprint import pprint
 from bs4 import BeautifulSoup, SoupStrainer
 
@@ -42,11 +43,9 @@ def dict_to_txt(from_dict):
         w = csv.writer(csvfile, delimiter=',')
         w.writerows([i for i in inspect_list])       
 
-def scrape_html(base_url,url_ext='search.cfm?facType=7&subType=Any&',pg_num=2,num_of_pgs=1,zipcd='',filenm='rest_list.html'):#'facType=7&subType=Any' filters listing to restuarant subcategory
-    ###Given key search parameters and the number of pages to scrape, this program looks up the appropriate result(s) pages for inspection listings, goes to each of the restaurants on that page and compiles a dictionary of all the pertinent inspection information in the format {'Name': {'Inspections': {Date: [comments,]}},{'location':{'street':address},{'zip':zipcode}}}###
-    
-    Master_Rest_dict ={}
-   
+def scrape_html(base_url,url_ext='search.cfm?facType=7&subType=Any&',pg_num=2,num_of_pgs=1,zipcd='',filenm='rest_list.html'):
+    ###Scrapes HTML pages based on search params and returns list of links to overview pages. 'facType=7&subType=Any' filters to restuarant subcat###
+     
     for num in xrange(pg_num,pg_num+num_of_pgs):
         ###Scrape URL of list of restaurants associated with given search query params (resultspg and zip) and writes to html file###
         print '***Generating restuarant index results for page num {}***'.format(num)
@@ -73,9 +72,24 @@ def scrape_html(base_url,url_ext='search.cfm?facType=7&subType=Any&',pg_num=2,nu
         for link in listing[3:6]: #!!!Remove SPlice once code is completed!!!
             link_list.append(str(link['href']))
         
-        
-        ###Takes list of url exts, goes to each one and scrubs for all relevant inspection info.  Creates Resturant specific dict with location and inspection reports as sub-dict
+        return link_list
+
+def makeHtmlRepo (linkList):
+        ###Takes url list and creates repo of all pages in list###
         print '***Scrubbing inspection data for each restaurant on list***'
+        for linkExt in linkList:
+            r = request.get(base_url+linkExt)
+            
+        
+        
+        
+        
+        
+        
+        
+        
+        Master_Rest_dict ={}
+        
         for link in link_list:
             sngl_rest_dict = {}
             r = requests.get(base_url + link)

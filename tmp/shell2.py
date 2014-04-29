@@ -49,11 +49,11 @@ def scrape_html(base_url,url_ext='search.cfm?facType=7&subType=Any&',pg_num=1,nu
     Master_Rest_dict ={}
           
     mydir =  os.getcwd()
-    inspect_file_list = os.listdir(mydir+'/tmp')
+    inspect_file_list = os.listdir(mydir+'/htmlArchive')
         
     for html in inspect_file_list:
         sngl_rest_dict = {}
-        inspect_soup = BeautifulSoup(open('tmp/'+html),"html.parser",parse_only=SoupStrainer('body')) #Strain to only take body of html and exclude opening JS
+        inspect_soup = BeautifulSoup(open('htmlArchive/'+html),"html.parser",parse_only=SoupStrainer('body')) #Strain to only take body of html and exclude opening JS
           
 
         Rest_nm = inspect_soup('b',style="font-size:14px;")[0].string #Restaurant Name
