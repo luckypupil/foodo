@@ -28,11 +28,10 @@ def make_badges():
             db.session.add(Badge(k,code_dct[k]))
     db.session.commit()
             
-def make_jsonlist():        
-    
+
     
 if __name__ == "__main__":
-    addtodb()
+#     addtodb()
     make_badges()
 
 

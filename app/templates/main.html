@@ -13,10 +13,9 @@
         	{% for rest in rests %}
         		<h4><b>{{ rest.name }} {{ rest.id }}</b></h4>
         		<h5>{{ rest.street }}</h5>
-        		<h5>{{ scores[rest.id] }}</h5>
-        		{% for comment in rest.comments.all()[:5] %}
-					<li>{{ comment.quote }} ({{ comment.date }})</li> 
-				{% endfor %}</ul><hr>
+        		{% for badge in scores[rest.id] %}
+        			<img id="badge" src="{{ url_for('static', filename='img/{}.png'.format(badge|trim))}}" title="{{ badge|trim}}">
+        		{% endfor %}<hr>
         	{% endfor %}
 
         </div>

@@ -5,6 +5,7 @@ from flask.ext.httpauth import HTTPBasicAuth
 from models import Comment, Rest, Badge
 from forms import HomeSearch
 from helper import make_badges, make_inspections, loc_query
+import operator
 auth = HTTPBasicAuth()
 
 

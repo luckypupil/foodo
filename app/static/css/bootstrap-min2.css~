@@ -1,6 +1,6 @@
 @media screen and (min-width: 768px)
 .header {
-    margin-bottom: 30px;
+    margin-bottom: 5%;
     border-bottom: 1px solid #e5e5e5;
 }
 
@@ -12,6 +12,7 @@
     margin-bottom: 0;
     padding-left: 0;
     list-style: none;
+    /*;*/
 }
 
 ul, ol {
@@ -35,27 +36,28 @@ display: block;
 
 .nav-pills>li+li {
     margin-left: 2px;
+    
 }
 
 a {
-    color: #428bca;
+    color: rgba(178,27,3,1);
     text-decoration: none;
     background: 0 0;
     cursor: auto;
 }
 
 .text-muted {
-    color: #999;
+    color: rgba(55,255,166,1);
 }
 
 #headline {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     font-family: inherit;
     font-weight: 500;
     line-height: 1.1;
-    color: inherit;
-    font-size: 24px;
+    color: rgba(0,0,0,1);
+    font-size: 150%;
     text-align: center;
     
 }
@@ -64,7 +66,7 @@ body {
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
-    background-color: #fff;
+    background-color: rgba(29,82,36,1);
     margin: 0;
     box-sizing: border-box;
 }
@@ -117,7 +119,7 @@ border-radius: 6px;
     max-width: 730px;
     border: 0px;
     padding: 0px;
-    height: 60%;
+    height: 300px;
 }
 
 @media screen and (min-width: 768px)
@@ -145,6 +147,7 @@ float: left;
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
+    color: white;
 }
 
 .footer {
