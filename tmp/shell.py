@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup, SoupStrainer
 
 base_url = 'http://philadelphia.pa.gegov.com/philadelphia/' 
 
-def scrapeHTMLinks(base_url,pg_num=1,num_of_pgs=671):
+def scrapeHTMLinks(base_url,pg_num=1,num_of_pgs=302):
     ###Scrapes HTML pages based on search params and returns list of links to overview pages. ###
     url_ext='search.cfm?facType=7&subType=Any&' #'facType=7&subType=Any' filters to restuarant subcat
      
