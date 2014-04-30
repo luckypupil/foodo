@@ -48,3 +48,5 @@ def loc_query(lat,lng,radius,off,lim):
                 
      
 # code_to_badge = [    
+if __name__ == "__main__":
+    loc_query()

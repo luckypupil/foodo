@@ -81,8 +81,9 @@ def Make_master_dict():
         
         try:
             Rest_st = inspect_soup('i')[0].contents[0].encode('utf-8','ignore').strip()
-            Rest_zip = inspect_soup('i')[0].contents[2].encode('utf-8','ignore').strip()[-5:]
-    
+            Rest_zip_temp = inspect_soup('i')[0].contents[2].encode('utf-8','ignore').strip()[-5:]
+            Rest_zip = (Rest_zip_temp if (type(Rest_zip_temp) is int and len(str(Rest_zip_temp))==5) else "") #verify zip is 5 digit int
+            
             sngl_rest_dict['location'] = {'street':Rest_st,'zip':Rest_zip} 
             inspections =  inspect_soup.find_all('div',style='border:1px solid #003399;width:95%;margin-bottom:10px;')  #Main division for all inspect summary info 
             inspec_hist = {}

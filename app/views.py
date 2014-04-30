@@ -30,9 +30,7 @@ def home():
     radius = request.args.get('radius',2)
     
     query = loc_query(lat,lng,radius,off,lim)
-        
     rests = Rest.query.from_statement(query).all()
-    
     scores = {}
     for rest in rests:
         scores[rest.id] = make_badges(rest.id)    
