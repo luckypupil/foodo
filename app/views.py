@@ -23,9 +23,9 @@ def unauthorized():
 @app.route('/')
 def home():
   
-    lim = request.args.get('limit', 10)
+    lim = request.args.get('limit', 50)
     off = request.args.get('offset', 0)
-    loc = request.args.get('location', "39.94106,-75.173192")
+    loc = request.args.get('location', "39.9500,-75.173192")
     lat, lng = loc.split(",")
     radius = request.args.get('radius',2)
     

@@ -4,6 +4,7 @@ from app import helper, db
 from app.models import *
 from pprint import pprint
 import sys
+import requests
 
 geoUrl = "https://maps.googleapis.com/maps/api/geocode/json?"
 
@@ -36,8 +37,10 @@ def addNewBadges(codeDct):
             db.session.add(Badge(k,codeDct[k]))
     db.session.commit()
 
-def geoCodeDB():
-    rest_list = Rest.query.limit(100).offset(10).all()
+def geoCodedb(lmt=2000,):
+    base_url = "https://maps.googleapis.com/maps/api/geocode/json?"
+    
+    rest_list = Rest.query.filter_by(lat=None).limit(lmt).all()
     
     for rest in rest_list:
         street = rest.street
@@ -59,6 +62,7 @@ def geoCodeDB():
             rest.lat = myobject["results"][0]["geometry"]["location"]["lat"]
             rest.lng = myobject["results"][0]["geometry"]["location"]["lng"]
             db.session.add(rest)
+        print "geocode for {} entered".format(rest)
     
     db.session.commit()
 
@@ -88,23 +92,33 @@ def deletebadges():
 def main():
     
     arg = sys.argv[1:][0]
+    geolimit = sys.argv[1:][1]
     
     if not arg:
         print '--help flag for functions'
     if arg == '--help':
         print("usage:\n" 
-              "[-m Fill Rest,Comment tables from CSV]\n"
-              "[-b Fill Badge tables from CSV]\n"
-              "[-Dm Delete main tables]\n"
-              "[-Db Delete badg tables]\n"
-              "[--tozip zipfile] dir [dir ...]")
+              "[-m             -->   Fill Rest,Comment tables from CSV]\n"
+              "[-b             -->  Fill Badge tables from CSV]\n"
+              "[-geo [limit]   --> Fill Lat/Lng cols in Rest table]\n"
+              "[-Dm            -->   Delete main tables]\n"
+              "[-Db            -->  Delete badg tables]\n")
         sys.exit(1) 
     else: 
         if arg == '-m': addtodb()
         elif arg == '-b': addNewBadges(createCodeDct())           
+        elif arg == '-geo': 
+            if not geolimit: 
+                geoCodedb()
+            else:
+                try:
+                    geoCodedb(int(geolimit))
+                except:
+                    print 'geoCode limit arg not valid'
+                 
         elif arg == '-Dm': deletefromdb()
         elif arg == '-Db': deletebadges()
-
+ 
         else: print 'not a valid flag'
      
     sys.exit(1)
