@@ -3,3 +3,4 @@ APIs/
 requirements*
 *.py~
 htmlArchive
+tmp/htmlArchive
