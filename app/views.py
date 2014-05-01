@@ -23,9 +23,9 @@ def unauthorized():
 @app.route('/')
 def home():
   
-    lim = request.args.get('limit', 50)
+    lim = request.args.get('limit', 20)
     off = request.args.get('offset', 0)
-    loc = request.args.get('location', "39.9500,-75.173192")
+    loc = request.args.get('location', "39.9800,-75.23192")
     lat, lng = loc.split(",")
     radius = request.args.get('radius',2)
     
@@ -37,6 +37,11 @@ def home():
         
     return render_template('main.html',rests = rests, scores = scores)
 
+@app.route('/profile/<int:id>')
+def profile(id):
+    restuarant = Rest.query.get(id)  
+    name = restuarant.name_slug() 
+    return render_template('profile.html',name = name)
 
 @app.route('/api/<int:id>',methods=['GET'])
 @auth.login_required
@@ -84,20 +89,7 @@ def api_list():
          
         
     return make_response(jsonify({'count':len(rest_json),'rests':rest_json}))
-    
-#     rests = Rest.query.all()[0:10]
-#     scores = {}
-#     for rest in rests:
-#         scores[rest.id] = make_badges(rest.id)        
-#     return render_template('main.html',rests = rests, scores = scores)
 
-
-
-@app.route('/profile/<nameslug>')
-def profile(nameslug):
-    restuarant = Rest.query.get(35)  
-    name = restuarant.name_slug() 
-    return render_template('profile.html',name = name)
 
 @app.errorhandler(404)
 def page_not_found(error):

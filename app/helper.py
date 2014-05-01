@@ -37,6 +37,7 @@ def loc_query(lat,lng,radius,off,lim):
     * cos(radians(lng) - radians({longitude})) + sin(radians({latitude}))\
     * sin(radians(lat)))) AS distance FROM rest) AS distance WHERE distance\
      < {radius} ORDER BY distance OFFSET {offset} LIMIT {limit};".format(latitude=lat, longitude=lng, radius=radius, offset=off,limit=lim)) 
+ 
     
 # def make_home_api(rest_id):
 #     

@@ -91,36 +91,40 @@ def deletebadges():
 
 def main():
     
-    arg = sys.argv[1:][0]
-    geolimit = sys.argv[1:][1]
+    args = sys.argv[1:]
     
-    if not arg:
-        print '--help flag for functions'
-    if arg == '--help':
-        print("usage:\n" 
-              "[-m             -->   Fill Rest,Comment tables from CSV]\n"
-              "[-b             -->  Fill Badge tables from CSV]\n"
-              "[-geo [limit]   --> Fill Lat/Lng cols in Rest table]\n"
-              "[-Dm            -->   Delete main tables]\n"
-              "[-Db            -->  Delete badg tables]\n")
-        sys.exit(1) 
-    else: 
-        if arg == '-m': addtodb()
-        elif arg == '-b': addNewBadges(createCodeDct())           
-        elif arg == '-geo': 
-            if not geolimit: 
-                geoCodedb()
-            else:
-                try:
-                    geoCodedb(int(geolimit))
-                except:
-                    print 'geoCode limit arg not valid'
-                 
-        elif arg == '-Dm': deletefromdb()
-        elif arg == '-Db': deletebadges()
- 
-        else: print 'not a valid flag'
+    if not args:
+        print "Use '--help' flag for functions"
+    else:    
+        arg = args[0]
+        if len(args) > 1: 
+            geolimit = args[1]
+        
+        if arg == '--help':
+            print("usage:\n" 
+                  "[-m             -->   Fill Rest,Comment tables from CSV]\n"
+                  "[-b             -->  Fill Badge tables from CSV]\n"
+                  "[-geo [limit]   --> Fill Lat/Lng cols in Rest table]\n"
+                  "[-Dm            -->   Delete main tables]\n"
+                  "[-Db            -->  Delete badg tables]\n")
+            sys.exit(1) 
+        else: 
+            if arg == '-m': addtodb()
+            elif arg == '-b': addNewBadges(createCodeDct())           
+            elif arg == '-geo': 
+                if not geolimit: 
+                    geoCodedb()
+                else:
+                    try:
+                        geoCodedb(int(geolimit))
+                    except:
+                        print 'geoCode limit arg not valid'
+                     
+            elif arg == '-Dm': deletefromdb()
+            elif arg == '-Db': deletebadges()
      
+            else: print 'not a valid flag'
+         
     sys.exit(1)
         
 if __name__ == "__main__":
