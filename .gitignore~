@@ -1,3 +1,7 @@
 *.pyc
 APIs/
 requirements*
+*.py~
+htmlArchive
+tmp/htmlArchive
+.pydevproject\n.gitignore~

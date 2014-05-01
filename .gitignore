@@ -4,3 +4,5 @@ requirements*
 *.py~
 htmlArchive
 tmp/htmlArchive
+.pydevproject
+.gitignore~
