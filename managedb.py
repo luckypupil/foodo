@@ -37,33 +37,45 @@ def addNewBadges(codeDct):
             db.session.add(Badge(k,codeDct[k]))
     db.session.commit()
 
-def geoCodedb(lmt=2000,):
+def geoCodedb(lmt=1000):
     base_url = "https://maps.googleapis.com/maps/api/geocode/json?"
     
-    rest_list = Rest.query.filter_by(lat=None).limit(lmt).all()
-    
+    rest_list = Rest.query.filter_by(lat=None).limit(lmt).offset(0).all()    
     for rest in rest_list:
-        street = rest.street
-        street_list = street.split(" ")
-        geo_str =""
-        for word in street_list:
-            geo_str+=(word+"+")
+        print 'initializing {}'.format(rest)
+        if rest.street:
+            street = rest.street.replace('#','')
+            street_list = street.split(" ")
+            geo_str =""
+            for word in street_list:
+                geo_str+=(word+"+")
+                
+            address = geo_str[:-1]+"+Philadelphia,+PA+"+str(rest.zipcd)
+            key = "AIzaSyDZTlXL-J2h0DQO0CVDpXbtKOtn_TTCZTU"
+             
+            final_url = base_url+"sensor=false"+"&address="+address+"&key="+key
+            print final_url
+            try:
+                r = requests.get(final_url)
+            except:
+                print 'Couldnt get url'
+                continue
+    #         
+            myobject =  r.json()
             
-        address = geo_str[:-1]+"+Philadelphia,+PA"
-        sensor = "false"
-        key = "AIzaSyDZTlXL-J2h0DQO0CVDpXbtKOtn_TTCZTU"
-         
-        final_url = base_url+"address="+address+"&sensor="+sensor+"&key="+key
-        r = requests.get(final_url)
-        
-        myobject =  r.json()
-        
-        if myobject['status'] == "OK":
-            rest.lat = myobject["results"][0]["geometry"]["location"]["lat"]
-            rest.lng = myobject["results"][0]["geometry"]["location"]["lng"]
+            numResults = len(myobject["results"])
+            if myobject['status'] == "OK" and numResults <= 3:
+                print 'pulled succesfully from goog with {} elements - thx Serg!'.format(numResults)
+                rest.lat = myobject["results"][0]["geometry"]["location"]["lat"]
+                rest.lng = myobject["results"][0]["geometry"]["location"]["lng"]
+                print "geocode for {} entered".format(rest)
+            else:
+                rest.lat = '0'
             db.session.add(rest)
-        print "geocode for {} entered".format(rest)
-    
+        else:
+            continue
+        
+    print 'committing {} rest coord updates to DB'.format(len(db.session.dirty))
     db.session.commit()
 
 def deletefromdb():
@@ -99,6 +111,8 @@ def main():
         arg = args[0]
         if len(args) > 1: 
             geolimit = args[1]
+        else:
+            geolimit = False
         
         if arg == '--help':
             print("usage:\n" 

@@ -1,4 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>{{ name }} gets an A</h1>
+<h1>{{ rest.name }} gets an A</h1>
+<h2> Total Points : {{ latest.points }} </h2> ({{ latest.date }})</br>
+{% for badge in badges %}
+        			<img id="badge" src="{{ url_for('static', filename='img/{}.png'.format(badge|trim))}}" title="{{ badge|trim}}">
+{% endfor %}<hr>
+{% for comment in latest.comment %}
+        			<p> {{ comment }} </p>
+{% endfor %}<hr>
 {% endblock %}

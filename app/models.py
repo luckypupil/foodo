@@ -18,15 +18,23 @@ class Rest(db.Model):
     def __repr__(self):
         return '{}'.format(self.name)
     
-    def name_slug(self):
-        return self.name
+    def jsond(self):
+        instDict = {
+            'id':self.id,
+            'name':self.name,
+            'street':self.street,
+            'zipcd':self.zipcd,
+            'lat': self.lat,
+            'lng':self.lng,
+            }
+        return instDict
         
 class Comment(db.Model):
     
     id = db.Column(db.Integer, primary_key = True)
     restnm = db.Column(db.String, db.ForeignKey('rest.name'))
     date = db.Column(db.Date, nullable=True)
-    quote = db.Column(db.String)
+    quote = db.Column(db.Text)
     code = db.Column(db.Integer, db.ForeignKey('badge.code'))
     
     def __init__(self,restnm,date,code,quote):
@@ -36,10 +44,8 @@ class Comment(db.Model):
         self.quote = quote
         
     def __repr__(self):
-        return '{} : {}...'.format(self.date,self.quote[:20])
+        return '{} : {}...'.format(self.date,self.quote[:40])
     
-#     def getbadge(self,code):
-#         return code_to_badge[code]
     
 class Badge(db.Model):
     

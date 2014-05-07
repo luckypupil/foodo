@@ -14,29 +14,7 @@
     <!-- Bootstrap -->
     	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap-min2.css') }}">
     	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/jumbotron-narrow.css') }}">
-	<!-- Google Maps -->
-		<script type="text/javascript"
-      		src=https://maps.googleapis.com/maps/api/js?key=AIzaSyDZTlXL-J2h0DQO0CVDpXbtKOtn_TTCZTU&sensor=true>
-    	</script>
-    	<script>
-    		function initialize() {
-        		var center = new google.maps.LatLng(39.941063, -75.173192)
-        		var mapOptions = {
-          			center: center,
-          			zoom: 15
-        		}
-        		var map = new google.maps.Map(document.getElementById("map-canvas"),
-            	mapOptions);
-            	
-            	var marker = new google.maps.Marker({
-            		position: center,
-            		map: map,
-            		title: 'Foodo HQ'
-     		 	});
-     		 }
-     		google.maps.event.addDomListener(window, 'resize', initialize);
-      		google.maps.event.addDomListener(window, 'load', initialize);
-    	</script>
+	
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -58,10 +36,12 @@
     {% block content %}
     {% endblock %}
     </div> <!-- /container -->   
-
+	{% block GoogMaps %}
+    {% endblock %}	
     <!-- Bootstrap core JavaScript
     ================================================== -->
     
     <!-- Placed at the end of the document so the pages load faster -->
   </body>
+  
 </html>

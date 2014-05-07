@@ -1,6 +1,6 @@
 *.pyc
 APIs/
-requirements*
+requirements.txt~
 *.py~
 htmlArchive
 tmp/htmlArchive

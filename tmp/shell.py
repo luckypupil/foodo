@@ -93,7 +93,9 @@ def Make_master_dict():
                 resultz = []
                 for content in results:
                     for result in content.contents:
-                        resultz.append(str(result.encode('utf-8','ignore').strip()).lower()) #Convert unicode to utf-8
+                        newComment = str(result.encode('utf-8','ignore').strip()) #Convert unicode to utf-8
+                        if newComment not in resultz:
+                            resultz.append(newComment) 
                     
                 inspec_hist[date] = resultz          
                  
@@ -136,7 +138,7 @@ def dict_to_txt(restInspectDict):
         try:
             for dated in restInspectDict[restnm]['inspections']:
                 for comment in restInspectDict[restnm]['inspections'][dated]:
-                    m = re.search(r"(\d+)[-\s]+([\w\s]+)",comment) # Will need to test regex on more complete data set.  Sure there are still exceptions here
+                    m = re.search(r"(\d+)[-\s]+([\w\W]+)",comment) # Will need to test regex on more complete data set.  Sure there are still exceptions here
                     
                     if m is not None:
                         insp_str =  [restnm,datetime.datetime.strptime(dated.strip(),'%m/%d/%Y'),m.group(1),m.group(2)] #Name, Date,code,quote
@@ -153,9 +155,9 @@ def dict_to_txt(restInspectDict):
         
 if __name__ == "__main__":
     
-    makeHtmlRepo(scrapeHTMLinks(base_url))
+    #makeHtmlRepo(scrapeHTMLinks(base_url))
     dict_to_txt(Make_master_dict())
-
+    
 
 
 
