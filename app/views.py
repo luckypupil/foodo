@@ -6,7 +6,7 @@ from flask.ext.httpauth import HTTPBasicAuth
 from models import Comment, Rest, Badge
 from forms import HomeSearch
 from helper import make_badges, make_inspections, loc_query, getVios, getLatest
-import operator
+from operator import attrgetter
 auth = HTTPBasicAuth()
 
 @auth.get_password
@@ -26,7 +26,7 @@ def page_not_found(error):
 @app.route('/')
 @app.route('/latest')
 def home():
-    rests = getLatest()
+    rests = getLatest(5)
     jrests = [rest.jsond() for rest in rests]  
     return render_template('main.html',rests = rests, jrests=jrests)
 
@@ -34,7 +34,8 @@ def home():
 def homePoints():
     rests = Rest.query.limit(10).all()
     for rest in rests:
-        rest.score = getVios(rest.id)  
+        rest.score = getVios(rest.id) 
+    rests = sorted(rests,key=attrgetter('score'),reverse=True) 
     return render_template('mainNoMap.html',rests = rests)
 
 @app.route('/proximity')

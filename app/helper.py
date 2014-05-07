@@ -3,6 +3,7 @@ from models import Comment, Rest, Badge
 from sqlalchemy import func
 import random
 from datetime import date, timedelta
+from operator import methodcaller
 
 
 def make_badges(restId):
@@ -25,15 +26,21 @@ def getVios(restId):
     avgVios = (-1 if len(vioCtList) ==0 else\
                 round(sum(float(date[0]) for date in vioCtList)/float(len(vioCtList)),1))#avg of vios from last year.  If none w/in year, '-1' returned
     return avgVios 
+
+def sortRestLatest(restList):
+    sortLst = sorted(restList,key=methodcaller('getLatest'),reverse=True)
+    return sortLst 
+
     
-def getLatest():
+def getLatest(limit=20):
     ### returns list of Rest model objects ###
     latestTup = db.session.query(Comment.restnm).\
-        group_by(Comment.restnm,Comment.date).order_by(Comment.date.desc()).limit(20).all()
+        group_by(Comment.restnm,Comment.date).order_by(Comment.date.desc()).limit(limit).all()
     latestList = [rest[0] for rest in latestTup]
     restList = db.session.query(Rest).filter(Rest.name.in_(latestList)).all()
     
-    return restList 
+    return sortRestLatest(restList)
+
     
 def create_badge_list():
     badge_list = {}

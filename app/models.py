@@ -1,4 +1,5 @@
 from app import db
+from datetime import date
 
 
 class Rest(db.Model):
@@ -28,6 +29,12 @@ class Rest(db.Model):
             'lng':self.lng,
             }
         return instDict
+    
+    def getLatest(self):
+        latestDate = db.session.query(Comment.date).filter(Rest.name == self.name).\
+            filter(Rest.name == Comment.restnm).order_by(Comment.date.desc()).first()[0]
+        latestDate = latestDate.date()
+        return latestDate
         
 class Comment(db.Model):
     
