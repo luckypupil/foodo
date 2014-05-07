@@ -5,7 +5,7 @@ from flask.ext import restful
 from flask.ext.httpauth import HTTPBasicAuth
 from models import Comment, Rest, Badge
 from forms import HomeSearch
-from helper import make_badges, make_inspections, loc_query, getPoints
+from helper import make_badges, make_inspections, loc_query, getVios, getLatest
 import operator
 auth = HTTPBasicAuth()
 
@@ -24,32 +24,18 @@ def page_not_found(error):
     return render_template('404.html'), 404
 
 @app.route('/')
-def home():   
-    return redirect(url_for('homeLatest'))
-
 @app.route('/latest')
-def homeLatest():
-    lim = request.args.get('limit', 10)
-    off = request.args.get('offset', 1)
-    loc = request.args.get('location', "39.941063, -75.173192")
-    lat, lng = loc.split(",")
-    radius = request.args.get('radius',2)
-    query = loc_query(lat,lng,radius,off,lim)
-    rests = Rest.query.from_statement(query).all()
+def home():
+    rests = getLatest()
     jrests = [rest.jsond() for rest in rests]  
     return render_template('main.html',rests = rests, jrests=jrests)
 
 @app.route('/points')
 def homePoints():
-    lim = request.args.get('limit', 10)
-    off = request.args.get('offset', 1)
-    loc = request.args.get('location', "39.941063, -75.173192")
-    lat, lng = loc.split(",")
-    radius = request.args.get('radius',2)
-    query = loc_query(lat,lng,radius,off,lim)
-    rests = Rest.query.from_statement(query).all()
-    jrests = [rest.jsond() for rest in rests]  
-    return render_template('main.html',rests = rests, jrests=jrests)
+    rests = Rest.query.limit(10).all()
+    for rest in rests:
+        rest.score = getVios(rest.id)  
+    return render_template('mainNoMap.html',rests = rests)
 
 @app.route('/proximity')
 def homeProximity():
@@ -100,12 +86,8 @@ def apiList():
     rest_json = [rest.jsond() for rest in results]
     for rest in rest_json:
         rest['badges'] = make_badges(rest['id'])
-        #rest['badges'] = 'mybadge'
     
     return make_response(dumps({'count':len(rest_json),'rests':rest_json}))
-
-
-
 
 if __name__ == "__main__":
     api_list2()    
