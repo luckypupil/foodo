@@ -59,7 +59,7 @@ def makeHtmlRepo (linkList):
                     html.write(r.text.encode('utf-8','ignore').strip())
                 print linkExt+'added to Repo'    
             except:
-                with open('ErrorLog.txt', 'w') as myfile:
+                with open('ErrorLog.txt', 'a') as myfile:
                     myfile.write('Couldnt create html file for {}'.format(linkExt))
                 continue
             
@@ -75,7 +75,7 @@ def Make_master_dict():
         try:
             Rest_nm = inspect_soup('b',style="font-size:14px;")[0].string
         except:
-            with open('ErrorLog.txt', 'w') as myfile:
+            with open('ErrorLog.txt', 'a') as myfile:
                     myfile.write('{} did not parse properly'.format(html))
             continue
         
@@ -102,7 +102,7 @@ def Make_master_dict():
             sngl_rest_dict['inspections'] = inspec_hist
             print 'done with {}'.format(Rest_nm)
         except:
-            with open('ErrorLog.txt', 'w') as myfile:
+            with open('ErrorLog.txt', 'a') as myfile:
                     myfile.write('{} did not parse properly'.format(Rest_nm))
             continue  
           

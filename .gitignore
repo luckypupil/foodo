@@ -6,3 +6,4 @@ htmlArchive
 tmp/htmlArchive
 .pydevproject
 .gitignore~
+hack.py

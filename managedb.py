@@ -6,6 +6,8 @@ from pprint import pprint
 import sys
 import requests
 from sqlalchemy import or_
+from datetime import datetime
+from app.helper import makeSlug
 
 geoUrl = "https://maps.googleapis.com/maps/api/geocode/json?"
 
@@ -40,36 +42,35 @@ def addNewBadges(codeDct):
 
 def geoCodedb(lmt=1000):
     base_url = "https://maps.googleapis.com/maps/api/geocode/json?"
-    
-    rest_list = db.session.query(Rest).filter(or_(Rest.lat == None,Rest.lat == 0)).limit(lmt).offset(0).all()    
+    rest_list = db.session.query(Rest).filter(Rest.lat == None).limit(lmt).offset(0).all()    
     for rest in rest_list:
         print 'initializing {}'.format(rest)
         if rest.street:
             street = rest.street.replace('#','')
-            street_list = street.split(" ")
-            geo_str =""
-            for word in street_list:
-                geo_str+=(word+"+")
-                
-            address = geo_str[:-1]+"+Philadelphia,+PA+"+str(rest.zipcd)
+            geo_str = makeSlug(street)    
+            address = geo_str+"+Philadelphia,+PA+"+str(rest.zipcd)
+            print address
             key = "AIzaSyDZTlXL-J2h0DQO0CVDpXbtKOtn_TTCZTU"
-             
-            final_url = base_url+"sensor=false"+"&address="+address+"&key="+key
+            final_url = base_url+"sensor=false"+"&address="+address+"&key="+key    
+            
             try:
                 r = requests.get(final_url)
             except:
                 print 'Couldnt get url'
                 continue
-    #         
+            
             myobject =  r.json()
             numResults = len(myobject["results"])        
-            if myobject['status'] == "OK" and numResults <= 3:
+            if myobject['status'] == "OK" and numResults <= 4:
 #                 print 'pulled succesfully from goog with {} elements - thx Serg!'.format(numResults)
                 rest.lat = myobject["results"][0]["geometry"]["location"]["lat"]
                 rest.lng = myobject["results"][0]["geometry"]["location"]["lng"]
                 print "geocode for {} entered".format(rest)
             else:
                 rest.lat = '0'
+                with open('GeoErrorLog.txt', 'a') as myfile:
+                    myfile.write('{} -- Didnt get Coords for {}.  Status was {}, and their were {} results for the API call to {}\n'.format(datetime.now(),rest,myobject['status'],numResults,final_url))
+                continue
             db.session.add(rest)
             db.session.commit()
             print '{} successfully committed.'.format(rest.name)

@@ -9,9 +9,11 @@ from operator import methodcaller
 def make_badges(restId):
     ### Return unique badge list for restaurant ###
     rest = Rest.query.get(restId)
+    latestCommentsTup = db.session.query(Comment.code).filter(rest.getLatest()==Comment.date,rest.name==Comment.restnm).all()
+    latestComments = [comment[0] for comment in latestCommentsTup]
     badges = []
-    for comment in rest.comments.all():
-        badge = Badge.query.filter_by(code=comment.code).first()
+    for code in latestComments:
+        badge = db.session.query(Badge).filter(Badge.code==code).first()
         if badge and badge.badgenm not in badges:
             badges.append(badge.badgenm)
     return badges
@@ -31,16 +33,13 @@ def sortRestLatest(restList):
     sortLst = sorted(restList,key=methodcaller('getLatest'),reverse=True)
     return sortLst 
 
-    
 def getLatest(limit=20):
     ### returns list of Rest model objects ###
     latestTup = db.session.query(Comment.restnm).\
         group_by(Comment.restnm,Comment.date).order_by(Comment.date.desc()).limit(limit).all()
     latestList = [rest[0] for rest in latestTup]
-    restList = db.session.query(Rest).filter(Rest.name.in_(latestList)).all()
-    
+    restList = db.session.query(Rest).filter(Rest.name.in_(latestList)).all()    
     return sortRestLatest(restList)
-
     
 def create_badge_list():
     badge_list = {}
@@ -58,25 +57,18 @@ def make_inspections(restId):
         inspections.setdefault(str(comment.date),[]).append(comment.quote)
     return inspections
 
-
 def loc_query(lat,lng,radius,off,lim):
-    
     return("SELECT * FROM (SELECT id, (3959 * acos(cos(radians({latitude})) * cos(radians(lat))\
     * cos(radians(lng) - radians({longitude})) + sin(radians({latitude}))\
     * sin(radians(lat)))) AS distance FROM rest) AS distance WHERE distance\
      < {radius} ORDER BY distance OFFSET {offset} LIMIT {limit};".format(latitude=lat, longitude=lng, radius=radius, offset=off,limit=lim)) 
  
-    
-# def make_home_api(rest_id):
-#     
-#     for rest in rest_lst:
-#         api = {}
-#         sub_dct = {}
-#         sub_dct["name"]:rest
-        
-                
-     
-# code_to_badge = [    
+def makeSlug(string,spaceChar='+',Maxlen=None):
+            stringlst = string.split(" ")
+            newStr =""
+            for word in stringlst:
+                newStr+=(word+spaceChar)        
+            return newStr[:-1][:Maxlen]
+          
 if __name__ == "__main__":
-    getPoints(55381)   
-    #loc_query()
+    makeSlug('Yo trying this shit out')

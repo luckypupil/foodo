@@ -28,7 +28,7 @@ def page_not_found(error):
 def home():
     rests = getLatest(5)
     jrests = [rest.jsond() for rest in rests]  
-    return render_template('webflow.html',rests = rests, jrests=jrests)
+    return render_template('main.html',rests = rests, jrests=jrests)
 
 @app.route('/points')
 def homePoints():
