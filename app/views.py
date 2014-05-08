@@ -28,7 +28,7 @@ def page_not_found(error):
 def home():
     rests = getLatest(5)
     jrests = [rest.jsond() for rest in rests]  
-    return render_template('main.html',rests = rests, jrests=jrests)
+    return render_template('webflow.html',rests = rests, jrests=jrests)
 
 @app.route('/points')
 def homePoints():
@@ -36,7 +36,7 @@ def homePoints():
     for rest in rests:
         rest.score = getVios(rest.id) 
     rests = sorted(rests,key=attrgetter('score'),reverse=True) 
-    return render_template('mainNoMap.html',rests = rests)
+    return render_template('main.html',rests = rests)
 
 @app.route('/proximity')
 def homeProximity():
@@ -48,14 +48,14 @@ def homeProximity():
     query = loc_query(lat,lng,radius,off,lim)
     rests = Rest.query.from_statement(query).all()
     jrests = [rest.jsond() for rest in rests]  
-    return render_template('main.html',rests = rests, jrests=jrests)
+    return render_template('mainWithMap.html',rests = rests, jrests=jrests)
 
 @app.route('/profile/<int:id>')
 def profile(id):
     rest = Rest.query.get(id)  
     restProfile = rest.jsond()
     badges = make_badges(rest.id) 
-    latest = getPoints(rest.id)
+    latest = getVios(rest.id)
     return render_template('profile.html',rest = restProfile,badges=badges, latest=latest)
 
 @app.route('/api/<int:id>',methods=['GET'])

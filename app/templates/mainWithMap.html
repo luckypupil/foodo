@@ -10,10 +10,8 @@
         	
         	{% for rest in rests %}
         		<h2><b><a href="{{ url_for('profile',id=rest.id)}}">{{ rest.name }}</a></b></h2>
-        		<h1>Violation:{{rest.score}}</h1>
+        		<h3>Date:{{ rest.getLatest() }}</h3>
         		<h3>{{ rest.street }}</h3>
-        		
-        		<h3>{{ '( ' }}{{ rest.lat }}{{ ',' }}{{ rest.lng }}{{ ' )' }}</h3>
         	{% endfor %}
         </div>
       </div>
@@ -22,3 +20,14 @@
       </div>
 {% endblock %}
 
+{% block GoogMaps %}
+	<script type="text/javascript" 
+		src=https://maps.googleapis.com/maps/api/js?key=AIzaSyDZTlXL-J2h0DQO0CVDpXbtKOtn_TTCZTU&sensor=true>
+    </script>
+    <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
+    <script type="text/javascript"> 
+    	var JsRests = {{ jrests|tojson|safe }};
+    	var userLoc = navigator.geolocation.getCurrentPosition(initialize);
+    	initialize(JsRests,userLoc);
+    </script>
+{% endblock %}
