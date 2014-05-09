@@ -51,7 +51,7 @@ class Comment(db.Model):
         self.quote = quote
         
     def __repr__(self):
-        return '{} : {}...'.format(self.date,self.quote[:40])
+        return '{} : {}...'.format(self.date,str(self.quote.encode('utf-8'))[:40])
     
     
 class Badge(db.Model):

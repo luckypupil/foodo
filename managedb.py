@@ -42,7 +42,7 @@ def addNewBadges(codeDct):
 
 def geoCodedb(lmt=1000):
     base_url = "https://maps.googleapis.com/maps/api/geocode/json?"
-    rest_list = db.session.query(Rest).filter(Rest.lat == None).limit(lmt).offset(0).all()    
+    rest_list = db.session.query(Rest).filter(or_(Rest.lat == None,Rest.lat == 0)).limit(lmt).offset(0).all()    
     for rest in rest_list:
         print 'initializing {}'.format(rest)
         if rest.street:

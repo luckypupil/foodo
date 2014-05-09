@@ -1,4 +1,4 @@
-from app import app, db
+from app import app, db, admin
 from flask import render_template, flash, redirect, session, url_for, request, g, jsonify, make_response
 from flask.json import dumps
 from flask.ext import restful 
@@ -7,7 +7,14 @@ from models import Comment, Rest, Badge
 from forms import HomeSearch
 from helper import make_badges, make_inspections, loc_query, getVios, getLatest
 from operator import attrgetter
+from flask.ext.admin.contrib.sqla import ModelView
+
 auth = HTTPBasicAuth()
+
+
+admin.add_view(ModelView(Rest, db.session))
+admin.add_view(ModelView(Comment, db.session))
+admin.add_view(ModelView(Badge, db.session))
 
 @auth.get_password
 def get_password(username):

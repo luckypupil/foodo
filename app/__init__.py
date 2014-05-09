@@ -3,10 +3,13 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.script import Manager, Server
 from flask.ext.migrate import Migrate, MigrateCommand
 
+from flask.ext.admin import Admin
 
 app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
+admin = Admin(app)
+
 migrate = Migrate(app, db)
 
 manager = Manager(app)
