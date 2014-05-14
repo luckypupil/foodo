@@ -1,0 +1,70 @@
+﻿$.getJSON('/get_loco', {
+				lat:loc.coords.latitude,
+				lng:loc.coords.longitude
+			}, function(data) {
+			$('.restlist').text(data.result);
+			});		 		
+		};
+
+
+function sendloco (loc) {
+			console.log([loc.coords.latitude,loc.coords.longitude]);
+									
+			$.post('/latest',{lat:loc.coords.latitude,lng:loc.coords.longitude}, 
+				function(data){
+					$('.restlist').html(data);
+				});			 		
+		};
+
+
+	{% for rest in rests %}
+        		<h2><b><a href="{{ url_for('profile',id=rest.id)}}">{{ rest.name }}</a></b></h2>
+        		<h3>Date:{{ rest.latestDt() }}</h3>
+        		<h3>{{ rest.street }}</h3>
+        	{% endfor %}
+
+function initialize (loc) {    
+    var center = new google.maps.LatLng(loc.coords.latitude,loc.coords.longitude);
+        		
+    var mapOptions = {
+	    center: center,
+	    zoom: 12
+    };
+
+    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);	
+
+    var homeMarker = new google.maps.Marker({
+		    position: center,
+		    map: map,
+		    title: 'Youre Here'
+	    });
+    
+    var i = 0;
+    console.log(jsRests);
+    var restLen = jsRests.length;
+    
+    for (i;i<restLen;i++) {
+	    var locale = new google.maps.LatLng(jsRests[i]['lat'], jsRests[i]['lng']);
+     	
+     	var homeMarker2 = new google.maps.Marker({
+        		position: locale,
+        		map: map,
+        		title: jsRests[i]['name']
+	    });
+	};//end for
+    
+    }
+
+//function(data) {
+					//window.location.reload(true);
+					//window.location ='/points';
+					console.log(window.location);
+					//var restlist = data['rests'].length;           
+					//var i =0;
+					//for (i;i<restlist;i++) {
+					//console.log(data['rests'][0]['name']);			   
+                //$('#restlist').append(data['rests'][i]['name']);
+                }
+
+
+.strftime("%A, %B %d, %Y")

@@ -4,13 +4,12 @@ from flask.json import dumps
 from flask.ext import restful 
 from flask.ext.httpauth import HTTPBasicAuth
 from models import Comment, Rest, Badge
-from forms import HomeSearch
-from helper import make_badges, make_inspections, loc_query, getVios, getLatest
+from forms import addySearch
+from helper import *
 from operator import attrgetter
 from flask.ext.admin.contrib.sqla import ModelView
-
+from pprint import pprint
 auth = HTTPBasicAuth()
-
 
 admin.add_view(ModelView(Rest, db.session))
 admin.add_view(ModelView(Comment, db.session))
@@ -30,32 +29,37 @@ def unauthorized():
 def page_not_found(error):
     return render_template('404.html'), 404
 
-@app.route('/')
-@app.route('/latest')
+@app.route('/',methods=['GET', 'POST'])
 def home():
-    rests = getLatest(5)
-    jrests = [rest.jsond() for rest in rests]  
-    return render_template('main.html',rests = rests, jrests=jrests)
+    lim = 10
+    radius = 3
+    form = addySearch()
+    if form.validate_on_submit():
+        return 'form validated'
+        #Do code  
+    if request.args:
+        lat = request.args.get('lat', "39.9522")#city Hall
+        lng = request.args.get('lng', "-75.1639")
+        sort = request.args.get('sort','latest')#'vios' needs to be specified if sort desired
+        query = loc_query(lat,lng,radius,lim)
+        rests = Rest.query.from_statement(query).all()
+        for rest in rests:
+            rest.score = getVios(rest.id)
+        if sort == 'vios':
+            rests = sorted(rests,key=attrgetter('score'),reverse=True)        
+        else:
+            rests = sortRestLatest(rests) # need to add sort by date but to do so must remove rests with null latestDT
+            #jrests = [rest.jsond() for rest in Rest.query.all()] #Eventually will load full data in background  
+        return render_template('main.html',rests = rests, form = form)
+        
+    else:
+        rests = getLatest(lim)
+        for rest in rests:
+            rest.score = getVios(rest.id)
+        jrests = [rest.jsond() for rest in rests]  
+        return render_template('landing.html',rests = rests, jrests=jrests, form = form)#landing inherits from main
 
-@app.route('/points')
-def homePoints():
-    rests = Rest.query.limit(10).all()
-    for rest in rests:
-        rest.score = getVios(rest.id) 
-    rests = sorted(rests,key=attrgetter('score'),reverse=True) 
-    return render_template('main.html',rests = rests)
 
-@app.route('/proximity')
-def homeProximity():
-    lim = request.args.get('limit', 10)
-    off = request.args.get('offset', 1)
-    loc = request.args.get('location', "39.941063, -75.173192")
-    lat, lng = loc.split(",")
-    radius = request.args.get('radius',2)
-    query = loc_query(lat,lng,radius,off,lim)
-    rests = Rest.query.from_statement(query).all()
-    jrests = [rest.jsond() for rest in rests]  
-    return render_template('mainWithMap.html',rests = rests, jrests=jrests)
 
 @app.route('/profile/<int:id>')
 def profile(id):
@@ -65,6 +69,7 @@ def profile(id):
     latest = getVios(rest.id)
     return render_template('profile.html',rest = restProfile,badges=badges, latest=latest)
 
+##################################Unused API CODE##################################################
 @app.route('/api/<int:id>',methods=['GET'])
 @auth.login_required
 def apiProfile(id):

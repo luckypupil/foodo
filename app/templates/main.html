@@ -1,24 +1,35 @@
 {% extends "base.html" %}
-	
+{% block search %}
+<form action="" method="post" name="AddySearch">
+    {{form.hidden_tag()}}{# renders CSRF #}
+    <p>
+        {{form.address}}<br>
+    </p>
+    <p><input type="submit" value="Find"></p>
+</form>
+{% endblock %}	
 {% block content %}
 	 <div id="headline">The dish on your favorite restuarant!</div>
-      <div class="jumbotron">
-      	<img src="{{ url_for('static',filename='img/Dinner.jpg') }}" height="200" width="200">
-      </div>
       <div class="row marketing">
-        <div class="col-lg-12">
+        <div class="col-lg-12" id="restlist">
         	
         	{% for rest in rests %}
+        		<h2>{{ rest.score }}{{ ' Violations' }}</h2>
         		<h2><b><a href="{{ url_for('profile',id=rest.id)}}">{{ rest.name }}</a></b></h2>
-        		<h1>Violation:{{rest.score}}</h1>
-        		<h3>{{ rest.street }}</h3>
         		
-        		<h3>{{ '( ' }}{{ rest.lat }}{{ ',' }}{{ rest.lng }}{{ ' )' }}</h3>
+        		<h3>{{ rest.street }}{{ ' Philadelphia, PA ' }}{{ rest.zipcd }}</h3>
+        		{% if rest.latestDt() %}
+        			<h4>{{ rest.latestDt().strftime("%A, %B %d, %Y") }}</h4>
+        		{% endif %}
+        			
         	{% endfor %}
         </div>
       </div>
       <div class="footer">
+      	{{ request.script_root }}
         <p>&copy; LuckyPupil 2014</p>
       </div>
 {% endblock %}
 
+{% block GoogMaps %}
+{% endblock %}

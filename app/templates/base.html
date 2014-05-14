@@ -33,15 +33,12 @@
         </ul>
         <a href="{{ url_for('home')}}"><h3 class="text-muted">Foodo</h3>
       </div>
+     {% block search %} 
+     {% endblock %}
     {% block content %}
     {% endblock %}
     </div> <!-- /container -->   
-	{% block GoogMaps %}
-    {% endblock %}	
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    
-    <!-- Placed at the end of the document so the pages load faster -->
+    {% block js %}{% endblock %}
   </body>
   
 </html>

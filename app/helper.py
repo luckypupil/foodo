@@ -9,7 +9,7 @@ from operator import methodcaller
 def make_badges(restId):
     ### Return unique badge list for restaurant ###
     rest = Rest.query.get(restId)
-    latestCommentsTup = db.session.query(Comment.code).filter(rest.getLatest()==Comment.date,rest.name==Comment.restnm).all()
+    latestCommentsTup = db.session.query(Comment.code).filter(rest.latestDt()==Comment.date,rest.name==Comment.restnm).all()
     latestComments = [comment[0] for comment in latestCommentsTup]
     badges = []
     for code in latestComments:
@@ -30,7 +30,7 @@ def getVios(restId):
     return avgVios 
 
 def sortRestLatest(restList):
-    sortLst = sorted(restList,key=methodcaller('getLatest'),reverse=True)
+    sortLst = sorted(restList,key=methodcaller('latestDt'),reverse=True)
     return sortLst 
 
 def getLatest(limit=20):
@@ -57,11 +57,11 @@ def make_inspections(restId):
         inspections.setdefault(str(comment.date),[]).append(comment.quote)
     return inspections
 
-def loc_query(lat,lng,radius,off,lim):
+def loc_query(lat,lng,radius,lim):
     return("SELECT * FROM (SELECT id, (3959 * acos(cos(radians({latitude})) * cos(radians(lat))\
     * cos(radians(lng) - radians({longitude})) + sin(radians({latitude}))\
     * sin(radians(lat)))) AS distance FROM rest) AS distance WHERE distance\
-     < {radius} ORDER BY distance OFFSET {offset} LIMIT {limit};".format(latitude=lat, longitude=lng, radius=radius, offset=off,limit=lim)) 
+     < {radius} ORDER BY distance LIMIT {limit};".format(latitude=lat, longitude=lng, radius=radius,limit=lim)) 
  
 def makeSlug(string,spaceChar='+',Maxlen=None):
             stringlst = string.split(" ")
@@ -71,4 +71,4 @@ def makeSlug(string,spaceChar='+',Maxlen=None):
             return newStr[:-1][:Maxlen]
           
 if __name__ == "__main__":
-    makeSlug('Yo trying this shit out')
+    getLatest()
