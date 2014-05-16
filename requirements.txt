@@ -1,5 +1,8 @@
 Flask==0.10.1
+Flask-Admin==1.0.8
+Flask-HTTPAuth==2.2.1
 Flask-Migrate==1.2.0
+Flask-RESTful==0.2.12
 Flask-SQLAlchemy==1.0
 Flask-Script==0.6.7
 Flask-WTF==0.9.5
@@ -10,9 +13,13 @@ SQLAlchemy==0.9.4
 WTForms==1.0.5
 Werkzeug==0.9.4
 alembic==0.6.4
+aniso8601==0.82
 argparse==1.2.1
 beautifulsoup4==4.3.2
 itsdangerous==0.23
 psycopg2==2.5.2
+pytz==2014.2
+rauth==0.7.0
 requests==2.2.1
+six==1.6.1
 wsgiref==0.1.2
