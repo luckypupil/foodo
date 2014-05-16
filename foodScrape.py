@@ -12,22 +12,17 @@ from app.helper import makeSlug
 
 base_url = 'http://philadelphia.pa.gegov.com/philadelphia/' 
 
-def scrapeHTMLinks(startdate,enddate,pgresults_num=19):
-    ###Scrapes HTML pages based on search params and returns list of links to overview pages. ###
+def scrapeHTMLinks(startdate,enddate,pgresults_num):
+    ###Scrapes HTML pages based on search params and returns list of links to search results pgs. ###
     linkext_list = [] 
-    loopct = 1
     for num in xrange(1,1+pgresults_num):
-        print 'loop {}'.format(loopct)
-        loopct+=1
         if not startdate and enddate:
             print "start and end dates must be specified"
         else:
-            ###Scrape URL of list of restaurants associated with given search query params (resultspg and zip) and writes to html file###
             url_ext='search.cfm?facType=7&subType=Any&' #'facType=7&subType=Any' filters to restuarant subcat
             start_query = (1 if num == 1 else (num-1)*20+1) # converts page results num to search query param
             srch_query = '{}start={}&sd={}&ed={}&dtRng=YES'.format(url_ext,start_query,startdate,enddate)
-            print base_url+srch_query   
-    
+     
         r = requests.get(base_url + srch_query)
              
         soup = BeautifulSoup(r.text)
@@ -53,22 +48,22 @@ def makeHtmlRepo (ext_list):
     
     return (html_list)
                      
-def Make_rest_dict(html,startdt='03/30/2014'):
+def Make_rest_rows(html,startdt='03/30/2014'):
     #returns tuple of 1 rest row [name,street,zip], and all comment rows [name,date,code,quote] after the start date param#    
     startdt= datetime.datetime.strptime(startdt.strip(),'%m/%d/%Y')      
     sngl_rest_dict = {}
     inspect_soup = BeautifulSoup(html,"html.parser",parse_only=SoupStrainer('body')) #Strain to body          
     
     rest_row =[]
+    Rest_nm = inspect_soup('b',style="font-size:14px;")[0].string
     try:
-        Rest_nm = inspect_soup('b',style="font-size:14px;")[0].string
         Rest_st = inspect_soup('i')[0].contents[0].encode('utf-8','ignore').strip()
         Rest_zip_temp = inspect_soup('i')[0].contents[2].encode('utf-8','ignore').strip()[-5:]
         Rest_zip = (int(Rest_zip_temp) if len(Rest_zip_temp)==5 else "") #verify zip is 5 digit int
         rest_row = [Rest_nm,Rest_st,Rest_zip]
     except:
         with open('ErrorLog.txt', 'a') as myfile:
-                myfile.write('{} did not parse properly'.format(html))
+                myfile.write('{} did not parse properly'.format(Rest_nm))
     
     inspections =  inspect_soup.find_all('div',style='border:1px solid #003399;width:95%;margin-bottom:10px;')  #Main division for all inspect summary info 
     count =0
@@ -116,7 +111,7 @@ def geoCode(rest):
             else:
                 rest.lat,rest.lng = '0','0'
                 with open('GeoErrorLog.txt', 'a') as myfile:
-                    myfile.write('{} -- Didnt get Coords for {}.  Status was {}, and their were {} results for the API call to {}\n'.format(datetime.datetime.now(),rest,myobject['status'],numResults,final_url))
+                    myfile.write('{} -- Didnt get Coords for {}.  Status was {}, and their were {} results for the API call to {}\n'.format(datetime.datetime.now(),rest.name,myobject['status'],numResults,final_url))
      
     return(rest.lat,rest.lng)
   
@@ -143,14 +138,9 @@ def addtodb(table_tup):
        
 
 def main():
-    #makeHtmlRepo(scrapeHTMLinks(base_url))
-    #dict_to_txt(Make_master_dict())
-    #addtodb(test_tup,)
-    #testrest = db.session.query(Rest).filter(Rest.name == 'test rest 1').first()
-    #print geoCode(testrest)
-    #makeHtmlRepo(scrapeHTMLinks('3/30/2014','4/03/2014'))
-    for html in makeHtmlRepo(scrapeHTMLinks('4/01/2014','5/14/2014')):
-        addtodb(Make_rest_dict(html,'3/30/2014'))
+    ###Need to enter number of page results matching start/end dates specified###
+    for html in makeHtmlRepo(scrapeHTMLinks('[start_date]','[end_date]',pgresults_num=[])):
+        addtodb(Make_rest_rows(html,'[start_date]'))
     
 if __name__ == "__main__":
     main()

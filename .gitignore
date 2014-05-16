@@ -7,3 +7,9 @@ tmp/htmlArchive
 .pydevproject
 .gitignore~
 hack.py
+tmp
+GeoErrorLog.txt
+ErrorLog.txt
+hack*
+*~
+randocode.txt
