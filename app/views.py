@@ -31,7 +31,7 @@ def page_not_found(error):
 
 @app.route('/',methods=['GET', 'POST'])
 def home():
-    lim = 10
+    lim = 20
     radius = 3
     form = addySearch()
     if form.validate_on_submit():

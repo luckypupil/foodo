@@ -6,6 +6,7 @@ import csv
 import os
 from pprint import pprint
 from bs4 import BeautifulSoup, SoupStrainer
+from ..app import db
 
 base_url = 'http://philadelphia.pa.gegov.com/philadelphia/' 
 
@@ -66,7 +67,7 @@ def makeHtmlRepo (linkList):
 def Make_master_dict():    
     Master_Rest_dict ={}
     mydir =  os.getcwd()
-    inspect_file_list = os.listdir(mydir+'/htmlArchive')
+    inspect_file_list = os.listdir(mydir+'/htmlArchive')[0:10]#remove splice once code complete
         
     for html in inspect_file_list:
         sngl_rest_dict = {}
@@ -126,14 +127,10 @@ def dict_to_txt(restInspectDict):
             with open('ErrorLog.txt', 'w') as myfile:
                     myfile.write('{} was not added to Rest Table'.format(rest))
             continue
-        
-    with open('csv/rest_tbl.csv','wb') as csvfile:
-        w = csv.writer(csvfile, delimiter=',')
-        w.writerows([i for i in resttbl_list])
-    
+            
     # Create Comments table#
     print "Creating 'Comments' table"
-    inspect_list = []
+    comment_list = []
     for restnm in restInspectDict:
         try:
             for dated in restInspectDict[restnm]['inspections']:
@@ -142,15 +139,13 @@ def dict_to_txt(restInspectDict):
                     
                     if m is not None:
                         insp_str =  [restnm,datetime.datetime.strptime(dated.strip(),'%m/%d/%Y'),m.group(1),m.group(2)] #Name, Date,code,quote
-                        inspect_list.append(insp_str)
+                        comment_list.append(insp_str)
         except:
             with open('ErrorLog.txt', 'w') as myfile:
                     myfile.write('{} was not added to Comments Table'.format(restnm))
             continue
             
-    with open('csv/comment_tbl.csv','wb') as csvfile:
-        w = csv.writer(csvfile, delimiter=',')
-        w.writerows([i for i in inspect_list])       
+    return(resttbl_list,comment_list)
         
         
 if __name__ == "__main__":
