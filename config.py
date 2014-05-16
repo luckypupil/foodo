@@ -10,7 +10,10 @@ CSRF_SESSION_KEY = 'muaychampionpurpsh1rt'
 ADMINS = frozenset(['ba@luckypupil.com'])
 SECRET_KEY = '0penw@ter'
 
-SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://blake:bloopers@localhost/foodo'
+if os.environ.get('DATABSE_URL') is None:
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://blake:bloopers@localhost/foodo'
+else:
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 #APPLICATION_URL = '0.0.0.0'
-#SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir,'foodo.db')
+
 
