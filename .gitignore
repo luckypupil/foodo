@@ -13,3 +13,4 @@ ErrorLog.txt
 hack*
 *~
 randocode.txt
+.env
