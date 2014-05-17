@@ -3,7 +3,14 @@
 {% block js %}
 	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
-    <script type="text/javascript"> 
+    <script type="text/javascript">
+    	function getlocation () {
+    		if (true) { 
     	navigator.geolocation.getCurrentPosition(sendloco);
+    	}
+    	else {
+    		//no support?!?!?!?! - do nothing
+    	{
+    	};	
     </script>
 {% endblock %}

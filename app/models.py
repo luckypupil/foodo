@@ -33,8 +33,10 @@ class Rest(db.Model):
     def latestDt(self):
         latestDate = db.session.query(Comment.date).filter(Rest.name == self.name).\
             filter(Rest.name == Comment.restnm).order_by(Comment.date.desc()).first()
-        
-        latestDate = (latestDate[0].date() if latestDate else date(1900,1,1))# latestdate = None if query is none, otherwise choose date in KeyTuple
+        try:
+            latestDate = (latestDate[0].date() if latestDate else date(1900,1,1))# latestdate = None if query is none, otherwise choose date in KeyTuple
+        except:
+            latestDate = date(1900,1,1)
             
         return latestDate
         
