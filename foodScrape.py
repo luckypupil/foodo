@@ -23,17 +23,16 @@ def scrapeHTMLinks(startdate,enddate,pgresults_num):
             start_query = (1 if num == 1 else (num-1)*20+1) # converts page results num to search query param
             srch_query = '{}start={}&sd={}&ed={}&dtRng=YES'.format(url_ext,start_query,startdate,enddate)
      
-        r = requests.get(base_url + srch_query)
-             
-        soup = BeautifulSoup(r.text)
-         
-        def a_scrub(href):
-            return href is not None and 'estab' in href and 'inspection' not in href 
-         
-        listing = soup.find_all(href=a_scrub) 
-        
-        for link in listing:
-            linkext_list.append(str(link['href']))
+        try:
+            r = requests.get(base_url + srch_query)
+            soup = BeautifulSoup(r.text)
+            def a_scrub(href):
+                return href is not None and 'estab' in href and 'inspection' not in href 
+            listing = soup.find_all(href=a_scrub) 
+            for link in listing:
+                linkext_list.append(str(link['href']))
+        except:
+            continue
     return (linkext_list)
 
 def makeHtmlRepo (ext_list):
@@ -45,7 +44,6 @@ def makeHtmlRepo (ext_list):
             html_list.append(r.text.encode('utf-8','ignore').strip())    
         except:
             continue
-    
     return (html_list)
                      
 def Make_rest_rows(html,startdt='03/30/2014'):
@@ -53,7 +51,6 @@ def Make_rest_rows(html,startdt='03/30/2014'):
     startdt= datetime.datetime.strptime(startdt.strip(),'%m/%d/%Y')      
     sngl_rest_dict = {}
     inspect_soup = BeautifulSoup(html,"html.parser",parse_only=SoupStrainer('body')) #Strain to body          
-    
     rest_row =[]
     Rest_nm = inspect_soup('b',style="font-size:14px;")[0].string
     try:
@@ -62,11 +59,9 @@ def Make_rest_rows(html,startdt='03/30/2014'):
         Rest_zip = (int(Rest_zip_temp) if len(Rest_zip_temp)==5 else "") #verify zip is 5 digit int
         rest_row = [Rest_nm,Rest_st,Rest_zip]
     except:
-        with open('ErrorLog.txt', 'a') as myfile:
-                myfile.write('{} did not parse properly'.format(Rest_nm))
-    
+        return([],[])
+            
     inspections =  inspect_soup.find_all('div',style='border:1px solid #003399;width:95%;margin-bottom:10px;')  #Main division for all inspect summary info 
-    count =0
     inspect_hist = [ ]
     for inspection in inspections:# loops over each date on rest profile page#
         date = inspection.select('div[style="padding:5px;]')[0].contents[2].encode('utf-8','ignore').strip()
@@ -83,9 +78,7 @@ def Make_rest_rows(html,startdt='03/30/2014'):
                             inspect_hist.append(comment_row)
         except:
             continue
-    
-    print(rest_row,inspect_hist)
-    
+    return(rest_row,inspect_hist)
     
 def geoCode(rest):
     base_url = "https://maps.googleapis.com/maps/api/geocode/json?"
@@ -95,59 +88,55 @@ def geoCode(rest):
             address = geo_str+"+Philadelphia,+PA+"+str(rest.zipcd)
             key = "AIzaSyDZTlXL-J2h0DQO0CVDpXbtKOtn_TTCZTU"
             final_url = base_url+"sensor=false"+"&address="+address+"&key="+key    
-            
             try:
-                r = requests.get(final_url)
+                r = requests.get(final_url) 
+                myobject =  r.json()
+                numResults = len(myobject["results"])        
+                if myobject['status'] == "OK" and numResults <= 4:
+    #               print 'pulled succesfully from goog with {} elements - thx Serg!'.format(numResults)
+                    rest.lat = myobject["results"][0]["geometry"]["location"]["lat"]
+                    rest.lng = myobject["results"][0]["geometry"]["location"]["lng"]
             except:
-                print 'Couldnt get url'
-                
-            myobject =  r.json()
-            numResults = len(myobject["results"])        
-            if myobject['status'] == "OK" and numResults <= 4:
-#                 print 'pulled succesfully from goog with {} elements - thx Serg!'.format(numResults)
-                rest.lat = myobject["results"][0]["geometry"]["location"]["lat"]
-                rest.lng = myobject["results"][0]["geometry"]["location"]["lng"]
-                print "geocode for {} entered".format(rest)
-            else:
                 rest.lat,rest.lng = '0','0'
-                with open('GeoErrorLog.txt', 'a') as myfile:
-                    myfile.write('{} -- Didnt get Coords for {}.  Status was {}, and their were {} results for the API call to {}\n'.format(datetime.datetime.now(),rest.name,myobject['status'],numResults,final_url))
-     
     return(rest.lat,rest.lng)
   
 def addtodb(table_tup):
    ###Copies CSV files to create resturant and comment tables###
-    rest_row = table_tup[0]
-    print rest_row
-    name, street, zipcd = str(rest_row[0]), str(rest_row[1]), rest_row[2]
-    if not db.session.query(Rest).filter(Rest.name==name).first():
-        newRest = Rest(name=name,street=street,zipcd=zipcd)
-        newRest.lat,newRest.lng = geoCode(newRest)
-        db.session.add(newRest)
-        db.session.commit()
-        print '{} added to Rest table'.format(name)
-
-    if table_tup[1]:# accoutn for inspection listings with no data
-        for comment_row in table_tup[1]:
-            restnm, date, code, quote = str(comment_row[0]), comment_row[1], int(comment_row[2]),str(comment_row[3])
-            if not db.session.query(Comment).filter(Comment.restnm==restnm,Comment.date==date,Comment.quote==quote).first():
-                newComm = Comment(restnm=restnm,date=date,code=code,quote=quote)
-                db.session.add(newComm)
+   if table_tup[0]:
+        try:
+            rest_row = table_tup[0]
+            name, street, zipcd = str(rest_row[0]), str(rest_row[1]), rest_row[2]
+            if not db.session.query(Rest).filter(Rest.name==name).first():
+                newRest = Rest(name=name,street=street,zipcd=zipcd)
+                newRest.lat,newRest.lng = geoCode(newRest)
+                db.session.add(newRest)
                 db.session.commit()
-                print '{} comment w/ code:{} added to Comment Table!'.format(restnm,code)
-           
+                print '{} added to Rest table'.format(name)
+        except:
+            pass
+            
+   if table_tup[1]:# accoutn for inspection listings with no data
+        try:
+            for comment_row in table_tup[1]:
+                restnm, date, code, quote = str(comment_row[0]), comment_row[1], int(comment_row[2]),str(comment_row[3])
+                print restnm, date, code, quote
+                if not db.session.query(Comment).filter(Comment.restnm==restnm,Comment.date==date,Comment.quote==quote).first():
+                    newComm = Comment(restnm=restnm,date=date,code=code,quote=quote)
+                    db.session.add(newComm)
+                    db.session.commit()
+                    print '{} comment w/ code:{} added to Comment Table!'.format(restnm,code)
+        except:
+            pass   
 
 def main():
     ###Need to enter number of page results matching start/end dates specified###
-    #for html in makeHtmlRepo(scrapeHTMLinks('01/01/2014','05/15/2014',pgresults_num=98)):
-     #   addtodb(Make_rest_rows(html,'01/01/2014'))
-    Make_rest_rows(makeHtmlRepo(['estab.cfm?facilityID=CFF51EDC-813F-4F0A-A51E-1C099CD7045F'])[0],'01/01/2014')
+    for html in makeHtmlRepo(scrapeHTMLinks('01/01/2014','01/15/2014',pgresults_num=2)):
+        addtodb(Make_rest_rows(html,'01/01/2014'))
+    #Make_rest_rows(makeHtmlRepo(['estab.cfm?facilityID=CFF5EDC-813F-4F0A-A51E-1C099CD7045F'])[0],'01/01/2014')
     
 if __name__ == "__main__":
     main()
     
-
-
 
 
 
