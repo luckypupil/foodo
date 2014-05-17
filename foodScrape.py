@@ -139,8 +139,8 @@ def addtodb(table_tup):
 
 def main():
     ###Need to enter number of page results matching start/end dates specified###
-    for html in makeHtmlRepo(scrapeHTMLinks('[start_date]','[end_date]',pgresults_num=[])):
-        addtodb(Make_rest_rows(html,'[start_date]'))
+    for html in makeHtmlRepo(scrapeHTMLinks('01/01/2014','05/15/2014',pgresults_num=98)):
+        addtodb(Make_rest_rows(html,'01/01/2014'))
     
 if __name__ == "__main__":
     main()

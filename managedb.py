@@ -11,18 +11,6 @@ from app.helper import makeSlug
 
 geoUrl = "https://maps.googleapis.com/maps/api/geocode/json?"
 
-def addtodb():
-   ###Copies CSV files to create resturant and comment tables.  Creates badge table using 'create_badge_list' helper fct###
-    print 'copying restuarant and comment tables'
-     
-    conn = psycopg2.connect("dbname=foodo user=blake password=bloopers")
-    cur = conn.cursor()
-    copyit = "BEGIN; ALTER TABLE rest DISABLE TRIGGER ALL; ALTER TABLE comment DISABLE TRIGGER ALL; COPY rest (name,street,zipcd) FROM '/home/blake/blakedev/Practice/flaskwork/foodo/tmp/csv/rest_tbl.csv' DELIMITER ',' CSV; COPY comment (restnm,date,code,quote) FROM '/home/blake/blakedev/Practice/flaskwork/foodo/tmp/csv/comment_tbl.csv' DELIMITER ',' CSV; COMMIT;"
-    cur.execute(copyit)
-    conn.commit()
-    cur.close()
-    conn.close()
-
 def createCodeDct():
     ### dict of code:badgeName KV pair from csv###
     badge_list = {}
@@ -39,46 +27,6 @@ def addNewBadges(codeDct):
         if not Badge.query.filter_by(code=k).first():
             db.session.add(Badge(k,codeDct[k]))
     db.session.commit()
-
-def geoCodedb(lmt=1000):
-    base_url = "https://maps.googleapis.com/maps/api/geocode/json?"
-    rest_list = db.session.query(Rest).filter(or_(Rest.lat == None,Rest.lat == 0)).limit(lmt).offset(0).all()    
-    for rest in rest_list:
-        print 'initializing {}'.format(rest)
-        if rest.street:
-            street = rest.street.replace('#','')
-            geo_str = makeSlug(street)    
-            address = geo_str+"+Philadelphia,+PA+"+str(rest.zipcd)
-            print address
-            key = "AIzaSyDZTlXL-J2h0DQO0CVDpXbtKOtn_TTCZTU"
-            final_url = base_url+"sensor=false"+"&address="+address+"&key="+key    
-            
-            try:
-                r = requests.get(final_url)
-            except:
-                print 'Couldnt get url'
-                continue
-            
-            myobject =  r.json()
-            numResults = len(myobject["results"])        
-            if myobject['status'] == "OK" and numResults <= 4:
-#                 print 'pulled succesfully from goog with {} elements - thx Serg!'.format(numResults)
-                rest.lat = myobject["results"][0]["geometry"]["location"]["lat"]
-                rest.lng = myobject["results"][0]["geometry"]["location"]["lng"]
-                print "geocode for {} entered".format(rest)
-            else:
-                rest.lat = '0'
-                with open('GeoErrorLog.txt', 'a') as myfile:
-                    myfile.write('{} -- Didnt get Coords for {}.  Status was {}, and their were {} results for the API call to {}\n'.format(datetime.now(),rest,myobject['status'],numResults,final_url))
-                continue
-            db.session.add(rest)
-            db.session.commit()
-            print '{} successfully committed.'.format(rest.name)
-        else:
-            continue
-        
-#     print 'committing {} rest coord updates to DB'.format(len(db.session.dirty))
-#     db.session.commit()
 
 def deletefromdb():
    ###Delete comment and rest tables### 
@@ -98,9 +46,7 @@ def deletebadges():
     cur.execute('DELETE FROM badge')
     conn.commit()
     cur.close()
-    conn.close()
-    
-    
+    conn.close()    
 '--------------------------------------------------------------------------------------------------------------------------------------------------------------'    
 
 def main():
