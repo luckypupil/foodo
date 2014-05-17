@@ -1,6 +1,6 @@
 from app import db
 from datetime import date
-
+import datetime
 
 class Rest(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -33,9 +33,13 @@ class Rest(db.Model):
     def latestDt(self):
         latestDate = db.session.query(Comment.date).filter(Rest.name == self.name).\
             filter(Rest.name == Comment.restnm).order_by(Comment.date.desc()).first()
-        try:
-            latestDate = (latestDate[0].date() if latestDate else date(1900,1,1))# latestdate = None if query is none, otherwise choose date in KeyTuple
-        except:
+        
+        if latestDate:
+            if isinstance(latestDate[0],datetime.date):
+                latestDate = latestDate[0]
+            elif isinstance(latestDate[0],datetime.datetime):
+                latestDate = latestDate[0].date()
+        else:
             latestDate = date(1900,1,1)
             
         return latestDate
