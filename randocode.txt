@@ -68,3 +68,15 @@ function initialize (loc) {
 
 
 .strftime("%A, %B %d, %Y")
+
+def addtodb():
+   ###Copies CSV files to create resturant and comment tables.  Creates badge table using 'create_badge_list' helper fct###
+    print 'copying restuarant and comment tables'
+     
+    conn = psycopg2.connect("dbname=foodo user=blake password=bloopers")
+    cur = conn.cursor()
+    copyit = "BEGIN; ALTER TABLE rest DISABLE TRIGGER ALL; ALTER TABLE comment DISABLE TRIGGER ALL; COPY rest (name,street,zipcd) FROM '/home/blake/blakedev/Practice/flaskwork/foodo/tmp/csv/rest_tbl.csv' DELIMITER ',' CSV; COPY comment (restnm,date,code,quote) FROM '/home/blake/blakedev/Practice/flaskwork/foodo/tmp/csv/comment_tbl.csv' DELIMITER ',' CSV; COMMIT;"
+    cur.execute(copyit)
+    conn.commit()
+    cur.close()
+    conn.close()

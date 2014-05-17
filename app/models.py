@@ -35,14 +35,12 @@ class Rest(db.Model):
             filter(Rest.name == Comment.restnm).order_by(Comment.date.desc()).first()
         
         if latestDate:
-            if isinstance(latestDate[0],datetime.date):
-                latestDate = latestDate[0]
-            elif isinstance(latestDate[0],datetime.datetime):
-                latestDate = latestDate[0].date()
+            try: 
+                return latestDate[0].date() #Shows up as date object on heroku but datetime obj in dev
+            except:
+                return latestDate[0]
         else:
-            latestDate = date(1900,1,1)
-            
-        return latestDate
+            return date(1900,1,1)
         
 class Comment(db.Model):
     

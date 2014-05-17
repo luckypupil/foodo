@@ -5,3 +5,7 @@ function sendloco (loc) {
 	var lng	= loc.coords.longitude;
 	window.location = baseUrl+fct+'lat='+lat+'&lng='+lng;
 	};
+	
+
+
+
