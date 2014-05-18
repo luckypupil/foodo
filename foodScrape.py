@@ -16,6 +16,7 @@ def scrapeHTMLinks(startdate,enddate,pgresults_num):
     ###Scrapes HTML pages based on search params and returns list of links to search results pgs. ###
     linkext_list = [] 
     for num in xrange(1,1+pgresults_num):
+        print 'Preparing results page {}'.format(num)
         if not startdate and enddate:
             print "start and end dates must be specified"
         else:

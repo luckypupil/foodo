@@ -40,13 +40,23 @@ def deletefromdb():
     conn.close()
     
 def deletebadges():    
-    print "Deleting badge table"
-    conn = psycopg2.connect("dbname=foodo user=blake password=bloopers")
-    cur = conn.cursor()
-    cur.execute('DELETE FROM badge')
-    conn.commit()
-    cur.close()
-    conn.close()    
+    db.session.query(Badge).all()
+    db.commit()
+
+def deletecomments():    
+    db.session.query(Comment).all()
+    db.commit()    
+
+def deleterests():    
+    db.session.query(Rest).all()
+    db.commit()    
+
+def deletall():
+    db.session.query(Comment).all()
+    db.session.query(Badge).all()
+    db.session.query(Rest).all()
+    db.session.commit()
+      
 '--------------------------------------------------------------------------------------------------------------------------------------------------------------'    
 
 def main():
