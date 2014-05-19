@@ -79,6 +79,9 @@ def Make_rest_rows(html,startdt='03/30/2014'):
                             inspect_hist.append(comment_row)
         except:
             continue
+    #with open('logging.txt','a') as log:
+     #   pickle.dump(rest_row)
+      #  pickle.dump(inspect_hist)
     return(rest_row,inspect_hist)
     
 def geoCode(rest):
@@ -107,32 +110,47 @@ def addtodb(table_tup):
         try:
             rest_row = table_tup[0]
             name, street, zipcd = str(rest_row[0]), str(rest_row[1]), rest_row[2]
+            print 'rest_row for {} worked!'.format(rest_row[0])
             if not db.session.query(Rest).filter(Rest.name==name).first():
-                newRest = Rest(name=name,street=street,zipcd=zipcd)
-                newRest.lat,newRest.lng = geoCode(newRest)
-                db.session.add(newRest)
-                db.session.commit()
-                print '{} added to Rest table'.format(name)
+                try:
+                    newRest = Rest(name=name,street=street,zipcd=zipcd)
+                    #newRest.lat,newRest.lng = geoCode(newRest)
+                    db.session.add(newRest)
+                    db.session.commit()
+                    print '{} added to Rest table'.format(name)
+                except:
+                    print '{} not added'.format(name)
+                    pass
+                
+                
         except:
-            pass
-            
+            print "rest _row for {} didnt work".format(rest_row[0])
+   else:
+       print 'nothing in current rest_row'         
+   
    if table_tup[1]:# accoutn for inspection listings with no data
         try:
             for comment_row in table_tup[1]:
                 restnm, date, code, quote = str(comment_row[0]), comment_row[1], int(comment_row[2]),str(comment_row[3])
-                print restnm, date, code, quote
                 if not db.session.query(Comment).filter(Comment.restnm==restnm,Comment.date==date,Comment.quote==quote).first():
-                    newComm = Comment(restnm=restnm,date=date,code=code,quote=quote)
-                    db.session.add(newComm)
-                    db.session.commit()
-                    print '{} comment w/ code:{} added to Comment Table!'.format(restnm,code)
+                    try:
+                        newComm = Comment(restnm=restnm,date=date,code=code,quote=quote)
+                        db.session.add(newComm)
+                        db.session.commit()
+                        print '{} comment w/ code:{} added to Comment Table!'.format(restnm,code)
+                    except:
+                        pass          
         except:
-            pass   
+            pprint ("comment for {} didnt work".format(rest_row[0]))
+        
+   else:
+       print 'nothing in current Comment_hist'           
 
 def main():
     ###Need to enter number of page results matching start/end dates specified###
-    for html in makeHtmlRepo(scrapeHTMLinks('01/01/2014','01/15/2014',pgresults_num=2)):
+    for html in makeHtmlRepo(scrapeHTMLinks('01/01/2014','01/15/2014',pgresults_num=1)):
         addtodb(Make_rest_rows(html,'01/01/2014'))
+        print '**************************end of rest *****************************\n'
     #Make_rest_rows(makeHtmlRepo(['estab.cfm?facilityID=CFF5EDC-813F-4F0A-A51E-1C099CD7045F'])[0],'01/01/2014')
     
 if __name__ == "__main__":
