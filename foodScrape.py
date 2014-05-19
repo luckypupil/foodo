@@ -106,6 +106,7 @@ def geoCode(rest):
   
 def addtodb(table_tup):
    ###Copies CSV files to create resturant and comment tables###
+   
    if table_tup[0]:
         try:
             rest_row = table_tup[0]
@@ -113,13 +114,14 @@ def addtodb(table_tup):
             if not db.session.query(Rest).filter(Rest.name==name).first():
                 try:
                     newRest = Rest(name=name,street=street,zipcd=zipcd)
-                    #newRest.lat,newRest.lng = geoCode(newRest)
+                    newRest.lat,newRest.lng = geoCode(newRest)
                     db.session.add(newRest)
                     db.session.commit()
                     print '{} added to Rest table'.format(name)
                 except:
                     print '{} not added to Rest Table'.format(name)
-                    pass
+                    db.session.rollback()
+                    
             else:
                 print '{} already in rest table'.format(name)    
                 
@@ -140,7 +142,7 @@ def addtodb(table_tup):
                         print '{} comment w/ code:{} added to Comment Table!'.format(restnm,code)
                     except:
                         print 'comment for {} not added.'.format(restnm,code)
-                        pass          
+                        db.session.rollback()        
         except:
             pprint ("comment for {} didnt work".format(rest_row[0]))
         
@@ -150,7 +152,7 @@ def addtodb(table_tup):
    print '**************end of rest**********************'
 def main():
     ###Need to enter number of page results matching start/end dates specified###
-    for html in makeHtmlRepo(scrapeHTMLinks('03/01/2014','05/16/2014',pgresults_num=10)):
+    for html in makeHtmlRepo(scrapeHTMLinks('03/01/2014','05/16/2014',pgresults_num=20)):
         addtodb(Make_rest_rows(html,'03/01/2014'))
     #Make_rest_rows(makeHtmlRepo(['estab.cfm?facilityID=CFF5EDC-813F-4F0A-A51E-1C099CD7045F'])[0],'01/01/2014')
     
