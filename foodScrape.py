@@ -53,7 +53,6 @@ def Make_rest_rows(html,startdt='03/30/2014'):
     sngl_rest_dict = {}
     inspect_soup = BeautifulSoup(html,"html.parser",parse_only=SoupStrainer('body')) #Strain to body          
     rest_row =[]
-    
     Rest_nm = inspect_soup('b',style="font-size:14px;")[0].string
     try:
         Rest_st = inspect_soup('i')[0].contents[0].encode('utf-8','ignore').strip()
@@ -108,49 +107,50 @@ def geoCode(rest):
 def addtodb(table_tup):
    ###Copies CSV files to create resturant and comment tables###
    if table_tup[0]:
-        #try:
-        rest_row = table_tup[0]
-        name, street, zipcd = str(rest_row[0]), str(rest_row[1]), rest_row[2]
-        print 'rest_row for {} worked!'.format(rest_row[0])
-        if not db.session.query(Rest).filter(Rest.name==name).first():
-            newRest = Rest(name=name,street=street,zipcd=zipcd)
-            #newRest.lat,newRest.lng = geoCode(newRest)
-            db.session.add(newRest)
-            db.session.commit()
-            print '{} added to Rest table'.format(name)
-#                 except:
-#                     print '{} not added'.format(name)
-#                     pass
-#                 
+        try:
+            rest_row = table_tup[0]
+            name, street, zipcd = str(rest_row[0]), str(rest_row[1]), rest_row[2]
+            print 'rest_row for {} worked!'.format(rest_row[0])
+            if not db.session.query(Rest).filter(Rest.name==name).first():
+                try:
+                    newRest = Rest(name=name,street=street,zipcd=zipcd)
+                    #newRest.lat,newRest.lng = geoCode(newRest)
+                    db.session.add(newRest)
+                    db.session.commit()
+                    print '{} added to Rest table'.format(name)
+                except:
+                    print '{} not added'.format(name)
+                    pass
                 
-#         except:
-#             print "rest _row for {} didnt work".format(rest_row[0])
+                
+        except:
+            print "rest _row for {} didnt work".format(rest_row[0])
    else:
        print 'nothing in current rest_row'         
    
    if table_tup[1]:# accoutn for inspection listings with no data
-#         try:
-        for comment_row in table_tup[1]:
-            restnm, date, code, quote = str(comment_row[0]), comment_row[1], int(comment_row[2]),str(comment_row[3])
-            if not db.session.query(Comment).filter(Comment.restnm==restnm,Comment.date==date,Comment.quote==quote).first():
-#                     try:
-                newComm = Comment(restnm=restnm,date=date,code=code,quote=quote)
-                db.session.add(newComm)
-                db.session.commit()
-                print '{} comment w/ code:{} added to Comment Table!'.format(restnm,code)
-#                     except:
-#                         pass          
-#         except:
-#             pprint ("comment for {} didnt work".format(rest_row[0]))
+        try:
+            for comment_row in table_tup[1]:
+                restnm, date, code, quote = str(comment_row[0]), comment_row[1], int(comment_row[2]),str(comment_row[3])
+                if not db.session.query(Comment).filter(Comment.restnm==restnm,Comment.date==date,Comment.quote==quote).first():
+                    try:
+                        newComm = Comment(restnm=restnm,date=date,code=code,quote=quote)
+                        db.session.add(newComm)
+                        db.session.commit()
+                        print '{} comment w/ code:{} added to Comment Table!'.format(restnm,code)
+                    except:
+                        print 'comment for {} not added.'.format(restnm,code)
+                        pass          
+        except:
+            pprint ("comment for {} didnt work".format(rest_row[0]))
         
    else:
        print 'nothing in current Comment_hist'           
 
 def main():
     ###Need to enter number of page results matching start/end dates specified###
-    for html in makeHtmlRepo(scrapeHTMLinks('01/01/2014','01/15/2014',pgresults_num=1)):
-        addtodb(Make_rest_rows(html,'01/01/2014'))
-        print '**************************end of rest *****************************\n'
+    for html in makeHtmlRepo(scrapeHTMLinks('03/01/2014','05/16/2014',pgresults_num=54)):
+        addtodb(Make_rest_rows(html,'03/01/2014'))
     #Make_rest_rows(makeHtmlRepo(['estab.cfm?facilityID=CFF5EDC-813F-4F0A-A51E-1C099CD7045F'])[0],'01/01/2014')
     
 if __name__ == "__main__":
