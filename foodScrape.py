@@ -113,11 +113,12 @@ def addtodb(table_tup):
             print 'rest_row for {} worked!'.format(rest_row[0])
             if not db.session.query(Rest).filter(Rest.name==name).first():
                 try:
-                    newRest = Rest(name=name,street=street,zipcd=zipcd)
-                    #newRest.lat,newRest.lng = geoCode(newRest)
-                    db.session.add(newRest)
-                    db.session.commit()
                     print '{} added to Rest table'.format(name)
+#                     newRest = Rest(name=name,street=street,zipcd=zipcd)
+#                     #newRest.lat,newRest.lng = geoCode(newRest)
+#                     db.session.add(newRest)
+#                     db.session.commit()
+#                     print '{} added to Rest table'.format(name)
                 except:
                     print '{} not added'.format(name)
                     pass
@@ -134,9 +135,9 @@ def addtodb(table_tup):
                 restnm, date, code, quote = str(comment_row[0]), comment_row[1], int(comment_row[2]),str(comment_row[3])
                 if not db.session.query(Comment).filter(Comment.restnm==restnm,Comment.date==date,Comment.quote==quote).first():
                     try:
-                        newComm = Comment(restnm=restnm,date=date,code=code,quote=quote)
-                        db.session.add(newComm)
-                        db.session.commit()
+#                         newComm = Comment(restnm=restnm,date=date,code=code,quote=quote)
+#                         db.session.add(newComm)
+#                         db.session.commit()
                         print '{} comment w/ code:{} added to Comment Table!'.format(restnm,code)
                     except:
                         pass          
