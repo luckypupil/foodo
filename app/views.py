@@ -65,11 +65,10 @@ def home():
 def profile(id):
     rest = Rest.query.get(id)  
     restProfile = rest.jsond()
-    
-    badges = make_badges(rest.id) 
-    latest = getVios(rest.id)
+    avgvios = getVios(rest.id)
     comments = getLatestComm(id)
-    return render_template('profile.html',rest = restProfile,badges=badges, latest=latest,comments=comments)
+    lateDt = rest.latestDt()
+    return render_template('profile.html',rest = restProfile, avgvios=avgvios,comments=comments,lateDt=lateDt)
 
 ##################################Unused API CODE##################################################
 @app.route('/api/<int:id>',methods=['GET'])

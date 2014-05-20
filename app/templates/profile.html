@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>{{ rest.name }} gets an A</h1>
-<h2> Average Violations : {{ latest }} </h2> {{ 'date here' }}</br>
-{% for badge in badges %}
+<h1> Average Violations : {{ avgvios }} </h1>
+<h1>{{ rest.name }}</h1>
+<h2>{{ rest.street }}</h2>
+<h2>{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}</h2>
+ {{ lateDt.strftime("%A, %B %d, %Y") }}</br>
+{% for badge in comments %}
         			<img id="badge" src="{{ url_for('static', filename='img/{}.png'.format(badge|trim))}}" title="{{ badge|trim}}">
-{% endfor %}<hr>
-{% for comment in comments %}
-        			<p> {{ comment }} </p>
+        				{% for comment in comments[badge] %}
+        					<p>{{ comment }}</p>
+        				{% endfor %}
+        					
 {% endfor %}<hr>
 {% endblock %}

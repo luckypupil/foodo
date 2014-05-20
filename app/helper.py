@@ -4,6 +4,7 @@ from sqlalchemy import func
 import random
 from datetime import date, timedelta
 from operator import methodcaller
+from pprint import pprint
 
 
 def make_badges(restId):
@@ -22,8 +23,14 @@ def getLatestComm(restId):
     #List of comments from rest's most recent inspection#
     rest = Rest.query.get(restId)
     ltDt = rest.latestDt()
-    latComm = db.session.query(Comment.quote).filter(Comment.restnm == rest.name,Comment.date == ltDt).all()
-    return [str(comm).decode('utf8').strip("(u'").strip("',)") for comm in latComm]
+    latComm = db.session.query(Comment.quote,Comment.code).filter(Comment.restnm == rest.name,Comment.date == ltDt).all()
+    BadgeNComments = {}
+    for commCodeTup in latComm:
+         comm = str(commCodeTup[0]).decode('utf8').strip("(u'").strip("',)")
+         badge = db.session.query(Badge.badgenm).filter(Badge.code == commCodeTup[1]).first()[0]
+         BadgeNComments.setdefault(badge,[]).append(comm)     
+    return BadgeNComments
+    #return [str(comm).decode('utf8').strip("(u'").strip("',)") for comm in latComm]
 def getVios(restId):
     ### Average violations####
     rest = Rest.query.get(restId)
