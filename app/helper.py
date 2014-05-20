@@ -18,6 +18,12 @@ def make_badges(restId):
             badges.append(badge.badgenm)
     return badges
 
+def getLatestComm(restId):
+    #List of comments from rest's most recent inspection#
+    rest = Rest.query.get(restId)
+    ltDt = rest.latestDt()
+    latComm = db.session.query(Comment.quote).filter(Comment.restnm == rest.name,Comment.date == ltDt).all()
+    return [str(comm).decode('utf8').strip("(u'").strip("',)") for comm in latComm]
 def getVios(restId):
     ### Average violations####
     rest = Rest.query.get(restId)

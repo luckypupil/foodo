@@ -32,7 +32,7 @@ def page_not_found(error):
 @app.route('/',methods=['GET', 'POST'])
 def home():
     lim = 20
-    radius = 3
+    radius = 5
     form = addySearch()
     if form.validate_on_submit():
         return 'form validated'
@@ -65,9 +65,11 @@ def home():
 def profile(id):
     rest = Rest.query.get(id)  
     restProfile = rest.jsond()
+    
     badges = make_badges(rest.id) 
     latest = getVios(rest.id)
-    return render_template('profile.html',rest = restProfile,badges=badges, latest=latest)
+    comments = getLatestComm(id)
+    return render_template('profile.html',rest = restProfile,badges=badges, latest=latest,comments=comments)
 
 ##################################Unused API CODE##################################################
 @app.route('/api/<int:id>',methods=['GET'])
