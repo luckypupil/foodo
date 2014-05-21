@@ -1,11 +1,63 @@
-{% extends "main.html" %}
-
-{% block js %}
-	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
-    <script type="text/javascript">
-    	
-    	navigator.geolocation.getCurrentPosition(sendloco);
-    		
-    </script>
+{% extends "base.html" %}
+{% block title %}<title>{{ 'Tisk | Home' }}</title>{% endblock %}
+{% block content %}
+  <div class="w-clearfix all-content">
+    <div class="w-icon-nav-menu menu-icon"></div>
+    <header class="main-column header">
+      <h1 class="logo">Tisk</h1>
+      <div class="w-hidden-small w-hidden-tiny big-tagline">Tagline Here</div>
+      <div class="w-form">
+        <form class="w-clearfix" id="email-form" name="email-form" data-name="Email Form">
+          <input class="w-input field" id="resturant" type="text" placeholder="Restuarant, Address, Zip" name="resturant" data-name="Resturant">
+          <input class="w-button button" type="submit" value="Submit" data-wait="Please wait...">
+        </form>
+        <div class="w-form-done">
+          <p>Thank you! Your submission has been received!</p>
+        </div>
+        <div class="w-form-fail">
+          <p>Oops! Something went wrong while submitting the form :(</p>
+        </div>
+      </div>
+      <div class="w-clearfix footer-wrapper">
+        <a class="w-inline-block footer-nav-link" href="http://www.twitter.com/webflowapp">
+          <img src="images/twitter-icon.svg" alt="52f2d48b593f6edf410003c1_twitter-icon.svg">
+        </a>
+        <a class="w-inline-block footer-nav-link" href="subscribe.html">
+          <div class="subscribe">Subscribe</div>
+        </a>
+      </div>
+    </header>
+    <div class="main-column content">
+      <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
+        <nav class="w-nav-menu w-clearfix nav-menu" role="navigation"><a class="w-nav-link nav-link" href="index.html" data-ix="new-interaction">Home</a><a class="w-nav-link nav-link" href="suggest.html">ABOUT</a><a class="w-nav-link nav-link" href="subscribe.html">Contact</a>
+        </nav>
+        <div class="w-nav-button menu-wrapper">
+          <div class="menu">MENU</div>
+        </div>
+      </nav>
+      <a class="w-clearfix w-inline-block article" href="article.html">
+        <section class="w-clearfix article-text-wrapper">
+          <h2 class="arrow">❯</h2>
+          <h4 class="vios">8 violations</h4>
+          <h2 class="thumbnail-title">19 Degrees Cafe</h2>
+          <p>1890 Christian Street, Philadelphia, PA 19102</p>
+          <div class="article-info-wrapper">
+            <div class="article-info-text">March 2, 2014</div>
+            <div class="article-info-text tag">Camera</div>
+            <div class="article-info-text tag">Nature</div>
+          </div>
+        </section>
+      </a>
+      <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
+      <nav class="w-nav pagination-nav" data-collapse="none" data-animation="default" data-duration="400">
+        <nav class="w-nav-menu w-clearfix nav-menu" role="navigation"><a class="w-nav-link nav-link page" href="index.html">PG. 1</a><a class="w-nav-link nav-link page" href="#">Pg. 2</a><a class="w-nav-link nav-link page" href="#">pg. 3</a>
+        </nav>
+        <div class="w-nav-button">
+          <div class="w-icon-nav-menu"></div>
+        </div>
+      </nav>
+    </div>
+  </div>
+{% endblock %}
+{% block JS %}
 {% endblock %}

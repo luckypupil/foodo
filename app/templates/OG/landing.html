@@ -1,0 +1,11 @@
+{% extends "OG/main.html" %}
+
+{% block js %}
+	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
+    <script type="text/javascript">
+    	
+    	navigator.geolocation.getCurrentPosition(sendloco);
+    		
+    </script>
+{% endblock %}

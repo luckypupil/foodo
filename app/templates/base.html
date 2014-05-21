@@ -1,44 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="{{ url_for('static', filename = 'img/apple.png')}}">
-    
-
-    <title>Foodo | Health Inspection Results</title>
-
-    <!-- Bootstrap -->
-    	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap-min2.css') }}">
-    	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/jumbotron-narrow.css') }}">
-	
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <a href="{{ url_for('home')}}"><h3 class="text-muted">Foodo</h3>
-      </div>
-     {% block search %} 
-     {% endblock %}
-    {% block content %}
-    {% endblock %}
-    </div> <!-- /container -->   
-    {% block js %}{% endblock %}
-  </body>
-  
+<html data-wf-site="536cd5dac1161b086f47884d">
+<head>
+  <meta charset="utf-8">
+  {% block title %}<title>Tisk</title>{% endblock %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="Webflow">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/normalize.css') }}">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/webflow.css') }}">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/foodo.webflow.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: ["Roboto:300,regular,500","Roboto Condensed:300,regular,700","Roboto Slab:300,regular"]
+      }
+    });
+  </script>
+  <script type="text/javascript" src="js/modernizr.js"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="https://y7v4p6k4.ssl.hwcdn.net/placeholder/favicon.ico">
+</head>
+<body>
+	{% block content %}
+	{% endblock %}
+	{% block JS %}
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  	<script type="text/javascript" src="js/webflow.js"></script>
+	{% endblock %}
+</body>
 </html>

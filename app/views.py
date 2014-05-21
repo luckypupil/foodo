@@ -50,7 +50,7 @@ def home():
         else:
             rests = sortRestLatest(rests) # need to add sort by date but to do so must remove rests with null latestDT
             #jrests = [rest.jsond() for rest in Rest.query.all()] #Eventually will load full data in background  
-        return render_template('main.html',rests = rests, form = form)
+        return render_template('landing.html',rests = rests, form = form)
         
     else:
         rests = getLatest(lim)
