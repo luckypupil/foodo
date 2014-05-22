@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="w-clearfix footer-wrapper">
-        <a class="w-inline-block footer-nav-link" href="http://www.twitter.com/webflowapp">
+        <a class="w-inline-block footer-nav-link" href=#><!--Add Twitter page --!>
           <img src="images/twitter-icon.svg" alt="52f2d48b593f6edf410003c1_twitter-icon.svg">
         </a>
         <a class="w-inline-block footer-nav-link" href="subscribe.html">
@@ -29,25 +29,37 @@
     </header>
     <div class="main-column content">
       <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
-        <nav class="w-nav-menu w-clearfix nav-menu" role="navigation"><a class="w-nav-link nav-link" href="index.html" data-ix="new-interaction">Home</a><a class="w-nav-link nav-link" href="suggest.html">ABOUT</a><a class="w-nav-link nav-link" href="subscribe.html">Contact</a>
+        <nav class="w-nav-menu w-clearfix nav-menu" role="navigation">
+        	<a class="w-nav-link nav-link" href=# data-ix="new-interaction">Home</a>
+        	<a class="w-nav-link nav-link" href=#>ABOUT</a>
+        	<a class="w-nav-link nav-link" href=#>Contact</a>
         </nav>
         <div class="w-nav-button menu-wrapper">
           <div class="menu">MENU</div>
         </div>
       </nav>
-      <a class="w-clearfix w-inline-block article" href="article.html">
-        <section class="w-clearfix article-text-wrapper">
-          <h2 class="arrow">❯</h2>
-          <h4 class="vios">8 violations</h4>
-          <h2 class="thumbnail-title">19 Degrees Cafe</h2>
-          <p>1890 Christian Street, Philadelphia, PA 19102</p>
-          <div class="article-info-wrapper">
-            <div class="article-info-text">March 2, 2014</div>
-            <div class="article-info-text tag">Camera</div>
-            <div class="article-info-text tag">Nature</div>
-          </div>
-        </section>
-      </a>
+      {% for rest in rests %}
+	      <a class="w-clearfix w-inline-block article" href="{{ url_for('profile',id=rest.id)}}">
+	        <section class="w-clearfix article-text-wrapper">
+	          <h2 class="arrow">❯</h2>
+	          <h4 class="vios">{{ rest.score }} {{ 'VIOLATIONS' }}</h4>
+	          <h2 class="thumbnail-title">{{ rest.name }}</h2>
+	          <p>{{ rest.street }}{{ ' Philadelphia, PA ' }}{{ rest.zipcd }}</p>
+	          <div class="article-info-wrapper">
+	          	{% if rest.latestDt() %}
+        			<div class="article-info-text">
+        				<h4>{{ rest.latestDt().strftime("%A, %B %d, %Y") }}</h4>
+        			</div>
+        		{% endif %}
+	            
+	            <div class="article-info-text tag">Contamination</div>
+	            <div class="article-info-text tag">Pests</div>
+	          </div>
+	        </section>
+			
+	      </a>
+		<hr/>
+	   {% endfor %}
       <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
       <nav class="w-nav pagination-nav" data-collapse="none" data-animation="default" data-duration="400">
         <nav class="w-nav-menu w-clearfix nav-menu" role="navigation"><a class="w-nav-link nav-link page" href="index.html">PG. 1</a><a class="w-nav-link nav-link page" href="#">Pg. 2</a><a class="w-nav-link nav-link page" href="#">pg. 3</a>
