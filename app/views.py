@@ -29,6 +29,14 @@ def unauthorized():
 def page_not_found(error):
     return render_template('404.html'), 404
 
+@app.route('/about',methods=['GET'])
+def about():
+    return render_template('about.html')
+
+# @app.route('/science',methods=['GET'])
+# def about():
+#     return render_template('science.html')
+
 @app.route('/',methods=['GET', 'POST'])
 def home():
     lim = 5
@@ -58,8 +66,6 @@ def home():
             rest.score = getVios(rest.id)
         jrests = [rest.jsond() for rest in rests]  
         return render_template('landing.html',rests = rests, jrests=jrests, form = form)#landing inherits from main
-
-
 
 @app.route('/profile/<int:id>')
 def profile(id):

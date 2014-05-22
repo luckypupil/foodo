@@ -31,7 +31,7 @@
       <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
         <nav class="w-nav-menu w-clearfix nav-menu" role="navigation">
         	<a class="w-nav-link nav-link" href=# data-ix="new-interaction">Home</a>
-        	<a class="w-nav-link nav-link" href=#>ABOUT</a>
+        	<a class="w-nav-link nav-link" href="{{ url_for('about') }}">ABOUT</a>
         	<a class="w-nav-link nav-link" href=#>Contact</a>
         </nav>
         <div class="w-nav-button menu-wrapper">
@@ -71,5 +71,11 @@
     </div>
   </div>
 {% endblock %}
-{% block JS %}
+{% block JS2 %}
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
+    <script type="text/javascript">
+    	
+    	navigator.geolocation.getCurrentPosition(sendloco);	
+    </script>
 {% endblock %}

@@ -10,7 +10,7 @@
           <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link" href="{{ url_for('home') }}">
             <div>Home</div>
           </a>
-          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link" href=#>
+          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link" href="{{ url_for('about') }}">
             <div>About</div>
           </a>
           <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link" href=#>
@@ -42,22 +42,22 @@
         <div class="vios date">Last Inpsection: {{ lateDt.strftime("%A, %B %d, %Y") }}</div>
 	        {% for badge in comments %}
 		        <div class="w-row badgerow">
-		          <div class="w-col w-col-3 w-clearfix moble-badge-row">
+		          <div class="w-col w-col-2 w-clearfix moble-badge-row">
 		            <img class="w-hidden-main w-hidden-medium" src="{{ url_for('static', filename='img/badges/{}.jpg'.format(badge|trim))}}" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
-		            <div>Certification</div>
+		            <div class="badge"><bold><h2>{{ badge|trim }}</h2></bold></div>
 		            <img class="w-hidden-small w-hidden-tiny badge" src="{{ url_for('static', filename='img/badges/{}.jpg'.format(badge|trim))}}" title="{{ badge|trim}}" alt="{{ badge|trim}}">
 		          </div>
-		          <div class="w-col w-col-9">
+		          <div class="w-col w-col-10">
 		            <ol>
 		              {% for comment in comments[badge] %}
-						<li>{{ comment }}</li>
+						<li><h3>{{ comment }}</h3></li>
 	        		  {% endfor %}
 		            </ol>
 		          </div>
 		        </div>
 		    {% endfor %}     
       </div>
-      <div class="w-col w-col-5 w-hidden-small w-hidden-tiny author-column">
+      <div class="w-col w-col-5 w-hidden-small w-hidden-tiny author-column">	
         <h4 class="w-hidden-main w-hidden-medium">About the Author</h4>
         <img class="author-image" src="{{ url_for('static', filename='img/profilelogo.png')}}" width="200" alt="{{ rest.name }}">
         <p class="vios">{{ avgvios }} Viloations</p>
