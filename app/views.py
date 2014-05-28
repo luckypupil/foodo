@@ -51,7 +51,11 @@ def home():
         lat = request.args.get('lat', "39.9522")#city Hall
         lng = request.args.get('lng', "-75.1639")
         sort = request.args.get('sort',sortOpts[0])#'vios' needs to be specified if sort desired
-        query = loc_query(lat,lng,radius,lim)
+        try:
+            query = loc_query(lat,lng,radius,lim)
+        except:
+            return redirect(url_for('homenoloco'))
+
         rests = Rest.query.from_statement(query).all()
         for rest in rests:
             rest.score = getVios(rest.id)
