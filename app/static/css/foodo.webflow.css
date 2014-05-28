@@ -4,6 +4,7 @@ body {
   color: #333;
   font-size: 14px;
   line-height: 20px;
+  overflow: hidden;
 }
 h1 {
   margin-right: 0px;
@@ -166,7 +167,7 @@ p {
   padding-top: 164px;
   padding-right: 15px;
   padding-left: 15px;
-  background-image: url('../img/homebackground1.jpg');
+  background-image: url('../img/dark-wood.jpg');
   box-shadow: rgba(0, 0, 0, 0.27) -3px 0px 0px 0px inset;
   color: white;
   text-align: center;
@@ -175,8 +176,8 @@ p {
 .main-column.content {
   left: 8px;
   overflow-x: hidden;
-  overflow-y: hidden;
-  max-width: 45%;
+  overflow-y: auto;
+  max-width: 100%;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.11) -1px 0px 0px 0px inset;
   font-family: Roboto, sans-serif;
@@ -312,6 +313,7 @@ p {
   z-index: 1;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 1px 0px 0px;
+  display: none;
 }
 .form-wrapper {
   margin-top: 29px;

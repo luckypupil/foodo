@@ -4,7 +4,7 @@
 {% block title %}<title>{{ 'Tisk | Home' }}</title>{% endblock %}
 {% block content %}
   <div class="w-clearfix all-content">
-    <div class="w-icon-nav-menu menu-icon"></div>
+    
     <header class="main-column header">
       <h1 class="logo">Tisk</h1>
       <div class="w-hidden-small w-hidden-tiny big-tagline">Tagline Here</div>
@@ -22,7 +22,7 @@
       </div>
       <div class="w-clearfix footer-wrapper">
         <a class="w-inline-block footer-nav-link" href=#><!--Add Twitter page --!>
-          <img src="images/twitter-icon.svg" alt="52f2d48b593f6edf410003c1_twitter-icon.svg">
+          <img src="{{ url_for('static', filename='img/Twitter_logo_white.png')}}" width="30" alt="twitter">
         </a>
         <a class="w-inline-block footer-nav-link" href="subscribe.html">
           <div class="subscribe">Subscribe</div>
@@ -37,6 +37,7 @@
         	<a class="w-nav-link nav-link" href=#>Contact</a>
         </nav>
         <div class="w-nav-button menu-wrapper">
+          <div class="w-icon-nav-menu menu-icon"></div>
           <div class="menu">MENU</div>
         </div>
       </nav>
