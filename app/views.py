@@ -36,36 +36,51 @@ def about():
 # @app.route('/science',methods=['GET'])
 # def about():
 #     return render_template('science.html')
+lim = 10
+
 
 @app.route('/',methods=['GET', 'POST'])
 def home():
-    lim = 5
     radius = 5
     form = addySearch()
     if form.validate_on_submit():
         return 'form validated'
         #Do code  
     if request.args:
+        sortOpts = ['viosLow','viosHigh','date']
         lat = request.args.get('lat', "39.9522")#city Hall
         lng = request.args.get('lng', "-75.1639")
-        sort = request.args.get('sort','latest')#'vios' needs to be specified if sort desired
+        sort = request.args.get('sort',sortOpts[0])#'vios' needs to be specified if sort desired
         query = loc_query(lat,lng,radius,lim)
         rests = Rest.query.from_statement(query).all()
         for rest in rests:
             rest.score = getVios(rest.id)
-        if sort == 'vios':
-            rests = sorted(rests,key=attrgetter('score'),reverse=True)        
+            rest.badges = sorted(make_badges(rest.id)) 
+        if sort == sortOpts[1]:
+            rests = sorted(rests,key=attrgetter('score'),reverse=True)
+        elif sort == sortOpts[2]:
+            rests = sortRestLatest(rests)
         else:
-            rests = sortRestLatest(rests) # need to add sort by date but to do so must remove rests with null latestDT
-            #jrests = [rest.jsond() for rest in Rest.query.all()] #Eventually will load full data in background  
+            rests = sorted(rests,key=attrgetter('score'))        
+
+        #jrests = [rest.jsond() for rest in Rest.query.all()] #Eventually will load full data in background      
         return render_template('landing.html',rests = rests, form = form)
         
     else:
-        rests = getLatest(lim)
-        for rest in rests:
-            rest.score = getVios(rest.id)
-        jrests = [rest.jsond() for rest in rests]  
-        return render_template('landing.html',rests = rests, jrests=jrests, form = form)#landing inherits from main
+        return render_template('landing.html')#landing inherits from main
+
+@app.route('/noloco',methods=['GET'])
+def homenoloco():
+    form = addySearch()
+    rests = getLatest(lim)
+    for rest in rests:
+        rest.score = getVios(rest.id)
+        rest.badges = sorted(make_badges(rest.id))
+        
+    jrests = [rest.jsond() for rest in rests]  
+    return render_template('landingnoloco.html',rests = rests, jrests=jrests, form = form)#landing inherits from main
+
+
 
 @app.route('/profile/<int:id>')
 def profile(id):

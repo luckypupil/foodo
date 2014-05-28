@@ -20,19 +20,24 @@ def make_badges(restId):
     return badges
 
 def getLatestComm(restId):
-    #List of comments from rest's most recent inspection#
+    #Dict of badge and resulting comments from rest's most recent inspection#
     rest = Rest.query.get(restId)
     ltDt = rest.latestDt()
     latComm = db.session.query(Comment.quote,Comment.code).filter(Comment.restnm == rest.name,Comment.date == ltDt).all()
     BadgeNComments = {}
-    for commCodeTup in latComm:
-         comm = str(commCodeTup[0]).decode('utf8').strip("(u'").strip("',)")
-         badge = db.session.query(Badge.badgenm).filter(Badge.code == commCodeTup[1]).first()[0]
-         BadgeNComments.setdefault(badge,[]).append(comm)     
+    try:
+	    for commCodeTup in latComm:
+	         comm = str(commCodeTup[0]).decode('utf8').strip("(u'").strip("',)")
+	         badge = db.session.query(Badge.badgenm).filter(Badge.code == commCodeTup[1]).first()[0]
+	         BadgeNComments.setdefault(badge,[]).append(comm)     
+    except:
+    	BadgeNComments = None
+    	
     return BadgeNComments
     #return [str(comm).decode('utf8').strip("(u'").strip("',)") for comm in latComm]
+
 def getVios(restId):
-    ### Average violations####
+    ### Average violations for single rest####
     rest = Rest.query.get(restId)
     vioCtList = db.session.query(func.count(Comment.id)).\
         filter(Comment.restnm == rest.name, Comment.date>(date.today() - timedelta(days=365))).\
@@ -53,7 +58,15 @@ def getLatest(limit=20):
     latestList = [rest[0] for rest in latestTup]
     restList = db.session.query(Rest).filter(Rest.name.in_(latestList)).all()    
     return sortRestLatest(restList)
-    
+
+def getLowest(limit=20):
+    ### returns list of Rest model objects ###
+    LowestTup = db.session.query(Comment.restnm).\
+        group_by(Comment.restnm,Comment.date).order_by(Comment.date.desc()).limit(limit).all()
+    latestList = [rest[0] for rest in latestTup]
+    restList = db.session.query(Rest).filter(Rest.name.in_(latestList)).all()    
+    return sortRestLatest(restList)
+        
 def create_badge_list():
     badge_list = {}
     with open('app/badges.csv','r') as badges:

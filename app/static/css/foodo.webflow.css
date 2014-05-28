@@ -1,5 +1,5 @@
 body {
-  background-color: whitesmoke;
+  background-color: white;
   font-family: Roboto, sans-serif;
   color: #333;
   font-size: 14px;
@@ -174,8 +174,8 @@ p {
 }
 .main-column.content {
   left: 8px;
-  overflow-x: scroll;
-  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: hidden;
   max-width: 45%;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.11) -1px 0px 0px 0px inset;
@@ -212,19 +212,26 @@ p {
   border: 1px solid rgba(172,172,172,.8);
   box-shadow: rgba(0, 0, 0, 0.11) -1px 0px 0px 0px inset, transparent 0px -1px 0px 0px;
   font-family:'Roboto Condensed', sans-serif;
-  color: #f15a29;
+  color: black;
   font-weight: 400;
   text-align: center;
   letter-spacing: 1px;
   text-decoration: none;
   text-transform: uppercase;
+  background-color: white;
 }
+
+.nav-link-profile {
+  background-color: rgba(0,0,0,.9);
+  color: #f15a29;
+}
+
 .nav-link:hover {
-  background-color: transparent;
+  color: #f15a29;
   box-shadow: rgba(0, 0, 0, 0.09) -1px 0px 0px 0px inset, black 0px 1px 0px 0px;
 }
 .nav-link.w--current {
-  background-color: #f15a29;
+  background-color: black;
   box-shadow: rgba(0, 0, 0, 0.09) -1px 0px 0px 0px inset, #00b874 0px 1px 0px 0px;
   color: black;
 }

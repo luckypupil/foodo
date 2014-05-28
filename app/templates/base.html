@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html data-wf-site="536cd5dac1161b086f47884d">
 <head>
+  {% block jsInit %} {% endblock %}
   <meta charset="utf-8">
   {% block title %}<title>Tisk</title>{% endblock %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Webflow">
-  {% block JSHead %}
-  <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
-    <script type="text/javascript">
-    	navigator.geolocation.getCurrentPosition(sendloco);	
-    </script>
-  {% endblock %} 
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/normalize.css') }}">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/webflow.css') }}">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/foodo.webflow.css') }}">

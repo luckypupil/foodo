@@ -1,6 +1,8 @@
 from app import db
 from datetime import date
 import datetime
+from sqlalchemy import func
+from datetime import timedelta
 
 class Rest(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -41,6 +43,17 @@ class Rest(db.Model):
                 return latestDate[0]
         else:
             return date(1900,1,1)
+
+    def getVios(self):
+        ### Average violations for last [365] days####
+        vioCtList = db.session.query(func.count(Comment.id)).\
+            filter(Comment.restnm == self.name, Comment.date>(date.today() - timedelta(days=365))).\
+            group_by(Comment.date).all() #list of tuples w/ # vios by dates w/in last year        
+        
+        avgVios = (-1 if len(vioCtList) ==0 else\
+                    round(sum(float(date[0]) for date in vioCtList)/float(len(vioCtList)),1))#avg of vios from last year.  If none w/in year, '-1' returned
+        return avgVios 
+
         
 class Comment(db.Model):
     
