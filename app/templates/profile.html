@@ -39,7 +39,7 @@
   <div class="content-section">
     <div class="w-row mobile-header-row right-column">
       <div class="w-col w-col-7 article-body-column">
-        <div class="vios date">Last Inpsection: {{ lateDt.strftime("%A, %B %d, %Y") }}</div>
+        <div class="vios date">Last Inpsection: {{ rest.latestDt().strftime("%A, %B %d, %Y") }}</div>
 	        {% if comments %}
 		        {% for badge in comments %}
 			        <div class="w-row badgerow">
@@ -64,7 +64,7 @@
       <div class="w-col w-col-5 w-hidden-small w-hidden-tiny author-column">	
         <h4 class="w-hidden-main w-hidden-medium">About the Author</h4>
         <img class="author-image" src="{{ url_for('static', filename='img/profilelogo.png')}}" width="200" alt="{{ rest.name }}">
-        <p class="vios">{{ avgvios }} Viloations</p>
+        <p class="vios">{{ rest.getVios() }} Violations</p>
         <div class="thumbnail-title">{{ rest.name }}</div>
         <div class="article-info-wrapper">
           <div class="article-info-text">

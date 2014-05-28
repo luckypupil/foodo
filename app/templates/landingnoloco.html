@@ -45,7 +45,7 @@
 	      <a class="w-clearfix w-inline-block article" href="{{ url_for('profile',id=rest.id)}}">
 	        <section class="w-clearfix article-text-wrapper">
 	          <h2 class="arrow">❯</h2>
-	          <h4 class="vios">{{ rest.score }} {{ 'VIOLATIONS' }}</h4>
+	          <h4 class="vios">{{ rest.getVios() }} {{ 'VIOLATIONS' }}</h4>
 	          <h2 class="thumbnail-title">{{ rest.name }}</h2>
 	          <p>{{ rest.street }}{{ ' Philadelphia, PA ' }}{{ rest.zipcd }}</p>
 	          <div class="article-info-wrapper">

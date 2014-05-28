@@ -84,10 +84,10 @@ def make_inspections(restId):
     return inspections
 
 def loc_query(lat,lng,radius,lim):
-    return("SELECT * FROM (SELECT id, (3959 * acos(cos(radians({latitude})) * cos(radians(lat))\
+    return("SELECT * FROM (SELECT id,isvalid, (3959 * acos(cos(radians({latitude})) * cos(radians(lat))\
     * cos(radians(lng) - radians({longitude})) + sin(radians({latitude}))\
     * sin(radians(lat)))) AS distance FROM rest) AS distance WHERE distance\
-     < {radius} ORDER BY distance LIMIT {limit};".format(latitude=lat, longitude=lng, radius=radius,limit=lim)) 
+     < {radius} and isvalid = true ORDER BY distance LIMIT {limit};".format(latitude=lat, longitude=lng, radius=radius,limit=lim)) 
  
 def makeSlug(string,spaceChar='+',Maxlen=None):
             stringlst = string.split(" ")

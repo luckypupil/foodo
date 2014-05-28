@@ -6,7 +6,7 @@ from flask.ext.httpauth import HTTPBasicAuth
 from models import Comment, Rest, Badge
 from forms import addySearch
 from helper import *
-from operator import attrgetter
+from operator import attrgetter, methodcaller
 from flask.ext.admin.contrib.sqla import ModelView
 from pprint import pprint
 auth = HTTPBasicAuth()
@@ -36,7 +36,7 @@ def about():
 # @app.route('/science',methods=['GET'])
 # def about():
 #     return render_template('science.html')
-lim = 10
+lim = 30
 
 
 @app.route('/',methods=['GET', 'POST'])
@@ -58,14 +58,13 @@ def home():
 
         rests = Rest.query.from_statement(query).all()
         for rest in rests:
-            rest.score = getVios(rest.id)
             rest.badges = sorted(make_badges(rest.id)) 
-        if sort == sortOpts[1]:
-            rests = sorted(rests,key=attrgetter('score'),reverse=True)
-        elif sort == sortOpts[2]:
+        if sort == sortOpts[1]:#Highest vios 1st
+            rests = sorted(rests,key=methodcaller('getVios'),reverse=True)
+        elif sort == sortOpts[2]:#Recent date first
             rests = sortRestLatest(rests)
         else:
-            rests = sorted(rests,key=attrgetter('score'))        
+            rests = sorted((rest for rest in rests if rest.getVios()>=0),key=methodcaller('getVios'))        
 
         #jrests = [rest.jsond() for rest in Rest.query.all()] #Eventually will load full data in background      
         return render_template('landing.html',rests = rests, form = form)
@@ -89,11 +88,8 @@ def homenoloco():
 @app.route('/profile/<int:id>')
 def profile(id):
     rest = Rest.query.get(id)  
-    restProfile = rest.jsond()
-    avgvios = getVios(rest.id)
     comments = getLatestComm(id)
-    lateDt = rest.latestDt()
-    return render_template('profile.html',rest = restProfile, avgvios=avgvios,comments=comments,lateDt=lateDt)
+    return render_template('profile.html', rest = rest,comments=comments)
 
 ##################################Unused API CODE##################################################
 @app.route('/api/<int:id>',methods=['GET'])

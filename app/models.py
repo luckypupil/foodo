@@ -12,11 +12,13 @@ class Rest(db.Model):
     comments = db.relationship('Comment', backref='rest', lazy='dynamic')
     lat = db.Column(db.Float(6))
     lng = db.Column(db.Float(6))
-        
+    isvalid = db.Column(db.Boolean, default = True)
+    
     def __init__(self,name,street,zipcd):
         self.name = name
         self.street = street
         self.zipcd = zipcd
+        self.isvalid = True
         
     def __repr__(self):
         return '{}'.format(self.name)
@@ -42,16 +44,22 @@ class Rest(db.Model):
             except:
                 return latestDate[0]
         else:
+            self.isvalid = False
             return date(1900,1,1)
+    
+#     def isvalid(self):
+#         return (True if self.latestDt() > date(1900,1,1) else False)
 
     def getVios(self):
         ### Average violations for last [365] days####
         vioCtList = db.session.query(func.count(Comment.id)).\
-            filter(Comment.restnm == self.name, Comment.date>(date.today() - timedelta(days=365))).\
+            filter(Comment.restnm == self.name, Comment.date>(date.today() - timedelta(days=765))).\
             group_by(Comment.date).all() #list of tuples w/ # vios by dates w/in last year        
         
         avgVios = (-1 if len(vioCtList) ==0 else\
                     round(sum(float(date[0]) for date in vioCtList)/float(len(vioCtList)),1))#avg of vios from last year.  If none w/in year, '-1' returned
+        if avgVios == -1:
+            self.isvalid = False
         return avgVios 
 
         
