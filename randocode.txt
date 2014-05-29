@@ -79,4 +79,20 @@ def addtodb():
     cur.execute(copyit)
     conn.commit()
     cur.close()
-    conn.close()
+    conn.close(
+
+
+
+SELECT * FROM 
+(SELECT id, 
+	(3959 * 
+		acos(cos(radians(39.9409525)) * 
+			cos(radians(lat)) *
+ 			cos(radians(lng) - radians(-75.1732529)) + 					sin(radians(39.9409525)) * 
+			sin(radians(lat))
+	 	)
+	) AS distance FROM rest
+) 
+AS distance WHERE distance < 3 ORDER BY distance LIMIT 10; 
+
+SELECT * FROM (SELECT id, (3959 * acos(cos(radians(39.9409525)) * cos(radians(lat)) * cos(radians(lng) - radians(-75.1732529)) + sin(radians(39.9409525)) * sin(radians(lat)))) AS distance FROM rest) AS distance WHERE distance < 3 AND isvalid  ORDER BY distance LIMIT 10; 
