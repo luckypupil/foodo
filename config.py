@@ -11,7 +11,7 @@ ADMINS = frozenset(['ba@luckypupil.com'])
 SECRET_KEY = '0penw@ter'
 
 if os.environ.get('DATABASE_URL') is None:
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://blake:bloopers@localhost/foodo'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://luckypupil:bloopers@localhost/tiskdb'
 else:
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 #APPLICATION_URL = '0.0.0.0'

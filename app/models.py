@@ -13,6 +13,7 @@ class Rest(db.Model):
     lat = db.Column(db.Float(6))
     lng = db.Column(db.Float(6))
     isvalid = db.Column(db.Boolean, default = True)
+
     
     def __init__(self,name,street,zipcd):
         self.name = name
