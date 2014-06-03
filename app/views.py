@@ -4,7 +4,7 @@ from flask.json import dumps
 from flask.ext import restful 
 from flask.ext.httpauth import HTTPBasicAuth
 from models import Comment, Rest, Badge
-from forms import addySearch
+from forms import RestSearch
 from helper import *
 from operator import attrgetter, methodcaller
 from flask.ext.admin.contrib.sqla import ModelView
@@ -36,38 +36,43 @@ def about():
 # @app.route('/science',methods=['GET'])
 # def about():
 #     return render_template('science.html')
-lim = 30
+lim = 10
 
 
 @app.route('/',methods=['GET', 'POST'])
 def home():
     radius = 5
-    form = addySearch()
-    if form.validate_on_submit():
-        return 'form validated'
-        #Do code  
+    form = RestSearch()
+#     if form.validate_on_submit():
     if request.args:
-        sortOpts = ['viosLow','viosHigh','date']
-        lat = request.args.get('lat', "39.9522")#city Hall
-        lng = request.args.get('lng', "-75.1639")
-        sort = request.args.get('sort',sortOpts[0])#'vios' needs to be specified if sort desired
-        try:
-            query = loc_query(lat,lng,radius,lim)
-        except:
-            return redirect(url_for('homenoloco'))
+        if request.args.get('search',''):
+          term = request.args.get('search','')
+          query = search_query(term)
+          Results = Rest.query.from_statement(query).all()
+          return render_template('landing.html',rests = Results, form = form)
 
-        rests = Rest.query.from_statement(query).all()
-        for rest in rests:
-            rest.badges = sorted(make_badges(rest.id)) 
-        if sort == sortOpts[1]:#Highest vios 1st
-            rests = sorted(rests,key=methodcaller('getVios'),reverse=True)
-        elif sort == sortOpts[2]:#Recent date first
-            rests = sortRestLatest(rests)
         else:
-            rests = sorted((rest for rest in rests if rest.getVios()>=0),key=methodcaller('getVios'))        
-
-        #jrests = [rest.jsond() for rest in Rest.query.all()] #Eventually will load full data in background      
-        return render_template('landing.html',rests = rests, form = form)
+            sortOpts = ['viosLow','viosHigh','date']
+            lat = request.args.get('lat', "39.9522")#city Hall
+            lng = request.args.get('lng', "-75.1639")
+            sort = request.args.get('sort',sortOpts[0])#'vios' needs to be specified if sort desired
+            try:
+                query = loc_query(lat,lng,radius,lim)
+            except:
+                return redirect(url_for('homenoloco'))
+    
+            rests = Rest.query.from_statement(query).all()
+            for rest in rests:
+                rest.badges = sorted(make_badges(rest.id)) 
+            if sort == sortOpts[1]:#Highest vios 1st
+                rests = sorted(rests,key=methodcaller('getVios'),reverse=True)
+            elif sort == sortOpts[2]:#Recent date first
+                rests = sortRestLatest(rests)
+            else:
+                rests = sorted((rest for rest in rests if rest.getVios()>=0),key=methodcaller('getVios'))        
+    
+            #jrests = [rest.jsond() for rest in Rest.query.all()] #Eventually will load full data in background      
+            return render_template('landing.html',rests = rests, form = form)
         
     else:
         return render_template('landing.html')#landing inherits from main

@@ -89,7 +89,9 @@ def loc_query(lat,lng,radius,lim):
     * sin(radians(lat)))) AS distance FROM rest) AS distance WHERE distance\
      < {radius} ORDER BY distance LIMIT {limit};".format(latitude=lat, longitude=lng, radius=radius,limit=lim)) 
  
- #and isvalid = true
+def search_query(term):
+	return("SELECT * FROM rest WHERE plainto_tsquery('{}') @@ tsv;".format(term))
+	
  
 def makeSlug(string,spaceChar='+',Maxlen=None):
             stringlst = string.split(" ")

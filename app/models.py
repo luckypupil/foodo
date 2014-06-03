@@ -12,8 +12,6 @@ class Rest(db.Model):
     comments = db.relationship('Comment', backref='rest', lazy='dynamic')
     lat = db.Column(db.Float(6))
     lng = db.Column(db.Float(6))
-    #isvalid = db.Column(db.Boolean)
-    #myfield = db.Column(db.Text)
  
     def __init__(self,name,street,zipcd):
         self.name = name

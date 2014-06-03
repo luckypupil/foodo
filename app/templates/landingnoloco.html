@@ -9,8 +9,8 @@
       <h1 class="logo">Tisk</h1>
       <div class="w-hidden-small w-hidden-tiny big-tagline">Tagline Here</div>
       <div class="w-form">
-        <form class="w-clearfix" id="email-form" name="email-form" data-name="Email Form">
-          <input class="w-input field" id="resturant" type="text" placeholder="Restuarant, Address, Zip" name="resturant" data-name="Resturant">
+        <form class="w-clearfix" mthod="post" id="email-form" name="search-form" data-name="Email Form">
+          <input class="w-input field" id="resturant" type="text" placeholder="Restuarant" name="search" data-name="search">
           <input class="w-button button" type="submit" value="Submit" data-wait="Please wait...">
         </form>
         <div class="w-form-done">
@@ -32,7 +32,7 @@
     <div class="main-column content">
       <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
         <nav class="w-nav-menu w-clearfix nav-menu" role="navigation">
-        	<a class="w-nav-link nav-link" href=# data-ix="new-interaction">Home</a>
+        	<a class="w-nav-link nav-link" href="{{ url_for('home') }}" data-ix="new-interaction">Home</a>
         	<a class="w-nav-link nav-link" href="{{ url_for('about') }}">ABOUT</a>
         	<a class="w-nav-link nav-link" href=#>Contact</a>
         </nav>
