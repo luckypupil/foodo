@@ -54,6 +54,9 @@ p {
   line-height: 23px;
   font-weight: 300;
 }
+#body-profile {
+  overflow: scroll;
+}
 .button {
   display: inline-block;
   padding: 10px 23px;

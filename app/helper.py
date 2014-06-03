@@ -91,6 +91,12 @@ def loc_query(lat,lng,radius,lim):
  
 def search_query(term):
 	return("SELECT * FROM rest WHERE plainto_tsquery('{}') @@ tsv;".format(term))
+
+def search2(lat,lng,radius,lim,term):
+	return("SELECT * FROM (SELECT id, tsv, (3959 * acos(cos(radians({latitude})) * cos(radians(lat))\
+    * cos(radians(lng) - radians({longitude})) + sin(radians({latitude}))\
+    * sin(radians(lat)))) AS distance FROM rest) AS distance WHERE distance\
+     < {radius} AND plainto_tsquery('{term}') @@ tsv ORDER BY distance LIMIT {limit};".format(latitude=lat, longitude=lng, radius=radius, term=term, limit=lim))
 	
  
 def makeSlug(string,spaceChar='+',Maxlen=None):
