@@ -12,14 +12,14 @@ class Rest(db.Model):
     comments = db.relationship('Comment', backref='rest', lazy='dynamic')
     lat = db.Column(db.Float(6))
     lng = db.Column(db.Float(6))
-    isvalid = db.Column(db.Boolean, default = True)
-
-    
+    #isvalid = db.Column(db.Boolean)
+    #myfield = db.Column(db.Text)
+ 
     def __init__(self,name,street,zipcd):
         self.name = name
         self.street = street
         self.zipcd = zipcd
-        self.isvalid = True
+     #   self.isvalid = True
         
     def __repr__(self):
         return '{}'.format(self.name)
@@ -45,12 +45,8 @@ class Rest(db.Model):
             except:
                 return latestDate[0]
         else:
-            self.isvalid = False
             return date(1900,1,1)
     
-#     def isvalid(self):
-#         return (True if self.latestDt() > date(1900,1,1) else False)
-
     def getVios(self):
         ### Average violations for last [365] days####
         vioCtList = db.session.query(func.count(Comment.id)).\
