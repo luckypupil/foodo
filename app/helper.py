@@ -25,13 +25,13 @@ def getLatestComm(restId):
     ltDt = rest.latestDt()
     latComm = db.session.query(Comment.quote,Comment.code).filter(Comment.restnm == rest.name,Comment.date == ltDt).all()
     BadgeNComments = {}
-    try:
-	    for commCodeTup in latComm:
-	         comm = str(commCodeTup[0]).decode('utf8').strip("(u'").strip("',)")
-	         badge = db.session.query(Badge.badgenm).filter(Badge.code == commCodeTup[1]).first()[0]
-	         BadgeNComments.setdefault(badge,[]).append(comm)     
-    except:
-    	BadgeNComments = None
+    #try:
+    for commCodeTup in latComm:
+         comm = commCodeTup[0]
+         badge = db.session.query(Badge.badgenm).filter(Badge.code == commCodeTup[1]).first()[0]
+         BadgeNComments.setdefault(badge,[]).append(comm)     
+    #except:
+    	#BadgeNComments = None
     	
     return BadgeNComments
     #return [str(comm).decode('utf8').strip("(u'").strip("',)") for comm in latComm]
