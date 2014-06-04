@@ -1,8 +1,33 @@
 from app import db
 from datetime import date
 import datetime
-from sqlalchemy import func
+from sqlalchemy import func, Index
 from datetime import timedelta
+from sqlalchemy.orm import validates
+from sqlalchemy.dialects import postgresql
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    email = db.Column(db.String, unique = True)
+    zipcd = db.Column(db.Integer, nullable=True)
+    first_name = db.Column(db.Text,nullable=True)
+    last_name = db.Column(db.Text,nullable=True)
+    
+    @validates('email')
+    def validate_email(self, key, address):
+        assert '@' in address
+        return address
+    
+    def __init__(self,name,zipcd,first,last):
+        self.email = name
+        self.zipcd = zipcd
+        self.first_name = first
+        self.last_name = last
+    
+    
+    def __repr__(self):
+        return self.email
+
 
 class Rest(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -12,6 +37,8 @@ class Rest(db.Model):
     comments = db.relationship('Comment', backref='rest', lazy='dynamic')
     lat = db.Column(db.Float(6))
     lng = db.Column(db.Float(6))
+    tsv = db.Column(postgresql.TSVECTOR(),nullable=True, index=True)
+    
  
     def __init__(self,name,street,zipcd):
         self.name = name
@@ -89,6 +116,8 @@ class Badge(db.Model):
         
     def __repr__(self):
         return '{}'.format(self.badgenm)
+    
+
         
         
 
