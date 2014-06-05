@@ -3,8 +3,8 @@ from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.json import dumps
 from flask.ext import restful 
 from flask.ext.httpauth import HTTPBasicAuth
-from models import Comment, Rest, Badge
-from forms import RestSearch
+from models import Comment, Rest, Badge, User
+from forms import RestSearch, SubscribeForm
 from helper import *
 from operator import attrgetter, methodcaller
 from flask.ext.admin.contrib.sqla import ModelView
@@ -33,22 +33,37 @@ def page_not_found(error):
 def about():
     return render_template('about.html')
 
-# @app.route('/science',methods=['GET'])
-# def about():
-#     return render_template('science.html')
-lim = 10
+@app.route('/subscribe',methods=['GET','POST'])
+def subscribe():
+    form = SubscribeForm(request.form)
+    if request.form and form.validate():
+        if db.session.query(User).filter(User.email ==form.data['email']).first():
+            u = User(
+                     form.data['email'],
+                     form.data['zipcd'],
+                     form.data['first_name'],
+                     form.data['last_name'])
+            db.session.add(u)
+            db.session.commit()
+            return 'Thanks for your submission!'          
+        else:
+            return 'We already have your email in our distro list'
+    return render_template('subscribe.html',form = form)
+
+lim = 50
 
 
 @app.route('/',methods=['GET', 'POST'])
 def home():
-    radius = 5
+    radius = 10
     form = RestSearch()
 #     if form.validate_on_submit():
     if request.args:
+        
         sortOpts = ['viosLow','viosHigh','date']
         lat = request.args.get('lat', "39.9522")#city Hall
         lng = request.args.get('lng', "-75.1639")
-        sort = request.args.get('sort',sortOpts[0])#'vios' needs to be specified if sort desired
+        sort = request.args.get('sort',sortOpts[0])#''vioslow' is default sort
         
         try:
             if request.form:
@@ -60,19 +75,19 @@ def home():
             return redirect(url_for('homenoloco'))
 
         rests = Rest.query.from_statement(query).all()
-      
+        
         for rest in rests:
             rest.badges = sorted(make_badges(rest.id)) 
-        if sort == sortOpts[1]:#Highest vios 1st
+        if sort == sortOpts[1]:#viosHigh
             rests = sorted(rests,key=methodcaller('getVios'),reverse=True)
-        elif sort == sortOpts[2]:#Recent date first
+        elif sort == sortOpts[2]:#date (first)
             rests = sortRestLatest(rests)
         else:
             rests = sorted((rest for rest in rests if rest.getVios()>=0),key=methodcaller('getVios'))              
         return render_template('landing.html',rests = rests, form = form)
     
     else:
-        return render_template('landing.html')#landing inherits from main
+        return render_template('landing.html', form = form)#landing inherits from main
 
 @app.route('/noloco',methods=['GET'])
 def homenoloco():
@@ -93,6 +108,8 @@ def profile(id):
     rest = Rest.query.get(id)  
     comments = getLatestComm(id)
     return render_template('profile.html', rest = rest,comments=comments)
+
+
 
 ##################################Unused API CODE##################################################
 @app.route('/api/<int:id>',methods=['GET'])

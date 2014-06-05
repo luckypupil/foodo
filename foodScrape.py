@@ -152,8 +152,8 @@ def addtodb(table_tup):
    print '**************end of rest**********************'
 def main():
     ###Need to enter number of page results matching start/end dates specified###
-    for html in makeHtmlRepo(scrapeHTMLinks('04/15/2014','04/30/2014',pgresults_num=14)):
-        addtodb(Make_rest_rows(html,'04/15/2014'))
+    for html in makeHtmlRepo(scrapeHTMLinks('04/01/2014','04/15/2014',pgresults_num=39)):
+        addtodb(Make_rest_rows(html,'04/01/2014'))
     #Make_rest_rows(makeHtmlRepo(['estab.cfm?facilityID=CFF5EDC-813F-4F0A-A51E-1C099CD7045F'])[0],'01/01/2014')
     
 if __name__ == "__main__":
