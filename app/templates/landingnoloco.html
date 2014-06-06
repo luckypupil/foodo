@@ -10,6 +10,7 @@
       <div class="w-hidden-small w-hidden-tiny big-tagline">Tagline Here</div>
       <div class="w-form">
         <form class="w-clearfix" method="post" id="email-form" name="search-form" data-name="Email Form">
+          {{ form.csrf_token }}
           {{ form.search(class="w-input field",placeholder="Restuarant") }}
           <input class="w-button button" type="submit" value="Submit" >
         </form>

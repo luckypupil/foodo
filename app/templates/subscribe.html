@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}<title>{{ 'Tisk | Subscribe' }}</title>{% endblock %}
+{% block content %}
+<div class="w-clearfix all-content">
+    <header class="main-column header">
+      <h1 class="logo">PROOF</h1>
+      <div class="w-hidden-small w-hidden-tiny big-tagline">Explore.
+        <br>Shoot.
+        <br>Write.</div>
+      <div class="info-wrapper">
+        <div class="tagline">A Nature Photography Magazine</div>
+        <div class="byline">By Billy Rogers</div>
+      </div>
+      <div class="w-clearfix footer-wrapper">
+        <a class="w-inline-block footer-nav-link" href="index.html">
+          <img src="images/home-icon.svg" alt="52f3149a593f6edf410006e0_home-icon.svg">
+        </a>
+        <a class="w-inline-block footer-nav-link" href="http://www.twitter.com/webflowapp">
+          <img src="images/twitter-icon.svg" alt="52f2d48b593f6edf410003c1_twitter-icon.svg">
+        </a>
+        <a class="w-inline-block footer-nav-link" href="http://www.facebook.com/webflow">
+          <img src="images/facebook-icon.svg" alt="52f2d533ba5496e141000386_facebook-icon.svg">
+        </a>
+        <a class="w-inline-block footer-nav-link" href="subscribe.html">
+          <div class="subscribe">Subscribe</div>
+        </a>
+      </div>
+    </header>
+    <div class="main-column content">
+      <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
+      <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
+        <nav class="w-nav-menu nav-menu" role="navigation"><a class="w-nav-link nav-link" href="index.html">Articles</a><a class="w-nav-link nav-link" href="suggest.html">SUGGEST</a><a class="w-nav-link nav-link" href="subscribe.html">Subscribe</a><a class="w-nav-link nav-link" href="about.html">About</a>
+        </nav>
+        <div class="w-nav-button w-clearfix menu-wrapper">
+          <div class="menu">MENU</div>
+          <div class="w-icon-nav-menu menu-icon"></div>
+        </div>
+      </nav>
+      <div class="section">
+        <h1>Subscribe to Proof</h1>
+        <p>Want the latest articles in your inbox? Subscribe - it's free! Just give us your contact info and you're on your way.</p>
+        <div class="w-form form-wrapper">
+          <form class="w-clearfix" name="wf-form-subscribe" data-name="Subscribe" method="post">
+          	{{ form.csrf_token }}
+          	{{ form.email(class="w-input field email",placeholder="Email Address",style="width: 50%;") }}
+            {{ form.zipcd(class="w-input field",placeholder="Zip Code",style="width: 30%;") }}
+            {{ form.first_name(class="w-input field first",placeholder="First Name") }}
+            {{ form.last_name(class="w-input field last",placeholder="Last Name") }}
+            {% for field_name, field_errors in form.errors.items() %}
+          	<p>{{ field_name }} 
+          		<ul>{% for error in field_errors %}
+          			<li>{{ error }}</li>
+          			{% endfor %}</ul>
+          {% endfor %}</p>
+            <input class="w-button button" type="submit" value="Get the Dish" >
+          </form>
+          <div class="w-form-done success-message">
+            <h2>Awesome sauce!</h2>
+            <p>You're subscribed to some awesome articles. Look out for weekly newsletters.</p><a class="button blue" href="index.html">Proof Home</a>
+          </div>
+          <div class="w-form-fail">
+            <p>Oops! Something went wrong while submitting the form :(</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block JS %}
+{% endblock %}

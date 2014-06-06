@@ -35,9 +35,10 @@ def about():
 
 @app.route('/subscribe',methods=['GET','POST'])
 def subscribe():
-    form = SubscribeForm(request.form)
-    if request.form and form.validate():
-        if db.session.query(User).filter(User.email ==form.data['email']).first():
+    form = SubscribeForm()
+    if form.validate_on_submit():
+        print 'success'
+        if not db.session.query(User).filter(User.email ==form.data['email']).first():
             u = User(
                      form.data['email'],
                      form.data['zipcd'],
@@ -47,7 +48,8 @@ def subscribe():
             db.session.commit()
             return 'Thanks for your submission!'          
         else:
-            return 'We already have your email in our distro list'
+            return 'We already have your email in our distro list!'
+    
     return render_template('subscribe.html',form = form)
 
 lim = 50
@@ -66,7 +68,7 @@ def home():
         sort = request.args.get('sort',sortOpts[0])#''vioslow' is default sort
         
         try:
-            if request.form:
+            if form.validate_on_submit():
                 term = request.form.get('search','')
                 query = search2(lat,lng,radius,lim,term)
             else:
