@@ -2,7 +2,6 @@ from app import app, db, admin
 from flask import render_template, flash, redirect, session, \
     url_for, request, g, jsonify, make_response
 from flask.json import dumps
-from flask.ext import restful
 from flask.ext.httpauth import HTTPBasicAuth
 from models import Comment, Rest, Badge, User
 from forms import RestSearch, SubscribeForm
