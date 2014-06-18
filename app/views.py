@@ -57,7 +57,7 @@ def subscribe():
             return 'We already have your email in our distro list!'
     return render_template('subscribe.html', form=form)
 
-lim = 50
+lim = 20
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -66,7 +66,7 @@ def home():
     form = RestSearch()
 #     if form.validate_on_submit():
     if request.args:
-        sortOpts = ['viosLow', 'viosHigh', 'date']
+        sortOpts = ['dist', 'viosLow', 'viosHigh', 'date']
         lat = request.args.get('lat', "39.9522")  # city Hall
         lng = request.args.get('lng', "-75.1639")
         sort = request.args.get('sort', sortOpts[0])  # vioslow is default sort
@@ -83,13 +83,16 @@ def home():
 
         for rest in rests:
             rest.badges = sorted(make_badges(rest.id))
-        if sort == sortOpts[1]:  # viosHigh
-            rests = sorted(rests, key=methodcaller('getVios'), reverse=True)
-        elif sort == sortOpts[2]:  # date (first)
-            rests = sortRestLatest(rests)
-        else:
+            rest.grade = get_grade(rest.getPts())
+        if sort == sortOpts[1]:  # viosLow
             rests = sorted((rest for rest in rests if rest.getVios() >= 0),
                            key=methodcaller('getVios'))
+        elif sort == sortOpts[2]:  # viosHigh
+            rests = sorted(rests, key=methodcaller('getVios'), reverse=True)
+        elif sort == sortOpts[3]:  # date (first)
+            rests = sortRestLatest(rests)
+        else:
+            pass
         return render_template('landing.html', rests=rests, form=form)
 
     else:

@@ -45,7 +45,8 @@ def getVios(restId):
     
     avgVios = (-1 if len(vioCtList) ==0 else\
                 round(sum(float(date[0]) for date in vioCtList)/float(len(vioCtList)),1))#avg of vios from last year.  If none w/in year, '-1' returned
-    return avgVios 
+    return avgVios
+ 
 
 def sortRestLatest(restList):
     sortLst = sorted(restList,key=methodcaller('latestDt'),reverse=True)
@@ -75,6 +76,17 @@ def create_badge_list():
             badge_list.setdefault(i,line.encode('utf-8'))
             i+=1
     return badge_list
+
+def get_grade(pts):
+	### Converts points to equivalent inspection grade ###
+	grade = 'n/a'
+	if pts <= 7: grade = 'A'
+	elif pts <= 12: grade = 'B'
+	elif pts <= 20: grade = 'C'
+	elif pts > 20: grade = 'Fail'
+	
+	return grade
+	
 
 def make_inspections(restId):
     rest = Rest.query.get(restId)

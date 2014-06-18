@@ -7,6 +7,7 @@ from sqlalchemy.orm import validates
 from sqlalchemy.dialects import postgresql
 
 
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, unique=True)
@@ -89,6 +90,17 @@ class Rest(db.Model):
         if avgVios == -1:
             self.isvalid = False
         return avgVios
+        
+    def getPts(self):
+    	mytups = db.session.query(Comment.code).filter(Comment.date == self.latestDt(),
+    												   Comment.restnm == self.name).all()		
+        codelst = [i[0] for i in mytups]
+        
+        def myfuct(code):
+			return db.session.query(Badge.points).filter(Badge.code == code).first()[0]
+
+        points = sum((myfuct(i) for i in codelst))
+        return points
 
 
 class Comment(db.Model):
@@ -98,6 +110,8 @@ class Comment(db.Model):
     date = db.Column(db.Date, nullable=True)
     quote = db.Column(db.Text)
     code = db.Column(db.Integer, db.ForeignKey('badge.code'))
+    #points = db.Column(db.Float, db.ForeignKey('badge.points'))
+    
 
     def __init__(self, restnm, date, code, quote):
         self.restnm = restnm

@@ -6,7 +6,7 @@
   <div class="w-clearfix all-content">
     
     <header class="main-column header">
-      <h1 class="logo">Tisk</h1>
+      <h1 class="logo">Tisks</h1>
       <div class="w-hidden-small w-hidden-tiny big-tagline">Tagline Here</div>
       <div class="w-form">
         <form class="w-clearfix" method="post" id="email-form" name="search-form" data-name="Email Form">
@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="w-clearfix footer-wrapper">
-        <a class="w-inline-block footer-nav-link" href=#><!--Add Twitter page --!>
+        <a class="w-inline-block footer-nav-link" href=#><!--Add Twitter page -->
           <img src="{{ url_for('static', filename='img/Twitter_logo_white.png')}}" width="30" alt="twitter">
         </a>
         <a class="w-inline-block footer-nav-link" href="{{ url_for('subscribe') }}">
@@ -46,7 +46,7 @@
 	      <a class="w-clearfix w-inline-block article" href="{{ url_for('profile',id=rest.id)}}">
 	        <section class="w-clearfix article-text-wrapper">
 	          <h2 class="arrow">❯</h2>
-	          <h4 class="vios">{{ rest.getVios() }} {{ 'VIOLATIONS' }}</h4>
+	          <h4 class="vios">{{ rest.grade }} {{ 'Grade' }}</h4>
 	          <h2 class="thumbnail-title">{{ rest.name }}</h2>
 	          <p>{{ rest.street }}{{ ' Philadelphia, PA ' }}{{ rest.zipcd }}</p>
 	          <div class="article-info-wrapper">
