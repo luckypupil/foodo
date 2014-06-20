@@ -25,8 +25,8 @@
         <a class="w-inline-block footer-nav-link" href=#><!--Add Twitter page -->
           <img src="{{ url_for('static', filename='img/Twitter_logo_white.png')}}" width="30" alt="twitter">
         </a>
-        <a class="w-inline-block footer-nav-link" href="{{ url_for('subscribe') }}">
-          <div class="subscribe">Subscribe</div>
+        <a class="w-inline-block footer-nav-link" href="#">
+          <div style="display:none;" class="subscribe">Subscribe</div>
         </a>
       </div>
     </header>
@@ -34,8 +34,8 @@
       <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
         <nav class="w-nav-menu w-clearfix nav-menu" role="navigation">
         	<a class="w-nav-link nav-link" href="{{ url_for('home') }}" data-ix="new-interaction">Home</a>
-        	<a class="w-nav-link nav-link" href="{{ url_for('about') }}">ABOUT</a>
-        	<a class="w-nav-link nav-link" href="{{ url_for('subscribe') }}">Contact</a>
+        	<a class="w-nav-link nav-link" href="#">About</a>
+        	<a class="w-nav-link nav-link" href="#">Contact</a>
         </nav>
         <div class="w-nav-button menu-wrapper">
           <div class="w-icon-nav-menu menu-icon"></div>

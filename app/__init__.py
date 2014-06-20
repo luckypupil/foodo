@@ -7,6 +7,5 @@ from flask.ext.admin import Admin
 app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
-admin = Admin(app)
 
 from app import views, models, forms, helper

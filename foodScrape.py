@@ -9,18 +9,32 @@ from bs4 import BeautifulSoup, SoupStrainer
 from app import db
 from app.models import Rest, Comment
 from app.helper import makeSlug
+from math import ceil
+import cPickle as pickle
 
 base_url = 'http://philadelphia.pa.gegov.com/philadelphia/' 
 
-def scrapeHTMLinks(startdate,enddate,pgresults_num):
+def scrapeHTMLinks(startdate,enddate):
     ###Scrapes HTML pages based on search params and returns list of links to search results pgs. ###
+    print '####   Entering scrapehtml   ####'
+    url_ext='search.cfm?facType=7&subType=Any&'
+    init_query = '{}start=1&sd={}&ed={}&dtRng=YES'.format(url_ext,startdate,enddate)
+    init_url = base_url + init_query
+    
+   
+    r = requests.get(init_url)
+    match = re.search(u'(\d+) Facilities matched', r.text)
+    totsresults = float(match.group(1))
+    pgresults_num = int(ceil(totsresults / 20))
+    print 'There are {} results pgs'.format(pgresults_num)
+    
     linkext_list = [] 
     for num in xrange(1,1+pgresults_num):
         print 'Preparing results page {}'.format(num)
         if not startdate and enddate:
             print "start and end dates must be specified"
         else:
-            url_ext='search.cfm?facType=7&subType=Any&' #'facType=7&subType=Any' filters to restuarant subcat
+             #'facType=7&subType=Any' filters to restuarant subcat
             start_query = (1 if num == 1 else (num-1)*20+1) # converts page results num to search query param
             srch_query = '{}start={}&sd={}&ed={}&dtRng=YES'.format(url_ext,start_query,startdate,enddate)
      
@@ -34,26 +48,45 @@ def scrapeHTMLinks(startdate,enddate,pgresults_num):
                 linkext_list.append(str(link['href']))
         except:
             continue
+    
+    with open('tmp/pickle/scrapehtml2','w') as f:
+    	pickle.dump(linkext_list,f)
+	
+	print '####   Exiting scrapehtml   ####'
     return (linkext_list)
 
 def makeHtmlRepo (ext_list):
     ### Returns python list of htmlresults pages as text###
     html_list = []
+    lnk_ct = len(ext_list)
+    print '####  Entering makeHTMLRepo.  There are {} links  ####'.format(lnk_ct)
+    i = 1
     for ext in ext_list:
         try:
             r = requests.get(base_url+ext)
-            html_list.append(r.text.encode('utf-8','ignore').strip())    
+            html_list.append(r.text.encode('utf-8','ignore').strip())
+            print 'got link {} of {}'.format(i,lnk_ct)+base_url+ext
+            i+=1    
         except:
             continue
+    
+    with open('tmp/pickle/makeHtmlRepo2','w') as f:
+    	pickle.dump(html_list,f)
+    	
+    print '####   Exiting makehtmlrepo   ####'	
+    
     return (html_list)
                      
 def Make_rest_rows(html,startdt='03/30/2014'):
     #returns tuple of 1 rest row [name,street,zip], and all comment rows [name,date,code,quote] after the start date param#    
+    print '####   Entering Make_rest_rows   ####'
     startdt= datetime.datetime.strptime(startdt.strip(),'%m/%d/%Y')      
     sngl_rest_dict = {}
     inspect_soup = BeautifulSoup(html,"html.parser",parse_only=SoupStrainer('body')) #Strain to body          
     rest_row =[]
     Rest_nm = inspect_soup('b',style="font-size:14px;")[0].string
+    print 'parsing info for {}'.format(Rest_nm)
+    
     try:
         Rest_st = inspect_soup('i')[0].contents[0].encode('utf-8','ignore').strip()
         Rest_zip_temp = inspect_soup('i')[0].contents[2].encode('utf-8','ignore').strip()[-5:]
@@ -79,9 +112,10 @@ def Make_rest_rows(html,startdt='03/30/2014'):
                             inspect_hist.append(comment_row)
         except:
             continue
-    #with open('logging.txt','a') as log:
-     #   pickle.dump(rest_row)
-      #  pickle.dump(inspect_hist)
+   
+        
+    print '####   Entering Make_rest_rows   ####'
+    
     return(rest_row,inspect_hist)
     
 def geoCode(rest):
@@ -106,7 +140,7 @@ def geoCode(rest):
   
 def addtodb(table_tup):
    ###Copies CSV files to create resturant and comment tables###
-   
+   print '####   Entering addtodb   ####'
    if table_tup[0]:
         try:
             rest_row = table_tup[0]
@@ -149,13 +183,14 @@ def addtodb(table_tup):
    else:
        print 'nothing in current Comment_hist'           
 
-   print '**************end of rest**********************'
+   print '####   Exiting addtodb   ####'
 def main():
     ###Need to enter number of page results matching start/end dates specified###
-    for html in makeHtmlRepo(scrapeHTMLinks('02/01/2014','03/31/2014',pgresults_num=114)):
-        addtodb(Make_rest_rows(html,'02/01/2014'))
+    startdate, endate = '04/01/2014', '06/15/2014'
+    for html in makeHtmlRepo(scrapeHTMLinks(startdate,endate)):
+        addtodb(Make_rest_rows(html,startdate))
     #Make_rest_rows(makeHtmlRepo(['estab.cfm?facilityID=CFF5EDC-813F-4F0A-A51E-1C099CD7045F'])[0],'01/01/2014')
-    
+
 if __name__ == "__main__":
     main()
     

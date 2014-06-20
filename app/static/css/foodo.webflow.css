@@ -4,7 +4,7 @@ body {
   color: #333;
   font-size: 14px;
   line-height: 20px;
-  overflow: hidden;
+  overflow: auto;
 }
 h1 {
   margin-right: 0px;
@@ -411,6 +411,7 @@ p {
 .content-section.footer {
   background-color: transparent;
   text-align: center;
+  display: hide;
 }
 .hollow-button {
   display: inline-block;

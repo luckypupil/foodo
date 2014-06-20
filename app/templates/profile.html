@@ -10,10 +10,10 @@
           <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile" href="{{ url_for('home') }}">
             <div>Home</div>
           </a>
-          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile" href="{{ url_for('about') }}">
+          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile" href="#">
             <div>About</div>
           </a>
-          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile" href="{{ url_for('subscribe') }}">
+          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile" href="#">
             <div>Contact</div>
           </a>
         </div>
@@ -40,8 +40,8 @@
     <div class="w-row mobile-header-row right-column">
       <div class="w-col w-col-7 article-body-column">
         <div class="vios date">Last Inpsection: {{ rest.latestDt().strftime("%A, %B %d, %Y") }}</div>
-	        {% if comments %}
-		        {% for badge in comments %}
+	        {% if foodcomments %}
+		        {% for badge in foodcomments %}
 			        <div class="w-row badgerow">
 			          <div class="w-col w-col-2 w-clearfix moble-badge-row">
 			            <img class="w-hidden-main w-hidden-medium" src="{{ url_for('static', filename='img/badges/{}.jpg'.format(badge|trim))}}" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
@@ -50,10 +50,10 @@
 			          </div>
 			          <div class="w-col w-col-10">
 			            <ol>
-			              {% for comment in comments[badge] %}
-							<li><h3>{{ comment }}</h3></li>
+			              {% for comment in foodcomments[badge] %}
+							<li><h3>{{ comment[0] }} {{'('}} {{ comment[1] }} {{')'}}</h3></li>
 		        		  {% endfor %}
-			            </ol>
+		                </ol>
 			          </div>
 			        </div>
 			    {% endfor %}

@@ -91,10 +91,12 @@ class Rest(db.Model):
             self.isvalid = False
         return avgVios
         
+        
     def getPts(self):
     	mytups = db.session.query(Comment.code).filter(Comment.date == self.latestDt(),
     												   Comment.restnm == self.name).all()		
         codelst = [i[0] for i in mytups]
+        
         
         def myfuct(code):
 			return db.session.query(Badge.points).filter(Badge.code == code).first()[0]
@@ -110,8 +112,7 @@ class Comment(db.Model):
     date = db.Column(db.Date, nullable=True)
     quote = db.Column(db.Text)
     code = db.Column(db.Integer, db.ForeignKey('badge.code'))
-    #points = db.Column(db.Float, db.ForeignKey('badge.points'))
-    
+
 
     def __init__(self, restnm, date, code, quote):
         self.restnm = restnm
@@ -134,9 +135,11 @@ class Badge(db.Model):
     category = db.Column(db.String)
     #rest = relationship("Rest", backref=backref('Rests', order_by=id))
 
+
     def __init__(self, code, badgenm):
         self.code = code
         self.badgenm = badgenm
+
 
     def __repr__(self):
         return '{}'.format(self.badgenm)
