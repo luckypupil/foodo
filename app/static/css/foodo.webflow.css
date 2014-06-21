@@ -170,7 +170,7 @@ p {
   padding-top: 164px;
   padding-right: 15px;
   padding-left: 15px;
-  background-image: url('../img/dark-wood.jpg');
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
   box-shadow: rgba(0, 0, 0, 0.27) -3px 0px 0px 0px inset;
   color: white;
   text-align: center;
@@ -398,7 +398,7 @@ p {
   position: relative;
   height: 370px;
   padding-top: 49px;
-  background-image: url('../img/profile_background.jpg');
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/profile_background.jpg');
 }
 .content-section {
   position: relative;
@@ -435,7 +435,7 @@ p {
   float: none;
   clear: none;
   border: 7px solid white;
-  background-image: url('../img/profilelogo.png');
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png');
   background-size: 125px;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 0px 0px 1px;
 }
@@ -453,7 +453,7 @@ p {
   padding-top: 52px;
   padding-bottom: 52px;
   background-color: #b8c6cc;
-  background-image: url('../img/dark-wood.jpg'), url('../images/waterfall.jpg');
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg'), url('../images/waterfall.jpg');
   background-position: 0% 0%, 0px 50%;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 1px 0px 0px inset;
   color: white;
@@ -664,7 +664,7 @@ p {
   }
   .header-image {
     height: 357px;
-    background-image: url('../img/homebackground1.jpg');
+    background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/homebackground1.jpg');
     background-position: 0% 0%, 50% 0px;
     background-size: 125px, cover;
     background-repeat: repeat-x, repeat;
@@ -828,7 +828,7 @@ p {
     padding-top: 66px;
     padding-right: 10px;
     padding-left: 10px;
-    background-image: url('../img/profile_background.jpg');
+    background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/profile_background.jpg');
   }
   .menu {
     margin-top: 1px;

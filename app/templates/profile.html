@@ -44,9 +44,9 @@
 		        {% for badge in foodcomments %}
 			        <div class="w-row badgerow">
 			          <div class="w-col w-col-2 w-clearfix moble-badge-row">
-			            <img class="w-hidden-main w-hidden-medium" src="{{ url_for('static', filename='img/badges/{}.jpg'.format(badge|trim))}}" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
+			            <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.jpg" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
 			            <div class="badge"><bold><h2>{{ badge|trim }}</h2></bold></div>
-			            <img class="w-hidden-small w-hidden-tiny badge" src="{{ url_for('static', filename='img/badges/{}.jpg'.format(badge|trim))}}" title="{{ badge|trim}}" alt="{{ badge|trim}}">
+			            <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.jpg" title="{{ badge|trim}}" alt="{{ badge|trim}}">
 			          </div>
 			          <div class="w-col w-col-10">
 			            <ol>
@@ -63,7 +63,7 @@
       </div>
       <div class="w-col w-col-5 w-hidden-small w-hidden-tiny author-column">	
         <h4 class="w-hidden-main w-hidden-medium">About the Author</h4>
-        <img class="author-image" src="{{ url_for('static', filename='img/profilelogo.png')}}" width="200" alt="{{ rest.name }}">
+        <img class="author-image" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="200" alt="{{ rest.name }}">
         <p class="vios">{{ rest.getVios() }} Violations</p>
         <div class="thumbnail-title">{{ rest.name }}</div>
         <div class="article-info-wrapper">
@@ -75,7 +75,7 @@
         <div class="author-social-links">
           <div class="author-connect">Tweet Tisk</div>
           <a class="w-inline-block social-link" href="#">
-            <img src="{{ url_for('static', filename='img/Twitter_logo_blue.png')}}" width="40" alt="twitter">
+            <img src="https://s3.amazonaws.com/tisk-assets/img/twitter/Twitter_logo_blue.png" width="40" alt="twitter">
           </a>
         </div>
       </div>
