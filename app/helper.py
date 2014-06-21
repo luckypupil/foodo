@@ -59,10 +59,11 @@ def getLatest(limit=20):
 def get_grade(pts):
 	### Converts points to equivalent inspection grade ###
 	grade = 'n/a'
-	if pts <= 7: grade = 'A'
-	elif pts <= 12: grade = 'B'
-	elif pts <= 20: grade = 'C'
-	elif pts > 20: grade = 'Fail'
+	if pts <= 10: grade = 'A'
+	elif pts <= 20: grade = 'B'
+	elif pts <= 30: grade = 'C'
+	elif pts <= 40: grade = 'D'
+	elif pts > 40: grade = 'Fail'
 	return grade
 	
 	
