@@ -95,22 +95,22 @@ p {
   bottom: 0px;
 }
 .logo {
-  display: inline-block;
-  margin-bottom: 31px;
-  padding: 21px;
-  border-style: solid;
-  border-width: 8px;
-  border-color: rgba(255, 255, 255, 0.38);
-  background-color: rgba(0, 0, 0, 0.09);
-  background-image: none;
-  background-position: 0% 0%;
-  background-size: auto;
-  background-repeat: repeat;
-  background-attachment: scroll;
-  font-family:'Roboto Condensed', sans-serif;
-  font-size: 78px;
-  line-height: 60px;
-  font-weight: 400;
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	margin-top: -94px;
+	margin-bottom: 31px;
+	padding: 4px 21px 21px;
+	background-color: transparent;
+	background-image: url('https://s3.amazonaws.com/tisk-assets/img/logo/home_page_logo.png');
+	background-position: 50% 50%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	font-family:'Roboto Condensed', sans-serif;
+	font-size: 78px;
+	line-height: 60px;
+	font-weight: 400;
 }
 .big-tagline {
   margin-bottom: 68px;
@@ -170,11 +170,13 @@ p {
   padding-top: 164px;
   padding-right: 15px;
   padding-left: 15px;
-  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/homepage_background2.jpg');
   box-shadow: rgba(0, 0, 0, 0.27) -3px 0px 0px 0px inset;
   color: white;
   text-align: center;
   text-shadow: rgba(0, 0, 0, 0.63) 0px 1px 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .main-column.content {
   left: 8px;
@@ -632,8 +634,23 @@ p {
   width: 70%;
   height: 70%;
   float: left;
-  background-image: url('../images/example-bg.png'), url('../images/example-bg.png'), url('../images/example-bg.png');
-  background-size: 125px, 125px, 125px;
+  border-style: none;
+  background-size: 60px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-image: none;
+  background-attachment: scroll;
+}
+.badge-home {
+  width: 10%;
+  height: 10%;
+  float: left;
+  border-style: none;
+  background-size: 60px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-image: none;
+  background-attachment: scroll;
 }
 .comment {
   margin-right: 40px;
