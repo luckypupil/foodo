@@ -28,9 +28,13 @@ def page_not_found(error):
     return render_template('404.html'), 404
 
 
+@app.route('/<int:pg>/', methods=['GET', 'POST'])
 @app.route('/', methods=['GET', 'POST'])
-def home():
+def home(pg=1):
     radius = 10
+    pg = int(pg)
+    offset = pg*20-20
+    print offset
     form = RestSearch()
 #     if form.validate_on_submit():
     if request.args:
@@ -39,9 +43,9 @@ def home():
         try:
             if form.validate_on_submit():
                 term = request.form.get('search', '')
-                query = search2(lat, lng, radius, lim, term)
+                query = search2(lat, lng, radius, offset, lim, term)
             else:
-                query = loc_query(lat, lng, radius, lim)
+                query = loc_query(lat, lng, radius, offset, lim)
         except:
             return redirect(url_for('homenoloco'))
 
@@ -51,11 +55,11 @@ def home():
             rest.badges = sorted(make_badges(rest.id))
             rest.grade = get_grade(rest.getPts())
         
-        return render_template('landing.html', rests=rests, form=form)
+        return render_template('landing.html', rests=rests,next=pg+1,prev=max(1,pg-1), form=form)
 
     else:
         # landing inherits from main
-        return render_template('landing.html', form=form)
+        return render_template('landing.html', next=pg+1,prev=max(1,pg-1),form=form)
 
 
 @app.route('/noloco', methods=['GET'])

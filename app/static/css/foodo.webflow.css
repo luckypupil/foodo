@@ -318,7 +318,6 @@ p {
   z-index: 1;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 1px 0px 0px;
-  display: none;
 }
 .form-wrapper {
   margin-top: 29px;

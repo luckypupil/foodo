@@ -41,6 +41,7 @@
           <div class="w-icon-nav-menu menu-icon"></div>
           <div class="menu">MENU</div>
         </div>
+      
       </nav>
       {% for rest in rests %}
 	      <a class="w-clearfix w-inline-block article" href="{{ url_for('profile',id=rest.id)}}">
@@ -73,7 +74,9 @@
 	   {% endfor %}
       <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
       <nav class="w-nav pagination-nav" data-collapse="none" data-animation="default" data-duration="400">
-        <nav class="w-nav-menu w-clearfix nav-menu" role="navigation"><a class="w-nav-link nav-link page" href="index.html">PG. 1</a><a class="w-nav-link nav-link page" href="#">Pg. 2</a><a class="w-nav-link nav-link page" href="#">pg. 3</a>
+        <nav class="w-nav-menu w-clearfix nav-menu" role="navigation">
+        	<a class="w-nav-link nav-link page" href="{{ url_for('home',pg=prev) }}">Prev</a>
+        	<a class="w-nav-link nav-link page" href="{{ url_for('home',pg=next) }}"> next </a>
         </nav>
         <div class="w-nav-button">
           <div class="w-icon-nav-menu"></div>

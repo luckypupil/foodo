@@ -68,18 +68,18 @@ def get_grade(pts):
 	return grade
 	
 	
-def loc_query(lat,lng,radius,lim):
+def loc_query(lat,lng,radius,offset,lim):
     return("SELECT * FROM (SELECT id, (3959 * acos(cos(radians({latitude})) * cos(radians(lat))\
     * cos(radians(lng) - radians({longitude})) + sin(radians({latitude}))\
     * sin(radians(lat)))) AS distance FROM rest) AS distance WHERE distance\
-     < {radius} ORDER BY distance LIMIT {limit};".format(latitude=lat, longitude=lng, radius=radius,limit=lim)) 
+     < {radius}  ORDER BY distance LIMIT {limit} OFFSET {offset};".format(latitude=lat, longitude=lng, radius=radius, offset=offset, limit=lim)) 
  
 
-def search2(lat,lng,radius,lim,term):
+def search2(lat,lng,radius,offset,lim,term):
 	return("SELECT * FROM (SELECT id, tsv, (3959 * acos(cos(radians({latitude})) * cos(radians(lat))\
     * cos(radians(lng) - radians({longitude})) + sin(radians({latitude}))\
     * sin(radians(lat)))) AS distance FROM rest) AS distance WHERE distance\
-     < {radius} AND plainto_tsquery('{term}') @@ tsv ORDER BY distance LIMIT {limit};".format(latitude=lat, longitude=lng, radius=radius, term=term, limit=lim))
+     < {radius} AND plainto_tsquery('{term}') @@ tsv OFFSET {offset} ORDER BY distance LIMIT {limit};".format(latitude=lat, longitude=lng, radius=radius, offset=offset, term=term, limit=lim))
 	
  
 def makeSlug(string,spaceChar='+',Maxlen=None):
