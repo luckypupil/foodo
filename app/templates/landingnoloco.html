@@ -57,7 +57,7 @@
         		{% endif %}
 	            {% if rest.badges %}
 	            	{% for badge in rest.badges %}
-	            		<img class="w-hidden-small w-hidden-tiny badge-home" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.jpg" title="{{ badge|trim }}" alt="{{ badge|trim }}">
+	            		<div class="article-info-text tag">{{ badge|trim }}</div>
 	            	{% endfor %}
 	            {% endif %}
 	          </div>
