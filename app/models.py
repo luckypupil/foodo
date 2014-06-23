@@ -91,6 +91,7 @@ class Rest(db.Model):
 	    												   Comment.restnm == self.name).all()		
 	        codelst = [i[0] for i in mytups]
 	       
+	       
 	        def myfuct(code):
 				return db.session.query(Badge.points).filter(Badge.code == code).first()[0]
 	

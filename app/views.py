@@ -55,11 +55,11 @@ def home(pg=1):
             rest.badges = sorted(make_badges(rest.id))
             rest.grade = get_grade(rest.getPts())
         
-        return render_template('landing.html', rests=rests,next=pg+1,prev=max(1,pg-1), form=form)
+        return render_template('landing.html', rests=rests,next=pg+1, prev=max(1,pg-1), form=form)
 
     else:
         # landing inherits from main
-        return render_template('landing.html', next=pg+1,prev=max(1,pg-1),form=form)
+        return render_template('landing.html', next=pg+1, prev=max(1,pg-1), form=form)
 
 
 @app.route('/noloco', methods=['GET'])
