@@ -65,17 +65,9 @@ class Rest(db.Model):
             filter(Rest.name == self.name).\
             filter(Rest.name == Comment.restnm).order_by(
                 Comment.date.desc()).first()
-
-        if latestDate:
-            # try:
-#                 # Shows up as date object on heroku but datetime obj in dev
-#                 return latestDate[0].date()
-#             except:
-        	return latestDate[0]
-        
-        else:
-            return None
-
+        return (latestDate[0] if latestDate else None)
+    
+    
     def getVios(self):
         ### Average violations for last [365] days####
         vioCtList = db.session.query(func.count(Comment.id)).\
@@ -94,15 +86,19 @@ class Rest(db.Model):
         
         
     def getPts(self):
-    	mytups = db.session.query(Comment.code).filter(Comment.date == self.latestDt(),
-    												   Comment.restnm == self.name).all()		
-        codelst = [i[0] for i in mytups]
-        
-        
-        def myfuct(code):
-			return db.session.query(Badge.points).filter(Badge.code == code).first()[0]
-
-        points = sum((myfuct(i) for i in codelst))
+    	if self.latestDt():
+	    	mytups = db.session.query(Comment.code).filter(Comment.date == self.latestDt(),
+	    												   Comment.restnm == self.name).all()		
+	        codelst = [i[0] for i in mytups]
+	        
+	        print codelst
+	        def myfuct(code):
+				return db.session.query(Badge.points).filter(Badge.code == code).first()[0]
+	
+	        points = sum((myfuct(i) for i in codelst))
+        else:
+        	points = None
+        	
         return points
 
 

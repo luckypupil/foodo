@@ -39,6 +39,7 @@
   <div class="content-section">
     <div class="w-row mobile-header-row right-column">
       <div class="w-col w-col-7 article-body-column">
+		{% if rest.latestDt() %}      
         <div class="vios date">Last Inpsection: {{ rest.latestDt().strftime("%A, %B %d, %Y") }}</div>
 	        {% if foodcomments %}
 		        {% for badge in foodcomments %}
@@ -58,8 +59,11 @@
 			        </div>
 			    {% endfor %}
 			{% else %}
-				<h3>{{ 'Oh noez - no data avaialble for most recent inspection' }}</h3>      
+				<h3>{{ 'No data available for most recent inspection' }}</h3>      
       		{% endif %}
+      {% else %}
+				<h3>{{ 'Has not been inspected since Jan 1, 2013' }}</h3>      
+      {% endif %}	
       </div>
       <div class="w-col w-col-5 w-hidden-small w-hidden-tiny author-column">	
         <h4 class="w-hidden-main w-hidden-medium">About the Author</h4>
