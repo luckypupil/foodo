@@ -67,13 +67,14 @@ class Rest(db.Model):
                 Comment.date.desc()).first()
 
         if latestDate:
-            try:
-                # Shows up as date object on heroku but datetime obj in dev
-                return latestDate[0].date()
-            except:
-                return latestDate[0]
+            # try:
+#                 # Shows up as date object on heroku but datetime obj in dev
+#                 return latestDate[0].date()
+#             except:
+        	return latestDate[0]
+        
         else:
-            return date(1900, 1, 1)
+            return None
 
     def getVios(self):
         ### Average violations for last [365] days####
@@ -84,10 +85,10 @@ class Rest(db.Model):
             # Tuple list w/ # vios by dates w/in last year
 
         # avg of vios from last year.  If none w/in year, '-1' returned
-        avgVios = (-1 if len(vioCtList) == 0 else
+        avgVios = (None if len(vioCtList) == 0 else
                    round(sum(float(date[0]) for date in vioCtList)
                          / float(len(vioCtList)), 1))
-        if avgVios == -1:
+        if avgVios == None:
             self.isvalid = False
         return avgVios
         

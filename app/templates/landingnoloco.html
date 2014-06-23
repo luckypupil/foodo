@@ -54,12 +54,17 @@
         			<div class="article-info-text">
         				<h4>{{ rest.latestDt().strftime("%A, %B %d, %Y") }}</h4>
         			</div></br>
+        			{% if rest.badges %}
+	            		{% for badge in rest.badges %}
+	            			<div class="article-info-text tag">{{ badge|trim }}</div>
+							{% endfor %}
+					{% endif %}
+				{% else %}
+					<div class="article-info-text">
+        				<p><b>{{ "No inspection since 2013" }}</b><p>
+        			</div>
         		{% endif %}
-	            {% if rest.badges %}
-	            	{% for badge in rest.badges %}
-	            		<div class="article-info-text tag">{{ badge|trim }}</div>
-	            	{% endfor %}
-	            {% endif %}
+	            
 	          </div>
 	        </section>
 			
