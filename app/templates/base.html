@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html data-wf-site="536cd5dac1161b086f47884d">
 <head>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/map.js') }}" async></script>
   {% block jsInit %} {% endblock %}
   <meta charset="utf-8">
   {% block title %}<title>Tisk</title>{% endblock %}
@@ -25,7 +26,8 @@
 	{% endblock %}
 	{% block JSBody %}
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  	<script type="text/javascript" src="{{ url_for('static', filename='js/modenizr.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/modenizr.js') }}" async></script>
+  	
 	{% endblock %}
 </body>
 </html>

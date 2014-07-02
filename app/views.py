@@ -55,10 +55,13 @@ def home(pg=1):
             rest.badges = sorted(make_badges(rest.id))
             rest.grade = get_grade(rest.getPts())
         
+        flash('Welcome!')
+        
         return render_template('landing.html', rests=rests,next=pg+1, prev=max(1,pg-1), form=form)
 
     else:
         # landing inherits from main
+        flash('Welcome!')
         return render_template('landing.html', next=pg+1, prev=max(1,pg-1), form=form)
 
 

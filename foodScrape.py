@@ -186,7 +186,7 @@ def addtodb(table_tup):
    print '####   Exiting addtodb   ####'
 def main():
     ###Need to enter number of page results matching start/end dates specified###
-    startdate, endate = '04/01/2014', '06/15/2014'
+    startdate, endate = '05/19/2014', '05/30/2014'
     for html in makeHtmlRepo(scrapeHTMLinks(startdate,endate)):
         addtodb(Make_rest_rows(html,startdate))
     #Make_rest_rows(makeHtmlRepo(['estab.cfm?facilityID=CFF5EDC-813F-4F0A-A51E-1C099CD7045F'])[0],'01/01/2014')
