@@ -47,10 +47,10 @@ def getLatestComm(restId):
     #return [str(comm).decode('utf8').strip("(u'").strip("',)") for comm in latComm]
 
 
-def getLatest(limit=20):
+def getLatest(limit=20,offset=1):
     ### returns list of Rest model objects ###
     latestTup = db.session.query(Comment.restnm).\
-        group_by(Comment.restnm,Comment.date).order_by(Comment.date.desc()).limit(limit).all()
+        group_by(Comment.restnm,Comment.date).order_by(Comment.date.desc()).limit(limit).offset(offset).all()
     latestList = [rest[0] for rest in latestTup]
     restList = db.session.query(Rest).filter(Rest.name.in_(latestList)).all()    
     return sorted(restList,key=methodcaller('latestDt'),reverse=True)

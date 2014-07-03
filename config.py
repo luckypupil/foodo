@@ -1,6 +1,6 @@
 import os
 
-DEBUG = True
+DEBUG = False
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -12,6 +12,7 @@ SECRET_KEY = '0penw@ter'
 
 if os.environ.get('DATABASE_URL') is None:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://blakeadams:@localhost/tiskdb'
+    DEBUG = True
 else:
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 #APPLICATION_URL = '0.0.0.0'

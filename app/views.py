@@ -34,7 +34,6 @@ def home(pg=1):
     radius = 10
     pg = int(pg)
     offset = pg*20-20
-    print offset
     form = RestSearch()
 #     if form.validate_on_submit():
     if request.args:
@@ -55,27 +54,27 @@ def home(pg=1):
             rest.badges = sorted(make_badges(rest.id))
             rest.grade = get_grade(rest.getPts())
         
-        flash('Welcome!')
-        
         return render_template('landing.html', rests=rests,next=pg+1, prev=max(1,pg-1), form=form)
 
     else:
         # landing inherits from main
-        flash('Welcome!')
         return render_template('landing.html', next=pg+1, prev=max(1,pg-1), form=form)
 
 
-@app.route('/noloco', methods=['GET'])
-def homenoloco():
+@app.route('/noloco/<int:pg>', methods=['GET'])
+@app.route('/noloco', methods=['GET','POST'])
+def homenoloco(pg=1):
+    offset = pg*20-20
     form = RestSearch()
-    rests = getLatest(lim)
+    rests = getLatest(lim,offset)
+    g.test = url_for('homenoloco')
     for rest in rests:
         rest.grade = get_grade(rest.getPts())
         rest.badges = sorted(make_badges(rest.id))
     #jrests = [rest.jsond() for rest in rests]
     # landing inherits from main
     return render_template('landingnoloco.html',
-                           rests=rests, form=form)
+                           rests=rests, next=pg+1, prev=max(1,pg-1), form=form)
 
 
 @app.route('/profile/<int:id>')

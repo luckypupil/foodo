@@ -75,8 +75,13 @@
       <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
       <nav class="w-nav pagination-nav" data-collapse="none" data-animation="default" data-duration="400">
         <nav class="w-nav-menu w-clearfix nav-menu" role="navigation">
-        	<a class="w-nav-link nav-link page" href="{{ url_for('home',pg=prev) }}">Prev</a>
-        	<a class="w-nav-link nav-link page" href="{{ url_for('home',pg=next) }}"> next </a>
+          {% if not g %}
+        	    <a class="w-nav-link nav-link page" href="{{ url_for('home',pg=prev) }}">Prev</a>
+        	    <a class="w-nav-link nav-link page" href="{{ url_for('home',pg=next) }}"> next </a>
+          {% else %}
+              <a class="w-nav-link nav-link page" href="{{ url_for('homenoloco',pg=prev) }}">Prev</a>
+              <a class="w-nav-link nav-link page" href="{{ url_for('homenoloco',pg=next) }}">Next</a>
+          {% endif %}
         </nav>
         <div class="w-nav-button">
           <div class="w-icon-nav-menu"></div>
