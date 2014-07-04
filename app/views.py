@@ -8,6 +8,7 @@ from forms import RestSearch, SubscribeForm
 from helper import get_grade, make_badges, search2, loc_query, getLatestComm, getLatest
 from operator import attrgetter, methodcaller
 from flask.ext.admin.contrib.sqla import ModelView
+import time
 auth = HTTPBasicAuth()
 lim = 20 #results page
 
@@ -52,7 +53,7 @@ def home(pg=1):
 
         for rest in rests:
             rest.badges = sorted(make_badges(rest.id))
-            rest.grade = get_grade(rest.getPts())
+        
         
         return render_template('landing.html', rests=rests,next=pg+1, prev=max(1,pg-1), form=form)
 
@@ -64,17 +65,23 @@ def home(pg=1):
 @app.route('/noloco/<int:pg>', methods=['GET'])
 @app.route('/noloco', methods=['GET','POST'])
 def homenoloco(pg=1):
+    start = time.time()
     offset = pg*20-20
     form = RestSearch()
     rests = getLatest(lim,offset)
-    g.test = url_for('homenoloco')
+    resttime = time.time()
+    # g.test = url_for('homenoloco')
     for rest in rests:
-        rest.grade = get_grade(rest.getPts())
+        #rest.grade = get_grade(rest.getPts())
         rest.badges = sorted(make_badges(rest.id))
     #jrests = [rest.jsond() for rest in rests]
-    # landing inherits from main
-    return render_template('landingnoloco.html',
-                           rests=rests, next=pg+1, prev=max(1,pg-1), form=form)
+    #landing inherits from main
+    end = time.time()
+    restqry = resttime-start
+    addbadge = end-resttime
+    print "time it took for rest query is  {} seconds".format(restqry)
+    print "time it took add badges is {} seconds".format(addbadge)
+    return render_template('landingnoloco.html', rests=rests, next=pg+1, prev=max(1,pg-1), form=form)
 
 
 @app.route('/profile/<int:id>')
