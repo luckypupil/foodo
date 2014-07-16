@@ -95,24 +95,24 @@ def profile(id):
 #     return render_template('about.html')
 
 
-# @app.route('/subscribe', methods=['GET', 'POST'])
-# def subscribe():
-#     form = SubscribeForm()
-#     if form.validate_on_submit():
-#         print 'success'
-#         if not db.session.query(User).\
-#                 filter(User.email == form.data['email']).first():
-#             u = User(
-#                 form.data['email'],
-#                 form.data['zipcd'],
-#                 form.data['first_name'],
-#                 form.data['last_name'])
-#             db.session.add(u)
-#             db.session.commit()
-#             return 'Thanks for your submission!'
-#         else:
-#             return 'We already have your email in our distro list!'
-#     return render_template('subscribe.html', form=form)
+@app.route('/subscribe', methods=['GET', 'POST'])
+def subscribe():
+    form = SubscribeForm()
+    if form.validate_on_submit():
+        print 'success'
+        if not db.session.query(User).\
+                filter(User.email == form.data['email']).first():
+            u = User(
+                form.data['email'],
+                form.data['zipcd'],
+                form.data['first_name'],
+                form.data['last_name'])
+            db.session.add(u)
+            db.session.commit()
+            return 'Thanks for your submission!'
+        else:
+            return 'We already have your email in our distro list!'
+    return render_template('subscribe.html', form=form)
 
 #####################Unused API CODE####################
 # @app.route('/api/<int:id>',methods=['GET'])

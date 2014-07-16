@@ -40,6 +40,7 @@ class Rest(db.Model):
     lng = db.Column(db.Float(6))
     tsv = db.Column(postgresql.TSVECTOR(), nullable=True, index=True)
     grade = db.Column(db.Text)
+    #badges = db.Column(postgresql.ARRAY('Text'))
 
     def __init__(self, name, street, zipcd):
         self.name = name
