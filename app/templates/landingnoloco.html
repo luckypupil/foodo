@@ -9,9 +9,9 @@
       <h1 class="logo"></h1>
       <div class="w-hidden-small w-hidden-tiny big-tagline">Tagline Here</div>
       <div class="w-form">
-        <form class="w-clearfix" method="post" id="email-form" name="search-form" data-name="Email Form">
-          {{ form.csrf_token }}
+        <form class="w-clearfix" method="get" id="email-form" name="search-form" data-name="Email Form">
           {{ form.search(class="w-input field",placeholder="Restuarant") }}
+          
           <input class="w-button button" type="submit" value="Submit" >
         </form>
         <div class="w-form-done">
@@ -43,6 +43,7 @@
         </div>
       
       </nav>
+
       {% for rest in rests %}
 	      <a class="w-clearfix w-inline-block article" href="{{ url_for('profile',id=rest.id)}}">
 	        <section class="w-clearfix article-text-wrapper">
@@ -75,12 +76,12 @@
       <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
       <nav class="w-nav pagination-nav" data-collapse="none" data-animation="default" data-duration="400">
         <nav class="w-nav-menu w-clearfix nav-menu" role="navigation">
-          {% if not g %}
-        	    <a class="w-nav-link nav-link page" href="{{ url_for('home',pg=prev) }}">Prev</a>
-        	    <a class="w-nav-link nav-link page" href="{{ url_for('home',pg=next) }}"> next </a>
+          {% if session.noloco %}
+        	    <a class="w-nav-link nav-link page" href="{{ url_for('homenoloco', pg=prev, search=request.args.get('search')) }}">Prev</a>
+              <a class="w-nav-link nav-link page" href="{{ url_for('homenoloco', pg=next, search=request.args.get('search')) }}">Next</a>
           {% else %}
-              <a class="w-nav-link nav-link page" href="{{ url_for('homenoloco',pg=prev) }}">Prev</a>
-              <a class="w-nav-link nav-link page" href="{{ url_for('homenoloco',pg=next) }}">Next</a>
+              <a class="w-nav-link nav-link page" href="{{ url_for('home',pg=prev, lat=request.args.get('lat',none), lng=request.args.get('lng',none), search=request.args.get('search',none)) }}">Prev</a>
+              <a class="w-nav-link nav-link page" href="{{ url_for('home',pg=next, lat=request.args.get('lat',none), lng=request.args.get('lng',none), search=request.args.get('search',none)) }}"> next </a>
           {% endif %}
         </nav>
         <div class="w-nav-button">

@@ -5,7 +5,7 @@ from flask.json import dumps
 from flask.ext.httpauth import HTTPBasicAuth
 from models import Comment, Rest, Badge, User
 from forms import RestSearch, SubscribeForm
-from helper import get_grade, make_badges, search2, loc_query, getLatestComm, getLatest
+from helper import get_grade, make_badges, search2, search3, loc_query, getLatestComm, getLatest
 from operator import attrgetter, methodcaller
 from flask.ext.admin.contrib.sqla import ModelView
 import time
@@ -29,24 +29,29 @@ def page_not_found(error):
     return render_template('404.html'), 404
 
 
-@app.route('/<int:pg>/', methods=['GET', 'POST'])
 @app.route('/', methods=['GET', 'POST'])
+@app.route('/<int:pg>/', methods=['GET', 'POST'])
 def home(pg=1):
+    if 'noloco' in session:
+        session.pop('noloco',none)
+
     radius = 10
     pg = int(pg)
     offset = pg*20-20
     form = RestSearch()
-#     if form.validate_on_submit():
+
     if request.args:
         lat = request.args.get('lat', "39.9522")  # city Hall
         lng = request.args.get('lng', "-75.1639")
         try:
-            if form.validate_on_submit():
-                term = request.form.get('search', '')
+            if request.args.get('search', ''):
+                term = request.args.get('search', '')
                 query = search2(lat, lng, radius, offset, lim, term)
             else:
                 query = loc_query(lat, lng, radius, offset, lim)
+   
         except:
+            print 'shits excepting'
             return redirect(url_for('homenoloco'))
 
         rests = Rest.query.from_statement(query).all()
@@ -65,22 +70,32 @@ def home(pg=1):
 @app.route('/noloco/<int:pg>', methods=['GET'])
 @app.route('/noloco', methods=['GET','POST'])
 def homenoloco(pg=1):
+    session.noloco = 'y'
     start = time.time()
     offset = pg*20-20
     form = RestSearch()
-    rests = getLatest(lim,offset)
-    resttime = time.time()
-    # g.test = url_for('homenoloco')
+    if request.args.get('search', ''):
+        term = request.args.get('search')
+        query = search3(offset, lim, term)
+        rests = Rest.query.from_statement(query).all()
+    else:
+        rests = getLatest(lim,offset)
+    
+    #resttime = time.time()
+    
     for rest in rests:
         #rest.grade = get_grade(rest.getPts())
         rest.badges = sorted(make_badges(rest.id))
     #jrests = [rest.jsond() for rest in rests]
     #landing inherits from main
-    end = time.time()
-    restqry = resttime-start
-    addbadge = end-resttime
-    print "time it took for rest query is  {} seconds".format(restqry)
-    print "time it took add badges is {} seconds".format(addbadge)
+    
+    ### Used to time rest qry and badge making processes ###
+    #end = time.time()
+    #restqry = resttime-start
+    #addbadge = end-resttime
+    #print "time it took for rest query is  {} seconds".format(restqry)
+    #print "time it took add badges is {} seconds".format(addbadge)
+    
     return render_template('landingnoloco.html', rests=rests, next=pg+1, prev=max(1,pg-1), form=form)
 
 

@@ -81,7 +81,10 @@ def search2(lat,lng,radius,offset,lim,term):
     * sin(radians(lat)))) AS distance FROM rest) AS distance WHERE distance\
      < {radius} AND plainto_tsquery('{term}') @@ tsv LIMIT {limit} OFFSET {offset};".format(latitude=lat, longitude=lng, radius=radius, offset=offset, term=term, limit=lim))
 	
- 
+def search3(offset,lim,term):
+    return("SELECT * FROM rest WHERE plainto_tsquery('{term}') @@ tsv LIMIT {limit} OFFSET {offset};".format(offset=offset, term=term, limit=lim))
+
+
 def makeSlug(string,spaceChar='+',Maxlen=None):
             stringlst = string.split(" ")
             newStr =""
