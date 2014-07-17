@@ -305,6 +305,7 @@ p {
   color: black;
   font-size: 12px;
   line-height: 10px;
+
 }
 .article-info-text.tag {
   display: inline-block;
@@ -312,6 +313,8 @@ p {
   border: 1px solid black;
   border-radius: 30px;
   text-transform: none;
+  background-color: orange;
+  color: black;
 }
 .pagination-nav {
   position: relative;

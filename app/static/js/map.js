@@ -11,6 +11,7 @@ function errorloco (loc) {
 	alert("Tisk was unable to obtain your location to send you the closest inspections to your current location but here's a list of the most recent PHl food inspections!")	
 	window.location = window.location+'noloco';
 	};
+
 	
 
 

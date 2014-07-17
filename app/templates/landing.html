@@ -1,5 +1,6 @@
 {% extends "landingnoloco.html" %}
 {% block jsInit %} 
+{{ super() }}
 <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
     <script type="text/javascript">
     	function geoload() {

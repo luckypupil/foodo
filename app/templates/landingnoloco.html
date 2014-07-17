@@ -1,5 +1,14 @@
 {% extends "base.html" %}
-{% block jsInit %} 
+{% block jsInit %}
+  <script>
+    $(document).ready(function(){
+    $(".article-info-text.tag:contains(Bathroom)").css("background-color", "gray");
+    $(".article-info-text.tag:contains(Maintenance)").css("background-color", "gray");
+    $(".article-info-text.tag:contains(Certification)").css("background-color", "gray");
+    $(".article-info-text.tag:contains(Refuse)").css("background-color", "gray");
+    });
+   
+  </script> 
 {% endblock %}
 {% block title %}<title>{{ 'Tisk | Home' }}</title>{% endblock %}
 {% block content %}
@@ -11,7 +20,7 @@
       <div class="w-form">
         <form class="w-clearfix" method="get" id="email-form" name="search-form" data-name="Email Form">
           {{ form.search(class="w-input field",placeholder="Restuarant") }}
-          
+
           <input class="w-button button" type="submit" value="Submit" >
         </form>
         <div class="w-form-done">
@@ -90,8 +99,4 @@
       </nav>
     </div>
   </div>
-{% endblock %}
-{% block JS2 %}
-<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    
 {% endblock %}
