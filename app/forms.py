@@ -6,7 +6,7 @@ class RestSearch(Form):
     search = TextField('restuarant',validators = [Required(message=(u'.'))])
 
 class SubscribeForm(Form):
-    email = StringField('email',validators = [InputRequired(),Email(),Length(min=2)])
-    zipcd = IntegerField('zipcd',validators = [Required()])
+    email = StringField('email',validators = [InputRequired(message = (u'Email field required')),Email(),Length(min=2)])
+    zipcd = IntegerField('zipcd',validators = [InputRequired(message = (u'Zip field required'))])
     first_name = TextField('first')
     last_name = TextField('last')

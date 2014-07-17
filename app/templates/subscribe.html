@@ -37,22 +37,23 @@
         </div>
       </nav>
       <div class="section">
-        <h1>Subscribe to Proof</h1>
-        <p>Want the latest articles in your inbox? Subscribe - it's free! Just give us your contact info and you're on your way.</p>
-        <div class="w-form form-wrapper">
-          <form class="w-clearfix" name="wf-form-subscribe" data-name="Subscribe" method="post">
-          	{{ form.csrf_token }}
-          	{{ form.email(class="w-input field email",placeholder="Email Address",style="width: 50%;") }}
-            {{ form.zipcd(class="w-input field",placeholder="Zip Code",style="width: 30%;") }}
-            {{ form.first_name(class="w-input field first",placeholder="First Name") }}
-            {{ form.last_name(class="w-input field last",placeholder="Last Name") }}
+        <h1>Subscribe</h1>
+        <h4>Sign up for updates on the latest review in your neighborhood!.</h4>
+        <div class="w-form form-wrapper" align="left">
+          <h2 style="color: orange">{{ get_flashed_messages()[0] }}</p>
+
+          <form class="w-clearfix" name="wf-form-subscribe" data-name="Subscribe" method="post">	
+            {{ form.csrf_token }}
+          	{{ form.email(class="w-input field email",placeholder="Email Address *",style="width: 40%;") }}
+            {{ form.zipcd(class="w-input field",placeholder="Zip Code *",style="width: 40%;") }}
+            {{ form.first_name(class="w-input field",placeholder="First Name",style="width: 40%;") }}
+            {{ form.last_name(class="w-input field",placeholder="Last Name",style="width: 40%;") }}
             {% for field_name, field_errors in form.errors.items() %}
-          	<p>{{ field_name }} 
-          		<ul>{% for error in field_errors %}
+          		<ul style="color: red">{% for error in field_errors %}
           			<li>{{ error }}</li>
           			{% endfor %}</ul>
           {% endfor %}</p>
-            <input class="w-button button" type="submit" value="Get the Dish" >
+            <input class="w-button button" type="submit" value="Get the Dish" style="margin-left: 30%" >
           </form>
           <div class="w-form-done success-message">
             <h2>Awesome sauce!</h2>

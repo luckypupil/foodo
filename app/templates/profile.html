@@ -106,12 +106,22 @@
   </div>
   <div class="subscribe-section">
     <div class="w-container">
-      <h2 class="alternative-h2">Get the latest articles in your inbox</h2>
+      <h2 class="alternative-h2">Get the latest latest reviews in your neighborhood!</h2>
       <div class="w-form form-wrapper">
-        <form class="w-clearfix" name="wf-form-subscribe-via-article" data-name="Subscribe via Article">
-          <input class="w-input sign-up-field" type="email" placeholder="Enter your email address" name="email" data-name="Email" required="required">
-          <input class="w-button sign-up-button" type="submit" value="Subscribe" data-wait="Please wait...">
-        </form>
+        <h2 style="color: orange">{{ get_flashed_messages()[0] }}</p>
+        <form class="w-clearfix" name="wf-form-subscribe" data-name="Subscribe" method="post">  
+            {{ form.csrf_token }}
+            {{ form.email(class="w-input field email",placeholder="Email Address *",style="width: 40%;") }}
+            {{ form.zipcd(class="w-input field",placeholder="Zip Code *",style="width: 40%;") }}
+            {{ form.first_name(class="w-input field",placeholder="First Name",style="width: 40%;") }}
+            {{ form.last_name(class="w-input field",placeholder="Last Name",style="width: 40%;") }}
+            {% for field_name, field_errors in form.errors.items() %}
+              <ul style="color: red">{% for error in field_errors %}
+                <li>{{ error }}</li>
+                {% endfor %}</ul>
+          {% endfor %}</p>
+            <input class="w-button sign-up-button" type="submit" value="Get the Dish" style="width: 25% margin-left: auto" >
+          </form>
         <div class="w-form-done success-message on-dark">
           <h2 class="alternative-h2">Awesome sauce!</h2>
           <p>Thank you! Your submission has been received!</p>

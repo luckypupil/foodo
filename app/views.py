@@ -49,7 +49,7 @@ def home(pg=1):
                 query = search2(lat, lng, radius, offset, lim, term)
             else:
                 query = loc_query(lat, lng, radius, offset, lim)
-   
+
         except:
             print 'shits excepting'
             return redirect(url_for('homenoloco'))
@@ -99,11 +99,26 @@ def homenoloco(pg=1):
     return render_template('landingnoloco.html', rests=rests, next=pg+1, prev=max(1,pg-1), form=form)
 
 
-@app.route('/profile/<int:id>')
+@app.route('/profile/<int:id>', methods=['GET', 'POST'])
 def profile(id):
     rest = Rest.query.get(id)
+    form = SubscribeForm()
     othercomments,foodcomments = getLatestComm(id)
-    return render_template('profile.html', rest=rest, foodcomments=foodcomments, othercomments=othercomments)
+    if form.validate_on_submit():
+        if not db.session.query(User).\
+                filter(User.email == form.data['email']).first():
+            u = User(
+                form.data['email'],
+                form.data['zipcd'],
+                form.data['first_name'],
+                form.data['last_name'])
+            db.session.add(u)
+            db.session.commit()
+            flash('Thanks for your submission!')
+        else:
+            flash('Looks like we already have your email on our list!')
+    
+    return render_template('profile.html', rest=rest, foodcomments=foodcomments, othercomments=othercomments, form=form)
 
 # @app.route('/about', methods=['GET'])
 # def about():
@@ -114,7 +129,6 @@ def profile(id):
 def subscribe():
     form = SubscribeForm()
     if form.validate_on_submit():
-        print 'success'
         if not db.session.query(User).\
                 filter(User.email == form.data['email']).first():
             u = User(
@@ -124,9 +138,9 @@ def subscribe():
                 form.data['last_name'])
             db.session.add(u)
             db.session.commit()
-            return 'Thanks for your submission!'
+            flash('Thanks for your submission!')
         else:
-            return 'We already have your email in our distro list!'
+            flash('Looks like we already have your email on our list!')
     return render_template('subscribe.html', form=form)
 
 #####################Unused API CODE####################

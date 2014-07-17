@@ -323,7 +323,7 @@ p {
   margin-top: 29px;
 }
 .field {
-  display: block;
+  display: inline-block;
   width: 65%;
   height: 53px;
   margin-right: auto;
