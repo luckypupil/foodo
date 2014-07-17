@@ -313,8 +313,9 @@ p {
   border: 1px solid black;
   border-radius: 30px;
   text-transform: none;
-  background-color: orange;
+  background-color: #F54F02;
   color: black;
+  font-style: italic;
 }
 .pagination-nav {
   position: relative;
