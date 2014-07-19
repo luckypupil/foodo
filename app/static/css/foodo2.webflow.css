@@ -177,9 +177,9 @@ p {
 }
 .main-column.content {
   left: 8px;
-  overflow-x: scroll;
-  overflow-y: scroll;
-  max-width: 800px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  max-width: 100%;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.09) -1px 0px 0px 0px inset;
   font-family: Roboto, sans-serif;
@@ -432,7 +432,7 @@ p {
   position: relative;
   height: 200px;
   padding-top: 50px;
-  background-image: url('../images/profile_background_1.jpg');
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/profile_background.jpg');
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }
@@ -447,6 +447,8 @@ p {
 .content-section.footer {
   background-color: transparent;
   text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 .hollow-button {
   display: inline-block;
@@ -487,7 +489,7 @@ p {
   padding-top: 52px;
   padding-bottom: 52px;
   background-color: #b8c6cc;
-  background-image: url('../images/dark-wood.jpg'), url('../images/waterfall.jpg');
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg'), url('../images/waterfall.jpg');
   background-position: 0% 0%, 0px 50%;
   box-shadow: rgba(0, 0, 0, 0.10) 0px 1px 0px 0px inset;
   color: white;
@@ -759,7 +761,6 @@ p {
   }
   .header-image {
     height: 357px;
-    background-image: url('../images/profile_background_1.jpg');
     background-position: 0% 0%;
     background-size: cover;
     background-repeat: no-repeat;
