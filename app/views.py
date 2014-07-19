@@ -96,7 +96,7 @@ def homenoloco(pg=1):
     #print "time it took for rest query is  {} seconds".format(restqry)
     #print "time it took add badges is {} seconds".format(addbadge)
     
-    return render_template('landingnoloco.html', rests=rests, next=pg+1, prev=max(1,pg-1), form=form)
+    return render_template('landingnoloco2.html', rests=rests, next=pg+1, prev=max(1,pg-1), form=form)
 
 
 @app.route('/profile/<int:id>', methods=['GET', 'POST'])

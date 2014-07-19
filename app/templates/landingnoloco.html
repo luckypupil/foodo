@@ -13,7 +13,6 @@
 {% block title %}<title>{{ 'Tisk | Home' }}</title>{% endblock %}
 {% block content %}
   <div class="w-clearfix all-content">
-    
     <header class="main-column header">
       <h1 class="logo"></h1>
       <div class="w-hidden-small w-hidden-tiny big-tagline">Tagline Here</div>
@@ -39,7 +38,9 @@
         </a>
       </div>
     </header>
+   
     <div class="main-column content">
+      <!-- OG HTML
       <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
         <nav class="w-nav-menu w-clearfix nav-menu" role="navigation">
         	<a class="w-nav-link nav-link" href="{{ url_for('home') }}" data-ix="new-interaction">Home</a>
@@ -48,10 +49,26 @@
         </nav>
         <div class="w-nav-button menu-wrapper">
           <div class="w-icon-nav-menu menu-icon"></div>
-          <div class="menu">MENU</div>
+          <div class="menu"><a href="#mypanel" data-rel="panel">MENU</a></div>
         </div>
       
       </nav>
+      END OG HTML -->
+      <!-- NEW HTML -->
+      <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
+        <div class="w-nav-button w-clearfix menu-wrapper" url2image_parsed="1">
+          <div class="menu" url2image_parsed="1">MENU</div>
+          <div class="w-icon-nav-menu menu-icon"></div>
+        </div>
+        <div class="w-nav-overlay" data-wf-ignore="" url2image_parsed="1" style="display: none;"></div>
+        <nav class="w-nav-menu nav-menu" role="navigation" style="backface-visibility: hidden; transform: translateX(0px) translateY(0px);">
+          <a class="w-nav-link nav-link w--current" href="/" url2image_parsed="1">Articles</a>
+          <a class="w-nav-link nav-link" href="/suggest" url2image_parsed="1">SUGGEST</a>
+          <a class="w-nav-link nav-link" href="/subscribe" url2image_parsed="1">Subscribe</a>
+          <a class="w-nav-link nav-link" href="/about" url2image_parsed="1">About</a>
+        </nav>
+      </nav>
+      <!-- END NEW HTML -->
 
       {% for rest in rests %}
 	      <a class="w-clearfix w-inline-block article" href="{{ url_for('profile',id=rest.id)}}">
@@ -98,5 +115,4 @@
         </div>
       </nav>
     </div>
-  </div>
 {% endblock %}

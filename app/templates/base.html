@@ -3,6 +3,7 @@
 <head>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.jf"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/modenizr.js') }}" async></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/map.js') }}" async></script>
   {% block jsInit %} {% endblock %}
@@ -10,9 +11,10 @@
   {% block title %}<title>Tisk</title>{% endblock %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Webflow">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed|Roboto+Slab">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/normalize.css') }}">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/webflow.css') }}">
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/foodo.webflow.css') }}">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/foodo2.webflow.css') }}">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
   <script>
     WebFont.load({
