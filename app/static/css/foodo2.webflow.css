@@ -46,7 +46,7 @@ h6 {
   font-weight: 700;
 }
 p {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-family:'Roboto Slab', sans-serif;
   color: black;
   font-size: 14px;
@@ -819,7 +819,7 @@ p {
     text-align: left;
   }
   .navbar {
-    height: 15px;
+    height: 38px;
     background-color: rgba(0, 0, 0, 0.24);
   }
   .nav-menu {
@@ -893,7 +893,7 @@ p {
     margin-bottom: 10px;
   }
   .header-image {
-    height: 275px;
+    height: 125px;
     padding-top: 0px;
     background-position: 50% 50%;
   }
@@ -901,6 +901,7 @@ p {
     padding-top: 27px;
     padding-bottom: 27px;
     background-color: transparent;
+    margin-top: 100px;
   }
   .hollow-button {
     padding-bottom: 7px;
@@ -1039,7 +1040,7 @@ p {
   .navbar {
     position: relative;
     display: block;
-    height: 15px;
+    height: 38px;
     margin-right: auto;
     margin-left: auto;
     background-color: rgba(0, 0, 0, 0.24);
@@ -1147,6 +1148,8 @@ p {
   }
   .mobile-header-div {
     float: left;
+    clear: both;
+    margin-top: 20px;
   }
   .moble-badge-row {
     margin-bottom: 11px;
