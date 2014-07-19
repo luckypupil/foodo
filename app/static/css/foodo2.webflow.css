@@ -98,7 +98,7 @@ p {
   margin-bottom: 31px;
   padding: 4px 21px 21px;
   background-color: transparent;
-  background-image: url('../images/home_page_logo.png');
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/logo/home_page_logo.png');
   background-position: 50% 50%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -162,17 +162,18 @@ p {
   float: left;
 }
 .main-column.header {
-  max-width: 600px;
+  max-width: 55%;
   padding-top: 164px;
   padding-right: 15px;
   padding-left: 15px;
-  background-image: url('../images/hompage_background2.jpg');
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/homepage_background2.jpg');
   background-position: 50% 50%;
   background-repeat: no-repeat;
   box-shadow: rgba(0, 0, 0, 0.27) -3px 0px 0px 0px inset;
   color: white;
   text-align: center;
   text-shadow: rgba(0, 0, 0, 0.63) 0px 1px 0px;
+  background-size: cover;
 }
 .main-column.content {
   left: 8px;
@@ -194,10 +195,8 @@ p {
   box-shadow: rgba(0, 0, 0, 0.09) 0px 1px 0px 0px, rgba(0, 0, 0, 0.09) -1px 0px 0px 0px inset;
 }
 .nav-menu {
-  width: 50%;
-  margin-top: -20px;
+  width: 65%;
   margin-right: 0px;
-  padding-right: 231px;
   float: left;
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
@@ -208,11 +207,8 @@ p {
   left: 0px;
   top: 0px;
   display: block;
-  width: 25%;
-  height: 5px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 19px 22px 20px;
+  width: 30%;
+  padding: 20x;
   float: left;
   border: 2px solid white;
   background-color: rgba(255, 255, 255, 0.85);
@@ -292,7 +288,7 @@ p {
   margin-top: 0px;
   float: right;
   font-family:'Roboto Condensed', sans-serif;
-  color: #ff7b00;
+  color: #0F0F0F;
   font-size: 23px;
 }
 .article-info-wrapper {
@@ -300,7 +296,7 @@ p {
 }
 .article-info-text {
   display: inline-block;
-  margin-right: 0px;
+  margin: 0px 3px 3px 3px;
   font-family:'Roboto Slab', sans-serif;
   color: black;
   font-size: 12px;
@@ -311,9 +307,11 @@ p {
 .article-info-text.tag {
   display: inline-block;
   padding: 4px 7px;
-  border: 1px solid black;
+  border: none;
   border-radius: 30px;
   text-transform: none;
+  background-color: #ff7b00;
+  font-style: italic;
 }
 .article-info-text.tag.hygiene {
   width: 60px;
@@ -337,6 +335,7 @@ p {
   background-size: 60px;
   background-repeat: no-repeat;
   background-attachment: scroll;
+  color: transparent;
 }
 .pagination-nav {
   position: relative;
@@ -346,6 +345,7 @@ p {
   padding-top: 0px;
   background-color: transparent;
   box-shadow: none;
+  color: transparent;
 }
 .form-wrapper {
   margin-top: 29px;
@@ -654,7 +654,7 @@ p {
   font-family: Oswald, sans-serif;
   color: black;
   font-size: 25px;
-  line-height: 16px;
+  line-height: normal;
   font-weight: 400;
   text-transform: uppercase;
 }
@@ -739,13 +739,9 @@ p {
   }
   .nav-link {
     position: static;
-    width: 75%;
+    width: 33.1%;
     margin-top: 0px;
-    margin-right: auto;
-    margin-left: auto;
-    padding: 20px 13px;
     float: left;
-    clear: none;
     text-align: center;
     list-style-type: none;
   }
@@ -777,9 +773,9 @@ p {
     margin-bottom: 0px;
   }
   .button {
-    margin-top: 29px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-top: auto;
+    margin: 0px 35%;
+    width: 30%;
     font-family: Klinicslabmedium, sans-serif;
     font-size: 13px;
   }
@@ -789,8 +785,8 @@ p {
   }
   .logo {
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     margin: 0px auto;
     padding: 13px 14px;
     float: none;
@@ -811,6 +807,7 @@ p {
   .main-column {
     width: 100%;
     max-width: 1000px;
+    position: static;
   }
   .main-column.header {
     position: static;
@@ -858,14 +855,13 @@ p {
     box-shadow: none;
   }
   .article-info-text.tag {
-    width: 75px;
-    height: 75px;
     float: left;
     border-style: none;
     background-image: url('../images/certification_1.jpg');
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
+    border-color: black;
   }
   .article-info-text.tag.hygiene {
     background-image: url('../images/hygiene.jpg');

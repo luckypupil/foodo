@@ -15,9 +15,12 @@
   <div class="w-clearfix all-content">
     <header class="main-column header">
       <h1 class="logo"></h1>
+      <div class="w-hidden-small w-hidden-tiny big-tagline">Tagline Here</div>
       <div class="w-form">
-        <form id="email-form" name="email-form" data-name="Email Form">
-          <input class="w-input field" id="resturant" type="text" placeholder="Restuarant, Address, Zip" name="resturant" data-name="Resturant">
+        <form class="w-clearfix" method="get" id="email-form" name="search-form" data-name="Email Form">
+          {{ form.search(class="w-input field",placeholder="Restuarant") }}
+
+          <input class="w-button button" type="submit" value="Submit" >
         </form>
         <div class="w-form-done">
           <p>Thank you! Your submission has been received!</p>
@@ -27,8 +30,8 @@
         </div>
       </div>
       <div class="w-clearfix footer-wrapper">
-        <a class="w-inline-block footer-nav-link" href="http://www.twitter.com/webflowapp">
-          <img src="images/twitter-icon.svg" alt="52f2d48b593f6edf410003c1_twitter-icon.svg">
+        <a class="w-inline-block footer-nav-link" href="https://twitter.com/tiskphl"><!--Add Twitter page -->
+          <img src="https://s3.amazonaws.com/tisk-assets/img/twitter/Twitter_logo_white.png" width="30" alt="twitter">
         </a>
         <a class="w-inline-block footer-nav-link" href="/subscribe">
           <div class="subscribe">Subscribe</div>
@@ -48,7 +51,7 @@
         <a class="w-clearfix w-inline-block article" href="{{ url_for('profile',id=rest.id)}}">
           <section class="w-clearfix article-text-wrapper">
             <h2 class="arrow">❯</h2>
-            <h4 class="vios">{{ 'Grade: ' }}{{ rest.grade }} </h4>
+            <h4 class="vios">{{ 'Grade: ' }}{{ rest.grade }}</h4> 
             <h2 class="thumbnail-title">{{ rest.name }}</h2>
             <p>{{ rest.street }}{{ ' Philadelphia, PA ' }}{{ rest.zipcd }}</p>
             <div class="article-info-wrapper">
