@@ -8,7 +8,7 @@ from pprint import pprint
 from bs4 import BeautifulSoup, SoupStrainer
 from app import db
 from app.models import Rest, Comment
-from app.helper import makeSlug
+from app.helper import makeSlug, get_grade
 from math import ceil
 import cPickle as pickle
 
@@ -176,7 +176,16 @@ def addtodb(table_tup):
                         print '{} comment w/ code:{} added to Comment Table!'.format(restnm,code)
                     except:
                         print 'comment for {} not added.'.format(restnm,code)
-                        db.session.rollback()        
+                        db.session.rollback()
+
+            rest = db.session.query(Rest).filter(Rest.name == restnm).first()
+            grade = get_grade(rest.getPts())
+            rest.grade = grade
+            db.session.add(rest)
+            db.session.commit()
+            print 'Grade for {} updated'.format(restnm)
+
+
         except:
             pprint ("comment for {} didnt work".format(rest_row[0]))
         
@@ -186,7 +195,7 @@ def addtodb(table_tup):
    print '####   Exiting addtodb   ####'
 def main():
     ###Need to enter number of page results matching start/end dates specified###
-    startdate, endate = '05/19/2014', '05/30/2014'
+    startdate, endate = '05/30/2014', '07/20/2014'
     for html in makeHtmlRepo(scrapeHTMLinks(startdate,endate)):
         addtodb(Make_rest_rows(html,startdate))
     #Make_rest_rows(makeHtmlRepo(['estab.cfm?facilityID=CFF5EDC-813F-4F0A-A51E-1C099CD7045F'])[0],'01/01/2014')

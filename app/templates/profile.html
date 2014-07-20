@@ -25,6 +25,7 @@
           <img class="w-hidden-main w-hidden-medium w-hidden-small author-image mobile" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="100" alt="537a3eaeef89236d7de9d427_profile_page_logo.png">
           <div class="mobile-header-div">
             <h3 class="thumbnail-title">{{ rest.name }}<h3>
+            <h4 class="vios">{{ 'Grade: ' }}{{ rest.grade }}</h4> 
             <p class="mobile-para">{{ avgvios }} {{ 'AVG VIOLATIONS' }} </p>
             <p>{{ rest.street }}</p>
             <p>{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}</p>
@@ -39,8 +40,9 @@
   <div class="content-section">
     <div class="w-row mobile-header-row right-column">
       <div class="w-col w-col-7 article-body-column">
-		{% if rest.latestDt() %}      
-        <div class="vios date" style="color: black;">Last Inpsection: {{ rest.latestDt().strftime("%A, %B %d, %Y") }}</div></br>
+
+		{% if rest.latestDt() %}   
+        <div class="vios date" style="color: black; font-style:italics;">Last Inpsection: {{ rest.latestDt().strftime("%A, %B %d, %Y") }}</div></br>
 	        {% if foodcomments %}
             <h2 class="thumbnail-title">{{ 'Food Comments' }}</h2>
 		        {% for badge in foodcomments %}
@@ -58,13 +60,15 @@
 		                </ol>
 			          </div>
 			        </div>
-			    {% endfor %}
+			      {% endfor %}
+          {% endif %}
+          {% if othercomments %}
           <h2 class="thumbnail-title">{{ 'Other Comments' }}</h2>
             {% for badge in othercomments %}
               <div class="w-row badgerow">
                 <div class="w-col w-col-2 w-clearfix moble-badge-row">
                   <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.jpg" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
-                  <div class="badge"><h3 class="thumbnail-title">{{ badge|trim }}</h3></div>
+                  <div class="badge"><h4 class="thumbnail-title">{{ badge|trim }}</h4></div>
                   <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.jpg" title="{{ badge|trim}}" alt="{{ badge|trim}}">
                 </div>
                 <div class="w-col w-col-10">
@@ -75,17 +79,16 @@
                     </ol>
                 </div>
               </div>
-          {% endfor %}
-			{% else %}
-				<h3>{{ 'No data available for most recent inspection' }}</h3>      
-      		{% endif %}
+            {% endfor %}
+          {% endif %}  
       {% else %}
-				<h3>{{ 'Has not been inspected since Jan 1, 2013' }}</h3>      
+				<h3>{{ 'No recent inspection data exists' }}</h3>      
       {% endif %}	
       </div>
       <div class="w-col w-col-5 w-hidden-small w-hidden-tiny author-column">	
         <h4 class="w-hidden-main w-hidden-medium">About the Author</h4>
         <img class="author-image" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="200" alt="{{ rest.name }}">
+        <h4 class="vios">{{ 'Grade: ' }}{{ rest.grade }}</h4>
         <p class="vios">{{ rest.getVios() }} Violations</p>
         <div class="thumbnail-title">{{ rest.name }}</div>
         <div class="article-info-wrapper">

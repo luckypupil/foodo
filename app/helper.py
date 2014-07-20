@@ -57,7 +57,7 @@ def getLatest(limit=20,offset=1):
 
 
 def get_grade(pts):
-	### Converts points to equivalent inspection grade ###
+	### Converts points to equivalent inspection grade.  Used with Rest.getPts method###
 	
 	if pts == None: grade = 'N/A'
 	elif pts <= 10: grade = 'A'

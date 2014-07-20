@@ -178,7 +178,7 @@ p {
 .main-column.content {
   left: 8px;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: inherit;
   max-width: 100%;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.09) -1px 0px 0px 0px inset;
