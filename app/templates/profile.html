@@ -7,13 +7,13 @@
     <div class="w-container">
       <div class="w-clearfix navbar">
         <div class="w-clearfix nav-menu">
-          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile" href="{{ url_for('home') }}">
+          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile nav-profile" href="{{ url_for('home') }}">
             <div>Home</div>
           </a>
-          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile" href="#">
+          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile nav-profile" href="#">
             <div>About</div>
           </a>
-          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile" href="#">
+          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile nav-profile" href="#">
             <div>Contact</div>
           </a>
         </div>
@@ -40,9 +40,9 @@
     <div class="w-row mobile-header-row right-column">
       <div class="w-col w-col-7 article-body-column">
 		{% if rest.latestDt() %}      
-        <div class="vios date">Last Inpsection: {{ rest.latestDt().strftime("%A, %B %d, %Y") }}</div>
+        <div class="vios date" style="color: black;">Last Inpsection: {{ rest.latestDt().strftime("%A, %B %d, %Y") }}</div></br>
 	        {% if foodcomments %}
-            <h1>{{ 'Food Comments' }}</h1>
+            <h2 class="thumbnail-title">{{ 'Food Comments' }}</h2>
 		        {% for badge in foodcomments %}
 			        <div class="w-row badgerow">
 			          <div class="w-col w-col-2 w-clearfix moble-badge-row">
@@ -59,13 +59,12 @@
 			          </div>
 			        </div>
 			    {% endfor %}
-          <hr>
-          <h1>{{ 'Non-Food Comments' }}</h1>
+          <h2 class="thumbnail-title">{{ 'Other Comments' }}</h2>
             {% for badge in othercomments %}
               <div class="w-row badgerow">
                 <div class="w-col w-col-2 w-clearfix moble-badge-row">
                   <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.jpg" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
-                  <div class="badge"><bold><h2>{{ badge|trim }}</h2></bold></div>
+                  <div class="badge"><h3 class="thumbnail-title">{{ badge|trim }}</h3></div>
                   <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.jpg" title="{{ badge|trim}}" alt="{{ badge|trim}}">
                 </div>
                 <div class="w-col w-col-10">

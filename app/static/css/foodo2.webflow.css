@@ -244,6 +244,10 @@ p {
   padding-right: 28px;
   padding-left: 28px;
 }
+.nav-profile {
+  line-height: 35px;
+
+}
 .article {
   position: relative;
   z-index: 3;
