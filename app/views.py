@@ -56,6 +56,9 @@ def home(pg=1):
 
         rests = Rest.query.from_statement(query).all()
 
+        if not rests:
+            redirect(url_for('homenoloco'))
+
         for rest in rests:
             rest.badges = sorted(make_badges(rest.id))
         
@@ -120,9 +123,9 @@ def profile(id):
     
     return render_template('profile.html', rest=rest, foodcomments=foodcomments, othercomments=othercomments, form=form)
 
-# @app.route('/about', methods=['GET'])
-# def about():
-#     return render_template('about.html')
+@app.route('/about', methods=['GET'])
+def about():
+    return render_template('about.html')
 
 
 @app.route('/subscribe', methods=['GET', 'POST'])
