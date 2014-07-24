@@ -12,10 +12,13 @@
 {% endblock %}
 {% block title %}<title>{{ 'Tisk | Home' }}</title>{% endblock %}
 {% block content %}
+  
   <div class="w-clearfix all-content">
-    <header class="main-column header">
+    {% block MainColumn %}
+    <header class="main-column header filter">
       <h1 class="logo"></h1>
       <div class="w-hidden-small w-hidden-tiny big-tagline">Tagline Here</div>
+      {% block search %}
       <div class="w-form">
         <form class="w-clearfix" method="get" id="email-form" name="search-form" data-name="Email Form">
           {{ form.search(class="w-input field",placeholder="Restuarant") }}
@@ -29,6 +32,7 @@
           <p>Oops! Something went wrong while submitting the form :(</p>
         </div>
       </div>
+      {% endblock %}
       <div class="w-clearfix footer-wrapper">
         <a class="w-inline-block footer-nav-link" href="https://twitter.com/tiskphl"><!--Add Twitter page -->
           <img src="https://s3.amazonaws.com/tisk-assets/img/twitter/Twitter_logo_white.png" width="30" alt="twitter">
@@ -38,6 +42,7 @@
         </a>
       </div>
     </header>
+    {% endblock %}
     <div class="main-column content">
       <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
         <nav class="w-nav-menu w-clearfix nav-menu" role="navigation"><a class="w-nav-link nav-link" href="/" data-ix="new-interaction">Home</a><a class="w-nav-link nav-link" href="/about">ABOUT</a><a class="w-nav-link nav-link" href="/subscribe">Contact</a>

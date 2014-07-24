@@ -44,15 +44,15 @@
 		{% if rest.latestDt() %}   
         <div class="vios date" style="color: black; font-style:italics;">Last Inpsection: {{ rest.latestDt().strftime("%A, %B %d, %Y") }}</div></br>
 	        {% if foodcomments %}
-            <h2 class="thumbnail-title">{{ 'Food Comments' }}</h2>
+            <h2 class="thumbnail-title comment-headings">{{ 'Food Comments' }}</h2>
 		        {% for badge in foodcomments %}
 			        <div class="w-row badgerow">
 			          <div class="w-col w-col-2 w-clearfix moble-badge-row">
-			            <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.jpg" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
-			            <div class="badge"><bold><h2>{{ badge|trim }}</h2></bold></div>
-			            <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.jpg" title="{{ badge|trim}}" alt="{{ badge|trim}}">
+			            <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
+			            <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
+			            <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" title="{{ badge|trim}}" alt="{{ badge|trim}}">
 			          </div>
-			          <div class="w-col w-col-10">
+			          <div class="w-col w-col-10 article-info-text profile-body">
 			            <ol>
 			              {% for comment in foodcomments[badge] %}
 							<li>{{ comment[0] }} {{'('}} {{ comment[1] }} {{')'}}</li></br>
@@ -63,20 +63,20 @@
 			      {% endfor %}
           {% endif %}
           {% if othercomments %}
-          <h2 class="thumbnail-title">{{ 'Other Comments' }}</h2>
+          <h2 class="thumbnail-title comment-headings">{{ 'Other Comments' }}</h2>
             {% for badge in othercomments %}
-              <div class="w-row badgerow">
+              <div class="w-row badgerow othercomments">
                 <div class="w-col w-col-2 w-clearfix moble-badge-row">
-                  <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.jpg" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
-                  <div class="badge"><h4 class="thumbnail-title">{{ badge|trim }}</h4></div>
-                  <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.jpg" title="{{ badge|trim}}" alt="{{ badge|trim}}">
+                  <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
+                  <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
+                  <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" title="{{ badge|trim}}" alt="{{ badge|trim}}">
                 </div>
                 <div class="w-col w-col-10">
                   <ol>
                     {% for comment in othercomments[badge] %}
-              <li>{{ comment[0] }} {{'('}} {{ comment[1] }} {{')'}}</li></br>
+                    <li>{{ comment[0] }}</li></br>
                   {% endfor %}
-                    </ol>
+                  </ol>
                 </div>
               </div>
             {% endfor %}

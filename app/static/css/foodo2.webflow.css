@@ -107,6 +107,7 @@ p {
   font-size: 78px;
   line-height: 60px;
   font-weight: 400;
+  -webkit-filter: none;
 }
 .big-tagline {
   margin-bottom: 68px;
@@ -174,7 +175,12 @@ p {
   text-align: center;
   text-shadow: rgba(0, 0, 0, 0.63) 0px 1px 0px;
   background-size: cover;
+  -webkit-filter: blur(2px);
+
 }
+
+
+
 .main-column.content {
   left: 8px;
   overflow-x: hidden;
@@ -311,6 +317,11 @@ p {
   font-weight: 400;
   text-transform: none;
 }
+
+.article-info-text.profile-body {
+position: absolute;
+}
+
 .article-info-text.tag {
   display: inline-block;
   padding: 4px 7px;
@@ -421,6 +432,7 @@ p {
 .social-link {
   margin-right: 14px;
   opacity: 0.23;
+  padding-bottom: 15px;
   -webkit-transition: opacity 250ms ease;
   -o-transition: opacity 250ms ease;
   transition: opacity 250ms ease;
@@ -449,6 +461,7 @@ p {
   z-index: 10;
   padding-top: 1px;
   padding-bottom: 0px;
+  padding-left: 15px;
   background-color: rgba(255, 255, 255, 0.49);
   box-shadow: rgba(0, 0, 0, 0.05) 0px -1px 0px 0px;
 }
@@ -668,6 +681,11 @@ p {
   font-weight: 400;
   text-transform: uppercase;
 }
+
+.thumbnail-title.comment-headings {
+    color: #ff7b00;
+}
+
 .header-container {
   padding-top: 0px;
 }
@@ -680,6 +698,13 @@ p {
   text-decoration: none;
   text-transform: uppercase;
 }
+
+.vios.profile {
+  color: black;
+  margin-top: 0;
+  text-align:center;
+}
+
 .vios.date {
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -687,13 +712,12 @@ p {
   font-size: 18px;
 }
 .badge {
-  width: 70%;
-  height: 70%;
-  float: left;
+  float: initial;
   background-image: url('../images/certification_1.jpg');
   background-position: 50% 50%;
   background-size: 75px;
   background-repeat: no-repeat;
+  padding-left: 20px;
 }
 .comment {
   margin-right: 40px;
@@ -802,6 +826,7 @@ p {
     border-width: 5px;
     font-size: 42px;
     line-height: 30px;
+    -webkit-filter: none;
   }
   .big-tagline {
     display: inline-block;
@@ -871,6 +896,7 @@ p {
     background-size: cover;
     background-repeat: no-repeat;
     border-color: black;
+
   }
   .article-info-text.tag.hygiene {
     background-image: url('../images/hygiene.jpg');
@@ -908,6 +934,7 @@ p {
   .content-section {
     padding-top: 27px;
     padding-bottom: 27px;
+    padding-left: 0;
     background-color: transparent;
     margin-top: 100px;
   }
@@ -1170,4 +1197,8 @@ p {
     font-size: 12px;
     line-height: 16px;
   }
+}
+
+.othercomments:last-child {
+  border-bottom: none;
 }
