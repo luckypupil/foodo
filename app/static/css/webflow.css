@@ -1075,7 +1075,7 @@ textarea.w-select {
   color: #339CE1;
 }
 .w-nav-menu {
-  position: relative;
+  position: fixed;
   float: right;
 }
 .w--nav-menu-open {

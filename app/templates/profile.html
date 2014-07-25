@@ -39,7 +39,7 @@
   </div>
   <div class="content-section">
     <div class="w-row mobile-header-row right-column">
-      <div class="w-col w-col-7 article-body-column">
+      <div class="w-col w-col-8 article-body-column">
 
 		{% if rest.latestDt() %}   
         <div class="vios date" style="color: black; font-style:italics;">Last Inpsection: {{ rest.latestDt().strftime("%A, %B %d, %Y") }}</div></br>
@@ -52,7 +52,7 @@
 			            <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
 			            <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" title="{{ badge|trim}}" alt="{{ badge|trim}}">
 			          </div>
-			          <div class="w-col w-col-10 article-info-text profile-body">
+			          <div class="w-col w-col-6 article-info-text profile-body">
 			            <ol>
 			              {% for comment in foodcomments[badge] %}
 							<li>{{ comment[0] }} {{'('}} {{ comment[1] }} {{')'}}</li></br>
@@ -71,7 +71,7 @@
                   <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
                   <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" title="{{ badge|trim}}" alt="{{ badge|trim}}">
                 </div>
-                <div class="w-col w-col-10">
+                <div class="w-col w-col-6">
                   <ol>
                     {% for comment in othercomments[badge] %}
                     <li>{{ comment[0] }}</li></br>
@@ -85,7 +85,7 @@
 				<h3>{{ 'No recent inspection data exists' }}</h3>      
       {% endif %}	
       </div>
-      <div class="w-col w-col-5 w-hidden-small w-hidden-tiny author-column">	
+      <div class="w-col w-col-4 w-hidden-small w-hidden-tiny author-column">	
         <h4 class="w-hidden-main w-hidden-medium">About the Author</h4>
         <img class="author-image" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="200" alt="{{ rest.name }}">
         <h4 class="vios">{{ 'Grade: ' }}{{ rest.grade }}</h4>

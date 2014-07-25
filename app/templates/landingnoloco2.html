@@ -64,6 +64,7 @@
               <div class="article-info-text">
                 <h4>{{ rest.latestDt().strftime("%A, %B %d, %Y") }}</h4>
               </div></br>
+              <p class="home-vio-label">{{ 'Vio Categories:' }}</p>
               {% if rest.badges %}
                   {% for badge in rest.badges %}
                     <div class="article-info-text tag">{{ badge|trim }}</div>
@@ -79,7 +80,7 @@
           </section>
       
         </a>
-    <hr/>
+    
      {% endfor %}
       <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
       <nav class="w-nav pagination-nav" data-collapse="none" data-animation="default" data-duration="400">

@@ -204,12 +204,14 @@ p {
   box-shadow: rgba(0, 0, 0, 0.09) 0px 1px 0px 0px, rgba(0, 0, 0, 0.09) -1px 0px 0px 0px inset;
 }
 .nav-menu {
-  width: 65%;
+  width: 50%;
   margin-right: 0px;
   float: left;
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   transition: all 500ms ease;
+  background-color: white;
+  border-bottom: solid lightgrey thin;
 }
 .nav-link {
   position: static;
@@ -261,7 +263,7 @@ p {
   position: relative;
   z-index: 3;
   display: block;
-  padding: 40px;
+  padding: 15px 30px;
   box-shadow: rgba(0, 0, 0, 0.10) 0px 1px 0px 0px;
   -webkit-transition: background-color 300ms ease, color 300ms ease;
   -o-transition: background-color 300ms ease, color 300ms ease;
@@ -269,6 +271,22 @@ p {
   color: black;
   text-decoration: none;
 }
+
+a[class="w-clearfix w-inline-block article"]:nth-of-type(1) {
+  top: 35px;
+  padding-bottom: 40px;
+}
+
+a[class="w-clearfix w-inline-block article"]:nth-of-type(2) {
+  margin-top: 20px;
+}
+
+.home-vio-label {
+  display: inline; 
+  font-style: italic;
+  color: #ff7b00;"
+}
+
 .article:hover {
   background-color: #fcfcfc;
   color: #0050b8;
@@ -298,7 +316,7 @@ p {
   float: left;
 }
 .arrow {
-  margin-top: 0px;
+  margin-top: 20px;
   float: right;
   font-family:'Roboto Condensed', sans-serif;
   color: #0F0F0F;
@@ -769,7 +787,7 @@ position: absolute;
 }
 @media (max-width: 991px) {
   .nav-menu {
-    width: 100%;
+    width: 50%;
   }
   .nav-link {
     position: static;
