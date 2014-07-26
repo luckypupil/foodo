@@ -90,6 +90,34 @@ p {
   right: 0px;
   bottom: 0px;
 }
+
+.main-column {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+.main-column.header {
+  max-width: 55%;
+  padding-top: 164px;
+  padding-right: 15px;
+  padding-left: 15px;
+  box-shadow: rgba(0, 0, 0, 0.27) -3px 0px 0px 0px inset;
+  color: white;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.63) 0px 1px 0px;
+}
+
+.logo::before {
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/homepage_background2.jpg');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  z-index: -1;
+}
+
 .logo {
   display: inline-block;
   width: 200px;
@@ -107,8 +135,10 @@ p {
   font-size: 78px;
   line-height: 60px;
   font-weight: 400;
-  -webkit-filter: none;
 }
+
+
+
 .big-tagline {
   margin-bottom: 68px;
   font-family:'Roboto Condensed', sans-serif;
@@ -156,28 +186,7 @@ p {
   text-decoration: none;
   text-transform: uppercase;
 }
-.main-column {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  float: left;
-}
-.main-column.header {
-  max-width: 55%;
-  padding-top: 164px;
-  padding-right: 15px;
-  padding-left: 15px;
-  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/homepage_background2.jpg');
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  box-shadow: rgba(0, 0, 0, 0.27) -3px 0px 0px 0px inset;
-  color: white;
-  text-align: center;
-  text-shadow: rgba(0, 0, 0, 0.63) 0px 1px 0px;
-  background-size: cover;
-  -webkit-filter: blur(2px);
 
-}
 
 
 
@@ -338,6 +347,7 @@ a[class="w-clearfix w-inline-block article"]:nth-of-type(2) {
 
 .article-info-text.profile-body {
 position: absolute;
+line-height: initial;
 }
 
 .article-info-text.tag {
@@ -834,6 +844,8 @@ position: absolute;
     position: relative;
     padding-bottom: 59px;
   }
+
+
   .logo {
     display: block;
     width: 150px;
@@ -846,6 +858,11 @@ position: absolute;
     line-height: 30px;
     -webkit-filter: none;
   }
+
+  .logo::before {
+
+  }
+
   .big-tagline {
     display: inline-block;
     margin-bottom: 57px;

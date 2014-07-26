@@ -64,7 +64,7 @@
               <div class="article-info-text">
                 <h4>{{ rest.latestDt().strftime("%A, %B %d, %Y") }}</h4>
               </div></br>
-              <p class="home-vio-label">{{ 'Vio Categories:' }}</p>
+              <div><p class="home-vio-label">{{ 'Violation Categories:' }}</p></div>
               {% if rest.badges %}
                   {% for badge in rest.badges %}
                     <div class="article-info-text tag">{{ badge|trim }}</div>
