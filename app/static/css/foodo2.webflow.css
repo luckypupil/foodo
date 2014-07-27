@@ -159,6 +159,7 @@ p {
   bottom: 0px;
   border-top: 1px solid rgba(255, 255, 255, 0.34);
   text-align: center;
+  z-index: 100;
 }
 .footer-nav-link {
   display: block;
