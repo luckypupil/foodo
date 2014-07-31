@@ -87,7 +87,6 @@
       <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
       <nav class="w-nav pagination-nav" data-collapse="none" data-animation="default" data-duration="400">
         <nav class="w-nav-menu w-clearfix nav-menu pagination-nav" role="navigation">
-          YoYO
           {% if session.noloco %}
               <a class="w-nav-link nav-link page" href="{{ url_for('homenoloco', pg=prev, search=request.args.get('search')) }}">Prev</a>
               <a class="w-nav-link nav-link page" href="{{ url_for('homenoloco', pg=next, search=request.args.get('search')) }}">Next</a>

@@ -848,8 +848,8 @@ line-height: initial;
 
   .logo {
     display: block;
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     margin: 0px auto;
     padding: 13px 14px;
     float: none;
@@ -879,19 +879,26 @@ line-height: initial;
     position: static;
   }
   .main-column.header {
-    position: static;
-    height: 80%;
+    position: fixed;
+    height: 44%;
     max-width: 1000px;
     padding-top: 15px;
     padding-bottom: 10px;
     text-align: left;
+    z-index:  100;
   }
+
+  .rest-summaries {
+    margin-top: auto;
+  }
+  
   .navbar {
     height: 38px;
-    background-color: rgba(0, 0, 0, 0.24);
+    position: fixed;
+    background-color: transparent;
   }
   .nav-menu {
-    background-color: black;
+    background-color: transparent;
   }
   .nav-link {
     box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset;
@@ -912,6 +919,15 @@ line-height: initial;
   }
   .nav-link.page.w--current:hover {
     background-color: white;
+  }
+
+  .pagination-nav{
+    padding-bottom: 2rem;
+  }
+
+  .footer-nav-link {
+    height: 42px;
+    padding: 8px;
   }
   .article {
     padding-top: 20px;
@@ -939,9 +955,7 @@ line-height: initial;
   .field {
     width: 50%;
     height: 40px;
-    margin-top: 19px;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 10px auto;
     padding-top: 15px;
     padding-right: 14px;
     float: none;
