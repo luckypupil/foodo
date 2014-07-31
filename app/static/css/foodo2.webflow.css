@@ -99,31 +99,27 @@ p {
 }
 .main-column.header {
   max-width: 55%;
-  padding-top: 164px;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 0 15px;
   box-shadow: rgba(0, 0, 0, 0.27) -3px 0px 0px 0px inset;
-  color: white;
+  color: none;
   text-align: center;
-  text-shadow: rgba(0, 0, 0, 0.63) 0px 1px 0px;
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/homebackground1.jpg');
+  background-size: cover;
 }
 
-.logo::before {
-  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/homepage_background2.jpg');
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
-  z-index: -1;
+.main-column.elements {
+  position: static;
+  width: 100%;
+  margin-top: -75%;
+  z-index:5;
 }
 
 .logo {
   display: inline-block;
   width: 200px;
   height: 200px;
-  margin-top: -94px;
-  margin-bottom: 31px;
+  margin-top: 10%;
+  margin-bottom: 15px;
   padding: 4px 21px 21px;
   background-color: transparent;
   background-image: url('https://s3.amazonaws.com/tisk-assets/img/logo/home_page_logo.png');
@@ -137,15 +133,14 @@ p {
   font-weight: 400;
 }
 
-
-
 .big-tagline {
-  margin-bottom: 68px;
+  margin-bottom: 1rem;
   font-family:'Roboto Condensed', sans-serif;
-  font-size: 45px;
+  font-size: 1.25rem;
   line-height: 54px;
-  font-weight: 300;
+  color: white;
 }
+
 .byline {
   font-family: Roboto, sans-serif;
   color: rgba(255, 255, 255, 0.74);
@@ -188,15 +183,12 @@ p {
   text-transform: uppercase;
 }
 
-
-
-
 .main-column.content {
   left: 8px;
   overflow-x: hidden;
   overflow-y: inherit;
   max-width: 100%;
-  background-color: white;
+  background-color: whitesmoke;
   box-shadow: rgba(0, 0, 0, 0.09) -1px 0px 0px 0px inset;
   font-family: Roboto, sans-serif;
   font-weight: 400;
@@ -220,8 +212,9 @@ p {
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   transition: all 500ms ease;
-  background-color: white;
-  border-bottom: solid lightgrey thin;
+  background-color: whitesmoke;
+  
+  border: none;
 }
 .nav-link {
   position: static;
@@ -231,9 +224,9 @@ p {
   width: 30%;
   padding: 20x;
   float: left;
-  border: 2px solid white;
-  background-color: rgba(255, 255, 255, 0.85);
-  box-shadow: rgba(0, 0, 0, 0.10) -1px 0px 0px 0px inset, transparent 0px -1px 0px 0px;
+  border: none;
+  background-color: whitesmoke;
+  
   font-family: Oswald, sans-serif;
   color: #ff7b00;
   font-size: 15px;
@@ -269,6 +262,12 @@ p {
   line-height: 35px;
 
 }
+
+.rest-summaries {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
 .article {
   position: relative;
   z-index: 3;
@@ -283,12 +282,12 @@ p {
 }
 
 a[class="w-clearfix w-inline-block article"]:nth-of-type(1) {
-  top: 35px;
-  padding-bottom: 40px;
+  /*top: 15%;
+  padding-bottom: 3rem;*/
 }
 
 a[class="w-clearfix w-inline-block article"]:nth-of-type(2) {
-  margin-top: 20px;
+  /*margin-top: 20px;*/
 }
 
 .home-vio-label {
