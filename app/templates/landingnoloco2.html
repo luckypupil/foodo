@@ -23,7 +23,7 @@
         <form class="w-clearfix" method="get" id="email-form" name="search-form" data-name="Email Form">
           {{ form.search(class="w-input field",placeholder="Restuarant") }}
 
-          <input class="w-button button" type="submit" value="Submit" >
+          <input class="w-button button search" type="submit" value="">
         </form>
         <div class="w-form-done">
           <p>Thank you! Your submission has been received!</p>
@@ -65,12 +65,7 @@
               <div class="article-info-text">
                 <h4>{{ rest.latestDt().strftime("%A, %B %d, %Y") }}</h4>
               </div></br>
-              <div><p class="home-vio-label">{{ 'Violation Categories:' }}</p></div>
-              {% if rest.badges %}
-                  {% for badge in rest.badges %}
-                    <div class="article-info-text tag">{{ badge|trim }}</div>
-              {% endfor %} 
-          {% endif %}
+              
         {% else %}
           <div class="article-info-text">
                 <p><b>{{ "No inspection since Jan 1, 2013" }}</b><p>

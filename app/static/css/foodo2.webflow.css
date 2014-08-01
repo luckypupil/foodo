@@ -5,6 +5,11 @@ body {
   font-size: 14px;
   line-height: 20px;
 }
+
+img {
+  max-width: 150px;
+}
+
 h1 {
   margin-right: 0px;
   margin-bottom: 18px;
@@ -118,11 +123,11 @@ p {
   display: inline-block;
   width: 200px;
   height: 200px;
-  margin-top: 10%;
+  margin-top: 18.5%;
   margin-bottom: 15px;
   padding: 4px 21px 21px;
   background-color: transparent;
-  background-image: url('https://s3.amazonaws.com/tisk-assets/img/logo/home_page_logo.png');
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png');
   background-position: 50% 50%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -138,7 +143,7 @@ p {
   font-family:'Roboto Condensed', sans-serif;
   font-size: 1.25rem;
   line-height: 54px;
-  color: white;
+  color: whitesmoke;
 }
 
 .byline {
@@ -184,11 +189,11 @@ p {
 }
 
 .main-column.content {
-  left: 8px;
   overflow-x: hidden;
   overflow-y: inherit;
   max-width: 100%;
-  background-color: whitesmoke;
+  /*background-color: whitesmoke;*/
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
   box-shadow: rgba(0, 0, 0, 0.09) -1px 0px 0px 0px inset;
   font-family: Roboto, sans-serif;
   font-weight: 400;
@@ -212,8 +217,7 @@ p {
   -webkit-transition: all 500ms ease;
   -o-transition: all 500ms ease;
   transition: all 500ms ease;
-  background-color: whitesmoke;
-  
+  background: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg') repeat;
   border: none;
 }
 .nav-link {
@@ -225,10 +229,9 @@ p {
   padding: 20x;
   float: left;
   border: none;
-  background-color: whitesmoke;
-  
+  background-color: transparent;
   font-family: Oswald, sans-serif;
-  color: black;
+  color: whitesmoke;
   font-size: 15px;
   font-weight: 400;
   text-align: center;
@@ -238,6 +241,7 @@ p {
 }
 .nav-link:hover {
   color:#ff7b00;
+  text-decoration: underline;
 }
 .nav-link.w--current {
   background-color: #ff7b00;
@@ -255,17 +259,28 @@ p {
 .nav-link.page {
   padding-right: 28px;
   padding-left: 28px;
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
 }
 .nav-profile {
   line-height: 35px;
-  background-color: lightgray;
-  opacity:  .9;
+}
 
+#search {
+  display: inline-block;
+  width: 25rem;
+  margin-right: .5rem;
 }
 
 .rest-summaries {
   margin-top: 3rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
+  background-color:whitesmoke;
+}
+
+.button.search {
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/icons/search_icon.jpg');
+  background-size: contain;
+  padding: 1rem 1.8rem;
 }
 
 .article {
@@ -297,9 +312,12 @@ a[class="w-clearfix w-inline-block article"]:nth-of-type(2) {
 }
 
 .article:hover {
-  background-color: #fcfcfc;
+  background-color: gray;
+  /*background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');*/
   color: #0050b8;
 }
+
+
 .article.suggested {
   width: 100%;
   padding: 22px;
@@ -345,8 +363,8 @@ a[class="w-clearfix w-inline-block article"]:nth-of-type(2) {
   text-transform: none;
 }
 
-.article-info-text.profile-body {
-position: absolute;
+.article-info-wrapper.profile-body {
+
 line-height: initial;
 }
 
@@ -390,6 +408,7 @@ line-height: initial;
   margin-top: -9px;
   margin-bottom: -6px;
   padding-top: 0px;
+  background-image: none;
   background-color: transparent;
   box-shadow: none;
   color: transparent;
@@ -480,9 +499,9 @@ line-height: initial;
   position: relative;
   height: 8rem;
   padding-top: 50px;
-  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/profile_background.jpg');
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
   background-position: 50% 50%;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 }
 .content-section {
   position: relative;
@@ -518,6 +537,7 @@ line-height: initial;
 .author-image {
   display: block;
   width: 50%;
+  max-width: 13rem;
   margin: -50px auto 1.5rem;
   float: none;
   clear: none;
@@ -587,9 +607,8 @@ line-height: initial;
   background-color: rgba(0, 80, 184, 0.72);
 }
 .author-social-links {
-  margin-top: 32px;
+  margin-top: 2rem;
   padding-top: 32px;
-  border-top: 1px solid rgba(0, 0, 0, 0.09);
 }
 .author-connect {
   margin-bottom: 20px;
@@ -711,8 +730,18 @@ line-height: initial;
   text-transform: uppercase;
 }
 
-.thumbnail-title.comment-headings {
+.thumbnail-title.grade {
     color: #ff7b00;
+    font-size: 2rem;
+    font-style: italic;
+    margin: 2rem 0;
+    width:  100%;
+}
+
+.thumbnail-title.vios {
+    color: black;
+    font-size: 1.25rem;
+    font-style: italic;
 }
 
 .header-container {
@@ -731,14 +760,25 @@ line-height: initial;
 .vios.profile {
   color: black;
   margin-top: 0;
-  text-align:center;
+  text-align:left;
+
 }
 
 .vios.date {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  color: #ff7e42;
+  border-bottom: lightgray .15rem solid;
+  color: lightgray;
   font-size: 18px;
+  margin: 0;
+}
+
+.grade-box {
+  opacity: .8;
+  border-top: lightgray .15rem solid;
+  border-bottom: lightgray .15rem solid;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
 }
 .badge {
   float: initial;
@@ -747,7 +787,9 @@ line-height: initial;
   background-size: 75px;
   background-repeat: no-repeat;
   padding-left: 20px;
+  max-width: 150px;
 }
+
 .comment {
   margin-right: 40px;
   margin-left: 40px;
@@ -1000,6 +1042,7 @@ line-height: initial;
     float: left;
     width: 30%;
   }
+
   .author-image.mobile {
     margin-top: -200px;
     float: right;

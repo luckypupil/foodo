@@ -25,8 +25,6 @@
           <img class="w-hidden-main w-hidden-medium w-hidden-small author-image mobile" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="100" alt="537a3eaeef89236d7de9d427_profile_page_logo.png">
           <div class="mobile-header-div">
             <h3 class="thumbnail-title">{{ rest.name }}<h3>
-            <h4 class="vios">{{ 'Grade: ' }}{{ rest.grade }}</h4> 
-            <p class="mobile-para">{{ avgvios }} {{ 'AVG VIOLATIONS' }} </p>
             <p>{{ rest.street }}</p>
             <p>{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}</p>
           </div>
@@ -42,18 +40,18 @@
       <div class="w-col w-col-8 article-body-column">
 
 		{% if rest.latestDt() %}   
-        <div class="vios date" style="color: black; font-style:italics;">Last Inpsection: {{ rest.latestDt().strftime("%A, %B %d, %Y") }}</div></br>
+        <p><em>Last Inpsection: {{ rest.latestDt().strftime("%A, %B %d, %Y") }}</p></em>
 	        {% if foodcomments %}
-            <h2 class="thumbnail-title comment-headings">{{ 'Food Comments' }}</h2>
+            <h2 class="vios date" style="color: black; font-style:italics;">{{ 'Food Comments' }}</h2>
 		        {% for badge in foodcomments %}
 			        <div class="w-row badgerow">
 			          
 
                 <div class="w-col w-col-2 w-clearfix moble-badge-row">
 			            <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
-			            <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
 			            <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" title="{{ badge|trim}}" alt="{{ badge|trim}}">
                     <div class="mobile-comments">
+                    
                     <ol>
                       {% for comment in foodcomments[badge] %}
                         <li>{{ comment[0] }} {{'('}} {{ comment[1] }} {{')'}}</li></br>
@@ -61,7 +59,9 @@
                     </ol>
                   </div>
 			          </div>
-			          <div class="w-col w-col-10 article-info-text profile-body">
+                
+			          <div class="w-col w-col-10 article-info-wrapper profile-body">
+                  <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
 			            <ol>
 			              {% for comment in foodcomments[badge] %}
 							<li>{{ comment[0] }} {{'('}} {{ comment[1] }} {{')'}}</li></br>
@@ -72,14 +72,15 @@
 			      {% endfor %}
           {% endif %}
           {% if othercomments %}
-          <h2 class="thumbnail-title comment-headings">{{ 'Other Comments' }}</h2>
+          <h2 class="vios date" style="color: black; font-style:italics;">{{ 'Other Comments' }}</h2>
             {% for badge in othercomments %}
               <div class="w-row badgerow othercomments">
                 <div class="w-col w-col-2 w-clearfix moble-badge-row">
                   <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
-                  <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
+                  
                   <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" title="{{ badge|trim}}" alt="{{ badge|trim}}">
                   <div class="mobile-comments">
+                    <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
                     <ol>
                       {% for comment in othercomments[badge] %}
                       <li>{{ comment[0] }}</li>
@@ -88,7 +89,8 @@
                   </div>
                 </div>
                 
-                <div class="w-col w-col-10 article-info-text profile-body">
+                <div class="w-col w-col-10 article-info-wrapper profile-body">
+                  <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
                   <ol>
                     {% for comment in othercomments[badge] %}
                     <li>{{ comment[0] }}</li>
@@ -106,8 +108,10 @@
         <h4 class="w-hidden-main w-hidden-medium">About the Author</h4>
         <img class="author-image" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" alt="{{ rest.name }}">
         <div class="thumbnail-title">{{ rest.name }}</div>
-        <h4 class="thumbnail-title">{{ 'Grade: ' }}{{ rest.grade }}</h4>
-        <p class="vios">{{ rest.getVios() }} Violations</p>
+        <div class="grade-box">
+          <p class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</p>
+          <p class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'AVG VIOLATIONS' }}</p>
+        </div>
         <div class="article-info-wrapper">
           <div class="article-info-text">
           	<p>{{ rest.street }}</p>
