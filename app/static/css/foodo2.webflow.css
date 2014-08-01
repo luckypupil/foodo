@@ -1050,7 +1050,7 @@ line-height: initial;
     margin-bottom: 10px;
   }
   .thumbnail-title {
-    width: 100%;
+    width: 30rem;
     color: whitesmoke;
   }
   .thumbnail-title.vios {
@@ -1064,11 +1064,11 @@ line-height: initial;
   }
   .grade-box {
     display: inline-block;
-    width: 100%;
+    width: 30rem;
     padding: 0;
   }
   .mobile-header-div {
-    width: 40rem;
+    width: 30rem;
   }
   .header-image {
     height: 15rem;
