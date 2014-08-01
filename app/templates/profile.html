@@ -24,13 +24,18 @@
         <div class="w-col w-col-6 w-clearfix mobile-header-row left-column">
           <img class="w-hidden-main w-hidden-medium w-hidden-small author-image mobile" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="100" alt="537a3eaeef89236d7de9d427_profile_page_logo.png">
           <div class="mobile-header-div">
-            <h3 class="thumbnail-title">{{ rest.name }}<h3>
+            <img class="w-hidden-main w-hidden-medium author-image mobile" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="200" alt="537a3eaeef89236d7de9d427_profile_page_logo.png">
+            <h3 class="thumbnail-title">{{ rest.name }}</h3>
             <p>{{ rest.street }}</p>
             <p>{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}</p>
+            <div class="grade-box">
+              <p class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</p>
+              <p class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'AVG VIOLATIONS' }}</p>
+            </div>
           </div>
         </div>
         <div class="w-col w-col-6 w-hidden-tiny w-clearfix">
-          <img class="w-hidden-main w-hidden-medium author-image mobile" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="200" alt="537a3eaeef89236d7de9d427_profile_page_logo.png">
+          
         </div>
       </div><a class="w-hidden-main w-hidden-medium hollow-button" href="{{ url_for('home') }}" >❮&nbsp; &nbsp;Home</a>
     </div>
@@ -48,15 +53,16 @@
 			          
 
                 <div class="w-col w-col-specialsm w-clearfix moble-badge-row">
-			            <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
+			            
 			            <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" title="{{ badge|trim}}" alt="{{ badge|trim}}">
                     <div class="mobile-comments">
-                    
-                    <ol>
-                      {% for comment in foodcomments[badge] %}
-                        <li>{{ comment[0] }} {{'('}} {{ comment[1] }} {{')'}}</li></br>
-                      {% endfor %}
-                    </ol>
+                      <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" alt="{{ badge|trim}}" title="{{ badge|trim}}">
+                      <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
+                      <ol>
+                        {% for comment in foodcomments[badge] %}
+                          <li>{{ comment[0] }}</li>
+                        {% endfor %}
+                      </ol>
                   </div>
 			          </div>
                 
@@ -64,7 +70,7 @@
                   <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
 			            <ol>
 			              {% for comment in foodcomments[badge] %}
-							<li>{{ comment[0] }} {{'('}} {{ comment[1] }} {{')'}}</li></br>
+							<li>{{ comment[0] }}</li></br>
 		        		  {% endfor %}
 		                </ol>
 			          </div>
