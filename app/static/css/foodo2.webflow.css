@@ -7,7 +7,7 @@ body {
 }
 
 img {
-  max-width: 150px;
+  max-width: 120px;
 }
 
 h1 {
@@ -220,6 +220,11 @@ p {
   background: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg') repeat;
   border: none;
 }
+
+.nav-menu.about{
+  width: 100%;
+}
+
 .nav-link {
   position: static;
   left: 0px;
@@ -417,7 +422,7 @@ line-height: initial;
   margin-top: 29px;
 }
 .field {
-  display: block;
+  display: inline-block;
   width: 65%;
   height: 53px;
   margin-right: auto;
@@ -471,7 +476,13 @@ line-height: initial;
 .section {
   padding: 40px;
   box-shadow: rgba(0, 0, 0, 0.09) 0px -1px 0px 0px inset;
+  background-color: whitesmoke;
+  height: 100%;
+  position: absolute;
+  width:  100%;
+  margin-top: 2rem;
 }
+
 .team-column {
   padding-right: 0px;
   padding-left: 0px;
@@ -497,8 +508,8 @@ line-height: initial;
 }
 .header-image {
   position: relative;
-  height: 8rem;
-  padding-top: 50px;
+  height: 5.5rem;
+  padding: 2rem;
   background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
   background-position: 50% 50%;
   background-repeat: repeat;
@@ -734,7 +745,7 @@ line-height: initial;
     color: #ff7b00;
     font-size: 2rem;
     font-style: italic;
-    margin: 2rem 0;
+    margin: .75rem 0;
     width:  100%;
 }
 
@@ -742,6 +753,7 @@ line-height: initial;
     color: black;
     font-size: 1.25rem;
     font-style: italic;
+    margin: .75rem 0;
 }
 
 .header-container {

@@ -47,7 +47,7 @@
 			        <div class="w-row badgerow">
 			          
 
-                <div class="w-col w-col-2 w-clearfix moble-badge-row">
+                <div class="w-col w-col-specialsm w-clearfix moble-badge-row">
 			            <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
 			            <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" title="{{ badge|trim}}" alt="{{ badge|trim}}">
                     <div class="mobile-comments">
@@ -60,7 +60,7 @@
                   </div>
 			          </div>
                 
-			          <div class="w-col w-col-10 article-info-wrapper profile-body">
+			          <div class="w-col w-col-speciallg article-info-wrapper profile-body">
                   <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
 			            <ol>
 			              {% for comment in foodcomments[badge] %}
@@ -75,7 +75,7 @@
           <h2 class="vios date" style="color: black; font-style:italics;">{{ 'Other Comments' }}</h2>
             {% for badge in othercomments %}
               <div class="w-row badgerow othercomments">
-                <div class="w-col w-col-2 w-clearfix moble-badge-row">
+                <div class="w-col w-col-specialsm w-clearfix moble-badge-row">
                   <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
                   
                   <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" title="{{ badge|trim}}" alt="{{ badge|trim}}">
@@ -89,7 +89,7 @@
                   </div>
                 </div>
                 
-                <div class="w-col w-col-10 article-info-wrapper profile-body">
+                <div class="w-col w-col-speciallg article-info-wrapper profile-body">
                   <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
                   <ol>
                     {% for comment in othercomments[badge] %}
@@ -108,16 +108,17 @@
         <h4 class="w-hidden-main w-hidden-medium">About the Author</h4>
         <img class="author-image" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" alt="{{ rest.name }}">
         <div class="thumbnail-title">{{ rest.name }}</div>
+        <div class="article-info-wrapper">
+          <div class="article-info-text">
+            <p>{{ rest.street }}</p>
+            <p>{{ 'Philadephia, PA ' }}{{ rest.zipcd }}</p>
+          </div>
+        </div>
         <div class="grade-box">
           <p class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</p>
           <p class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'AVG VIOLATIONS' }}</p>
         </div>
-        <div class="article-info-wrapper">
-          <div class="article-info-text">
-          	<p>{{ rest.street }}</p>
-          	<p>{{ 'Philadephia, PA ' }}{{ rest.zipcd }}</p>
-          </div>
-        </div>
+        
         <div class="author-social-links">
           <div class="author-connect">Tweet Tisk</div>
           <a class="w-inline-block social-link" href="#">

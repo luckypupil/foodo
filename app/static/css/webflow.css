@@ -281,6 +281,9 @@ textarea.w-select {
 .w-col-1 {
   width: 8.333333333333332%;
 }
+.w-col-specialsm {
+  width: 12%;
+}
 .w-col-2 {
   width: 16.666666666666664%;
 }
@@ -307,6 +310,9 @@ textarea.w-select {
 }
 .w-col-10 {
   width: 83.33333333333334%;
+}
+.w-col-speciallg {
+  width: 88%;
 }
 .w-col-11 {
   width: 91.66666666666666%;
