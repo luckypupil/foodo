@@ -1134,8 +1134,11 @@ line-height: initial;
     padding-left: 0;
     background-color: transparent;
     position: static;
-    margin-top: 220px;
     width: 100%;
+    margin-top: 220px;
+  }
+  .content-section.footer {
+    margin-top: 0;
   }
   .hollow-button {
     padding-bottom: 7px;
