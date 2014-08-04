@@ -865,7 +865,7 @@ line-height: initial;
 }
 @media (max-width: 991px) {
   .nav-menu {
-    width: 50%;
+    width: 75%;
   }
   .nav-link {
     position: static;
@@ -1097,6 +1097,9 @@ line-height: initial;
     color: black;
     font-size: 20px;
   }
+  .thumbnail-title.profile {
+    color: whitesmoke;
+  }
   .thumbnail-title.vios {
     width: 45%;
     display: inline-block;
@@ -1105,6 +1108,9 @@ line-height: initial;
   .thumbnail-title.grade {
     width: 45%;
     display: inline-block;
+  }
+  #rest-addy {
+    color: whitesmoke;
   }
   .grade-box {
     display: inline-block;
@@ -1221,6 +1227,8 @@ line-height: initial;
     position: relative;
     display: block;
     margin-top: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
     padding-top: 3px;
     float: none;
     clear: none;
