@@ -899,7 +899,7 @@ line-height: initial;
 
 @media (max-width: 767px) {
   p {
-    color: whitesmoke;
+    color: black;
   }
 
   h1 {
@@ -921,7 +921,7 @@ line-height: initial;
   }
 
   .logo {
-    display: block;
+    display: inline-block;
     width: 100px;
     height: 100px;
     margin: 0px auto;
@@ -930,6 +930,8 @@ line-height: initial;
     border-width: 5px;
     font-size: 42px;
     line-height: 30px;
+    position: relative;
+    top: 22px;
     -webkit-filter: none;
   }
 
@@ -954,7 +956,7 @@ line-height: initial;
   }
   .main-column.header {
     position: fixed;
-    height: 44%;
+    height: 12rem;
     max-width: 1000px;
     padding-top: 15px;
     padding-bottom: 10px;
@@ -963,7 +965,7 @@ line-height: initial;
   }
 
   .rest-summaries {
-    margin-top: auto;
+    margin-top: 12rem;
   }
 
   .navbar {
@@ -984,7 +986,7 @@ line-height: initial;
   .nav-link.page {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.11) -1px 0px 0px 0px inset;
-    color: black;
+    color: whitesmoke;
   }
   .nav-link.page.w--current {
     padding-top: 30px;
@@ -1039,6 +1041,22 @@ line-height: initial;
     font-size: 14px;
     text-transform: uppercase;
   }
+  .w-form {
+    display: inline-block;
+    margin: 0;
+  }
+  .w-input.field {
+    height: 52px;
+  }
+  #search {
+    width: 15rem;
+    margin-top: 0;
+  }
+  .button.search {
+    width: 3rem;
+    padding: 1rem;
+    margin: auto;
+  }
   .section {
     padding: 27px 10px;
   }
@@ -1051,7 +1069,7 @@ line-height: initial;
   }
   .thumbnail-title {
     width: 30rem;
-    color: whitesmoke;
+    color: black;
   }
   .thumbnail-title.vios {
     width: 45%;
