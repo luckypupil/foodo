@@ -922,7 +922,7 @@ line-height: initial;
 
   .logo {
     display: inline-block;
-    width: 100px;
+    width: 6rem;
     height: 100px;
     margin: 0px auto;
     padding: 13px 14px;
@@ -1051,7 +1051,11 @@ line-height: initial;
   }
   #search {
     width: 15rem;
+    max-width: 175px;
     margin-top: 0;
+  }
+  #search-form {
+    max-width: 250px;
   }
   .button.search {
     width: 3rem;
