@@ -973,6 +973,7 @@ line-height: initial;
   .rest-summaries {
     margin-top: 12rem;
     color: whitesmoke;
+    position: static;
   }
 
   .navbar {
