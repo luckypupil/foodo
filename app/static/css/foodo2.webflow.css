@@ -924,7 +924,7 @@ line-height: initial;
     display: inline-block;
     width: 5.2rem;
     height: 100px;
-    margin: 0px auto;
+    margin: 0px;
     padding: 13px 14px;
     float: none;
     border-width: 5px;
@@ -1244,7 +1244,7 @@ line-height: initial;
     height: 190px;
   }
   #search {
-    width: 12rem;
+    width: 10rem;
   }
   .main-column.content {
     padding-right: 0px;
