@@ -952,7 +952,7 @@ line-height: initial;
   }
   .footer-wrapper {
     background-color: black;
-    position: fixed;
+    position: absolute;
   }
   .main-column {
     width: 100%;
@@ -960,7 +960,7 @@ line-height: initial;
     position: static;
   }
   .main-column.header {
-    position: fixed;
+    position: absolute;
     height: 200px;
     max-width: 1000px;
     padding-top: 15px;
@@ -971,7 +971,7 @@ line-height: initial;
   }
 
   .rest-summaries {
-    margin-top: 6rem;
+    margin-top: 12rem;
     color: whitesmoke;
   }
 
