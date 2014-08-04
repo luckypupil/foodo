@@ -5,8 +5,8 @@
   <div class="w-container"></div>
   <div class="header-image">
     <div class="w-container">
-      <div class="w-clearfix navbar">
-        <div class="w-clearfix nav-menu nav-profile">
+      <nav class="w-clearfix navbar">
+        <nav class="w-clearfix nav-menu nav-profile">
           <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile nav-profile" href="{{ url_for('home') }}">
             <div>Home</div>
           </a>
@@ -16,8 +16,12 @@
           <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile nav-profile" href="{{ url_for('subscribe') }}">
             <div>Contact</div>
           </a>
-        </div>
-      </div>
+        </nav>
+          <div class="w-nav-button w-clearfix menu-wrapper">
+            <div class="w-icon-nav-menu menu-icon"></div>
+            <div class="menu">MENU</div>
+          </div>
+      </nav>
     </div>
     <div class="w-container header-container">
       <div class="w-row w-hidden-main w-hidden-medium mobile-header-row">
@@ -36,7 +40,7 @@
         <div class="w-col w-col-6 w-hidden-tiny w-clearfix">
           
         </div>
-      </div><a class="w-hidden-main w-hidden-medium hollow-button" href="{{ url_for('home') }}" >❮&nbsp; &nbsp;Home</a>
+      </div>
     </div>
   </div>
   <div class="content-section">

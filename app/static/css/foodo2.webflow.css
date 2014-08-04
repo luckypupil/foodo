@@ -1126,7 +1126,7 @@ line-height: initial;
     max-width: 400px;
   }
   .header-image {
-    height: 15rem;
+    height: 14.5rem;
     padding: 0 15px;
     background-position: 50% 50%;
     margin-bottom: 0;
@@ -1221,6 +1221,7 @@ line-height: initial;
   }
   .menu-wrapper {
     border-left: 1px solid rgba(0, 0, 0, 0.10);
+    display:  block;
   }
   .menu-wrapper.w--open {
     background-color: black;
@@ -1300,7 +1301,6 @@ line-height: initial;
     height: 38px;
     margin-right: auto;
     margin-left: auto;
-    background-color: rgba(0, 0, 0, 0.24);
     color: white;
   }
   .nav-link.w--current {
