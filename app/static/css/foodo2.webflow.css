@@ -1114,15 +1114,17 @@ line-height: initial;
   }
   .grade-box {
     display: inline-block;
-    width: 30rem;
+    width: 22rem;
+    max-width: 375px;
     padding: 0;
   }
   .mobile-header-div {
-    width: 30rem;
+    width: 25rem;
+    max-width: 400px;
   }
   .header-image {
     height: 15rem;
-    padding-top: 0px;
+    padding: 0 15px;
     background-position: 50% 50%;
     margin-bottom: 0;
     position: absolute;
