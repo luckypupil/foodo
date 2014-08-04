@@ -1234,14 +1234,8 @@ line-height: initial;
     padding-bottom: 0px;
   }
   .logo {
-    display: block;
-    margin: 20px auto 13px;
-    padding-top: 0px;
-    float: none;
   }
   .main-column.header {
-    height: 69%;
-    padding: 0px 20px;
   }
   .main-column.content {
     padding-right: 0px;
