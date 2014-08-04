@@ -1108,6 +1108,7 @@ line-height: initial;
   .thumbnail-title.grade {
     width: 45%;
     display: inline-block;
+    font-size: 1.5rem;
   }
   #rest-addy {
     color: whitesmoke;
@@ -1117,6 +1118,8 @@ line-height: initial;
     width: 22rem;
     max-width: 375px;
     padding: 0;
+    margin-bottom: 0;
+    margin-top: 10px;
   }
   .mobile-header-div {
     width: 25rem;
@@ -1259,6 +1262,9 @@ line-height: initial;
   .mobile-comments {
   display: inline;
 }
+  .w-hidden-main.w-hidden-medium {
+    margin-bottom: 0;
+  }
 }
 
 
@@ -1400,7 +1406,9 @@ line-height: initial;
   .mobile-header-div {
     float: left;
     clear: both;
-    margin-top: 20px;
+  }
+  .content-section {
+    margin-top: 90px;
   }
   .moble-badge-row {
     margin-bottom: 11px;
