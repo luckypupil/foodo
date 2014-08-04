@@ -869,7 +869,7 @@ line-height: initial;
   }
   .nav-link {
     position: static;
-    width: 33.1%;
+    width: 33.3333%;
     margin-top: 0px;
     float: left;
     text-align: center;
@@ -953,6 +953,7 @@ line-height: initial;
   .footer-wrapper {
     background-color: black;
     position: absolute;
+    position: relative;
   }
   .main-column {
     width: 100%;
