@@ -900,10 +900,14 @@ line-height: initial;
 @media (max-width: 767px) {
   p {
     color: black;
+    margin-bottom: 5px;
   }
 
   h1 {
     margin-bottom: 0px;
+  }
+  h4 {
+    margin: 5px 0;
   }
   .button {
     margin-top: auto;
@@ -948,6 +952,7 @@ line-height: initial;
   }
   .footer-wrapper {
     background-color: black;
+    position: fixed;
   }
   .main-column {
     width: 100%;
@@ -962,10 +967,11 @@ line-height: initial;
     padding-bottom: 10px;
     text-align: left;
     z-index:  100;
+    border-bottom: black solid 5px;
   }
 
   .rest-summaries {
-    margin-top: 11rem;
+    margin-top: 6rem;
     color: whitesmoke;
   }
 
@@ -973,6 +979,13 @@ line-height: initial;
     height: 38px;
     position: fixed;
     background-color: transparent;
+  }
+  .w-nav.navbar {
+    width: 100%;
+    display: inline-block;
+    position: fixed;
+    background-color: transparent;
+    box-shadow: none;
   }
   .nav-menu {
     background-color: transparent;
@@ -1050,12 +1063,12 @@ line-height: initial;
     height: 52px;
   }
   #search {
-    width: 15rem;
-    max-width: 175px;
+    width: 25rem;
+    max-width: 225px;
     margin-top: 0;
   }
   #search-form {
-    max-width: 250px;
+    max-width: 325px;
   }
   .button.search {
     width: 3rem;
@@ -1241,7 +1254,7 @@ line-height: initial;
   .logo {
   }
   .main-column.header {
-    height: 190px;
+    height: 145px;
   }
   #search {
     width: 8rem;
@@ -1342,7 +1355,7 @@ line-height: initial;
     padding-top: 20px;
   }
   .vios {
-    margin-bottom: 10px;
+    margin: 5px 0;
   }
   .vios.date {
     margin-bottom: 5px;
