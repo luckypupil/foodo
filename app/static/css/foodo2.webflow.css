@@ -953,6 +953,7 @@ line-height: initial;
   .footer-wrapper {
     background-color: black;
     position: absolute;
+    display: none;
   }
   .main-column {
     width: 100%;
@@ -969,9 +970,12 @@ line-height: initial;
     z-index:  100;
     border-bottom: black solid 5px;
   }
-
+  .main-column.content {
+    background-color: whitesmoke;
+    background-image: none;
+  }
   .rest-summaries {
-    margin-top: 12rem;
+    margin-top: 185px;
     color: whitesmoke;
     position: static;
   }
@@ -999,9 +1003,10 @@ line-height: initial;
     box-shadow: none;
   }
   .nav-link.page {
-    background-color: white;
+    background-color: whitesmoke;
+    background-image: none;
     box-shadow: rgba(0, 0, 0, 0.11) -1px 0px 0px 0px inset;
-    color: whitesmoke;
+    color: black;
   }
   .nav-link.page.w--current {
     padding-top: 30px;
