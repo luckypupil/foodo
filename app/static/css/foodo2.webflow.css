@@ -966,11 +966,12 @@ line-height: initial;
     padding-top: 15px;
     padding-bottom: 10px;
     text-align: left;
+    z-index:  100;
     border-bottom: black solid 5px;
   }
 
   .rest-summaries {
-    margin-top: 8rem;
+    margin-top: 6rem;
     color: whitesmoke;
   }
 
@@ -985,7 +986,6 @@ line-height: initial;
     position: fixed;
     background-color: transparent;
     box-shadow: none;
-    z-index: 0;
   }
   .nav-menu {
     background-color: transparent;
@@ -1088,7 +1088,7 @@ line-height: initial;
   .thumbnail-title {
     width: 30rem;
     color: black;
-    font-size:20px;
+    font-size: 20px;
   }
   .thumbnail-title.vios {
     width: 45%;
