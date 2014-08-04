@@ -956,7 +956,7 @@ line-height: initial;
   }
   .main-column.header {
     position: fixed;
-    height: 12rem;
+    height: 200px;
     max-width: 1000px;
     padding-top: 15px;
     padding-bottom: 10px;
