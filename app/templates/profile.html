@@ -81,20 +81,22 @@
 			      {% endfor %}
           {% endif %}
           {% if othercomments %}
-          <h2 class="vios date" style="color: black; font-style:italics;">{{ 'Other Comments' }}</h2>
+            <h2 class="vios date" style="color: black; font-style:italics;">{{ 'Other Comments' }}</h2>
             {% for badge in othercomments %}
-              <div class="w-row badgerow othercomments">
+              <div class="w-row badgerow">
+                
+
                 <div class="w-col w-col-specialsm w-clearfix moble-badge-row">
-                  <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" width="70" alt="{{ badge|trim}}" title="{{ badge|trim}}">
                   
                   <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" title="{{ badge|trim}}" alt="{{ badge|trim}}">
-                  <div class="mobile-comments">
-                    <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
-                    <ol>
-                      {% for comment in othercomments[badge] %}
-                      <li>{{ comment[0] }}</li>
-                    {% endfor %}
-                    </ol>
+                    <div class="mobile-comments">
+                      <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" alt="{{ badge|trim}}" title="{{ badge|trim}}">
+                      <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
+                      <ol>
+                        {% for comment in othercomments[badge] %}
+                          <li>{{ comment[0] }}</li>
+                        {% endfor %}
+                      </ol>
                   </div>
                 </div>
                 
@@ -102,13 +104,13 @@
                   <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
                   <ol>
                     {% for comment in othercomments[badge] %}
-                    <li>{{ comment[0] }}</li>
+              <li>{{ comment[0] }}</li></br>
                   {% endfor %}
-                  </ol>
+                    </ol>
                 </div>
               </div>
             {% endfor %}
-          {% endif %}  
+          {% endif %}
       {% else %}
 				<h3>{{ 'No recent inspection data exists' }}</h3>      
       {% endif %}	

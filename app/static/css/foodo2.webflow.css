@@ -1264,7 +1264,7 @@ line-height: initial;
   display: inline;
 }
   .w-hidden-main.w-hidden-medium {
-    margin-bottom: 0;
+    margin-bottom: 15px;
     margin-right: 15px;
   }
 }
