@@ -965,7 +965,8 @@ line-height: initial;
   }
 
   .rest-summaries {
-    margin-top: 12rem;
+    margin-top: 11rem;
+    color: whitesmoke;
   }
 
   .navbar {
@@ -1236,6 +1237,10 @@ line-height: initial;
   .logo {
   }
   .main-column.header {
+    height: 190px;
+  }
+  #search {
+    width: 12rem;
   }
   .main-column.content {
     padding-right: 0px;
