@@ -1007,6 +1007,7 @@ line-height: initial;
     background-image: none;
     box-shadow: rgba(0, 0, 0, 0.11) -1px 0px 0px 0px inset;
     color: black;
+    padding: 15px;
   }
   .nav-link.page.w--current {
     padding-top: 30px;
