@@ -1125,12 +1125,17 @@ line-height: initial;
     padding-top: 0px;
     background-position: 50% 50%;
     margin-bottom: 0;
+    position: absolute;
+    width: 100%;
   }
   .content-section {
     padding-top: 27px;
     padding-bottom: 27px;
     padding-left: 0;
     background-color: transparent;
+    position: static;
+    margin-top: 220px;
+    width: 100%;
   }
   .hollow-button {
     padding-bottom: 7px;
