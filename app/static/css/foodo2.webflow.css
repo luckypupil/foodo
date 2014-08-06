@@ -751,7 +751,7 @@ line-height: initial;
     color: #ff7b00;
     font-size: 2rem;
     font-style: italic;
-    margin: .75rem 0;
+    margin: .1rem 0;
     width:  100%;
 }
 
@@ -759,7 +759,7 @@ line-height: initial;
     color: black;
     font-size: 1.25rem;
     font-style: italic;
-    margin: .75rem 0;
+    margin: .1rem 0;
 }
 
 .header-container {
@@ -1098,6 +1098,7 @@ line-height: initial;
   }
   .thumbnail-title.profile {
     color: whitesmoke;
+    display: inline-block;
   }
   .thumbnail-title.vios {
     width: 45%;
@@ -1112,6 +1113,7 @@ line-height: initial;
   #rest-addy {
     color: whitesmoke;
     max-width: 65%;
+    display: inline-block;
   }
   .grade-box {
     display: inline-block;
@@ -1119,7 +1121,6 @@ line-height: initial;
     max-width: 375px;
     padding: 0;
     margin-bottom: 0;
-    margin-top: 10px;
   }
   .mobile-header-div {
     width: 25rem;
@@ -1157,7 +1158,7 @@ line-height: initial;
     width: 30%;
   }
   .author-image.mobile {
-    margin-top: 0px;
+    margin: 0 12px 12px 0;
     float: left;
     text-align: left;
   }
