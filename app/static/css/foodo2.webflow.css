@@ -1104,14 +1104,15 @@ line-height: initial;
     display: inline-block;
   }
   .thumbnail-title.vios {
-    width: 45%;
+    width: initial;
     display: inline-block;
     color: whitesmoke;
   }
   .thumbnail-title.grade {
-    max-width: 35%;
+    width: initial;
     display: inline-block;
     font-size: 1.5rem;
+    margin-right: 15px;
   }
   #rest-addy {
     color: whitesmoke;
@@ -1161,7 +1162,7 @@ line-height: initial;
     width: 25%;
   }
   .author-image.mobile {
-    margin: 0 12px 12px 0;
+    margin: 0 20px 12px 0;
     float: left;
     text-align: left;
   }
@@ -1231,7 +1232,7 @@ line-height: initial;
     background-color: black;
   }
   .vios.date {
-    margin-top: 0px;
+    margin-top: 15px;
     padding-top: 0px;
     font-size: 16px;
     line-height: 15px;
@@ -1270,8 +1271,8 @@ line-height: initial;
   .mobile-comments {
   display: inline;
 }
-  .w-hidden-main.w-hidden-medium {
-    margin-bottom: .5rem;
+  .w-hidden-main.w-hidden-medium.badge {
+    margin: 1rem;
   }
 }
 
