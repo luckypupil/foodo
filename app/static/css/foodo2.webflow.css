@@ -348,7 +348,7 @@ a[class="w-clearfix w-inline-block article"]:nth-of-type(2) {
   float: left;
 }
 .arrow {
-  margin-top: 20px;
+  margin-top: 80px;
   float: right;
   font-family:'Roboto Condensed', sans-serif;
   color: #0F0F0F;
@@ -936,7 +936,7 @@ line-height: initial;
     font-size: 42px;
     line-height: 30px;
     position: relative;
-    top: 22px;
+    top: 26px;
     -webkit-filter: none;
   }
 
