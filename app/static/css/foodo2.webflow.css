@@ -907,6 +907,9 @@ line-height: initial;
   h4 {
     margin: 5px 0;
   }
+  img {
+    max-width: 4rem;
+  }
   .button {
     margin-top: auto;
     margin: 0px 35%;
@@ -1106,7 +1109,7 @@ line-height: initial;
     color: whitesmoke;
   }
   .thumbnail-title.grade {
-    width: 45%;
+    max-width: 35%;
     display: inline-block;
     font-size: 1.5rem;
   }
