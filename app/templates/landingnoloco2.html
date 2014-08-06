@@ -56,7 +56,7 @@
             {% for rest in rests %}
         <a class="w-clearfix w-inline-block article" href="{{ url_for('profile',id=rest.id)}}">
           <section class="w-clearfix article-text-wrapper">
-            <h2 class="arrow">❯</h2>
+            <h2 class="arrow">{{ '❯' }}</h2>
             <h2 class="thumbnail-title">{{ rest.name }}</h2>
             <h4 class="vios">{{ 'Grade: ' }}{{ rest.grade }}</h4> 
             <p>{{ rest.street }}{{ ' Philadelphia, PA ' }}{{ rest.zipcd }}</p>
