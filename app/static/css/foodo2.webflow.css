@@ -570,8 +570,7 @@ line-height: initial;
   padding-left: 0rem;
 }
 .w-hidden-main.w-hidden-medium {
-  margin-bottom: 1rem;
-  margin-right: 2rem;
+  margin: auto;
 }
 .subscribe-section {
   padding-top: 52px;
@@ -1093,6 +1092,7 @@ line-height: initial;
   }
   .thumbnail-title {
     width: 30rem;
+    max-width: 100%;
     color: black;
     font-size: 20px;
   }
@@ -1111,6 +1111,7 @@ line-height: initial;
   }
   #rest-addy {
     color: whitesmoke;
+    max-width: 100%;
   }
   .grade-box {
     display: inline-block;
@@ -1266,8 +1267,7 @@ line-height: initial;
   display: inline;
 }
   .w-hidden-main.w-hidden-medium {
-    margin-bottom: 15px;
-    margin-right: 15px;
+    margin-bottom: .5rem;
   }
 }
 
