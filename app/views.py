@@ -123,9 +123,9 @@ def profile(id):
     
     return render_template('profile2.html', rest=rest, foodcomments=foodcomments, othercomments=othercomments, form=form)
 
-# @app.route('/about', methods=['GET'])
-# def about():
-#     return render_template('about.html')
+@app.route('/about', methods=['GET'])
+def about():
+    return render_template('about.html')
 
 
 @app.route('/subscribe', methods=['GET', 'POST'])
