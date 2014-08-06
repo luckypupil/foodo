@@ -1118,7 +1118,7 @@ line-height: initial;
   .grade-box {
     display: inline-block;
     width: 22rem;
-    max-width: 375px;
+    max-width: 100%;
     padding: 0;
     margin-bottom: 0;
   }
@@ -1155,7 +1155,7 @@ line-height: initial;
     margin-right: 15px;
     margin-left: 0px;
     float: left;
-    width: 30%;
+    width: 25%;
   }
   .author-image.mobile {
     margin: 0 12px 12px 0;
