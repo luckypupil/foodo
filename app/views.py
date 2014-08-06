@@ -121,7 +121,7 @@ def profile(id):
         else:
             flash('Looks like we already have your email on our list!')
     
-    return render_template('profile.html', rest=rest, foodcomments=foodcomments, othercomments=othercomments, form=form)
+    return render_template('profile2.html', rest=rest, foodcomments=foodcomments, othercomments=othercomments, form=form)
 
 @app.route('/about', methods=['GET'])
 def about():

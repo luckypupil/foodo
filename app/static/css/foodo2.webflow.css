@@ -572,7 +572,6 @@ line-height: initial;
 .w-hidden-main.w-hidden-medium {
   margin-bottom: 1rem;
   margin-right: 2rem;
-  max-width: 5rem;
 }
 .subscribe-section {
   padding-top: 52px;
@@ -1236,6 +1235,9 @@ line-height: initial;
     width: 50%;
     max-width: 89px;
     display: inline-block;
+  }
+  .mobile-header-row {
+    max-width: 100%;
   }
   .mobile-header-row.right-column {
     position: relative;

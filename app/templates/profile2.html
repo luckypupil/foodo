@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% block title %}<title>{{ 'Tisk | Home' }}</title>{% endblock %}
+{% block content %}
+  <div id="body-profile">
+  <div class="w-container"></div>
+  <div class="header-image">
+    <div class="w-container">
+      <nav class="w-clearfix navbar">
+        <nav class="w-clearfix nav-menu nav-profile">
+          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile nav-profile" href="{{ url_for('home') }}">
+            <div>Home</div>
+          </a>
+          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile nav-profile" href="{{ url_for('about') }}">
+            <div>About</div>
+          </a>
+          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile nav-profile" href="{{ url_for('subscribe') }}">
+            <div>Contact</div>
+          </a>
+        </nav>
+          <div class="w-nav-button w-clearfix menu-wrapper">
+            <div class="w-icon-nav-menu menu-icon"></div>
+            <div class="menu">MENU</div>
+          </div>
+      </nav>
+    </div>
+    <div class="w-container header-container">
+      <div class="w-hidden-main w-hidden-medium mobile-header-row">
+            <img class="w-hidden-main w-hidden-medium author-image mobile" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="200" alt="537a3eaeef89236d7de9d427_profile_page_logo.png">
+            <h3 class="thumbnail-title profile">{{ rest.name }}</h3>
+            <p id="rest-addy">{{ rest.street }}</p>
+            <p id="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}</p>
+            <div class="grade-box">
+              <p class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</p>
+              <p class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</p>
+        </div>
+        <div class="w-col w-col-6 w-hidden-tiny w-clearfix">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-section">
+    <div class="w-row mobile-header-row right-column">
+      <div class="w-col w-col-8 article-body-column">
+
+		{% if rest.latestDt() %}   
+        <p><em>Last Inpsection: {{ rest.latestDt().strftime("%A, %B %d, %Y") }}</p></em>
+	        {% if foodcomments %}
+            <h2 class="vios date" style="color: black; font-style:italics;">{{ 'Food Comments' }}</h2>
+		        {% for badge in foodcomments %}
+			        <div class="w-row badgerow">
+			          
+
+                <div class="w-col w-col-specialsm w-clearfix moble-badge-row">
+			            
+			            <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" title="{{ badge|trim}}" alt="{{ badge|trim}}">
+                    <div class="mobile-comments">
+                      <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" alt="{{ badge|trim}}" title="{{ badge|trim}}">
+                      <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
+                      <ol>
+                        {% for comment in foodcomments[badge] %}
+                          <li>{{ comment[0] }}</li>
+                        {% endfor %}
+                      </ol>
+                  </div>
+			          </div>
+                
+			          <div class="w-col w-col-speciallg article-info-wrapper profile-body">
+                  <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
+			            <ol>
+			              {% for comment in foodcomments[badge] %}
+							<li>{{ comment[0] }}</li></br>
+		        		  {% endfor %}
+		                </ol>
+			          </div>
+			        </div>
+			      {% endfor %}
+          {% endif %}
+          {% if othercomments %}
+            <h2 class="vios date" style="color: black; font-style:italics;">{{ 'Other Comments' }}</h2>
+            {% for badge in othercomments %}
+              <div class="w-row badgerow">
+                
+
+                <div class="w-col w-col-specialsm w-clearfix moble-badge-row">
+                  
+                  <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" title="{{ badge|trim}}" alt="{{ badge|trim}}">
+                    <div class="mobile-comments">
+                      <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" alt="{{ badge|trim}}" title="{{ badge|trim}}">
+                      <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
+                      <ol>
+                        {% for comment in othercomments[badge] %}
+                          <li>{{ comment[0] }}</li>
+                        {% endfor %}
+                      </ol>
+                  </div>
+                </div>
+                
+                <div class="w-col w-col-speciallg article-info-wrapper profile-body">
+                  <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
+                  <ol>
+                    {% for comment in othercomments[badge] %}
+              <li>{{ comment[0] }}</li></br>
+                  {% endfor %}
+                    </ol>
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+      {% else %}
+				<h3>{{ 'No recent inspection data exists' }}</h3>      
+      {% endif %}	
+      </div>
+      <div class="w-col w-col-4 w-hidden-small w-hidden-tiny author-column">	
+        <h4 class="w-hidden-main w-hidden-medium">About the Author</h4>
+        <img class="author-image" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" alt="{{ rest.name }}">
+        <div class="thumbnail-title">{{ rest.name }}</div>
+        <div class="article-info-wrapper">
+          <div class="article-info-text">
+            <p>{{ rest.street }}</p>
+            <p>{{ 'Philadephia, PA ' }}{{ rest.zipcd }}</p>
+          </div>
+        </div>
+        <div class="grade-box">
+          <p class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</p>
+          <p class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</p>
+        </div>
+        
+        <div class="author-social-links">
+          <div class="author-connect">Tweet Tisk</div>
+          <a class="w-inline-block social-link" href="#">
+            <img src="https://s3.amazonaws.com/tisk-assets/img/twitter/Twitter_logo_blue.png" width="40" alt="twitter">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="subscribe-section">
+    <div class="w-container">
+      <h2 class="alternative-h2">Get the latest latest reviews in your neighborhood!</h2>
+      <div class="w-form form-wrapper">
+        <h2 style="color: orange">{{ get_flashed_messages()[0] }}</p>
+        <form class="w-clearfix" name="wf-form-subscribe" data-name="Subscribe" method="post">  
+            {{ form.csrf_token }}
+            {{ form.email(class="w-input field email",placeholder="Email Address *",style="width: 40%;") }}
+            {{ form.zipcd(class="w-input field",placeholder="Zip Code *",style="width: 40%;") }}
+            {{ form.first_name(class="w-input field",placeholder="First Name",style="width: 40%;") }}
+            {{ form.last_name(class="w-input field",placeholder="Last Name",style="width: 40%;") }}
+            {% for field_name, field_errors in form.errors.items() %}
+              <ul style="color: red">{% for error in field_errors %}
+                <li>{{ error }}</li>
+                {% endfor %}</ul>
+          {% endfor %}</p>
+            <input class="w-button sign-up-button" type="submit" value="Get the Dish" style="width: 25% margin-left: auto" >
+          </form>
+        <div class="w-form-done success-message on-dark">
+          <h2 class="alternative-h2">Awesome sauce!</h2>
+          <p>Thank you! Your submission has been received!</p>
+        </div>
+        <div class="w-form-fail">
+          <p>Oops! Something went wrong while submitting the form :(</p>
+        </div>
+      </div>
+    </div>
+      <div class="content-section footer">
+        <div class="w-container"><a class="footer-link proof" href="{{ url_for('home') }}">Home</a><a class="footer-link" href="{{ url_for('about') }}">About</a><a class="footer-link" href="{{ url_for('subscribe') }}">Contact</a>
+        </div>
+      </div>
+  </div>
+  </div>
+{% endblock %}
+{% block JS %}
+{% endblock %}
