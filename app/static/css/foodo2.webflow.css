@@ -136,7 +136,14 @@ p {
   font-size: 78px;
   line-height: 60px;
   font-weight: 400;
+  transition: 1s ease-in-out;
 }
+
+.logo:hover {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBD-E_8_NleUCRARNyZwNmHpiuxq3T8qxlzKIVa6t5eiRpmnK1');
+    transform: rotate(1turn) scale(1.2);
+    transform-origin: 50% 50%;
+  }
 
 .big-tagline {
   margin-bottom: 1rem;
@@ -320,6 +327,10 @@ a[class="w-clearfix w-inline-block article"]:nth-of-type(2) {
   background-color: rgba(192,192,192,.7);
   /*background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');*/
   color: #0050b8;
+
+}
+.article:hover .thumbnail-title {
+  color: steelblue;
 }
 
 
@@ -745,6 +756,9 @@ line-height: initial;
   line-height: normal;
   font-weight: 400;
   text-transform: uppercase;
+  -webkit-transition: 300ms ease;
+  -o-transition: 300ms ease;
+  transition: 300ms ease;
 }
 
 .thumbnail-title.grade {
@@ -940,9 +954,7 @@ line-height: initial;
     -webkit-filter: none;
   }
 
-  .logo::before {
-
-  }
+  
 
   .big-tagline {
     display: inline-block;
