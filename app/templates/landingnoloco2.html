@@ -57,19 +57,19 @@
         <a class="w-clearfix w-inline-block article home" href="{{ url_for('profile',id=rest.id)}}">
           <section class="w-clearfix article-text-wrapper">
             <h2 class="arrow"><em>{{ '>' }}</em></h2>
-            <h2 class="thumbnail-title">{{ rest.name }}</h2>
+            <p class="thumbnail-title">{{ rest.name }}</p>
             <h4 class="vios">{{ 'Grade: ' }}{{ rest.grade }}</h4> 
-            <p>{{ rest.street }}<br>{{ ' Philadelphia, PA ' }}{{ rest.zipcd }}</p>
+            <p>{{ rest.street }}{{ ', Philadelphia ' }}{{ rest.zipcd }}</p>
             <div class="article-info-wrapper">
               {% if rest.latestDt() %}
               <div class="article-info-text">
-                <p>{{ 'Last inspection was ' }}{{ weeks(rest.latestDt()) }}{{ ' days ago' }}</p>
+                <p class="weeks">{{ 'Last inspection : ' }}{{ weeks(rest.latestDt()) }}{{ ' days ago' }}</p>
                 <!--<p>{{ rest.latestDt().strftime("%A, %B %d, %Y") }}</p>-->
               </div></br>
               
         {% else %}
           <div class="article-info-text">
-                <h4><b>{{ "No Inspection available" }}</b><h4>
+                <p>{{ "No Inspection available" }}</p>
               </div>
             {% endif %}
               

@@ -354,7 +354,7 @@ a[class="w-clearfix w-inline-block article"]:nth-of-type(2) {
   text-align: center;
 }
 .article-text-wrapper {
-  width: 80%;
+  width: 95%;
   padding-left: 10px;
   float: left;
 }
@@ -750,12 +750,12 @@ line-height: initial;
 .thumbnail-title {
   margin-top: 0px;
   margin-bottom: 10px;
-  font-family: Oswald, sans-serif;
+  font-family: 'Roboto Slab', sans-serif;
   color: black;
   font-size: 25px;
   line-height: normal;
-  font-weight: 400;
-  text-transform: uppercase;
+  font-weight: 600;
+  text-transform: capitalize;
   -webkit-transition: 300ms ease;
   -o-transition: 300ms ease;
   transition: 300ms ease;
@@ -874,6 +874,9 @@ line-height: initial;
   font-size: 13px;
   line-height: 18px;
   list-style-type: square;
+}
+.weeks {
+  font-weight: bolder;
 }
 @media (max-width: 991px) {
   .nav-menu {
@@ -1113,6 +1116,7 @@ line-height: initial;
     max-width: 85%;
     color: black;
     font-size: 20px;
+    margin-bottom: 0px;
   }
   .thumbnail-title.profile {
     color: whitesmoke;
