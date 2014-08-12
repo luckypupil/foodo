@@ -914,6 +914,9 @@ line-height: initial;
   .article.home:first-child {
   padding-top: initial;
   }
+  .article-text-wrapper {
+    max-height: none;
+  }
 }
 
 .mobile-comments {
