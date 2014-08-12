@@ -288,13 +288,14 @@ p {
   margin-bottom: 1.25rem;
   background-color:whitesmoke;
 }
-
+.article.home:first-child {
+  padding-top: 20px;
+}
 .button.search {
   background-image: url('https://s3.amazonaws.com/tisk-assets/img/icons/search_icon.jpg');
   background-size: contain;
   padding: 1rem 1.8rem;
 }
-
 .article {
   position: relative;
   z-index: 3;
@@ -357,6 +358,7 @@ a[class="w-clearfix w-inline-block article"]:nth-of-type(2) {
   width: 95%;
   padding-left: 10px;
   float: left;
+  max-height: 115px;
 }
 .article-text-wrapper p {
   margin-bottom: 5px
@@ -909,6 +911,9 @@ line-height: initial;
   .header-container {
     padding-top: 241px;
   }
+  .article.home:first-child {
+  padding-top: initial;
+  }
 }
 
 .mobile-comments {
@@ -1101,7 +1106,7 @@ line-height: initial;
     max-width: 325px;
   }
   .button.search {
-    width: 3rem;
+    width: 2.85rem;
     padding: 1rem;
     margin: auto;
   }
