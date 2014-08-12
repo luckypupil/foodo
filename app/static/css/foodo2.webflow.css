@@ -1339,6 +1339,7 @@ line-height: initial;
     padding-bottom: 20px;
   }
   .article.home {
+    padding-left: 4px;
     padding-top: 4px;
     padding-bottom: 4px;
   }
