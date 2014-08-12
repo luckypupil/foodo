@@ -759,7 +759,7 @@ line-height: initial;
   color: black;
   font-size: 20px;
   line-height: normal;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: capitalize;
   -webkit-transition: 300ms ease;
   -o-transition: 300ms ease;
@@ -1424,7 +1424,7 @@ line-height: initial;
     color: #f09f35;
   }
   .thumbnail-title {
-    line-height: 30px;
+    line-height: 18px;
   }
   .header-container {
     padding-top: 20px;
