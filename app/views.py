@@ -58,10 +58,14 @@ def home(pg=1):
             print 'shits excepting'
             return redirect(url_for('homenoloco'))
 
+        print 'about to run rests query'
+        
         rests = Rest.query.from_statement(query).all()
+        print rests 
 
         if not rests:
-            redirect(url_for('homenoloco'))
+            print 'redirecting to noloco'
+            return redirect(url_for('homenoloco'))
 
         for rest in rests:
             rest.badges = sorted(make_badges(rest.id))

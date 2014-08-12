@@ -792,7 +792,7 @@ line-height: initial;
   font-size: 16px;
   font-weight: 300;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .vios.profile {
@@ -1005,7 +1005,7 @@ line-height: initial;
     background-image: none;
   }
   .rest-summaries {
-    margin-top: 11.5rem;
+    margin-top: 10.5rem;
     color: whitesmoke;
     position: static;
   }
