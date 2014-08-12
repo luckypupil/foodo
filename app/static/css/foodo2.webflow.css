@@ -33,7 +33,7 @@ h3 {
   font-weight: 700;
 }
 h4 {
-  margin: 10px 0px 18px;
+  margin: 0px 0px 0px;
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
@@ -299,7 +299,7 @@ p {
   position: relative;
   z-index: 3;
   display: block;
-  padding: 15px 30px;
+  padding: 10px 30px 5px;
   box-shadow: rgba(0, 0, 0, 0.10) 0px 1px 0px 0px;
   -webkit-transition: background-color 300ms ease, color 300ms ease;
   -o-transition: background-color 300ms ease, color 300ms ease;
@@ -357,6 +357,9 @@ a[class="w-clearfix w-inline-block article"]:nth-of-type(2) {
   width: 95%;
   padding-left: 10px;
   float: left;
+}
+.article-text-wrapper p {
+  margin-bottom: 5px
 }
 .arrow {
   margin-top: 80px;
@@ -752,7 +755,7 @@ line-height: initial;
   margin-bottom: 10px;
   font-family: 'Roboto Slab', sans-serif;
   color: black;
-  font-size: 25px;
+  font-size: 20px;
   line-height: normal;
   font-weight: 600;
   text-transform: capitalize;
@@ -780,7 +783,7 @@ line-height: initial;
   padding-top: 0px;
 }
 .vios {
-  margin-top: 20px;
+  margin-top: 8px;
   font-family: Oswald, sans-serif;
   color: #ff7b00;
   font-size: 16px;
