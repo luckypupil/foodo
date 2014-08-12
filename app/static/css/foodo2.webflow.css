@@ -425,7 +425,7 @@ line-height: initial;
 }
 .pagination-nav {
   position: relative;
-  display: hide ;
+  display: none;
   z-index: 1;
   margin-top: -9px;
   margin-bottom: -6px;
@@ -912,9 +912,6 @@ line-height: initial;
   .header-container {
     padding-top: 241px;
   }
-  .article.home:first-child {
-  padding-top: initial;
-  }
   .article-text-wrapper {
     max-height: none;
   }
@@ -1051,7 +1048,6 @@ line-height: initial;
   .pagination-nav{
     padding-bottom: 2rem;
   }
-
   .footer-nav-link {
     height: 42px;
     padding: 8px;
@@ -1060,8 +1056,6 @@ line-height: initial;
     padding-top: 20px;
     padding-bottom: 20px;
   }
-
-  g
   .article.suggested {
     width: auto;
     margin-right: 10px;
@@ -1355,6 +1349,9 @@ line-height: initial;
     padding-top: 4px;
     padding-bottom: 4px;
   }
+  .article.home:first-child {
+  padding-top: initial;
+  }
   .article.suggested {
     box-shadow: none;
   }
@@ -1473,4 +1470,7 @@ line-height: initial;
 
 .othercomments:last-child {
   border-bottom: none;
+}
+.ui-loader {
+  display: none;
 }
