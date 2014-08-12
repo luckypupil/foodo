@@ -5,6 +5,7 @@ import random
 from datetime import date, timedelta
 from operator import methodcaller
 from pprint import pprint
+from math import ceil
 
 
 def make_badges(restId):
@@ -18,6 +19,11 @@ def make_badges(restId):
         if badge and badge.badgenm not in badges:
             badges.append(badge.badgenm)
     return badges
+
+def dateFrom(mydate):
+    deltadays = float((date.today()-mydate).days)
+    weeks =  int(ceil(deltadays/7))
+    return int(deltadays)
 
 def getLatestComm(restId):
     #Dict of badge and resulting comments from rest's most recent inspection#

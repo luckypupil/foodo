@@ -5,12 +5,16 @@ from flask.json import dumps
 from flask.ext.httpauth import HTTPBasicAuth
 from models import Comment, Rest, Badge, User
 from forms import RestSearch, SubscribeForm
-from helper import get_grade, make_badges, search2, search3, loc_query, getLatestComm, getLatest
+from helper import get_grade, make_badges, search2, search3, loc_query, getLatestComm, getLatest, dateFrom
 from operator import attrgetter, methodcaller
 from flask.ext.admin.contrib.sqla import ModelView
 import time
 auth = HTTPBasicAuth()
 lim = 20 #results page
+
+@app.context_processor
+def retWeeks():        
+    return dict(weeks=dateFrom)
 
 @auth.get_password
 def get_password(username):
@@ -61,6 +65,10 @@ def home(pg=1):
 
         for rest in rests:
             rest.badges = sorted(make_badges(rest.id))
+            try:
+                rest.weeks = dateFrom(rest.latestDt())
+            except:
+                pass
         
         
         return render_template('landing.html', rests=rests,next=pg+1, prev=max(1,pg-1), form=form)

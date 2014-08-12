@@ -952,10 +952,12 @@ line-height: initial;
     position: relative;
     top: 26px;
     -webkit-filter: none;
+    transition: none;
   }
-
-  
-
+  .logo:hover {
+    background-image: url('https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png');
+    transform: scale(1);
+  }
   .big-tagline {
     display: inline-block;
     margin-bottom: 57px;
@@ -988,7 +990,7 @@ line-height: initial;
     background-image: none;
   }
   .rest-summaries {
-    margin-top: 185px;
+    margin-top: 11.5rem;
     color: whitesmoke;
     position: static;
   }
@@ -1043,6 +1045,8 @@ line-height: initial;
     padding-top: 20px;
     padding-bottom: 20px;
   }
+
+  g
   .article.suggested {
     width: auto;
     margin-right: 10px;
@@ -1329,6 +1333,10 @@ line-height: initial;
     margin-bottom: 0px;
     padding-top: 15px;
     padding-bottom: 20px;
+  }
+  .article.home {
+    padding-top: 4px;
+    padding-bottom: 4px;
   }
   .article.suggested {
     box-shadow: none;

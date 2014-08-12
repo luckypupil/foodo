@@ -54,7 +54,7 @@
       </nav>
       <div class="rest-summaries">
             {% for rest in rests %}
-        <a class="w-clearfix w-inline-block article" href="{{ url_for('profile',id=rest.id)}}">
+        <a class="w-clearfix w-inline-block article home" href="{{ url_for('profile',id=rest.id)}}">
           <section class="w-clearfix article-text-wrapper">
             <h2 class="arrow"><em>{{ '>' }}</em></h2>
             <h2 class="thumbnail-title">{{ rest.name }}</h2>
@@ -63,7 +63,8 @@
             <div class="article-info-wrapper">
               {% if rest.latestDt() %}
               <div class="article-info-text">
-                <h4>{{ rest.latestDt().strftime("%A, %B %d, %Y") }}</h4>
+                <p>{{ 'Last inspection was ' }}{{ weeks(rest.latestDt()) }}{{ ' days ago' }}</p>
+                <!--<p>{{ rest.latestDt().strftime("%A, %B %d, %Y") }}</p>-->
               </div></br>
               
         {% else %}
