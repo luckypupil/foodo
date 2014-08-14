@@ -1471,6 +1471,6 @@ line-height: initial;
 .othercomments:last-child {
   border-bottom: none;
 }
-.ui-loader {
+/*.ui-loader {
   display: none;
-}
+}*/

@@ -7,7 +7,6 @@ from models import Comment, Rest, Badge, User
 from forms import RestSearch, SubscribeForm
 from helper import get_grade, make_badges, search2, search3, loc_query, getLatestComm, getLatest, dateFrom
 from operator import attrgetter, methodcaller
-from flask.ext.admin.contrib.sqla import ModelView
 import time
 auth = HTTPBasicAuth()
 lim = 20 #results page
@@ -55,13 +54,9 @@ def home(pg=1):
                 query = loc_query(lat, lng, radius, offset, lim)
 
         except:
-            print 'shits excepting'
             return redirect(url_for('homenoloco'))
-
-        print 'about to run rests query'
         
         rests = Rest.query.from_statement(query).all()
-        print rests 
 
         if not rests:
             print 'redirecting to noloco'
