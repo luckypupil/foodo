@@ -22,7 +22,7 @@ def make_badges(restId):
 
 def dateFrom(mydate):
     deltadays = float((date.today()-mydate).days)
-    weeks =  int(ceil(deltadays/7))
+    # weeks =  int(ceil(deltadays/7))
     return int(deltadays)
 
 def getLatestComm(restId):
