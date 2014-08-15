@@ -136,14 +136,13 @@ p {
   font-size: 78px;
   line-height: 60px;
   font-weight: 400;
-  transition: 1s ease-in-out;
 }
 
-.logo:hover {
+/*.logo:hover {
     background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBD-E_8_NleUCRARNyZwNmHpiuxq3T8qxlzKIVa6t5eiRpmnK1');
     transform: rotate(1turn) scale(1.2);
     transform-origin: 50% 50%;
-  }
+  }*/
 
 .big-tagline {
   margin-bottom: 1rem;
@@ -227,6 +226,9 @@ p {
   background: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg') repeat;
   border: none;
 }
+.mobile-nav {
+    display: none;
+  }
 
 .nav-menu.about{
   width: 100%;
@@ -936,6 +938,21 @@ line-height: initial;
   img {
     max-width: 4rem;
   }
+  .mobile-nav {
+    width: 100%;
+    list-style-type: none;
+    padding-left: 0px;
+    background-color: black;
+  }
+  .mobile-nav-link {
+    font-size: 18px;
+    padding: 7px 0px;
+    display: block;
+    border-bottom: lightgray solid 1px;
+  }
+  .mobile-nav-link a {
+        color: lightgray;
+  }
   .button {
     margin-top: auto;
     margin: 0px 35%;
@@ -1016,7 +1033,7 @@ line-height: initial;
     width: 100%;
     display: inline-block;
     position: fixed;
-    background-color: transparent;
+    background-color: black;
     box-shadow: none;
   }
   .nav-menu {
@@ -1242,19 +1259,26 @@ line-height: initial;
     font-family:'Roboto Condensed', sans-serif;
     color: white;
     font-size: 17px;
+    position: absolute;
+    display: inline-block;
   }
   .menu-icon {
     margin-top: -6px;
     margin-right: 5px;
     float: left;
     color: white;
+    display: inline-block;
   }
   .menu-wrapper {
     border-left: 1px solid rgba(0, 0, 0, 0.10);
     display:  block;
-  }
-  .menu-wrapper.w--open {
+    padding: 10px 0 0 0;
+    width: 100%;
     background-color: black;
+    transition: 500ms;
+  }
+  .menu-wrapper a {
+    text-decoration: none;
   }
   .vios.date {
     margin-top: 15px;
