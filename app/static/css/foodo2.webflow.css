@@ -276,7 +276,7 @@ p {
   background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
 }
 .nav-profile {
-  line-height: 35px;
+  line-height: 20px;
 }
 
 #search {
@@ -1038,6 +1038,8 @@ line-height: initial;
   }
   .nav-menu {
     background-color: transparent;
+    z-index: 100;
+    position: fixed;
   }
   .nav-link {
     box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset;
@@ -1276,6 +1278,7 @@ line-height: initial;
     width: 100%;
     background-color: black;
     transition: 500ms;
+    height: 38px;
   }
   .menu-wrapper a {
     text-decoration: none;
