@@ -591,6 +591,7 @@ line-height: initial;
   position: static;
   border: lightgray solid .125rem;
   margin: 1.5rem auto;
+  padding:0;
 }
 .mobile-comments {
   padding-left: 0rem;
@@ -893,6 +894,15 @@ line-height: initial;
 .weeks {
   font-weight: bolder;
 }
+
+
+@media (max-width: 1550px) {
+  ol {
+    border-left-width: 10px;
+    margin-left: 1.5rem;
+    margin-rightt: 1.5rem;
+  }
+}
 @media (max-width: 991px) {
   .nav-menu {
     width: 100%;
@@ -917,7 +927,9 @@ line-height: initial;
   .section {
     padding: 25px 20px;
   }
-  
+  .author-image {
+    margin-top: -25px;
+  }
   .header-container {
     padding-top: 241px;
   }
@@ -945,6 +957,7 @@ line-height: initial;
   img {
     max-width: 4rem;
   }
+  
   .mobile-nav {
     width: 100%;
     position: absolute;
@@ -967,6 +980,10 @@ line-height: initial;
     width: 30%;
     font-family: Klinicslabmedium, sans-serif;
     font-size: 13px;
+  }
+  .button.subscribe {
+    width: 40%;
+    margin-left: 22%;
   }
   .all-content {
     position: relative;
@@ -1137,7 +1154,7 @@ line-height: initial;
   }
   .section {
     padding: 27px 10px;
-    margin-top: 185px;
+    margin-top: 165px;
   }
   .section.about {
     margin-top: 50px;
@@ -1172,6 +1189,7 @@ line-height: initial;
     width: initial;
     font-size: 1.5rem;
     margin: 0 15px 10px 0;
+    display: inline-block;
   }
   #rest-addy {
     color: black;
@@ -1235,6 +1253,8 @@ line-height: initial;
   }
   .article-body-column {
     margin-top: 0px;
+    padding-right: 8px;
+    padding-left: 8px;
   }
   .subscribe-section {
     padding-right: 28px;
@@ -1268,7 +1288,7 @@ line-height: initial;
     left: 0px;
     top: 0px;
     right: 0px;
-    padding-top: 2rem;
+    padding-top: 3rem;
     padding-right: 10px;
     padding-left: 10px;
     background-image: url('../images/profile_background.jpg');
