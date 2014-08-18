@@ -6,10 +6,23 @@
   <!--<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>-->
   <script type="text/javascript" src="{{ url_for('static', filename='js/modenizr.js') }}" async></script>
   <script>
-    /*$(window).load(function(){
-      $(".pagination-nav").fadeIn("slow");
-    });*/
-  </script>
+    $(document).ready(function(){
+    $(".pagination-nav").show();
+    $(".menu-wrapper").click(function() {
+            var status = $(".mobile-nav").css("display");
+            if (status === 'none' ) {
+              $(".menu,.menu-icon,.menu-wrapper-logo").hide()
+              $(".mobile-nav").show();
+            } else {
+              $(".menu,.menu-icon,.menu-wrapper-logo").show()
+              $(".mobile-nav").hide();
+
+            }
+            //console.log($(".mobile-nav").css("display"));
+            /*$(".mobile-nav").hide();*/
+    });
+    });
+  </script> 
   <script type="text/javascript" src="{{ url_for('static', filename='js/map.js') }}" async></script>
   {% block jsInit %} {% endblock %}
   <meta charset="utf-8">

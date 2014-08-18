@@ -1,21 +1,6 @@
 {% extends "base.html" %}
 {% block jsInit %}
-  <script>
-    $(document).ready(function(){
-    $(".article-info-text.tag:contains(Bathroom)").css("background-color", "rgb(177, 177, 177)");
-    $(".article-info-text.tag:contains(Maintenance)").css("background-color", "rgb(177, 177, 177)");
-    $(".article-info-text.tag:contains(Certification)").css("background-color", "rgb(177, 177, 177)");
-    $(".article-info-text.tag:contains(Refuse)").css("background-color", "rgb(177, 177, 177)");
-    $(".pagination-nav").show();
-    $(".menu-wrapper").click(function() {
-            $(".menu,.menu-icon").hide()
-            $(".mobile-nav").show();
-            $(".mobile-nav").fadeout();
-            /*$(".mobile-nav").hide();*/
-    });
-    });
-   
-  </script> 
+  
 {% endblock %}
 {% block title %}<title>{{ 'Tisk | Home' }}</title>{% endblock %}
 {% block content %}
@@ -54,7 +39,7 @@
       <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
         <nav class="w-nav-menu w-clearfix nav-menu" role="navigation"><a class="w-nav-link nav-link" href="/" data-ix="new-interaction">Home</a><a class="w-nav-link nav-link" href="/about">ABOUT</a><a class="w-nav-link nav-link" href="/subscribe">Contact</a>
         </nav>
-        <a href="#" class="w-nav-button w-clearfix menu-wrapper">
+        <a href="#" class="w-nav-button menu-wrapper">
           <div class="w-icon-nav-menu menu-icon"></div>
           <div class="menu">MENU</div>
           <ul class="mobile-nav">

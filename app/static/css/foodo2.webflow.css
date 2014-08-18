@@ -8,7 +8,7 @@ body {
 
 img {
   max-width: 7rem;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 h1 {
@@ -949,7 +949,7 @@ line-height: initial;
     width: 100%;
     list-style-type: none;
     padding-left: 0px;
-    background-color: black;
+    background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
   }
   .mobile-nav-link {
     font-size: 18px;
@@ -1153,7 +1153,8 @@ line-height: initial;
   .thumbnail-title.profile {
     color: black;
     display: inline-block;
-    font-size: 25px;
+    font-size: 22px;
+    line-height: 25px;
     margin-bottom: 10px;
   }
   .thumbnail-title.vios {
@@ -1464,7 +1465,7 @@ line-height: initial;
     line-height: 18px;
   }
   .header-container {
-    padding-top: 35px;
+    padding-top: 20px;
   }
   .vios {
     margin: 5px 0;
