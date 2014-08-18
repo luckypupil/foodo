@@ -958,6 +958,7 @@ line-height: initial;
     margin-bottom: 5px;
   }
 
+
   h1 {
     margin-bottom: 0px;
   }
@@ -1077,6 +1078,7 @@ line-height: initial;
     background-color: transparent;
     z-index: 100;
     position: fixed;
+    width: 100%;
   }
   .nav-link {
     box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset;
