@@ -35,9 +35,10 @@
             <p id="rest-addy">{{ rest.street }}</p>
             <p id="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}</p>
             <div class="grade-box">
-              <p class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</p>
-              <p class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</p>
-        </div>
+              <div class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</div>
+              <div class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</div>
+            </div>
+            <p><em>Last Inpsection: {{ rest.latestDt().strftime("%B %d, %Y") }}</p></em>
         <div class="w-col w-col-6 w-hidden-tiny w-clearfix">
           
         </div>
@@ -49,7 +50,6 @@
       <div class="w-col w-col-8 article-body-column">
 
 		{% if rest.latestDt() %}   
-        <p><em>Last Inpsection: {{ rest.latestDt().strftime("%A, %B %d, %Y") }}</p></em>
 	        {% if foodcomments %}
             <h2 class="vios date" style="color: black; font-style:italics;">{{ 'Food Comments' }}</h2>
 		        {% for badge in foodcomments %}

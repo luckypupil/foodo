@@ -1166,12 +1166,12 @@ line-height: initial;
     width: initial;
     display: inline-block;
     color: black;
+    font-size: 15px;
   }
   .thumbnail-title.grade {
     width: initial;
-    display: inline-block;
     font-size: 1.5rem;
-    margin-right: 15px;
+    margin: 0 15px 10px 0;
   }
   #rest-addy {
     color: black;
@@ -1183,7 +1183,8 @@ line-height: initial;
     width: 22rem;
     max-width: 100%;
     padding: 7px 7px 7px 0px;
-    margin: 10px 0 0;
+    margin: 0;
+    border: none;
   }
   .mobile-header-div {
     width: 25rem;
