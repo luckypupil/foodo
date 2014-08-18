@@ -1137,6 +1137,10 @@ line-height: initial;
   }
   .section {
     padding: 27px 10px;
+    margin-top: 185px;
+  }
+  .section.about {
+    margin-top: 50px;
   }
   .social-link {
     margin-right: 19px;
