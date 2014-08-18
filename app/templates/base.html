@@ -12,9 +12,11 @@
             var status = $(".mobile-nav").css("display");
             if (status === 'none' ) {
               $(".menu,.menu-icon,.menu-wrapper-logo").hide()
+              $(".menu-wrapper").css("height","5px");
               $(".mobile-nav").show();
             } else {
               $(".menu,.menu-icon,.menu-wrapper-logo").css("display","inline-block")
+              $(".menu-wrapper").css("height","45px");
               $(".menu,.menu-icon,.menu-wrapper-logo").show()
               $(".mobile-nav").hide();
             }

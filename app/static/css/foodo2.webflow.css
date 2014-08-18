@@ -947,6 +947,7 @@ line-height: initial;
   }
   .mobile-nav {
     width: 100%;
+    position: absolute;
     list-style-type: none;
     padding-left: 0px;
     background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
@@ -1277,7 +1278,7 @@ line-height: initial;
     display: inline-block;
   }
   .menu-icon {
-    margin-top: -6px;
+    margin-top: -2px;
     margin-right: 5px;
     float: left;
     color: white;
