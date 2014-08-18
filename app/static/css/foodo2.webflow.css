@@ -152,11 +152,14 @@ p {
   }*/
 
 .big-tagline {
-  margin-bottom: 1rem;
-  font-family:'Roboto Condensed', sans-serif;
-  font-size: 1.25rem;
-  line-height: 54px;
-  color: whitesmoke;
+  margin-bottom: .25rem;
+  font-family:'Roboto Slab', sans-serif;
+  font-size: 1.5em;
+  line-height: 25px;
+  color: black;
+}
+.tag-container {
+  margin-top: 5rem;
 }
 
 .byline {
@@ -957,7 +960,9 @@ line-height: initial;
   img {
     max-width: 4rem;
   }
-  
+  .tag-container {
+  display: none;
+  }
   .mobile-nav {
     width: 100%;
     position: absolute;
@@ -1044,7 +1049,7 @@ line-height: initial;
     background-image: none;
   }
   .rest-summaries {
-    margin-top: 10.5rem;
+    margin-top: 12rem;
     color: whitesmoke;
     position: static;
   }
@@ -1453,7 +1458,7 @@ line-height: initial;
     float: left;
   }
   .article-body-column {
-    margin-top: 165px;
+    margin-top: 140px;
   }
   .subscribe-section {
     padding: 20px;

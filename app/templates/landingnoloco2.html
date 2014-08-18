@@ -9,7 +9,10 @@
     {% block maincolumn %}
     <header class="main-column header filter">
       <h1 class="logo"></h1>
-      <div class="w-hidden-small w-hidden-tiny big-tagline">Get a checkup on your favorite restuarant</div>
+      <div class="tag-container">
+        <div class="w-hidden-small w-hidden-tiny big-tagline">{{ 'Health Inspection Info On Over 5,500 Philadelphia Restuarants' }}</div><br>
+        <div class="w-hidden-small w-hidden-tiny big-tagline">{{ 'Find Out What\'s Really Cooking!' }}</div>
+      </div>
       {% block search %}
       <div class="w-form">
         <form class="w-clearfix" method="get" id="search-form" name="search-form" data-name="Email Form">
@@ -37,7 +40,7 @@
     {% endblock %}
     <div class="main-column content">
       <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
-        <nav class="w-nav-menu w-clearfix nav-menu" role="navigation"><a class="w-nav-link nav-link" href="/" data-ix="new-interaction">Home</a><a class="w-nav-link nav-link" href="/about">ABOUT</a><a class="w-nav-link nav-link" href="/subscribe">Contact</a>
+        <nav class="w-nav-menu w-clearfix nav-menu" role="navigation"><a class="w-nav-link nav-link" href="/" data-ix="new-interaction">Home</a><a class="w-nav-link nav-link" href="/about">ABOUT</a><a class="w-nav-link nav-link" href="/subscribe">Subscribe</a>
         </nav>
         <a href="#" class="w-nav-button w-clearfix menu-wrapper">
           <div class="w-icon-nav-menu menu-icon"></div>
@@ -45,7 +48,7 @@
           <ul class="mobile-nav">
             <li class="mobile-nav-link"><a>Home</a></li>
             <li class="mobile-nav-link"><a href="/about">About</a></li>
-            <li class="mobile-nav-link"><a href="/subscribe">Contact</a></li>
+            <li class="mobile-nav-link"><a href="/subscribe">Subscribe</a></li>
           </ul>
         </a>
       </nav>
