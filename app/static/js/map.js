@@ -8,7 +8,7 @@ function sendloco (loc) {
 	}};
 	
 function errorloco (loc) {
-	alert("Tisk either unable to obtain your location or you're outside our current coverage area - here's a list of the most recent PHl food inspections!")	
+	alert("You're either outside our current coverage area or your a spy - here's a list of the most recent inspections instead!")	
 	//window.location = window.location+'noloco';
 	window.location = 'noloco';
 	};
