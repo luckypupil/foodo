@@ -16,11 +16,15 @@
           <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile nav-profile" href="{{ url_for('subscribe') }}">
             <div>Contact</div>
           </a>
-        </nav>
-          <div class="w-nav-button w-clearfix menu-wrapper">
+          <a href="#" class="w-nav-button w-clearfix menu-wrapper">
             <div class="w-icon-nav-menu menu-icon"></div>
             <div class="menu">MENU</div>
-          </div>
+            <ul class="mobile-nav">
+              <li class="mobile-nav-link"><a>Home</a></li>
+              <li class="mobile-nav-link"><a href="/about">About</a></li>
+              <li class="mobile-nav-link"><a href="/subscribe">Contact</a></li>
+            </ul>
+          </a>
       </nav>
     </div>
     <div class="w-container header-container">

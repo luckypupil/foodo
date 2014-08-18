@@ -801,11 +801,11 @@ line-height: initial;
   color: black;
   margin-top: 0;
   text-align:left;
+  padding-left: 20px;
 
 }
 
 .vios.date {
-  border-bottom: lightgray .15rem solid;
   color: lightgray;
   font-size: 18px;
   margin: 0;
@@ -888,7 +888,7 @@ line-height: initial;
 }
 @media (max-width: 991px) {
   .nav-menu {
-    width: 75%;
+    width: 100%;
   }
   .nav-link {
     position: static;
@@ -1174,7 +1174,7 @@ line-height: initial;
   }
   .header-image {
     height: 14.5rem;
-    padding: 0 15px;
+    padding: 0;
     background-position: 50% 50%;
     margin-bottom: 0;
     position: absolute;
@@ -1288,7 +1288,7 @@ line-height: initial;
   }
   .badge {
     width: 50%;
-    max-width: 89px;
+    max-width: 75px;
     display: inline-block;
   }
   .mobile-header-row {
