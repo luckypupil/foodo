@@ -69,22 +69,30 @@ class Rest(db.Model):
                 Comment.date.desc()).first()
         return (latestDate[0] if latestDate else None)
     
-    
     def getVios(self):
-        ### Average violations for last [365] days####
-        vioCtList = db.session.query(func.count(Comment.id)).\
-            filter(Comment.restnm == self.name,
-                   Comment.date > (date.today() - timedelta(days=765))).\
-            group_by(Comment.date).all()
-            # Tuple list w/ # vios by dates w/in last year
+         ### Violations for latestDt review####
+        if self.latestDt():
+             viosct = db.session.query(func.count(Comment.id)).\
+                filter(Comment.restnm == self.name, Comment.date == self.latestDt()).first()
+        
+        return viosct[0]
+             # Tuple list w/ # vios by dates w/in last year
 
-        # avg of vios from last year.  If none w/in year, '-1' returned
-        avgVios = (None if len(vioCtList) == 0 else
-                   round(sum(float(date[0]) for date in vioCtList)
-                         / float(len(vioCtList)), 1))
-        if avgVios == None:
-            self.isvalid = False
-        return avgVios
+    # def getVios(self):
+    #     ### Average violations for last [365] days####
+    #     vioCtList = db.session.query(func.count(Comment.id)).\
+    #         filter(Comment.restnm == self.name,
+    #                Comment.date > (date.today() - timedelta(days=765))).\
+    #         group_by(Comment.date).all()
+    #         # Tuple list w/ # vios by dates w/in last year
+
+    #     # avg of vios from last year.  If none w/in year, '-1' returned
+    #     avgVios = (None if len(vioCtList) == 0 else
+    #                round(sum(float(date[0]) for date in vioCtList)
+    #                      / float(len(vioCtList)), 1))
+    #     if avgVios == None:
+    #         self.isvalid = False
+    #     return avgVios
         
         
     def getPts(self):
