@@ -1268,7 +1268,7 @@ line-height: initial;
     background-image: url('../images/profile_background.jpg');
   }
   .menu {
-    margin-top: -6px;
+    margin-top: -6px 0 0 20px;
     float: right;
     font-family:'Roboto Condensed', sans-serif;
     color: white;
