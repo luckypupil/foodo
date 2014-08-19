@@ -36,7 +36,9 @@
             <p id="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}</p><br>
             <div class="grade-box">
               <div class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</div>
-              <div class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</div>
+              {% if rest.latestDt() %}  
+                <div class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</div>
+              {% endif %}
             </div>
             {% if rest.latestDt() %}
               <p><em>Last Inpsection: {{ rest.latestDt().strftime("%B %d, %Y") }}</p></em>
@@ -53,7 +55,7 @@
 
 		{% if rest.latestDt() %}   
 	        {% if foodcomments %}
-            <h2 class="vios date category" style="color: black; font-style:italics;">{{ 'Food Comments' }}</h2>
+            <h2 class="vios date category" style="color: black; font-style:italics;">{{ 'Food Comments (Primary)' }}</h2>
 		        {% for badge in foodcomments %}
 			        <div class="w-row badgerow">
 			          
@@ -84,7 +86,7 @@
 			      {% endfor %}
           {% endif %}
           {% if othercomments %}
-            <h2 class="vios date category" style="color: black; font-style:italics;">{{ 'Other Comments' }}</h2>
+            <h2 class="vios date category" style="color: black; font-style:italics;">{{ 'Other Comments (Secondary)' }}</h2>
             {% for badge in othercomments %}
               <div class="w-row badgerow">
                 
@@ -130,7 +132,9 @@
         </div>
         <div class="grade-box">
           <p class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</p>
-          <p class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</p>
+          {% if rest.latestDt() %}  
+            <div class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</div>
+          {% endif %}
         </div>
         
         <div class="author-social-links">

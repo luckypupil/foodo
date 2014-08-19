@@ -1193,7 +1193,7 @@ line-height: initial;
   .thumbnail-title {
     max-width: 85%;
     color: black;
-    font-size: 17px;
+    font-size: 1.15em;
     margin-bottom: 0px;
   }
   .thumbnail-title.profile {
@@ -1224,7 +1224,7 @@ line-height: initial;
     display: inline-block;
     width: 22rem;
     max-width: 100%;
-    padding: 7px 7px 7px 0px;
+    padding: 1% 7px 1% 0px;
     margin: 0;
     border: none;
   }
