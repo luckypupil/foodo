@@ -64,7 +64,7 @@ b {
 }
 .button {
   display: inline-block;
-  padding: 10px 23px;
+  padding: 2% 5%;
   background-color: black;
   -webkit-transition: background-color 250ms ease;
   -o-transition: background-color 250ms ease;
@@ -125,9 +125,9 @@ b {
 
 .logo {
   display: inline-block;
-  width: 200px;
-  height: 200px;
-  margin-top: 18.5%;
+  width: 150px;
+  height: 150px;
+  margin-top: 10%;
   margin-bottom: 15px;
   padding: 4px 21px 21px;
   background-color: transparent;
@@ -157,14 +157,12 @@ b {
 .big-tagline {
   margin-bottom: .25rem;
   font-family:'Roboto Slab', sans-serif;
-  font-size: 1.5em;
-  line-height: 25px;
+  font-size: 1.2em;
   color: black;
 }
 .tag-container {
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
-
 .byline {
   font-family: Roboto, sans-serif;
   color: rgba(255, 255, 255, 0.74);
@@ -295,7 +293,7 @@ b {
 
 #search {
   display: inline-block;
-  width: 25rem;
+  width: 20em;
   margin-right: .5rem;
 }
 
@@ -453,6 +451,7 @@ line-height: initial;
 }
 .form-wrapper {
   margin-top: 29px;
+  padding-left: 10%;
 }
 .field {
   display: inline-block;
@@ -825,7 +824,9 @@ line-height: initial;
   font-size: 18px;
   margin: 0;
 }
-
+.vios.date.category {
+  margin-left: 5px;
+}
 .grade-box {
   opacity: .8;
   border-top: lightgray .15rem solid;
@@ -969,7 +970,10 @@ line-height: initial;
     max-width: 4rem;
   }
   .tag-container {
-  display: none;
+    margin-top: 0px;
+    height: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .mobile-nav {
     width: 100%;
@@ -979,13 +983,13 @@ line-height: initial;
     background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
   }
   .mobile-nav-link {
-    font-size: 18px;
-    padding: 7px 0px;
+    font-size: 16px;
+    padding: 7px 10px;
     display: block;
     border-bottom: lightgray solid 1px;
   }
   .mobile-nav-link a {
-        color: lightgray;
+        color: white;
   }
   .button {
     margin-top: auto;
@@ -1027,10 +1031,15 @@ line-height: initial;
   }
   .big-tagline {
     display: inline-block;
-    margin-bottom: 57px;
+    margin-bottom: 0px;
+    color: white;
     float: right;
-    font-size: 25px;
+    font-size: .8em;
     line-height: 29px;
+    /*display: inline !important;*/
+  }
+  #findout {
+    display: none;
   }
   .footer-wrapper {
     background-color: black;
@@ -1043,6 +1052,7 @@ line-height: initial;
     position: static;
   }
   .main-column.header {
+    background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/profile_background.jpg');
     position: absolute;
     height: 200px;
     max-width: 1000px;
@@ -1191,7 +1201,7 @@ line-height: initial;
     display: inline-block;
     font-size: 22px;
     line-height: 25px;
-    margin-bottom: 10px;
+    margin-bottom: 0;
   }
   .thumbnail-title.vios {
     width: initial;
@@ -1233,7 +1243,7 @@ line-height: initial;
   }
   .content-section {
     padding-top: 27px;
-    padding-bottom: 27px;
+    padding-bottom: 0;
     padding-left: 0;
     background-color: transparent;
     position: static;
@@ -1401,7 +1411,7 @@ line-height: initial;
   .logo {
   }
   .main-column.header {
-    height: 145px;
+    height: 175px;
   }
   #search {
     width: 8rem;
@@ -1488,6 +1498,7 @@ line-height: initial;
   .alternative-h2 {
     font-size: 20px;
     line-height: 30px;
+    text-transform: capitalize;
   }
   .footer-link {
     display: block;
@@ -1519,7 +1530,7 @@ line-height: initial;
     margin-top: 0px;
     margin-bottom: 25px;
     padding-top: 0px;
-    padding-bottom: 25px;
+    padding-bottom: 2%;
   }
   .mobile-header-row.right-column {
     margin-top: -60px;
@@ -1534,10 +1545,10 @@ line-height: initial;
     width: 95%;
   }
   .content-section {
-    margin-top: 90px;
+    margin-top: 22%;
   }
   .moble-badge-row {
-    margin-bottom: 11px;
+    margin-bottom: 0;
   }
   .heal-icon-label {
     font-size: 13px;

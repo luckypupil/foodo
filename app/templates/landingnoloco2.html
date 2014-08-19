@@ -9,14 +9,11 @@
     {% block maincolumn %}
     <header class="main-column header filter">
       <h1 class="logo"></h1>
-      <div class="tag-container">
-        <div class="w-hidden-small w-hidden-tiny big-tagline">{{ 'Health Inspection Info On Over 5,500 Philadelphia Restuarants' }}</div><br>
-        <div class="w-hidden-small w-hidden-tiny big-tagline">{{ 'Find Out What\'s Really Cooking!' }}</div>
-      </div>
+      
       {% block search %}
       <div class="w-form">
         <form class="w-clearfix" method="get" id="search-form" name="search-form" data-name="Email Form">
-          {{ form.search(class="w-input field",placeholder="Restuarant") }}
+          {{ form.search(class="w-input field",placeholder="Restaurant") }}
 
           <input class="w-button button search" type="submit" value="">
         </form>
@@ -26,6 +23,10 @@
         <div class="w-form-fail">
           <p>Oops! Something went wrong while submitting the form :(</p>
         </div>
+      </div>
+      <div class="tag-container">
+        <div class="big-tagline">{{ 'Health Inspection Info On Over 5,500 Philadelphia Restuarants' }}</div><br>
+        <div class="big-tagline" id="findout">{{ 'Find Out What\'s Really Cooking!' }}</div>
       </div>
       {% endblock %}
       <div class="w-clearfix footer-wrapper">
