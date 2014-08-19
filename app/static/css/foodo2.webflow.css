@@ -971,7 +971,7 @@ line-height: initial;
   }
   .tag-container {
     margin-top: 0px;
-    height: 25px;
+    height: 100%;
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -1057,10 +1057,10 @@ line-height: initial;
     height: 200px;
     max-width: 1000px;
     padding-top: 15px;
-    padding-bottom: 10px;
+    padding-bottom: 0;
     text-align: left;
     z-index:  100;
-    border-bottom: black solid 5px;
+    border-bottom: black solid 2px;
   }
   .main-column.content {
     background-color: whitesmoke;
@@ -1354,7 +1354,7 @@ line-height: initial;
   }
   .badge {
     width: 50%;
-    max-width: 75px;
+    max-width: 4em;
     display: inline-block;
   }
   .mobile-header-row {
@@ -1387,7 +1387,7 @@ line-height: initial;
   display: inline;
 }
   .w-hidden-main.w-hidden-medium.badge {
-    margin: 1rem;
+    margin: .5em;
     margin-left: 0;
   }
 }
@@ -1401,6 +1401,9 @@ line-height: initial;
   p {
     font-size: 13px;
     font-weight: 400;
+  }
+  ol {
+    margin-left: .65em;
   }
   .button {
     height: 40px;
@@ -1528,7 +1531,7 @@ line-height: initial;
   }
   .badgerow {
     margin-top: 0px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     padding-top: 0px;
     padding-bottom: 2%;
   }
