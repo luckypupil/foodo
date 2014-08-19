@@ -1422,6 +1422,9 @@ line-height: initial;
   .main-column.content {
     padding-right: 0px;
   }
+  .big-tagline {
+    line-height: 15px;
+  }
   .navbar {
     position: relative;
     display: block;
