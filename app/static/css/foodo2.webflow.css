@@ -1001,7 +1001,6 @@ line-height: initial;
   }
   .all-content {
     position: relative;
-    padding-bottom: 59px;
   }
   .article-info-wrapper.profile-body {
     display: none;
@@ -1065,6 +1064,7 @@ line-height: initial;
   }
   .rest-summaries {
     margin-top: 12rem;
+    margin-bottom: 0;
     color: whitesmoke;
     position: static;
   }
@@ -1084,7 +1084,6 @@ line-height: initial;
   .nav-menu {
     background-color: transparent;
     z-index: 100;
-    position: fixed;
     width: 100%;
   }
   .nav-link {
@@ -1096,9 +1095,8 @@ line-height: initial;
   }
   .nav-link.page {
     background-color: whitesmoke;
-    background-image: none;
     box-shadow: rgba(0, 0, 0, 0.11) -1px 0px 0px 0px inset;
-    color: black;
+    color: white;
     padding: 15px;
   }
   .nav-link.page.w--current {
@@ -1111,7 +1109,7 @@ line-height: initial;
   }
 
   .pagination-nav{
-    padding-bottom: 2rem;
+    background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
   }
   .footer-nav-link {
     height: 42px;
