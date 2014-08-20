@@ -828,9 +828,7 @@ line-height: initial;
   margin-left: 5px;
 }
 .grade-box {
-  opacity: .8;
-  border-top: lightgray .15rem solid;
-  border-bottom: lightgray .15rem solid;
+  opacity: .8;  
   padding: 1rem;
   margin-bottom: 1rem;
 }
