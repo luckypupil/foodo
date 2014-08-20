@@ -1,11 +1,11 @@
 {% extends "landingnoloco2.html" %}
 {% block jsInit %} 
-{{ super() }}
 <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
-    <script type="text/javascript">
-    	function geoload() {
-    		navigator.geolocation.getCurrentPosition(sendloco,errorloco);	
-    	};
-    	window.onpaint = geoload();
-    </script>
+<script type="text/javascript">
+	function geoload() {
+    	navigator.geolocation.getCurrentPosition(sendloco,errorloco);	
+    };
+    window.onpaint = geoload();
+</script>
+{{ super() }}
 {% endblock %}

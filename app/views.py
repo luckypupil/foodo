@@ -36,6 +36,7 @@ def page_not_found(error):
 @app.route('/<int:pg>/', methods=['GET', 'POST'])
 def home(pg=1):
     if 'noloco' in session:
+        print 'noloco in sess!'
         session.pop('noloco',none)
 
     radius = 10
