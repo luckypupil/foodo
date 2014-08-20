@@ -55,9 +55,8 @@
       </nav>
       <div class="rest-summaries">
       <div class="tag-container-mobile">
-        <div class="big-tagline">{{ 'Health Inspection Info On Over 5,500 Philadelphia Restuarants!' }}</div>
-        <img id="spoon" src="https://cdn1.iconfinder.com/data/icons/windows-8-metro-style/512/spoon.png">
-        <div class="big-tagline" id="findout">{{ 'Find Out What\'s Really Cooking!' }}</div>
+        <div class="big-tagline">{{ 'Health Inspection Info On Over 5,500 Philadelphia Restuarants -- Find Out What\'s Really Cooking!' }}</div>
+        <img id="spoon" src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/arrow_sans_down-512.png">
       </div>
       {% for rest in rests %}
         <a class="w-clearfix w-inline-block article home" href="{{ url_for('profile',id=rest.id)}}">
