@@ -9,7 +9,7 @@ from helper import get_grade, make_badges, search2, search3, loc_query, getLates
 from operator import attrgetter, methodcaller
 import time
 auth = HTTPBasicAuth()
-lim = 20 #results page
+lim = 15 #results page
 
 @app.context_processor
 def retWeeks():        
@@ -41,7 +41,7 @@ def home(pg=1):
 
     radius = 10
     pg = int(pg)
-    offset = pg*20-20
+    offset = pg*lim-lim
     form = RestSearch()
 
     if request.args:

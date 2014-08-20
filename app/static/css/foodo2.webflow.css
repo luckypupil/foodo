@@ -55,7 +55,7 @@ p {
   margin-bottom: 1.5rem;
   font-family:'Roboto Slab', sans-serif;
   color: black;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 18px;
   font-weight: 400;
 }
@@ -376,7 +376,7 @@ a[class="w-clearfix w-inline-block article"]:nth-of-type(2) {
   max-height: 115px;
 }
 .article-text-wrapper p {
-  margin-bottom: 5px
+  margin-bottom: 3px
 }
 .arrow {
   margin-top: 80px;
@@ -774,9 +774,9 @@ line-height: initial;
   margin-bottom: 10px;
   font-family: 'Roboto Slab', sans-serif;
   color: black;
-  font-size: 20px;
+  font-size: 1.2em;
   line-height: normal;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: capitalize;
   -webkit-transition: 300ms ease;
   -o-transition: 300ms ease;
@@ -802,7 +802,6 @@ line-height: initial;
   padding-top: 0px;
 }
 .vios {
-  margin-top: 8px;
   font-family: Oswald, sans-serif;
   color: #ff7b00;
   font-size: 16px;
@@ -898,7 +897,7 @@ line-height: initial;
   list-style-type: square;
 }
 .weeks {
-  font-weight: bolder;
+  font-style: italic;
 }
 .about-lists {
   margin-left: 5px;
