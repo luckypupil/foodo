@@ -141,6 +141,9 @@ b {
   line-height: 60px;
   font-weight: 400;
 }
+#main-search {
+  margin-top: 7%;
+}
 .menu-wrapper-logo {
   height: 35px;
   display: inline;
@@ -161,7 +164,7 @@ b {
   color: black;
 }
 .tag-container {
-  margin-top: 2rem;
+  margin-top: 12%;
 }
 .tag-container-mobile {
   display: none;
