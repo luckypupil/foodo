@@ -163,6 +163,9 @@ b {
 .tag-container {
   margin-top: 2rem;
 }
+.tag-container-mobile {
+  display: none;
+}
 .byline {
   font-family: Roboto, sans-serif;
   color: rgba(255, 255, 255, 0.74);
@@ -966,12 +969,6 @@ line-height: initial;
   img {
     max-width: 4rem;
   }
-  .tag-container {
-    margin-top: 0px;
-    height: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
   .mobile-nav {
     width: 100%;
     position: absolute;
@@ -1025,17 +1022,29 @@ line-height: initial;
     background-image: url('https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png');
     transform: scale(1);
   }
+  .tag-container {
+    display: none;  
+  }
+  .tag-container-mobile {
+    display: block;
+    margin-bottom: 10%;
+    padding: 5%;
+  }
   .big-tagline {
     display: inline-block;
-    margin-bottom: 0px;
-    color: white;
+    color: black;
     float: right;
-    font-size: .8em;
+    font-size: 1.25em;
     line-height: 29px;
+    width: 100%;
+    text-align: center;
     /*display: inline !important;*/
   }
   #findout {
-    display: none;
+  }
+  #spoon {
+    margin-left: 45%;
+    margin-bottom: 5%;
   }
   .footer-wrapper {
     background-color: black;
@@ -1418,7 +1427,7 @@ line-height: initial;
     padding-right: 0px;
   }
   .big-tagline {
-    line-height: 15px;
+  
   }
   .navbar {
     position: relative;

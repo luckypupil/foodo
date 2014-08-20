@@ -54,7 +54,12 @@
         </a>
       </nav>
       <div class="rest-summaries">
-            {% for rest in rests %}
+      <div class="tag-container-mobile">
+        <div class="big-tagline">{{ 'Health Inspection Info On Over 5,500 Philadelphia Restuarants!' }}</div>
+        <img id="spoon" src="https://cdn1.iconfinder.com/data/icons/windows-8-metro-style/512/spoon.png">
+        <div class="big-tagline" id="findout">{{ 'Find Out What\'s Really Cooking!' }}</div>
+      </div>
+      {% for rest in rests %}
         <a class="w-clearfix w-inline-block article home" href="{{ url_for('profile',id=rest.id)}}">
           <section class="w-clearfix article-text-wrapper">
             <p class="thumbnail-title">{{ rest.name }}</p>
@@ -66,7 +71,6 @@
                 <p class="weeks">{{ 'Last inspection : ' }}{{ weeks(rest.latestDt()) }}{{ ' days ago' }}</p>
                 <!--<<p>{{ rest.latestDt().strftime("%A, %B %d, %Y") }}</p>-->
               </div></br>
-              
         {% else %}
           <div class="article-info-text">
                 <p class="weeks">{{ "No inspection available" }}</p>
@@ -75,7 +79,6 @@
               
             </div>
           </section>
-      
         </a>
     
         {% endfor %}
