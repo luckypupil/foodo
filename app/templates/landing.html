@@ -2,10 +2,11 @@
 {% block jsInit %} 
 <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
 <script type="text/javascript">
-	function geoload() {
-    	navigator.geolocation.getCurrentPosition(sendloco,errorloco);	
-    };
-    window.onpaint = geoload();
+		console.log("running ur geos");
+		function geoload() {
+	    	navigator.geolocation.getCurrentPosition(sendloco,errorloco);	
+	    };
+	    window.onpaint = geoload();
 </script>
 {{ super() }}
 {% endblock %}

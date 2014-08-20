@@ -45,6 +45,7 @@ def home(pg=1):
     form = RestSearch()
 
     if request.args:
+        #start = time.time()
         lat = request.args.get('lat', "39.9522")  # city Hall
         lng = request.args.get('lng', "-75.1639")
         try:
@@ -58,19 +59,19 @@ def home(pg=1):
             return redirect(url_for('homenoloco'))
         
         rests = Rest.query.from_statement(query).all()
-
+        #tottime = time.time() - start
+        #print "******* Get Rest geo query took {} seconds******".format(tottime)
         if not rests:
             print 'redirecting to noloco'
             return redirect(url_for('homenoloco'))
-
+        #startrestprep = time.time()
         for rest in rests:
-            rest.badges = sorted(make_badges(rest.id))
             try:
                 rest.weeks = dateFrom(rest.latestDt())
             except:
                 pass
-        
-        
+        #restprep = time.time()-startrestprep
+        #print "******* adding badges, weeks to rests took {} seconds******".format(restprep)
         return render_template('landing.html', rests=rests,next=pg+1, prev=max(1,pg-1), form=form)
 
     else:
