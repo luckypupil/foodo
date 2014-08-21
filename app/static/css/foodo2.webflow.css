@@ -1433,6 +1433,7 @@ line-height: initial;
     padding-bottom: 0px;
   }
   .logo {
+    top: 8px;
   }
   .main-column.header {
     height: 175px;
