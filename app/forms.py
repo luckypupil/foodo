@@ -3,7 +3,8 @@ from wtforms import TextField, BooleanField, FileField, StringField, IntegerFiel
 from wtforms.validators import Required, InputRequired, Length, Email
 
 class RestSearch(Form):
-    search = TextField('restuarant',validators = [Required(message=(u'.'))])
+    searchRest = TextField('restuarant',validators = [Required(message=(u'.'))])
+    searchAddy = TextField('address',validators = [Required(message=(u'.'))])
 
 class SubscribeForm(Form):
     email = StringField('email',validators = [InputRequired(message = (u'Email field required')),Email(),Length(min=2)])

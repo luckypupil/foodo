@@ -13,8 +13,8 @@
       {% block search %}
       <div class="w-form" id="main-search">
         <form class="w-clearfix" method="get" id="search-form" name="search-form" data-name="Email Form">
-          {{ form.search(class="w-input field",placeholder="Restaurant") }}
-
+          {{ form.searchRest(class="w-input field home",placeholder="restaurant") }}
+          {{ form.searchAddy(class="w-input field home",placeholder="address, zip code, neighborhood") }}
           <input class="w-button button search" type="submit" value="">
         </form>
         <div class="w-form-done">
@@ -58,6 +58,7 @@
         <div class="big-tagline">{{ 'Health Inspection Info On Over 5,500 Philadelphia Restuarants -- Find Out What\'s Really Cooking!' }}</div>
         <img id="spoon" src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/arrow_sans_down-512.png">
       </div>
+      <div id="list-label">{{'In Order Of Proximity'}}</div>
       {% for rest in rests %}
         <a class="w-clearfix w-inline-block article home" href="{{ url_for('profile',id=rest.id)}}">
           <section class="w-clearfix article-text-wrapper">

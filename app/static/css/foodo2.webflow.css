@@ -169,6 +169,12 @@ b {
 .tag-container-mobile {
   display: none;
 }
+#list-label {
+  width: 100%;
+  color: black;
+  margin-bottom: 5%;
+  margin-left: 3%;
+}
 .byline {
   font-family: Roboto, sans-serif;
   color: rgba(255, 255, 255, 0.74);
@@ -1010,14 +1016,13 @@ line-height: initial;
     display: inline-block;
     width: 5.2rem;
     height: 75px;
-    margin: 20px 0 0 0;
+    margin: 15% 0 0 0;
     padding: 13px 14px;
     float: none;
     border-width: 5px;
     font-size: 42px;
     line-height: 30px;
     position: relative;
-    top: 26px;
     -webkit-filter: none;
     transition: none;
   }
@@ -1170,18 +1175,27 @@ line-height: initial;
   .w-input.field {
     height: 52px;
   }
-  #search {
-    width: 25rem;
+  .field.home {
+    width: 12.5em;
+    height: .8em;
+    border-radius: 15px;
     max-width: 225px;
     margin-top: 0;
   }
   #search-form {
     max-width: 325px;
   }
+  #main-search {
+    width: 70%;
+  }
+  #searchRest {
+    margin-bottom: 5px;
+  }
   .button.search {
     width: 2.85rem;
     padding: 1rem;
-    margin: auto;
+    margin: -20px 0 0 5px;
+    position: absolute;
   }
   .section {
     padding: 27px 10px;

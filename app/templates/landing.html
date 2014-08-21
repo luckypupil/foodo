@@ -1,12 +1,28 @@
 {% extends "landingnoloco2.html" %}
-{% block jsInit %} 
+{% block jsInit %}
+<script src=https://maps.googleapis.com/maps/api/js?v=3.exp></script> 
 <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
 <script type="text/javascript">
-		console.log("running ur geos");
-		function geoload() {
+	function geoload() {
 	    	navigator.geolocation.getCurrentPosition(sendloco,errorloco);	
 	    };
-	    window.onpaint = geoload();
+	geoload();
+
+	$(document).ready(function() {
+	    $("form").submit(function(evt) {
+	    	evt.preventDefault();
+	    	var addy = $("#searchAddy").val() || ""; 
+	    	var restNm = $("#searchRest").val() || "";
+	    	if (restNm) {
+	    		window.location.search = '?search='+restNm;
+	    	} else if (addy) {
+	    		geocode(addy,restNm);
+	    	} else {
+	    		alert('no terms provided!');
+	    	}
+	    });
+	});
+	    
 </script>
 {{ super() }}
 {% endblock %}

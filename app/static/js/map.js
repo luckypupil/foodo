@@ -5,6 +5,7 @@ function sendloco (loc) {
 		var lat = loc.coords.latitude;
 		var lng	= loc.coords.longitude;
 		window.location = baseUrl+fct+'lat='+lat+'&lng='+lng;
+		console.log('sendloco ran');
 	}};
 	
 function errorloco (loc) {
@@ -13,7 +14,19 @@ function errorloco (loc) {
 	window.location = 'noloco';
 	};
 
-	
-
-
-
+function geocode (addy,restNm) {
+	console.log('geocode running');
+	var swCorn = new google.maps.LatLng(40.1379919,-75.280303);
+	var neCorn = new google.maps.LatLng(39.8670041,-74.95576289999997);
+	var philBounds = new google.maps.LatLngBounds(swCorn,neCorn);
+	var geocoder = new google.maps.Geocoder();
+	if (addy) {
+	var answer = geocoder.geocode( {'address':addy, 'bounds':philBounds }, function(results,status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			var lng = results[0].geometry.location.B;
+			var lat = results[0].geometry.location.k;
+			window.location.search = '?lat='+lat+'&lng='+lng+'&search='+restNm;
+		}
+		})
+	}
+	};
