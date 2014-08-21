@@ -1014,7 +1014,7 @@ line-height: initial;
 
   .logo {
     display: inline-block;
-    width: 5.2rem;
+    width: 5rem;
     height: 75px;
     margin: 15% 0 0 0;
     padding: 13px 14px;
@@ -1176,14 +1176,14 @@ line-height: initial;
     height: 52px;
   }
   .field.home {
-    width: 12.5em;
+    width: 10.5em;
     height: .8em;
     border-radius: 15px;
     max-width: 225px;
     margin-top: 0;
   }
   #search-form {
-    max-width: 325px;
+    max-width: 100%;
   }
   #main-search {
     width: 70%;
