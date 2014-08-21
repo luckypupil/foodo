@@ -310,7 +310,7 @@ b {
 }
 
 .rest-summaries {
-  margin-top: 3rem;
+  margin-top: 4rem;
   margin-bottom: 1.25rem;
   background-color:whitesmoke;
 }
@@ -321,6 +321,8 @@ b {
   background-image: url('https://s3.amazonaws.com/tisk-assets/img/icons/search_icon.jpg');
   background-size: contain;
   padding: 1rem 1.8rem;
+  display: block;
+  margin-left: 45%;
 }
 .article {
   position: relative;
@@ -1195,6 +1197,7 @@ line-height: initial;
     padding: 1rem;
     margin: -20px 0 0 5px;
     position: absolute;
+    display: inline-block;
   }
   .section {
     padding: 27px 10px;

@@ -1,6 +1,23 @@
 {% extends "base.html" %}
 {% block jsInit %}
-  
+<script src=https://maps.googleapis.com/maps/api/js?v=3.exp></script> 
+<script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $("form").submit(function(evt) {
+        evt.preventDefault();
+        var addy = $("#searchAddy").val() || ""; 
+        var restNm = $("#searchRest").val() || "";
+        if (restNm) {
+          window.location.search = '?search='+restNm;
+        } else if (addy) {
+          geocode(addy,restNm);
+        } else {
+          alert('no terms provided!');
+        }
+      });
+  });
+</script>
 {% endblock %}
 {% block title %}<title>{{ 'Tisk | Home' }}</title>{% endblock %}
 {% block content %}

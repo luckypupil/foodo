@@ -5,7 +5,7 @@ function sendloco (loc) {
 		var lat = loc.coords.latitude;
 		var lng	= loc.coords.longitude;
 		window.location = baseUrl+fct+'lat='+lat+'&lng='+lng;
-		console.log('sendloco ran');
+		console.log(window.location);		
 	}};
 	
 function errorloco (loc) {
@@ -25,7 +25,8 @@ function geocode (addy,restNm) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			var lng = results[0].geometry.location.B;
 			var lat = results[0].geometry.location.k;
-			window.location.search = '?lat='+lat+'&lng='+lng+'&search='+restNm;
+			baseUrl = window.location.origin;
+			window.location = baseUrl+'/?lat='+lat+'&lng='+lng+'&search='+restNm;
 		}
 		})
 	}
