@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "landing.html" %}
 {% block jsInit %}
 <script src=https://maps.googleapis.com/maps/api/js?v=3.exp></script> 
 <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
@@ -21,98 +21,5 @@
 {% endblock %}
 {% block title %}<title>{{ 'Tisk | Home' }}</title>{% endblock %}
 {% block content %}
-  
-  <div class="w-clearfix all-content">
-    {% block maincolumn %}
-    <header class="main-column header filter">
-      <h1 class="logo"></h1>
-      
-      {% block search %}
-      <div class="w-form" id="main-search">
-        <form class="w-clearfix" method="get" id="search-form" name="search-form" data-name="Email Form">
-          {{ form.searchRest(class="w-input field home",placeholder="restaurant") }}
-          {{ form.searchAddy(class="w-input field home",placeholder="location") }}
-          <input class="w-button button search" type="submit" value="">
-        </form>
-        <div class="w-form-done">
-          <p>Thank you! Your submission has been received!</p>
-        </div>
-        <div class="w-form-fail">
-          <p>Oops! Something went wrong while submitting the form :(</p>
-        </div>
-      </div>
-      <div class="tag-container">
-        <div class="big-tagline">{{ 'Health Inspection Info On Over 5,500 Philadelphia Restuarants!' }}</div>
-        <div class="big-tagline" id="findout">{{ 'Find Out What\'s Really Cooking!' }}</div>
-      </div>
-      {% endblock %}
-      <div class="w-clearfix footer-wrapper">
-        <a class="w-inline-block footer-nav-link" href="https://twitter.com/tiskphl"><!--Add Twitter page -->
-          <img src="https://s3.amazonaws.com/tisk-assets/img/twitter/Twitter_logo_white.png" width="30" alt="twitter">
-        </a>
-        <a class="w-inline-block footer-nav-link" href="/subscribe">
-          <div class="subscribe">Subscribe</div>
-        </a>
-      </div>
-    </header>
-    {% endblock %}
-    <div class="main-column content">
-      <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
-        <nav class="w-nav-menu w-clearfix nav-menu" role="navigation"><a class="w-nav-link nav-link" href="/" data-ix="new-interaction">Home</a><a class="w-nav-link nav-link" href="/about">ABOUT</a><a class="w-nav-link nav-link" href="/subscribe">Subscribe</a>
-        </nav>
-        <a href="#" class="w-nav-button w-clearfix menu-wrapper">
-          <div class="w-icon-nav-menu menu-icon"></div>
-          <ul class="mobile-nav">
-            <li class="mobile-nav-link"><a>Home</a></li>
-            <li class="mobile-nav-link"><a href="/about">About</a></li>
-            <li class="mobile-nav-link"><a href="/subscribe">Subscribe</a></li>
-          </ul>
-        </a>
-      </nav>
-      <div class="rest-summaries">
-      <div class="tag-container-mobile">
-        <div class="big-tagline">{{ 'Health Inspection Info On Over 5,500 Philadelphia Restuarants -- Find Out What\'s Really Cooking!' }}</div>
-        <img id="spoon" src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/arrow_sans_down-512.png">
-      </div>
-      <!--<div id="list-label">{{'In Order Of Proximity'}}</div>-->
-      {% for rest in rests %}
-        <a class="w-clearfix w-inline-block article home" href="{{ url_for('profile',id=rest.id)}}">
-          <section class="w-clearfix article-text-wrapper">
-            <p class="thumbnail-title">{{ rest.name }}</p>
-            <h4 class="vios">{{ 'Grade : ' }}{{ rest.grade }}</h4> 
-            <p>{{ rest.street }}{{ ', Philadelphia ' }}</p>
-            <div class="article-info-wrapper">
-              {% if rest.latestDt() %}
-              <div class="article-info-text">
-                <p class="weeks">{{ 'Last inspection : ' }}{{ weeks(rest.latestDt()) }}{{ ' days ago' }}</p>
-                <!--<<p>{{ rest.latestDt().strftime("%A, %B %d, %Y") }}</p>-->
-              </div></br>
-        {% else %}
-          <div class="article-info-text">
-                <p class="weeks">{{ "No inspection available" }}</p>
-              </div>
-            {% endif %}
-              
-            </div>
-          </section>
-        </a>
-    
-        {% endfor %}
-      </div>
-      <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
-        <nav class="w-nav-menu w-clearfix nav-menu pagination-nav" role="navigation">
-          {% if session.noloco %}
-              <a class="w-nav-link nav-link page" href="{{ url_for('homenoloco', pg=prev, search=request.args.get('search')) }}">Prev</a>
-              <a class="w-nav-link nav-link page" href="{{ url_for('homenoloco', pg=next, search=request.args.get('search')) }}">Next</a>
-          {% else %}
-              <a class="w-nav-link nav-link page" href="{{ url_for('home',pg=prev, lat=request.args.get('lat',none), lng=request.args.get('lng',none), search=request.args.get('search',none)) }}">Prev</a>
-              <a class="w-nav-link nav-link page" href="{{ url_for('home',pg=next, lat=request.args.get('lat',none), lng=request.args.get('lng',none), search=request.args.get('search',none)) }}"> next </a>
-          {% endif %}
-        </nav>
-        <div class="w-nav-button">
-          <div class="w-icon-nav-menu"></div>
-        </div>
-    </div>
-  </div>
-
+  {{ super() }}
 {% endblock %}

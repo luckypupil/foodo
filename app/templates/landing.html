@@ -32,7 +32,6 @@
     {% block maincolumn %}
     <header class="main-column header filter">
       <h1 class="logo"></h1>
-      
       {% block search %}
       <div class="w-form" id="main-search">
         <form class="w-clearfix" method="get" id="search-form" name="search-form" data-name="Email Form">
@@ -66,14 +65,7 @@
       <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
         <nav class="w-nav-menu w-clearfix nav-menu" role="navigation"><a class="w-nav-link nav-link" href="/" data-ix="new-interaction">Home</a><a class="w-nav-link nav-link" href="/about">ABOUT</a><a class="w-nav-link nav-link" href="/subscribe">Subscribe</a>
         </nav>
-        <a href="#" class="w-nav-button w-clearfix menu-wrapper">
-          <div class="w-icon-nav-menu menu-icon"></div>
-          <ul class="mobile-nav">
-            <li class="mobile-nav-link"><a>Home</a></li>
-            <li class="mobile-nav-link"><a href="/about">About</a></li>
-            <li class="mobile-nav-link"><a href="/subscribe">Subscribe</a></li>
-          </ul>
-        </a>
+        {% include 'mobileMenu.html' %}
       </nav>
       <div class="rest-summaries">
       <div class="tag-container-mobile">
@@ -84,9 +76,10 @@
       {% for rest in rests %}
         <a class="w-clearfix w-inline-block article home" href="{{ url_for('profile',id=rest.id)}}">
           <section class="w-clearfix article-text-wrapper">
-            <p class="thumbnail-title">{{ rest.name }}</p>
+            <p class="thumbnail-title homepg">{{ rest.rank }}{{ '. ' }}{{ rest.name }}</p>
+            <p class="dist">{{ rest.dist }}{{ ' mi' }}</p>
             <h4 class="vios">{{ 'Grade : ' }}{{ rest.grade }}</h4> 
-            <p>{{ rest.street }}{{ ', Philadelphia ' }}</p>
+            <p class="addy">{{ rest.street }}{{ ', Philadelphia ' }}</p>
             <div class="article-info-wrapper">
               {% if rest.latestDt() %}
               <div class="article-info-text">
@@ -120,6 +113,7 @@
         </div>
     </div>
   </div>
-
+{% endblock %}
+{% block endingJs %}
 {% endblock %}
 

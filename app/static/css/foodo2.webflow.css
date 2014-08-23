@@ -164,7 +164,7 @@ b {
   color: black;
 }
 .tag-container {
-  margin-top: 12%;
+  margin-top: 5%;
 }
 .tag-container-mobile {
   display: none;
@@ -470,7 +470,7 @@ line-height: initial;
 .field {
   display: inline-block;
   width: 65%;
-  height: 53px;
+  height: 45px;
   margin-right: auto;
   margin-bottom: 17px;
   margin-left: auto;
@@ -601,6 +601,9 @@ line-height: initial;
   border: 2px solid white;
   background-color: black;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 0px 0px 1px;
+  width: 9em;
+  height: 10em;
+  padding-top: 3em;
 }
 .author-column {
   margin-top: 9px;
@@ -791,15 +794,19 @@ line-height: initial;
   font-size: 1.2em;
   line-height: normal;
   font-weight: 600;
+  width: 85%;
+  display: inline-block;
   text-transform: capitalize;
   -webkit-transition: 300ms ease;
   -o-transition: 300ms ease;
   transition: 300ms ease;
 }
-
+.dist {
+  display:inline-block;
+}
 .thumbnail-title.grade {
     color: #ff7b00;
-    font-size: 2rem;
+    font-size: 4em;
     font-style: italic;
     margin: .1rem 0;
     width:  100%;
@@ -1172,6 +1179,9 @@ line-height: initial;
   .w-form {
     display: inline-block;
     margin: 0;
+  }
+  .w-form.form-wrapper {
+    padding-left: 0;
   }
   .w-input.field {
     height: 52px;

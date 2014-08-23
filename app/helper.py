@@ -5,8 +5,7 @@ import random
 from datetime import date, timedelta
 from operator import methodcaller
 from pprint import pprint
-from math import ceil
-
+from math import ceil, acos, cos, radians, sin
 
 def make_badges(restId):
     ### Return unique badge list for restaurant ###
@@ -74,22 +73,26 @@ def get_grade(pts):
 	return grade
 	
 	
-def loc_query(lat,lng,radius,offset,lim):
+def proxQuery(lat,lng,radius,offset,lim):
+    ### Query Rests by distance from lat/ln provided###
     return("SELECT * FROM (SELECT id, (3959 * acos(cos(radians({latitude})) * cos(radians(lat))\
-    * cos(radians(lng) - radians({longitude})) + sin(radians({latitude}))\
-    * sin(radians(lat)))) AS distance FROM rest) AS distance WHERE distance\
-     < {radius}  ORDER BY distance LIMIT {limit} OFFSET {offset};".format(latitude=lat, longitude=lng, radius=radius, offset=offset, limit=lim)) 
+        * cos(radians(lng) - radians({longitude})) + sin(radians({latitude}))\
+        * sin(radians(lat)))) AS distance FROM rest) AS distance WHERE distance\
+        < {radius}  ORDER BY distance LIMIT {limit} OFFSET {offset};"\
+        .format(latitude=lat, longitude=lng, radius=radius, offset=offset, limit=lim)) 
  
 
-def search2(lat,lng,radius,offset,lim,term):
+def proxPlusNameQuery(lat,lng,radius,offset,lim,term):
 	return("SELECT * FROM (SELECT id, tsv, (3959 * acos(cos(radians({latitude})) * cos(radians(lat))\
-    * cos(radians(lng) - radians({longitude})) + sin(radians({latitude}))\
-    * sin(radians(lat)))) AS distance FROM rest) AS distance WHERE distance\
-     < {radius} AND plainto_tsquery('{term}') @@ tsv LIMIT {limit} OFFSET {offset};".format(latitude=lat, longitude=lng, radius=radius, offset=offset, term=term, limit=lim))
+        * cos(radians(lng) - radians({longitude})) + sin(radians({latitude}))\
+        * sin(radians(lat)))) AS distance FROM rest) AS distance WHERE distance\
+        < {radius} AND plainto_tsquery('{term}') @@ tsv ORDER BY distance LIMIT {limit} OFFSET {offset};"\
+        .format(latitude=lat, longitude=lng, radius=radius, offset=offset, term=term, limit=lim))
 	
-def search3(offset,lim,term):
-    return("SELECT * FROM rest WHERE plainto_tsquery('{term}') @@ tsv LIMIT {limit} OFFSET {offset};".format(offset=offset, term=term, limit=lim))
-
+def nameQuery(offset,lim,term):
+    ### Query by Rest Name###
+    return("SELECT * FROM rest WHERE plainto_tsquery('{term}') @@ tsv LIMIT {limit} OFFSET {offset};"\
+        .format(offset=offset, term=term, limit=lim))
 
 def makeSlug(string,spaceChar='+',Maxlen=None):
             stringlst = string.split(" ")
@@ -97,7 +100,11 @@ def makeSlug(string,spaceChar='+',Maxlen=None):
             for word in stringlst:
                 newStr+=(word+spaceChar)        
             return newStr[:-1][:Maxlen]
-          
+
+def getDist (fromLat=39.94106319999999,fromLng=-75.17319229999998,toLat=39.9522,toLng=-75.1639):
+    dist = 3959 * acos(cos(radians(fromLat)) * cos(radians(toLat)) * cos(radians(toLng) - radians(fromLng)) + sin(radians(fromLat))\
+        * sin(radians(toLat)))      
+    return round(dist,1)          
           
 if __name__ == "__main__":
     getLatest()

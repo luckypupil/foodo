@@ -14,32 +14,28 @@
             <div>About</div>
           </a>
           <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile nav-profile" href="{{ url_for('subscribe') }}">
-            <div>Contact</div>
+            <div>Subscribe</div>
           </a>
-        </nav>
-          <div class="w-nav-button w-clearfix menu-wrapper">
-            <div class="w-icon-nav-menu menu-icon"></div>
-            <div class="menu">MENU</div>
-          </div>
+          {% include 'mobileMenu.html' %}
       </nav>
     </div>
     <div class="w-container header-container">
-      <div class="w-row w-hidden-main w-hidden-medium mobile-header-row">
-        <div class="w-col w-col-6 w-clearfix mobile-header-row left-column">
-          <div class="mobile-header-div">
+      <div class="w-hidden-main w-hidden-medium mobile-header-row">
             <img class="w-hidden-main w-hidden-medium author-image mobile" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="200" alt="537a3eaeef89236d7de9d427_profile_page_logo.png">
-            <h3 class="thumbnail-title profile">{{ rest.name }}</h3>
+            <h3 class="thumbnail-title profile">{{ rest.name }}</h3><br>
             <p id="rest-addy">{{ rest.street }}</p>
-            <p id="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}</p>
+            <p id="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}</p><br>
+            <p class="dist">{{ rest.dist }}{{ ' Mi' }}</p>
             <div class="grade-box">
-              <p class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</p>
-              <p class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</p>
+              <div class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</div>
+              {% if rest.latestDt() %}  
+                <div class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</div>
+              {% endif %}
             </div>
-          </div>
-        </div>
-        <div class="w-col w-col-6 w-hidden-tiny w-clearfix">
-          
-        </div>
+            {% if rest.latestDt() %}
+              <p><em>Last Inpsection: {{ rest.latestDt().strftime("%B %d, %Y") }}</p></em>
+            {% endif %}
+        <div class="w-col w-col-6 w-hidden-tiny w-clearfix"></div>
       </div>
     </div>
   </div>
@@ -48,9 +44,8 @@
       <div class="w-col w-col-8 article-body-column">
 
 		{% if rest.latestDt() %}   
-        <p><em>Last Inpsection: {{ rest.latestDt().strftime("%A, %B %d, %Y") }}</p></em>
 	        {% if foodcomments %}
-            <h2 class="vios date" style="color: black; font-style:italics;">{{ 'Food Comments' }}</h2>
+            <h2 class="vios date category" style="color: black; font-style:italics;">{{ 'Food Comments (Primary)' }}</h2>
 		        {% for badge in foodcomments %}
 			        <div class="w-row badgerow">
 			          
@@ -59,7 +54,7 @@
 			            
 			            <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" title="{{ badge|trim}}" alt="{{ badge|trim}}">
                     <div class="mobile-comments">
-                      <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" alt="{{ badge|trim}}" title="{{ badge|trim}}">
+                      <img class="w-hidden-main w-hidden-medium badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" alt="{{ badge|trim}}" title="{{ badge|trim}}">
                       <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
                       <ol>
                         {% for comment in foodcomments[badge] %}
@@ -81,7 +76,7 @@
 			      {% endfor %}
           {% endif %}
           {% if othercomments %}
-            <h2 class="vios date" style="color: black; font-style:italics;">{{ 'Other Comments' }}</h2>
+            <h2 class="vios date category" style="color: black; font-style:italics;">{{ 'Other Comments (Secondary)' }}</h2>
             {% for badge in othercomments %}
               <div class="w-row badgerow">
                 
@@ -90,7 +85,7 @@
                   
                   <img class="w-hidden-small w-hidden-tiny badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" title="{{ badge|trim}}" alt="{{ badge|trim}}">
                     <div class="mobile-comments">
-                      <img class="w-hidden-main w-hidden-medium" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" alt="{{ badge|trim}}" title="{{ badge|trim}}">
+                      <img class="w-hidden-main w-hidden-medium badge" src="https://s3.amazonaws.com/tisk-assets/img/badges/{{ badge|trim }}.gif" alt="{{ badge|trim}}" title="{{ badge|trim}}">
                       <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
                       <ol>
                         {% for comment in othercomments[badge] %}
@@ -112,12 +107,18 @@
             {% endfor %}
           {% endif %}
       {% else %}
-				<h3>{{ 'No recent inspection data exists' }}</h3>      
+				<h4>{{ 'No recent inspection data exists' }}</h4>      
       {% endif %}	
       </div>
       <div class="w-col w-col-4 w-hidden-small w-hidden-tiny author-column">	
         <h4 class="w-hidden-main w-hidden-medium">About the Author</h4>
-        <img class="author-image" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" alt="{{ rest.name }}">
+        <!--<img class="author-image" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" alt="{{ rest.name }}">-->
+        {% if rest.grade %}
+          <div class="author-image"><p class="thumbnail-title grade">{{ rest.grade }}</p></div>
+          <div class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</div>
+        {% else %}
+          <div class="author-image"><p class="thumbnail-title grade">{{ 'N/A' }}</p></div>
+        {% endif %}
         <div class="thumbnail-title">{{ rest.name }}</div>
         <div class="article-info-wrapper">
           <div class="article-info-text">
@@ -125,11 +126,6 @@
             <p>{{ 'Philadephia, PA ' }}{{ rest.zipcd }}</p>
           </div>
         </div>
-        <div class="grade-box">
-          <p class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</p>
-          <p class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</p>
-        </div>
-        
         <div class="author-social-links">
           <div class="author-connect">Tweet Tisk</div>
           <a class="w-inline-block social-link" href="#">
@@ -143,7 +139,7 @@
     <div class="w-container">
       <h2 class="alternative-h2">Get the latest latest reviews in your neighborhood!</h2>
       <div class="w-form form-wrapper">
-        <h2 style="color: orange">{{ get_flashed_messages()[0] }}</p>
+        <h2 style="color: orange">{{ get_flashed_messages()[0] }}</h2>
         <form class="w-clearfix" name="wf-form-subscribe" data-name="Subscribe" method="post">  
             {{ form.csrf_token }}
             {{ form.email(class="w-input field email",placeholder="Email Address *",style="width: 40%;") }}
@@ -154,7 +150,7 @@
               <ul style="color: red">{% for error in field_errors %}
                 <li>{{ error }}</li>
                 {% endfor %}</ul>
-          {% endfor %}</p>
+          {% endfor %}
             <input class="w-button sign-up-button" type="submit" value="Get the Dish" style="width: 25% margin-left: auto" >
           </form>
         <div class="w-form-done success-message on-dark">
@@ -166,11 +162,10 @@
         </div>
       </div>
     </div>
-      <div class="content-section footer">
+      <!--<div class="content-section footer">
         <div class="w-container"><a class="footer-link proof" href="{{ url_for('home') }}">Home</a><a class="footer-link" href="{{ url_for('about') }}">About</a><a class="footer-link" href="{{ url_for('subscribe') }}">Contact</a>
         </div>
-      </div>
-  </div>
+      </div>-->
   </div>
 {% endblock %}
 {% block JS %}

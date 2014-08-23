@@ -1,106 +1,25 @@
-{% extends "base.html" %}
+{% extends "landing.html" %}
 {% block jsInit %}
-  <script>
-    $(document).ready(function(){
-    $(".article-info-text.tag:contains(Bathroom)").css("background-color", "rgb(177, 177, 177)");
-    $(".article-info-text.tag:contains(Maintenance)").css("background-color", "rgb(177, 177, 177)");
-    $(".article-info-text.tag:contains(Certification)").css("background-color", "rgb(177, 177, 177)");
-    $(".article-info-text.tag:contains(Refuse)").css("background-color", "rgb(177, 177, 177)");
-    });
-   
-  </script> 
+<script src=https://maps.googleapis.com/maps/api/js?v=3.exp></script> 
+<script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $("form").submit(function(evt) {
+        evt.preventDefault();
+        var addy = $("#searchAddy").val() || ""; 
+        var restNm = $("#searchRest").val() || "";
+        if (restNm) {
+          window.location.search = '?search='+restNm;
+        } else if (addy) {
+          geocode(addy,restNm);
+        } else {
+          alert('no terms provided!');
+        }
+      });
+  });
+</script>
 {% endblock %}
 {% block title %}<title>{{ 'Tisk | Home' }}</title>{% endblock %}
 {% block content %}
-  
-  <div class="w-clearfix all-content">
-    {% block maincolumn %}
-    <header class="main-column header">
-      <div class="filter"></div>
-      <div class="main-column elements">
-        <h1 class="logo"></h1>
-        <div class="w-hidden-small w-hidden-tiny big-tagline">Get a checkup on your favorite restuarant</div>
-        {% block search %}
-        <div class="w-clearfix w-form">
-          <form class="w-clearfix" method="get" id="email-form" name="search-form" data-name="Email Form">
-            {{ form.search(class="w-input field",placeholder="Restuarant") }}
-
-            <input class="w-button button" type="submit" value="Submit" >
-          </form>
-          <div class="w-form-done">
-            <p>Thank you! Your submission has been received!</p>
-          </div>
-          <div class="w-form-fail">
-            <p>Oops! Something went wrong while submitting the form :(</p>
-          </div>
-        </div>
-        {% endblock %}
-        <div class="w-clearfix footer-wrapper">
-          <a class="w-inline-block footer-nav-link" href="https://twitter.com/tiskphl"><!--Add Twitter page -->
-            <img src="https://s3.amazonaws.com/tisk-assets/img/twitter/Twitter_logo_white.png" width="30" alt="twitter">
-          </a>
-          <a class="w-inline-block footer-nav-link" href="/subscribe">
-            <div class="subscribe">Subscribe</div>
-          </a>
-        </div>
-      </div><!--main-column content-->
-    </header>
-    {% endblock %}
-    <div class="main-column content">
-      <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
-        <nav class="w-nav-menu w-clearfix nav-menu" role="navigation"><a class="w-nav-link nav-link" href="/" data-ix="new-interaction">Home</a><a class="w-nav-link nav-link" href="/about">ABOUT</a><a class="w-nav-link nav-link" href="/subscribe">Contact</a>
-        </nav>
-        <div class="w-nav-button w-clearfix menu-wrapper">
-          <div class="w-icon-nav-menu menu-icon"></div>
-          <div class="menu">MENU</div>
-        </div>
-      </nav>
-            {% for rest in rests %}
-        <a class="w-clearfix w-inline-block article" href="{{ url_for('profile',id=rest.id)}}">
-          <section class="w-clearfix article-text-wrapper">
-            <h2 class="arrow">❯</h2>
-            <h2 class="thumbnail-title">{{ rest.name }}</h2>
-            <h4 class="vios">{{ 'Grade: ' }}{{ rest.grade }}</h4> 
-            <p>{{ rest.street }}{{ ' Philadelphia, PA ' }}{{ rest.zipcd }}</p>
-            <div class="article-info-wrapper">
-              {% if rest.latestDt() %}
-              <div class="article-info-text">
-                <h4>{{ rest.latestDt().strftime("%A, %B %d, %Y") }}</h4>
-              </div></br>
-              <div><p class="home-vio-label">{{ 'Violation Categories:' }}</p></div>
-              {% if rest.badges %}
-                  {% for badge in rest.badges %}
-                    <div class="article-info-text tag">{{ badge|trim }}</div>
-              {% endfor %} 
-          {% endif %}
-        {% else %}
-          <div class="article-info-text">
-                <p><b>{{ "No inspection since Jan 1, 2013" }}</b><p>
-              </div>
-            {% endif %}
-              
-            </div>
-          </section>
-      
-        </a>
-    
-     {% endfor %}
-      <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
-      <nav class="w-nav pagination-nav" data-collapse="none" data-animation="default" data-duration="400">
-        <nav class="w-nav-menu w-clearfix nav-menu" role="navigation">
-          {% if session.noloco %}
-              <a class="w-nav-link nav-link page" href="{{ url_for('homenoloco', pg=prev, search=request.args.get('search')) }}">Prev</a>
-              <a class="w-nav-link nav-link page" href="{{ url_for('homenoloco', pg=next, search=request.args.get('search')) }}">Next</a>
-          {% else %}
-              <a class="w-nav-link nav-link page" href="{{ url_for('home',pg=prev, lat=request.args.get('lat',none), lng=request.args.get('lng',none), search=request.args.get('search',none)) }}">Prev</a>
-              <a class="w-nav-link nav-link page" href="{{ url_for('home',pg=next, lat=request.args.get('lat',none), lng=request.args.get('lng',none), search=request.args.get('search',none)) }}"> next </a>
-          {% endif %}
-        </nav>
-        <div class="w-nav-button">
-          <div class="w-icon-nav-menu"></div>
-        </div>
-      </nav>
-    </div>
-  </div>
-
+  {{ super() }}
 {% endblock %}

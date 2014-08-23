@@ -15,7 +15,7 @@ function errorloco (loc) {
 	};
 
 function geocode (addy,restNm) {
-	console.log('geocode running');
+	//set geo bounds for Philly
 	var swCorn = new google.maps.LatLng(40.1379919,-75.280303);
 	var neCorn = new google.maps.LatLng(39.8670041,-74.95576289999997);
 	var philBounds = new google.maps.LatLngBounds(swCorn,neCorn);

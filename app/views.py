@@ -5,11 +5,13 @@ from flask.json import dumps
 from flask.ext.httpauth import HTTPBasicAuth
 from models import Comment, Rest, Badge, User
 from forms import RestSearch, SubscribeForm
-from helper import get_grade, make_badges, search2, search3, loc_query, getLatestComm, getLatest, dateFrom
+from helper import get_grade, make_badges, proxPlusNameQuery, nameQuery, proxQuery, getLatestComm, getLatest, dateFrom, getDist
 from operator import attrgetter, methodcaller
 import time
 auth = HTTPBasicAuth()
-lim = 15 #results page
+
+#results page
+lim = 15 
 
 @app.context_processor
 def retWeeks():        
@@ -21,16 +23,13 @@ def get_password(username):
         return 'PythonTheGreat'
     return None
 
-
 @auth.error_handler
 def unauthorized():
     return make_response(jsonify({'error': 'Unauthorized access'}), 401)
 
-
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
-
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/<int:pg>/', methods=['GET', 'POST'])
@@ -43,21 +42,22 @@ def home(pg=1):
     pg = int(pg)
     offset = pg*lim-lim
     form = RestSearch()
+    startCount = offset+1
 
     if request.args:
         #start = time.time()
         lat = request.args.get('lat', "39.9522")  # city Hall
         lng = request.args.get('lng', "-75.1639")
+        session.lat = lat
+        session.lng = lng
         try:
             if request.args.get('search', ''):
                 term = request.args.get('search', '')
-                query = search2(lat, lng, radius, offset, lim, term)
+                query = proxPlusNameQuery(lat, lng, radius, offset, lim, term)
             else:
-                query = loc_query(lat, lng, radius, offset, lim)
-
+                query = proxQuery(lat, lng, radius, offset, lim)
         except:
             return redirect(url_for('homenoloco'))
-        
         rests = Rest.query.from_statement(query).all()
         #tottime = time.time() - start
         #print "******* Get Rest geo query took {} seconds******".format(tottime)
@@ -66,16 +66,18 @@ def home(pg=1):
             return redirect(url_for('homenoloco'))
         #startrestprep = time.time()
         for rest in rests:
+            rest.rank = startCount
+            startCount+=1
             try:
                 rest.weeks = dateFrom(rest.latestDt())
+                rest.dist = getDist(fromLat=session.lat,fromLng=session.lng,toLat=rest.lat,toLng=rest.lng)
+                print "dist for {} is {}".format(rest.name,rest.dist)
             except:
                 pass
         #restprep = time.time()-startrestprep
         #print "******* adding badges, weeks to rests took {} seconds******".format(restprep)
         return render_template('landing.html', rests=rests,next=pg+1, prev=max(1,pg-1), form=form)
-
     else:
-        # landing inherits from main
         return render_template('landing.html', next=pg+1, prev=max(1,pg-1), form=form)
 
 
@@ -84,36 +86,37 @@ def home(pg=1):
 def homenoloco(pg=1):
     session.noloco = 'y'
     start = time.time()
-    offset = pg*20-20
+    offset = pg*lim-lim
+    startCount = offset+1
+
     form = RestSearch()
+    
     if request.args.get('search', ''):
         term = request.args.get('search')
-        query = search3(offset, lim, term)
+        query = nameQuery(offset, lim, term)
         rests = Rest.query.from_statement(query).all()
     else:
         rests = getLatest(lim,offset)
-    
-    #resttime = time.time()
-    
     for rest in rests:
-        #rest.grade = get_grade(rest.getPts())
-        rest.badges = sorted(make_badges(rest.id))
-    #jrests = [rest.jsond() for rest in rests]
-    #landing inherits from main
-    
+        rest.rank = startCount
+        startCount+=1
+        try:
+            rest.dist = getDist(fromLat=session.lat,fromLng=session.lng,toLat=rest.lat,toLng=rest.lng)
+        except:
+            pass
+    #resttime = time.time()
     ### Used to time rest qry and badge making processes ###
     #end = time.time()
     #restqry = resttime-start
     #addbadge = end-resttime
     #print "time it took for rest query is  {} seconds".format(restqry)
     #print "time it took add badges is {} seconds".format(addbadge)
-    
-    return render_template('landingnoloco2.html', rests=rests, next=pg+1, prev=max(1,pg-1), form=form)
+    return render_template('landingnoloco.html', rests=rests, next=pg+1, prev=max(1,pg-1), form=form)
 
 
 @app.route('/profile/<int:id>', methods=['GET', 'POST'])
 def profile(id):
-    rest = Rest.query.get(id)
+    rest = Rest.query.get_or_404(id)
     form = SubscribeForm()
     othercomments,foodcomments = getLatestComm(id)
     if form.validate_on_submit():
@@ -129,13 +132,15 @@ def profile(id):
             flash('Thanks for your submission!')
         else:
             flash('Looks like we already have your email on our list!')
-    
-    return render_template('profile2.html', rest=rest, foodcomments=foodcomments, othercomments=othercomments, form=form)
+    try:
+        rest.dist = getDist(toLat=rest.lat,toLng=rest.lng)
+    except:
+        pass
+    return render_template('profile.html', rest=rest, foodcomments=foodcomments, othercomments=othercomments, form=form)
 
 @app.route('/about', methods=['GET'])
 def about():
     return render_template('about.html')
-
 
 @app.route('/subscribe', methods=['GET', 'POST'])
 def subscribe():

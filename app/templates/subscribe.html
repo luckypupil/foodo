@@ -17,19 +17,11 @@
         </a>
       </div>
     </header>
-
     <div class="main-column content">
       <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
         <nav class="w-nav-menu w-clearfix nav-menu" role="navigation"><a class="w-nav-link nav-link" href="/" data-ix="new-interaction">Home</a><a class="w-nav-link nav-link" href="/about">ABOUT</a><a class="w-nav-link nav-link" href="/subscribe">Subscribe</a>
         </nav>
-        <a href="#" class="w-nav-button w-clearfix menu-wrapper">
-            <div class="w-icon-nav-menu menu-icon"></div>
-            <div class="menu">MENU</div>
-            <ul class="mobile-nav">
-              <li class="mobile-nav-link"><a href="/">Home</a></li>
-              <li class="mobile-nav-link"><a href="/about">About</a></li>
-            </ul>
-          </a>
+        {% include 'mobileMenu.html' %}
       </nav>
       <div class="section">
         <h4>Sign up for updates on the latest review in your neighborhood! (coming soon)</h4>
