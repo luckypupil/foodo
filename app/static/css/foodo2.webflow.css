@@ -146,7 +146,7 @@ b {
 }
 .menu-wrapper-logo {
   height: 35px;
-  display: inline;
+  display: none;
   right: 10px;
   top: 2px;
   position: absolute;
@@ -1002,6 +1002,9 @@ line-height: initial;
   }
   .mobile-nav-link a {
         color: white;
+  }
+  .menu-wrapper-logo {
+    display: inline;
   }
   .button {
     margin-top: auto;
