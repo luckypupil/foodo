@@ -50,6 +50,7 @@ def home(pg=1):
         lng = request.args.get('lng', "-75.1639")
         session.lat = lat
         session.lng = lng
+        print "latlng sessions set:", session.lat, session.lng
         try:
             if request.args.get('search', ''):
                 term = request.args.get('search', '')
@@ -84,7 +85,10 @@ def home(pg=1):
 @app.route('/noloco/<int:pg>', methods=['GET'])
 @app.route('/noloco', methods=['GET','POST'])
 def homenoloco(pg=1):
+    
     session.noloco = 'y'
+    print (session.keys())
+    print session.noloco
     start = time.time()
     offset = pg*lim-lim
     startCount = offset+1
@@ -102,6 +106,7 @@ def homenoloco(pg=1):
         startCount+=1
         try:
             rest.dist = getDist(fromLat=session.lat,fromLng=session.lng,toLat=rest.lat,toLng=rest.lng)
+            #rest.dist = getDist(toLat=rest.lat,toLng=rest.lng)
         except:
             pass
     #resttime = time.time()
