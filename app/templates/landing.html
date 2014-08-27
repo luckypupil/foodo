@@ -46,10 +46,10 @@
           <p>Oops! Something went wrong while submitting the form :(</p>
         </div>
       </div>
-      <div class="tag-container">
+      <!--<div class="tag-container">
         <div class="big-tagline">{{ 'Health Inspection Info On Over 5,500 Philadelphia Restuarants!' }}</div>
         <div class="big-tagline" id="findout">{{ 'Find Out What\'s Really Cooking!' }}</div>
-      </div>
+      </div>-->
       {% endblock %}
       <div class="w-clearfix footer-wrapper">
         <a class="w-inline-block footer-nav-link" href="https://twitter.com/tiskphl"><!--Add Twitter page -->
@@ -68,10 +68,10 @@
         {% include 'mobileMenu.html' %}
       </nav>
       <div class="rest-summaries">
-      <div class="tag-container-mobile">
+      <!--<div class="tag-container-mobile">
         <div class="big-tagline">{{ 'Health Inspection Info On Over 5,500 Philadelphia Restuarants -- Find Out What\'s Really Cooking!' }}</div>
         <img id="spoon" src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/arrow_sans_down-512.png">
-      </div>
+      </div>-->
       <!--<div id="list-label">{{'In Order Of Proximity'}}</div>-->
       {% for rest in rests %}
         <a class="w-clearfix w-inline-block article home" href="{{ url_for('profile',id=rest.id)}}">

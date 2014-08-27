@@ -5,11 +5,13 @@
     <div class="main-column content about">
       <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
       <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
-        <nav class="w-nav-menu nav-menu about" role="navigation"><a class="w-nav-link nav-link" href="/">Home</a><a class="w-nav-link nav-link" href="/subscribe">Subscribe</a>
+        <nav class="w-nav-menu nav-menu about" role="navigation"><a class="w-nav-link nav-link" href="{{ url_for('home') }}">Home</a><a class="w-nav-link nav-link" href="/subscribe">Subscribe</a>
         </nav>
         {% include 'mobileMenu.html' %}
       </nav>
       <div class="section about">
+        {% block aboutcontent %}
+
         <h1>About Tisk</h1>
         <p><b>tsk-tsk:</b> to express disapproval of by or as if by uttering</p>
         <p>
@@ -74,6 +76,7 @@
 What does it all mean?: It’s actually pretty simple. Within the 10 violation categories, there are over 65 specified inspection complaints. We ranked each of those complaints using a 1-5 scale ranging from a lack of no smoking signs (1) to visible mouse activity (5). Using those weighted scores, we totalled the violations for each restaurant (ranging from 1-62) and set the curve. Breaking the tens of thousands of restaurant food inspection reports into percentile groups, we graded them A, B, C or D (with a handful of fails for the very few who couldn’t make the grade). See? Easy.<p>
 <p>Find out more about foodborne illnesses and how to prevent them <a href="http://www.fda.gov/downloads/Food/FoodborneIllnessContaminants/UCM297627.pdf" target="_blank">here</a></p>
       </div>
+      {% endblock %}
       </div>
       </div>
     </div>

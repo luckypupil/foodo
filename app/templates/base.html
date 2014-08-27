@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-wf-site="536cd5dac1161b086f47884d">
+{% block head %}
 <head>
-
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
   {% block jsInit %} {% endblock %}
@@ -25,6 +25,7 @@
     });
   </script> 
   <meta charset="utf-8">
+
   {% block title %}<title>Tisk</title>{% endblock %}
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
   <meta name="generator" content="Webflow">
@@ -41,6 +42,7 @@
     });
   </script>
   <link rel="shortcut icon" type="image/x-icon" href="https://y7v4p6k4.ssl.hwcdn.net/placeholder/favicon.ico">
+{% endblock %}
 </head>
 <body>
 	{% block content %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block head %}
+<head>
+  {% block jsInit %}
+  <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
+  <script type="text/javascript">
+  function geoload() {
+        navigator.geolocation.getCurrentPosition(sendloco,errorloco); 
+      };
+  geoload();
+  </script>
+  {% endblock %}
+  <meta charset="utf-8">
+  {% block title %}<title>Tisk</title>{% endblock %}
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+  <meta name="generator" content="Webflow">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/foodo2.webflow.css') }}">
+  <link rel="shortcut icon" type="image/x-icon" href="https://y7v4p6k4.ssl.hwcdn.net/placeholder/favicon.ico">
+{% endblock %}
+{% block content %}
+  <div class="w-clearfix all-content">
+    <div class="black_overlay">
+    {% block maincolumn %}
+      <div class="wait-message">
+        <h1 class="logo initial"></h1>
+        <h3> Getting the restaurants from your vacinity, one sec... </h3>
+      </div>
+      </div>
+    {% endblock %}
+  </div>
+{% endblock %}
+{% block endingJs %}
+{% endblock %}
+

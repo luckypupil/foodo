@@ -48,8 +48,8 @@ def home(pg=1):
         #start = time.time()
         lat = request.args.get('lat', "39.9522")  # city Hall
         lng = request.args.get('lng', "-75.1639")
-        session.lat = lat
-        session.lng = lng
+        session.lat = float(lat)
+        session.lng = float(lng)
         print "latlng sessions set:", session.lat, session.lng
         try:
             if request.args.get('search', ''):
@@ -70,17 +70,22 @@ def home(pg=1):
             rest.rank = startCount
             startCount+=1
             try:
-                rest.weeks = dateFrom(rest.latestDt())
                 rest.dist = getDist(fromLat=session.lat,fromLng=session.lng,toLat=rest.lat,toLng=rest.lng)
-                print "dist for {} is {}".format(rest.name,rest.dist)
+            except:
+                pass
+            try:
+                rest.weeks = dateFrom(rest.latestDt())
             except:
                 pass
         #restprep = time.time()-startrestprep
         #print "******* adding badges, weeks to rests took {} seconds******".format(restprep)
         return render_template('landing.html', rests=rests,next=pg+1, prev=max(1,pg-1), form=form)
     else:
-        return render_template('landing.html', next=pg+1, prev=max(1,pg-1), form=form)
+        return render_template('initialhome.html', next=pg+1, prev=max(1,pg-1), form=form)
 
+# @app.route('/')
+# def coming():
+#     return render_template('ComingSoon.html')
 
 @app.route('/noloco/<int:pg>', methods=['GET'])
 @app.route('/noloco', methods=['GET','POST'])
