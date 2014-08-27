@@ -833,6 +833,9 @@ line-height: initial;
 .dist {
   display:inline-block;
 }
+.dist.profile {
+  margin-left: 10%;
+}
 .thumbnail-title.grade {
     color: #ff7b00;
     font-size: 4em;
@@ -847,7 +850,6 @@ line-height: initial;
     font-style: italic;
     margin: .1rem 0;
 }
-
 .header-container {
   padding-top: 0px;
 }
@@ -1001,6 +1003,9 @@ line-height: initial;
 }
 
 @media (max-width: 767px) {
+  #body-profile {
+    background-color: white;
+  }
   p {
     color: black;
     margin-bottom: 5px;
@@ -1117,13 +1122,13 @@ line-height: initial;
     border-bottom: black solid 2px;
   }
   .main-column.content {
-    background-color: whitesmoke;
+    background-color: white;
     background-image: none;
   }
   .rest-summaries {
     margin-top: 12rem;
     margin-bottom: 0;
-    color: whitesmoke;
+    color: white;
     position: static;
   }
 
@@ -1141,7 +1146,7 @@ line-height: initial;
   }
   .nav-menu {
     background-color: transparent;
-    z-index: 100;
+    z-index: 0;
     width: 100%;
   }
   .nav-link {
@@ -1152,9 +1157,9 @@ line-height: initial;
     box-shadow: none;
   }
   .nav-link.page {
-    background-color: whitesmoke;
-    box-shadow: rgba(0, 0, 0, 0.11) -1px 0px 0px 0px inset;
-    color: white;
+    background-image: none;
+    background-color: white;
+    color: black;
     padding: 15px;
   }
   .nav-link.page.w--current {
@@ -1167,7 +1172,7 @@ line-height: initial;
   }
 
   .pagination-nav{
-    background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
+    background-image: white;
   }
   .footer-nav-link {
     height: 42px;
@@ -1579,6 +1584,7 @@ line-height: initial;
     font-size: 20px;
     line-height: 30px;
     text-transform: capitalize;
+    margin-bottom: 0;
   }
   .footer-link {
     display: block;

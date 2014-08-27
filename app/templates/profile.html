@@ -22,10 +22,10 @@
     <div class="w-container header-container">
       <div class="w-hidden-main w-hidden-medium mobile-header-row">
             <img class="w-hidden-main w-hidden-medium author-image mobile" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="200" alt="537a3eaeef89236d7de9d427_profile_page_logo.png">
-            <h3 class="thumbnail-title profile">{{ rest.name }}</h3><br>
+            <h3 class="thumbnail-title profile">{{ rest.name }}</h3>
             <p id="rest-addy">{{ rest.street }}</p>
-            <p id="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}</p><br>
-            <p class="dist">{{ rest.dist }}{{ ' Mi' }}</p>
+            <p id="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}</p>
+            <p class="dist profile">{{ rest.dist }}{{ ' Mi' }}</p>
             <div class="grade-box">
               <div class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</div>
               {% if rest.latestDt() %}  

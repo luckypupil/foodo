@@ -75,7 +75,10 @@ class Rest(db.Model):
              viosct = db.session.query(func.count(Comment.id)).\
                 filter(Comment.restnm == self.name, Comment.date == self.latestDt()).first()
         
-        return viosct[0]
+        try:
+            return viosct[0]
+        except:
+            pass
              # Tuple list w/ # vios by dates w/in last year
 
     # def getVios(self):
