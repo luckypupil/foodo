@@ -1426,7 +1426,7 @@ line-height: initial;
   }
   .badge {
     width: 50%;
-    max-width: 4em;
+    max-width: 3.5em;
     display: inline-block;
   }
   .mobile-header-row {
@@ -1435,7 +1435,7 @@ line-height: initial;
     padding: 10px;
   }
   .w-hidden-main.w-hidden-medium.mobile-header-row {
-    background-color: lightgray;
+    background-color: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
   }
   .mobile-header-row.right-column {
     position: relative;
