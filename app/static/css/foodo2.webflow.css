@@ -641,7 +641,7 @@ line-height: initial;
 }
 .article-body-column {
   position: static;
-  border: lightgray solid .125rem;
+  border: lightgray solid .075rem;
   margin: 1.5rem auto;
   padding:0;
 }
@@ -1384,10 +1384,9 @@ line-height: initial;
     top: 0px;
     right: 0px;
     padding-top: 3rem;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
     background-image: url('../images/profile_background.jpg');
-    z-index: -1;
   }
   .menu {
     margin-top: -6px 0 0 20px;
@@ -1432,6 +1431,11 @@ line-height: initial;
   }
   .mobile-header-row {
     max-width: 100%;
+    border: black solid 1px;
+    padding: 10px;
+  }
+  .w-hidden-main.w-hidden-medium.mobile-header-row {
+    background-color: lightgray;
   }
   .mobile-header-row.right-column {
     position: relative;
