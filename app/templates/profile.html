@@ -36,7 +36,7 @@
               </div><!-- end flex-col2 -->  
             </div><!-- end flex -->
               <p class="rest-addy">{{ rest.street }}</p>
-                <p class="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}<span style="font-style: italic">{{ ' (' }}{{ rest.dist }}{{ ' Mi' }}{{ ')' }}</span></p>
+                <p class="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}<span style="font-style: italic">{{ ' (' }}{{ rest.dist }}{{ ' mi' }}{{ ')' }}</span></p>
               {% if rest.latestDt() %}
                 <div class="rest-addy"><em>Last Inpsection: {{ rest.latestDt().strftime("%B %d, %Y") }}</p></em>
               {% endif %}
@@ -112,7 +112,7 @@
             {% endfor %}
           {% endif %}
       {% else %}
-				<h4>{{ 'No recent inspection data exists' }}</h4>      
+				<h4 class="no-data">{{ 'No recent inspection data exists' }}</h4>      
       {% endif %}	
       </div>
       <div class="w-col w-col-4 w-hidden-small w-hidden-tiny author-column">	
