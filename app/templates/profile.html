@@ -21,17 +21,23 @@
     </div>
     <div class="w-container header-container">
       <div class="w-hidden-main w-hidden-medium mobile-header-row">
-            <div class="flex-container"
-            <img class="w-hidden-main w-hidden-medium author-image mobile" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="200" alt="537a3eaeef89236d7de9d427_profile_page_logo.png">
-            <h3 class="thumbnail-title profile">{{ rest.name }}</h3>
-            <div class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</div><p class="rest-addy">{{ rest.street }}</p>
-            <p class="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}</p>
-            <p class="dist profile">{{ rest.dist }}{{ ' Mi' }}</p>
-            <div class="grade-box">
-              {% if rest.latestDt() %}  
-                <div class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</div>
-              {% endif %}
-            </div>
+            <div class="flex-container">
+              <div class="flex-col1">
+                <img class="w-hidden-main w-hidden-medium author-image mobile" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="200" alt="537a3eaeef89236d7de9d427_profile_page_logo.png">
+                <h3 class="thumbnail-title profile">{{ rest.name }}</h3>
+                <p class="rest-addy">{{ rest.street }}</p>
+                <p class="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}<span style="font-style: italic">{{ ' (' }}{{ rest.dist }}{{ ' Mi' }}{{ ')' }}</span></p>
+              </div><!-- end flex-col1 -->
+              <div class="flex-col2">
+                <div class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</div>    
+                <div class="grade-box">
+                  {% if rest.latestDt() %}  
+                    <div class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</div>
+                  {% endif %}
+                </div>
+                
+              </div><!-- end flex-col2 -->  
+            </div><!-- end flex -->
             {% if rest.latestDt() %}
               <div class="rest-addy"><em>Last Inpsection: {{ rest.latestDt().strftime("%B %d, %Y") }}</p></em>
             {% endif %}
@@ -45,7 +51,7 @@
 
 		{% if rest.latestDt() %}   
 	        {% if foodcomments %}
-            <h2 class="vios date category" style="color: black; font-style:italics;">{{ 'Food Comments (Primary)' }}</h2>
+            <h2 class="vios date category" style="color: black; font-style:italics;"><span style="display:inline-block; vertical-align:middle">{{ 'Food Comments (Primary)' }}</span></h2>
 		        {% for badge in foodcomments %}
 			        <div class="w-row badgerow">
 			          
