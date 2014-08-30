@@ -1059,6 +1059,9 @@ line-height: initial;
   .all-content {
     position: relative;
   }
+  .all-content.initial {
+    position: absolute;
+  }
   .article-info-wrapper.profile-body {
     display: none;
   }

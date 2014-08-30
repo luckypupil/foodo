@@ -4,10 +4,10 @@
   {% block jsInit %}
   <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
   <script type="text/javascript">
-  function geoload() {
-        navigator.geolocation.getCurrentPosition(sendloco,errorloco); 
-      };
-  geoload();
+    /*function geoload() {
+          navigator.geolocation.getCurrentPosition(sendloco,errorloco); 
+        };
+    geoload();*/
   </script>
   {% endblock %}
   <meta charset="utf-8">
@@ -18,7 +18,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="https://y7v4p6k4.ssl.hwcdn.net/placeholder/favicon.ico">
 {% endblock %}
 {% block content %}
-  <div class="w-clearfix all-content">
+  <div class="w-clearfix all-content initial">
     <div class="black_overlay">
     {% block maincolumn %}
       <div class="wait-message">
