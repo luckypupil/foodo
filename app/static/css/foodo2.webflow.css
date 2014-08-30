@@ -1203,6 +1203,10 @@ line-height: initial;
 
   .pagination-nav{
     background-image: white;
+    display: block;
+    position: static;
+    height: 60px;
+    padding-top: 10px;
   }
   .footer-nav-link {
     height: 42px;
