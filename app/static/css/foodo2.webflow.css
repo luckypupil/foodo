@@ -875,6 +875,10 @@ line-height: initial;
 }
 .vios.date.category {
   margin-left: 5px;
+  /*border-bottom: lightgray .1em solid;*/
+  color: #f77123;
+  margin: 30px 0;
+  font-style: italic
 }
 .grade-box {
   opacity: .8;  

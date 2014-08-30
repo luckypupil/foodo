@@ -50,7 +50,7 @@
 
 		{% if rest.latestDt() %}   
 	        {% if foodcomments %}
-            <h2 class="vios date category" style="color: black; font-style:italics;"><span style="display:inline-block; vertical-align:middle">{{ 'Food Comments (Primary)' }}</span></h2>
+            <h2 class="vios date category"><span style="display:inline-block; vertical-align:middle">{{ 'Food Comments (Primary)' }}</span></h2>
 		        {% for badge in foodcomments %}
 			        <div class="w-row badgerow">
 			          
@@ -81,7 +81,7 @@
 			      {% endfor %}
           {% endif %}
           {% if othercomments %}
-            <h2 class="vios date category" style="color: black; font-style:italics;">{{ 'Other Comments (Secondary)' }}</h2>
+            <h2 class="vios date category">{{ 'Other Comments (Secondary)' }}</h2>
             {% for badge in othercomments %}
               <div class="w-row badgerow">
                 
