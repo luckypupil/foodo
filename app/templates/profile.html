@@ -25,8 +25,6 @@
               <div class="flex-col1">
                 <img class="w-hidden-main w-hidden-medium author-image mobile" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="200" alt="537a3eaeef89236d7de9d427_profile_page_logo.png">
                 <h3 class="thumbnail-title profile">{{ rest.name }}</h3>
-                <p class="rest-addy">{{ rest.street }}</p>
-                <p class="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}<span style="font-style: italic">{{ ' (' }}{{ rest.dist }}{{ ' Mi' }}{{ ')' }}</span></p>
               </div><!-- end flex-col1 -->
               <div class="flex-col2">
                 <div class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</div>    
@@ -34,13 +32,14 @@
                   {% if rest.latestDt() %}  
                     <div class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</div>
                   {% endif %}
-                </div>
-                
+                </div>  
               </div><!-- end flex-col2 -->  
             </div><!-- end flex -->
-            {% if rest.latestDt() %}
-              <div class="rest-addy"><em>Last Inpsection: {{ rest.latestDt().strftime("%B %d, %Y") }}</p></em>
-            {% endif %}
+              <p class="rest-addy">{{ rest.street }}</p>
+                <p class="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}<span style="font-style: italic">{{ ' (' }}{{ rest.dist }}{{ ' Mi' }}{{ ')' }}</span></p>
+              {% if rest.latestDt() %}
+                <div class="rest-addy"><em>Last Inpsection: {{ rest.latestDt().strftime("%B %d, %Y") }}</p></em>
+              {% endif %}
         <div class="w-col w-col-6 w-hidden-tiny w-clearfix"></div>
       </div>
     </div>

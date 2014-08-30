@@ -1099,7 +1099,12 @@ line-height: initial;
   #findout {
   }
   .flex-container {
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
+    margin-bottom: 20px;
   }
   .flex-col1{
     flex-grow: 3;
@@ -1107,7 +1112,7 @@ line-height: initial;
   }
   .flex-col2{
     flex-grow: 1;
-    flex-basis: 25%;
+    flex-basis: 35%;
     text-align: right;
   }
   .dist.profile {
@@ -1291,7 +1296,6 @@ line-height: initial;
     font-size: 18px;
     line-height: 25px;
     margin-bottom: 0;
-    max-width: 70%;
   }
   .thumbnail-title.vios {
     width: initial;
