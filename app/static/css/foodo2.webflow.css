@@ -1065,7 +1065,14 @@ line-height: initial;
   .article-info-wrapper.profile-body {
     display: none;
   }
-
+  .article:hover {
+  background-color: inherit;
+  /*background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');*/
+  color: inherit;
+  }
+  .article:hover .thumbnail-title {
+    color: black;
+  }
   .logo {
     display: inline-block;
     width: 5rem;
