@@ -119,7 +119,10 @@ b {
   background: url('https://s3.amazonaws.com/tisk-assets/img/background/homebackground1.jpg') no-repeat;
   background-size: cover;
 }
-
+.w-clearfix.all-content.about {
+  background-image: none;
+  background-color: white;
+}
 .main-column.elements {
   position: static;
   width: 100%;
