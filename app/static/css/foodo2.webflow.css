@@ -1025,7 +1025,10 @@ line-height: initial;
     position: absolute;
     list-style-type: none;
     padding-left: 0px;
-    background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
+    background-color: white;
+  }
+  .w-clearfix.navbar {
+    width: 100%;
   }
   .mobile-nav-link {
     font-size: 16px;
@@ -1034,7 +1037,7 @@ line-height: initial;
     border-bottom: lightgray solid 1px;
   }
   .mobile-nav-link a {
-        color: white;
+        color: black;
   }
   .menu-wrapper-logo {
     display: inline;
@@ -1148,8 +1151,9 @@ line-height: initial;
   }
   .nav-menu {
     background-color: transparent;
-    z-index: 0;
     width: 100%;
+    position: fixed;
+    z-index: 1000;
   }
   .nav-link {
     box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset;
@@ -1322,7 +1326,7 @@ line-height: initial;
     background-color: transparent;
     position: static;
     width: 100%;
-    margin-top: 220px;
+    margin-top: 0;
   }
   .content-section.footer {
     margin-top: 0;
@@ -1570,7 +1574,7 @@ line-height: initial;
     float: left;
   }
   .article-body-column {
-    margin-top: 140px;
+    margin-top: 10px;
   }
   .subscribe-section {
     padding: 20px;
@@ -1638,7 +1642,7 @@ line-height: initial;
     width: 95%;
   }
   .content-section {
-    margin-top: 27.5%;
+    margin-top: 15%;
   }
   .moble-badge-row {
     margin-bottom: 0;
