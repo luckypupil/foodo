@@ -1027,7 +1027,7 @@ line-height: initial;
     background-color: white;
   }
   .no-data {
-    margin-top: 240px;
+    margin-top: 220px;
   }
   .w-clearfix.navbar {
     width: 100%;
@@ -1322,7 +1322,6 @@ line-height: initial;
   }
   .rest-addy {
     color: white;
-    max-width: 65%;
     display: inline-block;
   }
   .grade-box {
