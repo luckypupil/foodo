@@ -38,7 +38,7 @@ def home(pg=1):
         print 'noloco in sess!'
         session.pop('noloco',none)
 
-    radius = 10
+    radius = 3500
     pg = int(pg)
     offset = pg*lim-lim
     form = RestSearch()
