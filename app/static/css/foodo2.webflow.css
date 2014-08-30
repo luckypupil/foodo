@@ -550,8 +550,7 @@ line-height: initial;
 }
 .section {
   padding: 40px;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px -1px 0px 0px inset;
-  background-color: whitesmoke;
+  background-color: white;
   height: 100%;
   position: absolute;
   width:  100%;
@@ -1265,6 +1264,9 @@ line-height: initial;
   }
   .w-form.form-wrapper {
     padding-left: 0;
+  }
+  .form-subscribe {
+    margin-left: 15%;
   }
   .w-input.field {
     height: 52px;

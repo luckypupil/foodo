@@ -24,11 +24,11 @@
         {% include 'mobileMenu.html' %}
       </nav>
       <div class="section">
-        <h4>Sign up for updates on the latest review in your neighborhood! (coming soon)</h4>
+        <h5>Sign up for updates on the latest review in your neighborhood! (coming soon)</h5>
         <div class="w-form form-wrapper" align="left">
           <h2 style="color: orange">{{ get_flashed_messages()[0] }}</p>
 
-          <form class="w-clearfix" name="wf-form-subscribe" data-name="Subscribe" method="post">  
+          <form class="w-clearfix form-subscribe" name="wf-form-subscribe" data-name="Subscribe" method="post">  
             {{ form.csrf_token }}
             {{ form.email(class="w-input field email",placeholder="Email Address *",style="width: 40%;") }}
             {{ form.zipcd(class="w-input field",placeholder="Zip Code *",style="width: 40%;") }}

@@ -104,7 +104,7 @@ def makeSlug(string,spaceChar='+',Maxlen=None):
 def getDist (fromLat=39.94106319999999,fromLng=-75.17319229999998,toLat=39.9522,toLng=-75.1639):
     dist = 3959 * acos(cos(radians(fromLat)) * cos(radians(toLat)) * cos(radians(toLng) - radians(fromLng)) + sin(radians(fromLat))\
         * sin(radians(toLat)))      
-    return round(dist,1)          
+    return round(dist,2)          
           
 if __name__ == "__main__":
     getLatest()
