@@ -1119,11 +1119,11 @@ line-height: initial;
     flex: 3;
   }
   .flex-col2{
-    -webkit-box-flex: 0 1 35%;      /* OLD - iOS 6-, Safari 3.1-6 */
-    -moz-box-flex: 0 1 35%;         /* OLD - Firefox 19- */
-    -webkit-flex: 0 1 35%;          /* Chrome */
-    -ms-flex: 0 1 35%;1;
-    flex: 0 1 35%;
+    -webkit-box-flex: 0 1 40%;      /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 0 1 40%;         /* OLD - Firefox 19- */
+    -webkit-flex: 0 1 40%;          /* Chrome */
+    -ms-flex: 0 1 40%;1;
+    flex: 0 1 40%;
     text-align: right;
   }
   .dist.profile {
