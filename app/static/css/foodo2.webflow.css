@@ -631,7 +631,7 @@ line-height: initial;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 0px 0px 1px;
   width: 9em;
   height: 10em;
-  padding-top: 3em;
+  padding-top: 1em;
 }
 .author-column {
   margin-top: 9px;
@@ -640,7 +640,6 @@ line-height: initial;
 }
 .article-body-column {
   position: static;
-  border: lightgray solid .075rem;
   margin: 1.5rem auto;
   padding:0;
 }
@@ -850,7 +849,7 @@ line-height: initial;
     margin: .1rem 0;
 }
 .header-container {
-  padding-top: 0px;
+  padding-top: 40px;
 }
 .vios {
   font-family: Oswald, sans-serif;
@@ -988,9 +987,6 @@ line-height: initial;
   }
   .author-image {
     margin-top: -25px;
-  }
-  .header-container {
-    padding-top: 241px;
   }
   .article-text-wrapper {
     max-height: none;
@@ -1296,7 +1292,7 @@ line-height: initial;
     margin-bottom: 10px;
   }
   .thumbnail-title {
-    max-width: 82%;
+    max-width: 80%;
     color: black;
     font-size: 1.15em;
     margin-bottom: 0px;
