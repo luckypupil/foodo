@@ -10,20 +10,14 @@
     $(document).ready(function(){
     $(".pagination-nav").show();
     $(".menu-wrapper").click(function() {
-            var status = $(".mobile-nav").css("display");
-            if (status === 'none' ) {
-              $(".menu,.menu-icon,.menu-wrapper-logo").hide()
-              $(".menu-wrapper").css("height","5px");
-              $(".mobile-nav").show();
+            if (!$('.mobile-nav').length ) {
+              $(".menu-wrapper").after("<ul class='mobile-nav'><li class='mobile-nav-link'><a href='/''>Home</a></li><li class='mobile-nav-link'><a href='/about'>About</a></li><li class='mobile-nav-link'><a href='/subscribe'>Subscribe</a></li><li class='mobile-nav-link'><a href='mailto:talk@tisked.com'>Contact</a></li></ul>");
             } else {
-              $(".menu,.menu-icon,.menu-wrapper-logo").css("display","inline-block")
-              $(".menu-wrapper").css("height","45px");
-              $(".menu,.menu-icon,.menu-wrapper-logo").show()
-              $(".mobile-nav").hide();
+              $(".mobile-nav").remove();
             }
     });
     });
-  </script> 
+  </script>
   <meta charset="utf-8">
 
   {% block title %}<title>Tisk</title>{% endblock %}

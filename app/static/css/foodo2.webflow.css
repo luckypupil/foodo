@@ -282,10 +282,6 @@ b {
   background: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg') repeat;
   border: none;
 }
-.mobile-nav {
-    display: none;
-  }
-
 .nav-menu.about{
   width: 100%;
 }
@@ -1023,7 +1019,7 @@ line-height: initial;
   }
   .mobile-nav {
     width: 100%;
-    position: absolute;
+    position: initial;
     list-style-type: none;
     padding-left: 0px;
     background-color: white;
@@ -1038,6 +1034,7 @@ line-height: initial;
     font-size: 16px;
     padding: 7px 10px;
     display: block;
+    text-decoration: initial ! important;
     border-bottom: lightgray solid 1px;
   }
   .mobile-nav-link a {
