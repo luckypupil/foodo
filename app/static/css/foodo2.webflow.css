@@ -1,5 +1,5 @@
 body {
-  background-color: white;
+  background-color: whitesmoke;
   font-family: Roboto, sans-serif;
   color: #333;
   font-size: 14px;
@@ -885,7 +885,7 @@ line-height: initial;
 .vios.date.category {
   margin-left: 5px;
   /*border-bottom: lightgray .1em solid;*/
-  color: #f77123;
+  color: black;
   margin: 30px 0;
   font-style: italic
 }
@@ -1029,9 +1029,9 @@ line-height: initial;
     max-width: 2.5rem;
   }
   .black_overlay.main {
-  -moz-opacity: 0.60;
-  filter: alpha(opacity=60);
-  opacity:.60;
+  -moz-opacity: 0.70;
+  filter: alpha(opacity=70);
+  opacity:.70;
   }
   .mobile-nav {
     width: 100%;
@@ -1133,7 +1133,6 @@ line-height: initial;
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
-    margin-bottom: 20px;
     flex-direction: column;
   }
   .flex-col1{
@@ -1329,7 +1328,7 @@ line-height: initial;
     margin-bottom: 0px;
   }
   .thumbnail-title.profile {
-    color: white;
+    color: black;
     display: block;
     font-size: 18px;
     line-height: 25px;
@@ -1338,7 +1337,7 @@ line-height: initial;
   .thumbnail-title.vios {
     width: initial;
     display: inline-block;
-    color: white;
+    color: black  ;
     font-size: 15px;
   }
   .thumbnail-title.grade {
@@ -1348,10 +1347,11 @@ line-height: initial;
     display: inline-block;
   }
   .rest-addy {
-    color: white;
+    color: black;
     display: inline-block;
   }
   .grade-box {
+    color: black;
     display: inline-block;
     width: 22rem;
     max-width: 100%;
@@ -1496,19 +1496,21 @@ line-height: initial;
     padding: 10px;
   }
   .w-hidden-main.w-hidden-medium.mobile-header-row {
-    background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
+    background-color: white;
+    border: none;
   }
   .mobile-header-row.right-column {
     position: relative;
     display: block;
-    margin-top: 0px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 5px;
     padding-top: 3px;
     float: none;
     clear: none;
     border-color: transparent;
     padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: white;
   }
   .heal-icon-label {
     font-size: 13px;
@@ -1693,6 +1695,7 @@ line-height: initial;
     float: left;
     clear: both;
     max-width:  335px;
+
   }
   .grade-box {
     width: 95%;

@@ -28,12 +28,10 @@
               </div><!-- end flex-col1 -->
               <div class="flex-col2">
                 <div class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</div>
-                <div class="grade-box">
-                  {% if rest.latestDt() %}  
-                    <div class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</div>
-                  {% endif %}
-                </div>      
               </div><!-- end flex-col2 -->
+              {% if rest.latestDt() %}  
+                <p class="rest-addy">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</p>
+              {% endif %}
               <div class="flex-col3">
                 <p class="rest-addy">{{ rest.street }}</p>
                 <p class="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}<span style="font-style: italic">{{ ' (' }}{{ rest.dist }}{{ ' mi' }}{{ ')' }}</span></p>
