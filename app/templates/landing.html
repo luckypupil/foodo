@@ -32,34 +32,32 @@
   <div class="w-clearfix all-content">
     {% block maincolumn %}
     <header class="main-column header filter">
-      <h1 class="logo"></h1>
-      {% block search %}
-      <div class="w-form" id="main-search">
-        <form class="w-clearfix" method="get" id="search-form" name="search-form" data-name="Email Form">
-          {{ form.searchRest(class="w-input field home",placeholder="restaurant") }}
-          {{ form.searchAddy(class="w-input field home",placeholder="location") }}
-          <input class="w-button button search" type="submit" value="">
-        </form>
-        <div class="w-form-done">
-          <p>Thank you! Your submission has been received!</p>
+      <div class="black_overlay main">
+        <h1 class="logo"></h1>
+        {% block search %}
+        <div class="w-form" id="main-search">
+          <form class="w-clearfix" method="get" id="search-form" name="search-form" data-name="Email Form">
+            {{ form.searchRest(class="w-input field home",placeholder="restaurant") }}
+            {{ form.searchAddy(class="w-input field home",placeholder="location") }}
+            <input class="w-button button search" type="submit" value="">
+          </form>
+          <div class="w-form-done">
+            <p>Thank you! Your submission has been received!</p>
+          </div>
+          <div class="w-form-fail">
+            <p>Oops! Something went wrong while submitting the form :(</p>
+          </div>
         </div>
-        <div class="w-form-fail">
-          <p>Oops! Something went wrong while submitting the form :(</p>
+        {% endblock %}
+        <div class="w-clearfix footer-wrapper">
+          <a class="w-inline-block footer-nav-link" href="https://twitter.com/tiskphl"><!--Add Twitter page -->
+            <img src="https://s3.amazonaws.com/tisk-assets/img/twitter/Twitter_logo_white.png" width="30" alt="twitter">
+          </a>
+          <a class="w-inline-block footer-nav-link" href="/subscribe">
+            <div class="subscribe">Subscribe</div>
+          </a>
         </div>
-      </div>
-      <!--<div class="tag-container">
-        <div class="big-tagline">{{ 'Health Inspection Info On Over 5,500 Philadelphia Restuarants!' }}</div>
-        <div class="big-tagline" id="findout">{{ 'Find Out What\'s Really Cooking!' }}</div>
-      </div>-->
-      {% endblock %}
-      <div class="w-clearfix footer-wrapper">
-        <a class="w-inline-block footer-nav-link" href="https://twitter.com/tiskphl"><!--Add Twitter page -->
-          <img src="https://s3.amazonaws.com/tisk-assets/img/twitter/Twitter_logo_white.png" width="30" alt="twitter">
-        </a>
-        <a class="w-inline-block footer-nav-link" href="/subscribe">
-          <div class="subscribe">Subscribe</div>
-        </a>
-      </div>
+      </div><!--end overlay-->
     </header>
     {% endblock %}
     <div class="main-column content">
