@@ -1133,6 +1133,9 @@ line-height: initial;
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
+    -webkit-box-flex-direction: column;
+    -moz-box-flex-direction: column;
+    -webkit-flex-direction: column;
     flex-direction: column;
   }
   .flex-col1{
@@ -1502,7 +1505,7 @@ line-height: initial;
   .mobile-header-row.right-column {
     position: relative;
     display: block;
-    margin: 5px;
+    margin: 5px ;
     padding-top: 3px;
     float: none;
     clear: none;
