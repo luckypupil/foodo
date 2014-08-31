@@ -4,10 +4,10 @@
   {% block jsInit %}
   <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
   <script type="text/javascript">
-    function geoload() {
+    /*function geoload() {
           navigator.geolocation.getCurrentPosition(sendloco,errorloco); 
         };
-    geoload();
+    geoload();*/
   </script>
   {% endblock %}
   <meta charset="utf-8">
@@ -22,8 +22,12 @@
     <div class="black_overlay">
     {% block maincolumn %}
       <div class="wait-message">
+        <p style="color:white"> Health inspection info on over 5,500 Philadelphia restuarants<br><br>Find out what's really cooking</p>
         <h1 class="logo initial"></h1>
-        <p style="color:white"> Getting the restaurants from your vicinity, one sec... </p>
+        <div class="tag-container">
+        <div class="big-tagline" id="findout">{{ '' }}</div>
+        </div>
+        <p id="loading-msg"> Getting the restaurants from your vicinity,<br> one sec... </p>
       </div>
       </div>
     {% endblock %}

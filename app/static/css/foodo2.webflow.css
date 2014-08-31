@@ -158,8 +158,19 @@ b {
   font-weight: 400;
 }
 .logo.initial {
-  margin-left: 0;
+  margin: 2% 0;
   z-index: 10;
+}
+#loading-msg {
+  color: #f77123;
+  -webkit-animation: pulsate 2.5s ease-out;
+  -webkit-animation-iteration-count: infinite; 
+  opacity: 0.0
+}
+@-webkit-keyframes pulsate {
+    0% {opacity: 0.0;}
+    50% {opacity: 1.0;}
+    100% {opacity: 0.0;}
 }
 .black_overlay {
     position: absolute;
@@ -195,11 +206,6 @@ b {
   font-size: 1.2em;
   color: black;
 }
-.tag-container {
-  margin-top: 5%;
-}
-.tag-container-mobile {
-  display: none;
 }
 #list-label {
   width: 100%;
