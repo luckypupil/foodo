@@ -163,7 +163,7 @@ b {
 }
 #loading-msg {
   color: #f77123;
-  -webkit-animation: pulsate 2.5s ease-out;
+  -webkit-animation: pulsate 1.5s ease-out;
   -webkit-animation-iteration-count: infinite; 
   opacity: 0.0
 }
