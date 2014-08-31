@@ -1029,9 +1029,9 @@ line-height: initial;
     max-width: 2.5rem;
   }
   .black_overlay.main {
-  -moz-opacity: 0.75;
-  filter: alpha(opacity=75);
-  opacity:.75;
+  -moz-opacity: 0.60;
+  filter: alpha(opacity=60);
+  opacity:.60;
   }
   .mobile-nav {
     width: 100%;
@@ -1039,6 +1039,7 @@ line-height: initial;
     list-style-type: none;
     padding-left: 0px;
     background-color: white;
+    border-bottom: black 1.5px solid;
   }
   .no-data {
     margin-top: 220px;
@@ -1051,7 +1052,8 @@ line-height: initial;
     display: block;
     text-decoration: initial ! important;
     border-bottom: lightgray solid 1px;
-    color: #f77123;
+    /*color: #f77123;*/
+    color: black;
   }
   .mobile-nav-link a {
         color: black;
@@ -1132,21 +1134,17 @@ line-height: initial;
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
     margin-bottom: 20px;
+    flex-direction: column;
   }
   .flex-col1{
-    -webkit-box-flex: 3;      /* OLD - iOS 6-, Safari 3.1-6 */
-    -moz-box-flex: 3;         /* OLD - Firefox 19- */
-    -webkit-flex: 3;          /* Chrome */
-    -ms-flex: 3;
-    flex: 3;
   }
   .flex-col2{
-    -webkit-box-flex: 0 1 42.5%;      /* OLD - iOS 6-, Safari 3.1-6 */
-    -moz-box-flex: 0 1 42.5%;         /* OLD - Firefox 19- */
-    -webkit-flex: 0 1 42.5%;          /* Chrome */
+   /* -webkit-box-flex: 0 1 42.5%;
+    -moz-box-flex: 0 1 42.5%;       
+    -webkit-flex: 0 1 42.5%;        
     -ms-flex: 0 1 42.5%;1;
     flex: 0 1 42.5%;
-    text-align: right;
+    text-align: right;*/
   }
   .dist.profile {
     color: white;
@@ -1166,7 +1164,7 @@ line-height: initial;
     position: static;
   }
   .main-column.header {
-    background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/profile_background.jpg');
+    /*background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/profile_background.jpg');*/
     position: absolute;
     height: 200px;
     max-width: 1000px;

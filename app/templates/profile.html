@@ -27,19 +27,23 @@
                 <h3 class="thumbnail-title profile">{{ rest.name }}</h3>
               </div><!-- end flex-col1 -->
               <div class="flex-col2">
-                <div class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</div>    
+                <div class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</div>
                 <div class="grade-box">
                   {% if rest.latestDt() %}  
                     <div class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</div>
                   {% endif %}
-                </div>  
-              </div><!-- end flex-col2 -->  
-            </div><!-- end flex -->
-              <p class="rest-addy">{{ rest.street }}</p>
+                </div>      
+              </div><!-- end flex-col2 -->
+              <div class="flex-col3">
+                <p class="rest-addy">{{ rest.street }}</p>
                 <p class="rest-addy">{{ 'Philadelphia, PA ' }}{{ rest.zipcd }}<span style="font-style: italic">{{ ' (' }}{{ rest.dist }}{{ ' mi' }}{{ ')' }}</span></p>
-              {% if rest.latestDt() %}
-                <div class="rest-addy"><em>Last Inspection: {{ rest.latestDt().strftime("%B %d, %Y") }}</p></em>
-              {% endif %}
+              </div>  
+              <div class="flex-col5">
+                {% if rest.latestDt() %}
+                  <div class="rest-addy"><em>Last Inspection: {{ rest.latestDt().strftime("%B %d, %Y") }}</p></em>
+                {% endif %}
+              </div>  
+            </div><!-- end flex -->
         <div class="w-col w-col-6 w-hidden-tiny w-clearfix"></div>
       </div>
     </div>
