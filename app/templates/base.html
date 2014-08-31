@@ -11,7 +11,7 @@
     $(".pagination-nav").show();
     $(".menu-wrapper").click(function() {
             if (!$('.mobile-nav').length ) {
-              $(".menu-wrapper").after("<ul class='mobile-nav'><li class='mobile-nav-link'><a href='/''>Home</a></li><li class='mobile-nav-link'><a href='/about'>About</a></li><li class='mobile-nav-link'><a href='/subscribe'>Subscribe</a></li><li class='mobile-nav-link'><a href='mailto:talk@tisked.com'>Contact</a></li></ul>");
+              $(".menu-wrapper").after("<ul class='mobile-nav'><li><a class='mobile-nav-link' href='/''>Home</a></li><li><a class='mobile-nav-link' href='/about'>About</a></li><li><a class='mobile-nav-link' href='/subscribe'>Subscribe</a></li><li><a class='mobile-nav-link' href='mailto:talk@tisked.com'>Contact</a></li><li><a class='mobile-nav-link' href='https://twitter.com/tiskphl'>Tweetisk</a></li></ul>");
             } else {
               $(".mobile-nav").remove();
             }
