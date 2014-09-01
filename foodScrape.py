@@ -49,7 +49,7 @@ def scrapeHTMLinks(startdate,enddate):
         except:
             continue
     
-    with open('tmp/pickle/scrapehtml2','w') as f:
+    with open('tmp/pickle/scrapehtml3','w') as f:
     	pickle.dump(linkext_list,f)
 	
 	print '####   Exiting scrapehtml   ####'
@@ -195,7 +195,7 @@ def addtodb(table_tup):
    print '####   Exiting addtodb   ####'
 def main():
     ###Need to enter number of page results matching start/end dates specified###
-    startdate, endate = '06/20/2014', '08/01/2014'
+    startdate, endate = '07/03/2014', '09/01/2014'
     for html in makeHtmlRepo(scrapeHTMLinks(startdate,endate)):
         addtodb(Make_rest_rows(html,startdate))
     #Make_rest_rows(makeHtmlRepo(['estab.cfm?facilityID=CFF5EDC-813F-4F0A-A51E-1C099CD7045F'])[0],'01/01/2014')

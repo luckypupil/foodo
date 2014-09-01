@@ -1,5 +1,5 @@
 body {
-  background-color: whitesmoke;
+  background-color: lightgray;
   font-family: Roboto, sans-serif;
   color: #333;
   font-size: 14px;
@@ -662,10 +662,9 @@ line-height: initial;
   padding-top: 52px;
   padding-bottom: 52px;
   background-color: #b8c6cc;
-  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg'), url('../images/waterfall.jpg');
+  /*background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg'), url('../images/waterfall.jpg');*/
   background-position: 0% 0%, 0px 50%;
-  box-shadow: rgba(0, 0, 0, 0.10) 0px 1px 0px 0px inset;
-  color: white;
+  color: black;
   text-align: center;
 }
 .about-text {
@@ -1012,7 +1011,8 @@ line-height: initial;
 
 @media (max-width: 767px) {
   #body-profile {
-    background-color: white;
+    padding: 5px;
+    background-color: lightgray;
   }
   p {
     color: black;
@@ -1368,21 +1368,18 @@ line-height: initial;
   }
   .header-image {
     height: 14.5rem;
-    padding: 0;
+    padding: 8px;
     background-position: 50% 50%;
     margin-bottom: 0;
-    position: absolute;
     width: 100%;
     background-image: none;
   }
-  .content-section {
-    padding-top: 27px;
-    padding-bottom: 0;
-    padding-left: 0;
-    background-color: transparent;
-    position: static;
-    width: 100%;
-    margin-top: 0;
+  .piece {
+    background-color: white;
+    border-radius:  0%;
+    padding: 7px;
+    margin-top: 7px;
+    height: 100%;
   }
   .content-section.footer {
     margin-top: 0;
@@ -1443,13 +1440,13 @@ line-height: initial;
   .header-container {
     width: 100%;
     margin: 0rem;
+    margin-top: 5px;
     position: relative;
     left: 0px;
     top: 0px;
     right: 0px;
     padding-top: 3rem;
-    padding-right: 5px;
-    padding-left: 5px;
+    padding: 10px;
     background-image: url('../images/profile_background.jpg');
   }
   .menu {
@@ -1505,7 +1502,6 @@ line-height: initial;
   .mobile-header-row.right-column {
     position: relative;
     display: block;
-    margin: 5px ;
     padding-top: 3px;
     float: none;
     clear: none;
@@ -1691,7 +1687,6 @@ line-height: initial;
     padding-bottom: 2%;
   }
   .mobile-header-row.right-column {
-    margin-top: -60px;
     padding-top: 0px;
   }
   .mobile-header-div {
@@ -1704,7 +1699,6 @@ line-height: initial;
     width: 95%;
   }
   .content-section {
-    margin-top: 10%;
   }
   .moble-badge-row {
     margin-bottom: 0;
