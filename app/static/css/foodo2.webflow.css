@@ -1,9 +1,12 @@
 body {
-  background-color: lightgray;
+  background-color: white;
   font-family: Roboto, sans-serif;
   color: #333;
   font-size: 14px;
   line-height: 20px;
+}
+.body-profile {
+  background-color: lightgray;
 }
 
 img {
@@ -517,8 +520,7 @@ line-height: initial;
   float: none;
   border: 3px solid white;
   border-radius: 0px;
-  background-color: rgba(255, 255, 255, 0.85);
-  box-shadow: rgba(0, 0, 0, 0.23) 0px -5px 15px 2px;
+  background-color: lightgray;
   font-family: Oswald, sans-serif;
   color: black;
   font-size: 15px;
@@ -1269,7 +1271,6 @@ line-height: initial;
     padding-right: 14px;
     float: none;
     clear: none;
-    background-color: rgba(255, 255, 255, 1);
     font-family: Oswald, sans-serif;
     font-size: 14px;
     text-transform: uppercase;
