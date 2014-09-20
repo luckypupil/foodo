@@ -1,2 +1,2 @@
-web: gunicorn app:app
+web: gunicorn tisk-staging:app —log-file -
 

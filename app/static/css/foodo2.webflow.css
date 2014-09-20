@@ -343,6 +343,7 @@ b {
 }
 .nav-profile {
   line-height: 20px;
+  width: 100%;
 }
 
 #search {
@@ -1005,6 +1006,9 @@ line-height: initial;
   .article-text-wrapper {
     max-height: none;
   }
+  .header-image.piece {
+    display: none;
+  }
 }
 
 .mobile-comments {
@@ -1042,6 +1046,9 @@ line-height: initial;
     padding-left: 0px;
     background-color: white;
     border-bottom: black 1.5px solid;
+  }
+  .header-image.piece {
+    display: block;
   }
   .no-data {
     margin-top: 220px;

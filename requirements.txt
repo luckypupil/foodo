@@ -14,7 +14,6 @@ alembic==0.6.5
 aniso8601==0.82
 argparse==1.2.1
 beautifulsoup4==4.3.2
-gunicorn==18.0
 itsdangerous==0.23
 psycopg2==2.5.2
 pytz==2014.2
@@ -22,3 +21,4 @@ rauth==0.7.0
 requests==2.2.1
 six==1.6.1
 wsgiref==0.1.2
+gunicorn==19.1.1

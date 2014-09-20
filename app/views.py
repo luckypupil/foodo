@@ -66,6 +66,10 @@ def home(pg=1):
             print 'redirecting to noloco'
             return redirect(url_for('homenoloco'))
         #startrestprep = time.time()
+        if request.args.get('grade',''):
+            gradeSort = request.args.get('grade','')
+            # if gradeSort = 'high':
+            #     rests = sorted(rests,)
         for rest in rests:
             rest.rank = startCount
             startCount+=1
