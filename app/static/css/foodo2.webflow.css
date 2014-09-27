@@ -621,8 +621,6 @@ line-height: initial;
   z-index: 10;
   padding-top: 1px;
   padding-bottom: 0px;
-  padding-left: 15px;
-  background-color: rgba(255, 255, 255, 0.49);
 }
 .content-section.footer {
   background-color: transparent;
@@ -656,8 +654,8 @@ line-height: initial;
   background-image: url('https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png');
   background-size: cover;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 0px 0px 1px;
-  height: 10em;
-  width: 10em;
+  height: 9em;
+  width: 9em;
 }
 .author-column {
   margin-top: 1rem;
@@ -678,13 +676,16 @@ line-height: initial;
   margin: auto;
 }
 .subscribe-section {
-  padding-top: 52px;
-  padding-bottom: 52px;
-  background-color: #b8c6cc;
+  padding-bottom: 1rem;
   /*background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg'), url('../images/waterfall.jpg');*/
   background-position: 0% 0%, 0px 50%;
   color: black;
   text-align: center;
+}
+.w-container.subscribe {
+background-color: white;
+margin: 16px;
+padding-top: 1rem;
 }
 .about-text {
   margin-bottom: 26px;
@@ -890,7 +891,7 @@ line-height: initial;
 .vios.profile {
   color: black;
   margin-top: 0;
-  text-align:left;
+  text-align:center;
   padding-left: 20px;
 
 }
@@ -937,8 +938,8 @@ line-height: initial;
 .badgerow {
   position: relative;
   margin-bottom: 10px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-bottom: .10rem solid rgba(51, 51, 51, 0.22);
 }
 .health-icon {
@@ -1447,7 +1448,7 @@ line-height: initial;
     text-align: left;
   }
   .article-body-column {
-    margin-top: 0px;
+    margin: 0px;
     padding-right: 8px;
     padding-left: 8px;
     border-color: transparent;

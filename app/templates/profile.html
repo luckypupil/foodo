@@ -44,10 +44,10 @@
     </div><!-- end header-image -->
   <div class="content-section piece">
     <div class="w-row mobile-header-row right-column">
-      <div class="w-col w-col-7 article-body-column">
-              <div class="rest-addy"><em>Last Inspection: {{ rest.latestDt().strftime("%B %d, %Y") }}</p></em></div>
-                <hr>
+      <div class="w-col w-col-8 article-body-column">
       		    {% if rest.latestDt() %}
+                <div class="rest-addy"><em>Last Inspection: {{ rest.latestDt().strftime("%B %d, %Y") }}</p></em></div>
+                <hr>
                 <div class="vio-categories">   
         	        {% if foodcomments %}
                     <h2 class="vios date category"><span style="display:inline-block; vertical-align:middle">{{ 'Food Comments (Primary)' }}</span></h2>
@@ -139,7 +139,7 @@
     </div>
   </div>
   <div class="subscribe-section piece">
-    <div class="w-container">
+    <div class="w-container subscribe">
       <p class="vios profile">Get the latest latest reviews in your neighborhood</p>
       <div class="w-form form-wrapper">
         <h2 style="color: orange">{{ get_flashed_messages()[0] }}</h2>
