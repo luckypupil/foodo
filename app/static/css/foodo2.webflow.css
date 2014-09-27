@@ -120,8 +120,12 @@ b {
 }
 .w-clearfix.all-content {
   background: url('https://s3.amazonaws.com/tisk-assets/img/background/homebackground1.jpg') no-repeat;
-  background-size: cover;
+  background-size: cover;1195
 }
+.w-clearfix.all-content.initial {
+  position: fixed;
+}
+
 .w-clearfix.all-content.about {
   background-image: none;
   background-color: white;
@@ -138,7 +142,7 @@ b {
   width: 70%;
   height: 60%;
   margin-left: 16%;
-  margin-top: 35%;
+  margin-top: 15%;
   text-align: center;
   position: absolute;
 }
@@ -1020,6 +1024,12 @@ line-height: initial;
     padding: 5px;
     background-color: lightgray;
   }
+  body {
+    overflow-y: scroll;
+  }
+  .wait-message {
+    margin-top: 35%
+  }
   p {
     color: black;
     margin-bottom: 5px;
@@ -1188,6 +1198,7 @@ line-height: initial;
   .main-column.content {
     background-color: white;
     background-image: none;
+    overflow: hidden
   }
   .rest-summaries {
     margin-top: 12rem;

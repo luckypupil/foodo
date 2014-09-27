@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block head %}
-<head>
   {% block jsInit %}
   <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
   <script type="text/javascript">
@@ -26,8 +25,8 @@
         <h1 class="logo initial"></h1>
         <p id="loading-msg"> Getting restaurants from your vicinity...</p>
       </div>
-      </div>
     {% endblock %}
+    </div>
   </div>
 {% endblock %}
 {% block endingJs %}
