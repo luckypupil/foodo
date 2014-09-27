@@ -136,6 +136,12 @@ b {
   margin-top: -75%;
   z-index:5;
 }
+.header-image.piece {
+  display: none;
+}
+#body-profile {
+  background-color: lightgray;
+}
 .wait-message {
   background-color: black;
   color: white;
@@ -348,6 +354,11 @@ b {
 .nav-profile {
   line-height: 20px;
   width: 100%;
+  height: 5rem;
+}
+.nav-link-profile {
+  max-width: 25%;
+  padding-top: 2.2rem;
 }
 
 #search {
@@ -637,27 +648,28 @@ line-height: initial;
 }
 .author-image {
   display: block;
-  width: 42.5%;
   max-width: 13rem;
   margin: -50px auto 1.5rem;
   float: none;
   clear: none;
   border: 2px solid white;
-  background-color: black;
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png');
+  background-size: cover;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 0px 0px 1px;
-  width: 9em;
   height: 10em;
-  padding-top: 1em;
+  width: 10em;
 }
 .author-column {
-  margin-top: 9px;
+  margin-top: 1rem;
   padding: 3px auto;
   text-align: center;
+  background-color: white
 }
 .article-body-column {
   position: static;
-  margin: 1.5rem auto;
-  padding:0;
+  margin: 1rem;
+  padding: 2rem;
+  background-color: white
 }
 .mobile-comments {
   padding-left: 0rem;
@@ -1049,6 +1061,9 @@ line-height: initial;
   filter: alpha(opacity=70);
   opacity:.70;
   }
+  .nav-link-profile {
+    display:none;
+  }
   .mobile-nav {
     width: 100%;
     position: initial;
@@ -1062,6 +1077,9 @@ line-height: initial;
   }
   .header-image.piece {
     display: block;
+  }
+  .header-image.piece {
+    display: inherit;
   }
   .no-data {
     margin-top: 220px;
