@@ -1057,6 +1057,9 @@ line-height: initial;
     background-color: white;
     border-bottom: black 1.5px solid;
   }
+  .mobile-nav > li:first-child a {
+    line-height: 30px;
+  }
   .header-image.piece {
     display: block;
   }
