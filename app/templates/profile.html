@@ -77,6 +77,7 @@
         			      {% endfor %}
                   {% endif %}
                 </div><!--end food category-->
+                <hr>
                 <div class="vio-categories">
                   {% if othercomments %}
                     <h2 class="vios date category">{{ 'Other Comments (Secondary)' }}</h2>
@@ -113,16 +114,16 @@
       <div class="w-col w-col-4 w-hidden-small w-hidden-tiny author-column">	
         <h4 class="w-hidden-main w-hidden-medium">About the Author</h4>
         <!--<img class="author-image" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" alt="{{ rest.name }}">-->
+         <img class="author-image" href="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png">
+
         {% if rest.grade %}
-          <!--<div class="author-image">
-          </div>-->
-          <img class="author-image" href="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png">
+          <div class="thumbnail-title vios">{{ rest.name }}</div>
           <div class="thumbnail-title vios"> {{ 'Grade: '}}{{ rest.grade }} </div>
-          <div class="thumbnail-title vios">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</div>
+          <div>{{ '                ' }}{{ rest.getVios() }} {{ 'Violations' }}</div>
         {% else %}
           <div class="author-image"><p class="thumbnail-title grade">{{ 'N/A' }}</p></div>
         {% endif %}
-        <div class="thumbnail-title">{{ rest.name }}</div>
+       
         <div class="article-info-wrapper">
           <div class="article-info-text">
             <p>{{ rest.street }}</p>
