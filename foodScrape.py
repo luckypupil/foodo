@@ -194,6 +194,7 @@ def main():
     startdate = getLatestDate()
     startdate = '08/07/2014'
     enddate = datetime.date.today().strftime('%m/%d/%Y')
+    enddate = '08/10/2014'
     for html in makeHtmlRepo(scrapeHTMLinks(startdate,enddate)):
         addtodb(Make_rest_rows(html,startdate,enddate))
 
