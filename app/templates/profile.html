@@ -14,6 +14,9 @@
           <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile nav-profile" href="{{ url_for('subscribe') }}">
             <div>Subscribe</div>
           </a>
+          <a class="w-hidden-small w-hidden-tiny w-inline-block nav-link nav-link-profile nav-profile" href="mailto:talk@tisked.com">
+            <div>Contact</div>
+          </a>
           {% include 'mobileMenu.html' %}
       </nav>
     </div>
@@ -59,7 +62,7 @@
                               <div class="badge"><p class="vios profile">{{ badge|trim }}</p></div>
                               <ol>
                                 {% for comment in foodcomments[badge] %}
-                                  <li>{{ comment[0] }}</li>
+                                  <li><p>{{ comment[0] }}<p></li>
                                 {% endfor %}
                               </ol>
                           </div>
@@ -137,62 +140,12 @@
         </div>
       </div>
       <div class="w-col w-col-4 w-hidden-small w-hidden-tiny author-column subscribe">
-        <div class="w-container subscribe">
-          <p class="vios profile">Get the latest latest reviews in your neighborhood</p>
-          <div class="w-form form-wrapper">
-            <h2 style="color: orange">{{ get_flashed_messages()[0] }}</h2>
-            <form class="w-clearfix" name="wf-form-subscribe" data-name="Subscribe" method="post">  
-                {{ form.csrf_token }}
-                {{ form.email(class="w-input field email",placeholder="Email Address *",style="width: 40%;") }}
-                {{ form.zipcd(class="w-input field",placeholder="Zip Code *",style="width: 40%;") }}
-                {{ form.first_name(class="w-input field",placeholder="First Name",style="width: 40%;") }}
-                {{ form.last_name(class="w-input field",placeholder="Last Name",style="width: 40%;") }}
-                {% for field_name, field_errors in form.errors.items() %}
-                  <ul style="color: red">{% for error in field_errors %}
-                    <li>{{ error }}</li>
-                    {% endfor %}</ul>
-              {% endfor %}
-                <input class="w-button sign-up-button" type="submit" value="Get the Dish" style="width: 25% margin-left: auto" >
-              </form>
-            <div class="w-form-done success-message on-dark">
-              <h2 class="alternative-h2">Awesome sauce!</h2>
-              <p>Thank you! Your submission has been received!</p>
-            </div>
-            <div class="w-form-fail">
-              <p>Oops! Something went wrong while submitting the form :(</p>
-            </div>
-          </div>
-        </div>
+        {% include 'subscribeForm.html' %}
     </div>
   </div>
   </div>
   <div class="subscribe-section piece">
-    <div class="w-container subscribe">
-      <p class="vios profile">Get the latest latest reviews in your neighborhood</p>
-      <div class="w-form form-wrapper">
-        <h2 style="color: orange">{{ get_flashed_messages()[0] }}</h2>
-        <form class="w-clearfix" name="wf-form-subscribe" data-name="Subscribe" method="post">  
-            {{ form.csrf_token }}
-            {{ form.email(class="w-input field email",placeholder="Email *",style="width: 40%;font-size:12px;text-transform:capitalize;") }}
-            {{ form.zipcd(class="w-input field",placeholder="Zip Code *",style="width: 40%;font-size:12px;text-transform:capitalize;") }}
-            {{ form.first_name(class="w-input field",placeholder="First Name",style="width: 40%;font-size:12px;text-transform:capitalize;") }}
-            {{ form.last_name(class="w-input field",placeholder="Last Name",style="width: 40%;font-size:12px;text-transform:capitalize;") }}
-            {% for field_name, field_errors in form.errors.items() %}
-              <ul style="color: red">{% for error in field_errors %}
-                <li>{{ error }}</li>
-                {% endfor %}</ul>
-          {% endfor %}
-            <input class="w-button sign-up-button" type="submit" value="Get the Dish" style="width: 25% margin-left: auto" >
-          </form>
-        <div class="w-form-done success-message on-dark">
-          <h2 class="alternative-h2">Awesome sauce!</h2>
-          <p>Thank you! Your submission has been received!</p>
-        </div>
-        <div class="w-form-fail">
-          <p>Oops! Something went wrong while submitting the form :(</p>
-        </div>
-      </div>
-    </div>
+    {% include 'subscribeForm.html' %}
       <!--<div class="content-section footer">
         <div class="w-container"><a class="footer-link proof" href="{{ url_for('home') }}">Home</a><a class="footer-link" href="{{ url_for('about') }}">About</a><a class="footer-link" href="{{ url_for('subscribe') }}">Contact</a>
         </div>

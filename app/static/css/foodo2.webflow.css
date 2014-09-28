@@ -357,7 +357,7 @@ b {
   height: 5rem;
 }
 .nav-link-profile {
-  max-width: 25%;
+  max-width: 20%;
   padding-top: 2.2rem;
 }
 
@@ -668,7 +668,7 @@ line-height: initial;
 }
 .article-body-column {
   position: static;
-  margin: 1rem;
+  margin: .75rem;
   padding: 1rem 2rem 2rem;
   background-color: white
 }
@@ -887,7 +887,7 @@ padding-top: 1rem;
 .vios {
   font-family: Oswald, sans-serif;
   color: #ff7b00;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 300;
   text-decoration: none;
   text-transform: capitalize;
@@ -896,6 +896,7 @@ padding-top: 1rem;
 .vios.profile {
   color: black;
   margin-top: 0;
+  margin-bottom: .5rem;
   text-align:center;
   padding-left: 20px;
 
@@ -910,7 +911,7 @@ padding-top: 1rem;
   margin-left: 5px;
   /*border-bottom: lightgray .1em solid;*/
   color: black;
-  margin: 30px 0;
+  margin: 15px 0;
 }
 .grade-box {
   opacity: .8;  
