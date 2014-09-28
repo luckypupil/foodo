@@ -10,18 +10,22 @@ from app import db
 from app.models import Rest, Comment
 from app.helper import makeSlug, get_grade
 from math import ceil
-import cPickle as pickle
 
 base_url = 'http://philadelphia.pa.gegov.com/philadelphia/' 
+
+def getLatestDate():
+    latestDate = db.session.query(Comment.date).order_by(Comment.date.desc()).first()[0]
+    return latestDate.strftime('%m/%d/%Y')
 
 def scrapeHTMLinks(startdate,enddate):
     ###Scrapes HTML pages based on search params and returns list of links to search results pgs. ###
     print '####   Entering scrapehtml   ####'
     url_ext='search.cfm?facType=7&subType=Any&'
     init_query = '{}start=1&sd={}&ed={}&dtRng=YES'.format(url_ext,startdate,enddate)
+    print 'start, end dates are {} and {}, respectively'.format(startdate,enddate)
+    print 'query is {}'.format(init_query)
     init_url = base_url + init_query
     
-   
     r = requests.get(init_url)
     match = re.search(u'(\d+) Facilities matched', r.text)
     totsresults = float(match.group(1))
@@ -48,9 +52,6 @@ def scrapeHTMLinks(startdate,enddate):
                 linkext_list.append(str(link['href']))
         except:
             continue
-    
-    with open('tmp/pickle/scrapehtml3','w') as f:
-    	pickle.dump(linkext_list,f)
 	
 	print '####   Exiting scrapehtml   ####'
     return (linkext_list)
@@ -70,11 +71,7 @@ def makeHtmlRepo (ext_list):
         except:
             continue
     
-    with open('tmp/pickle/makeHtmlRepo2','w') as f:
-    	pickle.dump(html_list,f)
-    	
     print '####   Exiting makehtmlrepo   ####'	
-    
     return (html_list)
                      
 def Make_rest_rows(html,startdt='03/30/2014'):
@@ -113,9 +110,7 @@ def Make_rest_rows(html,startdt='03/30/2014'):
         except:
             continue
    
-        
     print '####   Entering Make_rest_rows   ####'
-    
     return(rest_row,inspect_hist)
     
 def geoCode(rest):
@@ -195,10 +190,10 @@ def addtodb(table_tup):
    print '####   Exiting addtodb   ####'
 def main():
     ###Need to enter number of page results matching start/end dates specified###
-    startdate, endate = '07/03/2014', '09/01/2014'
-    for html in makeHtmlRepo(scrapeHTMLinks(startdate,endate)):
+    startdate = getLatestDate()
+    enddate = datetime.date.today().strftime('%m/%d/%Y')
+    for html in makeHtmlRepo(scrapeHTMLinks(startdate,'08/06/2014')):
         addtodb(Make_rest_rows(html,startdate))
-    #Make_rest_rows(makeHtmlRepo(['estab.cfm?facilityID=CFF5EDC-813F-4F0A-A51E-1C099CD7045F'])[0],'01/01/2014')
 
 if __name__ == "__main__":
     main()
