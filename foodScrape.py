@@ -74,10 +74,11 @@ def makeHtmlRepo (ext_list):
     print '####   Exiting makehtmlrepo   ####'	
     return (html_list)
                      
-def Make_rest_rows(html,startdt='03/30/2014'):
+def Make_rest_rows(html,startdt,enddt):
     #returns tuple of 1 rest row [name,street,zip], and all comment rows [name,date,code,quote] after the start date param#    
     print '####   Entering Make_rest_rows   ####'
-    startdt= datetime.datetime.strptime(startdt.strip(),'%m/%d/%Y')      
+    startdt= datetime.datetime.strptime(startdt.strip(),'%m/%d/%Y')
+    enddt= datetime.datetime.strptime(enddt.strip(),'%m/%d/%Y')      
     sngl_rest_dict = {}
     inspect_soup = BeautifulSoup(html,"html.parser",parse_only=SoupStrainer('body')) #Strain to body          
     rest_row =[]
@@ -100,7 +101,7 @@ def Make_rest_rows(html,startdt='03/30/2014'):
             date = datetime.datetime.strptime(date,'%m/%d/%Y')
             results =  inspection.find_all('div',style='background-color:#EFEFEF;padding:5px;')
             for content in results:
-                if date >= startdt and content.contents:
+                if date >= startdt and date <= enddt and content.contents:
                     for result in content.contents:
                         newComment = str(result.encode('utf-8','ignore').strip()) #Convert unicode to utf-8
                         m = re.search(r"(\d+)[-\s]+([\w\W]+)",newComment)
@@ -191,9 +192,10 @@ def addtodb(table_tup):
 def main():
     ###Need to enter number of page results matching start/end dates specified###
     startdate = getLatestDate()
+    startdate = '08/07/2014'
     enddate = datetime.date.today().strftime('%m/%d/%Y')
-    for html in makeHtmlRepo(scrapeHTMLinks(startdate,'08/06/2014')):
-        addtodb(Make_rest_rows(html,startdate))
+    for html in makeHtmlRepo(scrapeHTMLinks(startdate,enddate)):
+        addtodb(Make_rest_rows(html,startdate,enddate))
 
 if __name__ == "__main__":
     main()
