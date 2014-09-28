@@ -666,7 +666,7 @@ line-height: initial;
 .article-body-column {
   position: static;
   margin: 1rem;
-  padding: 2rem;
+  padding: 1rem 2rem 2rem;
   background-color: white
 }
 .mobile-comments {
@@ -676,12 +676,15 @@ line-height: initial;
   margin: auto;
 }
 .subscribe-section {
-  padding-bottom: 1rem;
+  padding-bottom: 16px;
   /*background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg'), url('../images/waterfall.jpg');*/
   background-position: 0% 0%, 0px 50%;
   color: black;
   text-align: center;
 }
+.subscribe-section.piece {
+    display: none;
+  }
 .w-container.subscribe {
 background-color: white;
 margin: 16px;
@@ -729,8 +732,6 @@ padding-top: 1rem;
   background-color: rgba(0, 80, 184, 0.72);
 }
 .author-social-links {
-  margin-top: 2rem;
-  padding-top: 32px;
 }
 .author-connect {
   margin-bottom: 20px;
@@ -1456,6 +1457,9 @@ padding-top: 1rem;
   .subscribe-section {
     padding-right: 28px;
     padding-left: 28px;
+  }
+  .subscribe-section.piece {
+    display: block;
   }
   .about-text {
     margin-bottom: 16px;
