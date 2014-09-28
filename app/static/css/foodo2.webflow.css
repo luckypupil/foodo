@@ -535,7 +535,7 @@ line-height: initial;
   padding: 15px 14px;
   float: none;
   border: 3px solid white;
-  border-radius: 0px;
+  border-radius: 7px;
   background-color: lightgray;
   font-family: Oswald, sans-serif;
   color: black;
@@ -730,6 +730,7 @@ padding-top: 1rem;
   font-size: 18px;
   font-weight: 300;
   text-transform: uppercase;
+  border-radius: 7px;
 }
 .sign-up-button:hover {
   background-color: rgba(0, 80, 184, 0.72);
@@ -910,7 +911,6 @@ padding-top: 1rem;
   /*border-bottom: lightgray .1em solid;*/
   color: black;
   margin: 30px 0;
-  font-style: italic
 }
 .grade-box {
   opacity: .8;  
@@ -1106,6 +1106,9 @@ padding-top: 1rem;
   .menu-wrapper-logo {
     display: inline;
     margin-top: .9%;
+  }
+  #large-date {
+    display: none;
   }
   .button {
     margin-top: auto;
@@ -1336,7 +1339,7 @@ padding-top: 1rem;
   .field.home {
     width: 10.5em;
     height: .8em;
-    border-radius: 15px;
+    
     max-width: 225px;
     margin-top: 0;
   }
@@ -1379,9 +1382,8 @@ padding-top: 1rem;
   .thumbnail-title.profile {
     color: black;
     display: block;
-    font-size: 18px;
-    line-height: 25px;
-    margin-bottom: 0;
+    
+    margin-bottom: 5px;
   }
   .thumbnail-title.vios {
     width: initial;
@@ -1398,6 +1400,7 @@ padding-top: 1rem;
   .rest-addy {
     color: black;
     display: inline-block;
+    line-height: 10px;
   }
   .grade-box {
     color: black;
@@ -1457,6 +1460,8 @@ padding-top: 1rem;
     padding-right: 8px;
     padding-left: 8px;
     border-color: transparent;
+    padding-top: 0;
+    margin-top: 0;
   }
   .subscribe-section {
     padding-right: 28px;

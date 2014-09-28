@@ -22,13 +22,13 @@
               <div class="flex-container grade">
                 <div class="flex-col1">
                   <img class="w-hidden-main w-hidden-medium author-image mobile" src="https://s3.amazonaws.com/tisk-assets/img/logo/profilelogo.png" width="200" alt="537a3eaeef89236d7de9d427_profile_page_logo.png">
-                  <h3 class="thumbnail-title profile">{{ rest.name }}</h3>
+                  <p class="thumbnail-title profile">{{ rest.name }}</p>
                 </div><!-- end flex-col1 -->
                 <div class="flex-col2">
-                  <div class="thumbnail-title grade">{{ 'Grade:' }}  {{ rest.grade }}</div>
+                  <div class="thumbnail-title profile">{{ 'Grade:' }}  {{ rest.grade }}</div>
                 </div><!-- end flex-col2 -->
                 {% if rest.latestDt() %}  
-                  <p class="rest-addy">{{ '                ' }}{{ rest.getVios() }} {{ 'VIOLATIONS' }}</p>
+                  <p class="rest-addy">{{ '                ' }}{{ rest.getVios() }} {{ 'Violations' }}</p>
                 {% endif %}
                 <div class="flex-col3">
                   <p class="rest-addy">{{ rest.street }}</p>
@@ -36,7 +36,7 @@
                 </div>  
                 <div class="flex-col5">
                   {% if rest.latestDt() %}
-                    <div class="rest-addy"><em>Last Inspection: {{ rest.latestDt().strftime("%B %d, %Y") }}</p></em></div>
+                    <p class="rest-addy">Last Inspection: {{ rest.latestDt().strftime("%B %d, %Y") }}</p>
                   {% endif %}
                 </div>  
               </div><!-- end flex -->
@@ -46,8 +46,7 @@
     <div class="w-row mobile-header-row right-column">
       <div class="w-col w-col-8 article-body-column">
       		    {% if rest.latestDt() %}
-                <div>Last Inspection: {{ rest.latestDt().strftime("%B %d, %Y") }}</div>
-                <hr>
+                <div id="large-date">Last Inspection: {{ rest.latestDt().strftime("%B %d, %Y") }}<hr></div>
                 <div class="vio-categories">   
         	        {% if foodcomments %}
                     <h2 class="vios date category"><span style="display:inline-block; vertical-align:middle">{{ 'Food Comments (Primary)' }}</span></h2>
@@ -174,10 +173,10 @@
         <h2 style="color: orange">{{ get_flashed_messages()[0] }}</h2>
         <form class="w-clearfix" name="wf-form-subscribe" data-name="Subscribe" method="post">  
             {{ form.csrf_token }}
-            {{ form.email(class="w-input field email",placeholder="Email Address *",style="width: 40%;") }}
-            {{ form.zipcd(class="w-input field",placeholder="Zip Code *",style="width: 40%;") }}
-            {{ form.first_name(class="w-input field",placeholder="First Name",style="width: 40%;") }}
-            {{ form.last_name(class="w-input field",placeholder="Last Name",style="width: 40%;") }}
+            {{ form.email(class="w-input field email",placeholder="Email *",style="width: 40%;font-size:12px;text-transform:capitalize;") }}
+            {{ form.zipcd(class="w-input field",placeholder="Zip Code *",style="width: 40%;font-size:12px;text-transform:capitalize;") }}
+            {{ form.first_name(class="w-input field",placeholder="First Name",style="width: 40%;font-size:12px;text-transform:capitalize;") }}
+            {{ form.last_name(class="w-input field",placeholder="Last Name",style="width: 40%;font-size:12px;text-transform:capitalize;") }}
             {% for field_name, field_errors in form.errors.items() %}
               <ul style="color: red">{% for error in field_errors %}
                 <li>{{ error }}</li>
