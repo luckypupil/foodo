@@ -147,7 +147,9 @@ def profile(id):
         else:
             flash('Looks like we already have your email on our list!')
     try:
-        rest.dist = getDist(toLat=rest.lat,toLng=rest.lng)
+        pass
+        ###Need to add session so geo of user persits to profile page
+        #rest.dist = getDist(fromLat=session.lat,fromLng=session.lng,toLat=rest.lat,toLng=rest.lng)
     except:
         pass
     return render_template('profile.html', rest=rest, foodcomments=foodcomments, othercomments=othercomments, form=form)

@@ -2,52 +2,29 @@
 {% block title %}<title>{{ 'Tisk | Subscribe' }}</title>{% endblock %}
 {% block content %}
 <div class="w-clearfix all-content">
-    <header class="main-column header">
-      <h1 class="logo"></h1>
-      <div class="w-clearfix footer-wrapper">
-        <a class="w-inline-block footer-nav-link" href="https://twitter.com/tiskphl"><!--Add Twitter page -->
-          <img src="https://s3.amazonaws.com/tisk-assets/img/twitter/Twitter_logo_white.png" width="30" alt="twitter">
-        </a>
-        <a class="w-inline-block footer-nav-link" href="/subscribe">
-          <div class="subscribe">Subscribe</div>
-        </a>
-      </div>
+    {% block maincolumn %}
+    <header class="main-column header filter">
+      <div class="black_overlay main">
+        <h1 class="logo"></h1>
+        <!--{{ count }} results-->
+        <div class="w-clearfix footer-wrapper">
+          <a class="w-inline-block footer-nav-link" href="https://twitter.com/tiskphl"><!--Add Twitter page -->
+            <img src="https://s3.amazonaws.com/tisk-assets/img/twitter/Twitter_logo_white.png" width="30" alt="twitter">
+          </a>
+          <a class="w-inline-block footer-nav-link" href="/subscribe">
+            <div class="subscribe">Subscribe</div>
+          </a>
+        </div>
+      </div><!--end overlay-->
     </header>
+    {% endblock %}
     <div class="main-column content">
       <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
-        <nav class="w-nav-menu w-clearfix nav-menu" role="navigation"><a class="w-nav-link nav-link" href="/" data-ix="new-interaction">Home</a><a class="w-nav-link nav-link" href="/about">ABOUT</a><a class="w-nav-link nav-link" href="/subscribe">Subscribe</a>
-        </nav>
-        {% include 'mobileMenu.html' %}
+        {% include '/snippets/Nav-menu.html' %}
       </nav>
-      <div class="section">
-        <h5>Sign up for updates on the latest review in your neighborhood! (coming soon)</h5>
-        <div class="w-form form-wrapper" align="left">
-          <h2 style="color: orange">{{ get_flashed_messages()[0] }}</p>
-
-          <form class="w-clearfix form-subscribe" name="wf-form-subscribe" data-name="Subscribe" method="post">  
-            {{ form.csrf_token }}
-            {{ form.email(class="w-input field email",placeholder="Email Address *",style="width: 40%;") }}
-            {{ form.zipcd(class="w-input field",placeholder="Zip Code *",style="width: 40%;") }}
-            {{ form.first_name(class="w-input field",placeholder="First Name",style="width: 40%;") }}
-            {{ form.last_name(class="w-input field",placeholder="Last Name",style="width: 40%;") }}
-            {% for field_name, field_errors in form.errors.items() %}
-              <ul style="color: red">{% for error in field_errors %}
-                <li>{{ error }}</li>
-                {% endfor %}</ul>
-          {% endfor %}</p>
-            <input class="w-button button subscribe" type="submit" value="Get the Dish">
-          </form>
-          <div class="w-form-done success-message">
-            <h2>Awesome sauce!</h2>
-            <p>You're subscribed to some awesome articles. Look out for weekly newsletters.</p><a class="button blue" href="index.html">Proof Home</a>
-          </div>
-          <div class="w-form-fail">
-            <p>Oops! Something went wrong while submitting the form :(</p>
-          </div>
-        </div>
-      </div>
+        <div>{% include '/snippets/subscribeForm.html' %}
+    </div>
 </div>
-
 {% endblock %}
 {% block JS %}
 {% endblock %}

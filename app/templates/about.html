@@ -5,9 +5,7 @@
     <div class="main-column content about">
       <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
       <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
-        <nav class="w-nav-menu nav-menu about" role="navigation"><a class="w-nav-link nav-link" href="{{ url_for('home') }}">Home</a><a class="w-nav-link nav-link" href="/subscribe">Subscribe</a>
-        </nav>
-        {% include 'mobileMenu.html' %}
+        {% include '/snippets/Nav-menu.html' %}
       </nav>
       <div class="section about">
         {% block aboutcontent %}

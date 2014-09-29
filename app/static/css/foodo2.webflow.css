@@ -277,8 +277,8 @@ b {
   overflow-x: hidden;
   overflow-y: inherit;
   max-width: 100%;
-  /*background-color: whitesmoke;*/
-  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
+  background-color: whitesmoke;
+  /*background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');*/
   box-shadow: rgba(0, 0, 0, 0.09) -1px 0px 0px 0px inset;
   font-family: Roboto, sans-serif;
   font-weight: 400;
@@ -357,7 +357,7 @@ b {
   height: 5rem;
 }
 .nav-link-profile {
-  max-width: 20%;
+  max-width: 25%;
   padding-top: 2.2rem;
 }
 
@@ -368,7 +368,7 @@ b {
 }
 
 .rest-summaries {
-  margin-top: 4rem;
+  /*margin-top: 4rem;*/
   margin-bottom: 1.25rem;
   background-color:white;
 }
@@ -585,7 +585,6 @@ line-height: initial;
   height: 100%;
   position: absolute;
   width:  100%;
-  margin-top: 3rem;
 }
 
 .team-column {
@@ -1090,6 +1089,8 @@ padding-top: 1rem;
   .w-clearfix.navbar {
     width: 100%;
   }
+  .w-container.subscribe {
+  }
   .mobile-nav-link {
     padding: 7px 10px;
     display: block;
@@ -1236,7 +1237,7 @@ padding-top: 1rem;
 
   .navbar {
     height: 38px;
-    position: fixed;
+    position: relative;
     background-color: transparent;
   }
   .w-nav.navbar {
@@ -1653,6 +1654,9 @@ padding-top: 1rem;
   }
   .article-info-text.tag {
     float: left;
+  }
+  .w-container.subscribe {
+    
   }
   .field {
     width: 70%;

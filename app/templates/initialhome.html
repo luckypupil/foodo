@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% block head %}
+<head>
   {% block jsInit %}
   <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
   <script type="text/javascript">
-    function geoload() {
-          navigator.geolocation.getCurrentPosition(sendloco,errorloco); 
-        };
-    geoload();
+  function geoload() {
+        navigator.geolocation.getCurrentPosition(sendloco,errorloco); 
+      };
+  geoload();
   </script>
   {% endblock %}
   <meta charset="utf-8">
@@ -17,16 +18,15 @@
   <link rel="shortcut icon" type="image/x-icon" href="https://y7v4p6k4.ssl.hwcdn.net/placeholder/favicon.ico">
 {% endblock %}
 {% block content %}
-  <div class="w-clearfix all-content initial">
+  <div class="w-clearfix all-content">
     <div class="black_overlay">
     {% block maincolumn %}
       <div class="wait-message">
-        <p style="color:#f77123"> Health inspection info on over 5,500 Philadelphia restuarants - find out what's really cooking</p>
         <h1 class="logo initial"></h1>
-        <p id="loading-msg"> Getting restaurants from your vicinity...</p>
+        <p id="loading-msg"> Getting the restaurants from your vicinity, one sec... </p>
+      </div>
       </div>
     {% endblock %}
-    </div>
   </div>
 {% endblock %}
 {% block endingJs %}
