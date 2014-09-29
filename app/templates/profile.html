@@ -111,8 +111,8 @@
 
         {% if rest.grade %}
           <div class="thumbnail-title vios">{{ rest.name }}</div>
-          <div class="thumbnail-title vios"> {{ 'Grade: '}}{{ rest.grade }} </div>
-          <div>{{ '                ' }}{{ rest.getVios() }} {{ 'Violations' }}</div>
+          <div class="thumbnail-title vios" style="color:lightgray;"> {{ 'Grade: '}}{{ rest.grade }} </div>
+          <div style="color:lightgray;">{{ '                ' }}{{ rest.getVios() }} {{ 'Violations' }}</div>
         {% else %}
           <div class="author-image"><p class="thumbnail-title grade">{{ 'N/A' }}</p></div>
         {% endif %}
@@ -124,7 +124,6 @@
           </div>
         </div>
         <div class="author-social-links">
-          <div class="author-connect">Tweet Tisk</div>
           <a class="w-inline-block social-link" href="https://twitter.com/tiskphl">
             <img src="https://s3.amazonaws.com/tisk-assets/img/twitter/Twitter_logo_blue.png" width="40" alt="twitter">
           </a>

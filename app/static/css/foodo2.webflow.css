@@ -464,7 +464,7 @@ a[class="w-clearfix w-inline-block article"]:nth-of-type(2) {
 }
 .article-info-text {
   display: inline-block;
-  margin: 0px 3px 3px 3px;
+  margin: 3px 3px 3px 3px;
   font-family:'Roboto Slab', sans-serif;
   color: black;
   font-size: 12px;
@@ -472,7 +472,9 @@ a[class="w-clearfix w-inline-block article"]:nth-of-type(2) {
   font-weight: 400;
   text-transform: none;
 }
-
+.article-info-text > p {
+  margin-bottom: .25rem;
+}
 .article-info-wrapper.profile-body {
 
 line-height: initial;
@@ -525,7 +527,6 @@ line-height: initial;
 }
 .form-wrapper {
   margin-top: 29px;
-  padding-left: 10%;
 }
 .field {
   display: inline-block;

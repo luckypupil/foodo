@@ -2,7 +2,7 @@
       <p class="vios profile" style="padding: 0;">Get the latest latest reviews in your neighborhood</p>
       <div class="w-form form-wrapper">
         <h2 style="color: orange">{{ get_flashed_messages()[0] }}</h2>
-        <form class="w-clearfix" name="wf-form-subscribe" data-name="Subscribe" method="post" style="padding: 0% 5% 5%;">  
+        <form class="w-clearfix" name="wf-form-subscribe" data-name="Subscribe" method="post" style="padding: 0% 2% 2%;">  
             {{ form.csrf_token }}
             {{ form.email(class="w-input field email",placeholder="Email *",style="width: 45%;font-size:12px;text-transform:capitalize;") }}
             {{ form.zipcd(class="w-input field",placeholder="Zip Code *",style="width: 45%;font-size:12px;text-transform:capitalize;") }}
