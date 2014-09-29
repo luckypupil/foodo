@@ -19,11 +19,12 @@
     </header>
     {% endblock %}
     <div class="main-column content">
+      <div style="background-color: whitesmoke;height:100%">
       <nav class="w-nav navbar" data-collapse="small" data-animation="default" data-duration="400">
         {% include '/snippets/Nav-menu.html' %}
       </nav>
-        <div>{% include '/snippets/subscribeForm.html' %}
-    </div>
+        <div>{% include '/snippets/subscribeForm.html' %}</div>
+      </div>
 </div>
 {% endblock %}
 {% block JS %}

@@ -278,7 +278,7 @@ b {
   overflow-y: inherit;
   max-width: 100%;
   background-color: whitesmoke;
-  /*background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');*/
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/dark-wood.jpg');
   box-shadow: rgba(0, 0, 0, 0.09) -1px 0px 0px 0px inset;
   font-family: Roboto, sans-serif;
   font-weight: 400;
@@ -289,7 +289,7 @@ b {
 }
 .navbar {
   background-color: transparent;
-  background-image: none;
+  background-image: url('https://s3.amazonaws.com/tisk-assets/img/background/profile_background.jpg');;
   background-position: 0% 0%;
   background-size: auto;
   background-repeat: repeat;
@@ -369,7 +369,7 @@ b {
 
 .rest-summaries {
   /*margin-top: 4rem;*/
-  margin-bottom: 1.25rem;
+  margin-bottom: .75rem;
   background-color:white;
 }
 .article.home:first-child {
@@ -1125,6 +1125,7 @@ padding-top: 1rem;
   }
   .all-content.initial {
     position: absolute;
+    background: url('https://s3.amazonaws.com/tisk-assets/img/background/profile_background.jpg') cover;
   }
   .article-info-wrapper.profile-body {
     display: none;
