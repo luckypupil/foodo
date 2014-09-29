@@ -1,0 +1,37 @@
+<div class="rest-summaries">
+      {% for rest in rests %}
+        <a class="w-clearfix w-inline-block article home" href="{{ url_for('profile',id=rest.id)}}">
+          <section class="w-clearfix article-text-wrapper">
+            <p class="thumbnail-title homepg">{{ rest.rank }}{{ '. ' }}{{ rest.name }}</p>
+            {% if rest.dist %}
+              <p class="dist">{{ rest.dist }}{{ ' mi' }}</p>
+            {% endif %}
+            <h4 class="vios">{{ 'Grade : ' }}{{ rest.grade }}</h4> 
+            <p class="addy">{{ rest.street }}{{ ', Philadelphia ' }}</p>
+            <div class="article-info-wrapper">
+              {% if rest.latestDt() %}
+                <div class="article-info-text">
+                  <p class="weeks">{{ 'Inspection : ' }}{{ rest.latestDt().strftime("%B %d, %Y") }}</p>
+                  <!--<<p>{{ weeks(rest.latestDt()) }}{{ ' days ago' }}</p>-->
+                </div></br>
+              {% else %}
+                <div class="article-info-text">
+                  <p class="weeks">{{ "No inspection available" }}</p>
+                </div>
+              {% endif %}  
+            </div>
+          </section>
+        </a>
+      {% endfor %}
+</div>
+<div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400">
+        <nav class="w-nav-menu w-clearfix nav-menu pagination-nav" role="navigation">
+          {% if session.noloco %}
+              <a class="w-nav-link nav-link page" href="{{ url_for('homenoloco', pg=prev, search=request.args.get('search')) }}">Prev</a>
+              <a class="w-nav-link nav-link page" href="{{ url_for('homenoloco', pg=next, search=request.args.get('search')) }}">Next</a>
+          {% else %}
+              <a class="w-nav-link nav-link page" href="{{ url_for('home',pg=prev, lat=request.args.get('lat',none), lng=request.args.get('lng',none), search=request.args.get('search',none)) }}">Prev</a>
+              <a class="w-nav-link nav-link page" href="{{ url_for('home',pg=next, lat=request.args.get('lat',none), lng=request.args.get('lng',none), search=request.args.get('search',none)) }}"> next </a>
+          {% endif %}
+        </nav>
+</div>
