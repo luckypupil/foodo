@@ -1276,7 +1276,9 @@ padding-top: 1rem;
   .nav-link.page.w--current:hover {
     background-color: white;
   }
-
+  .subscribe-nonprofile {
+    margin-top: 40%;
+  }
   .pagination-nav{
     background-image: white;
     display: block;
@@ -1623,8 +1625,8 @@ padding-top: 1rem;
   .main-column.content {
     padding-right: 0px;
   }
-  .big-tagline {
-  
+  .subscribe-nonprofile {
+    margin-top: 50%;
   }
   .navbar {
     position: relative;
