@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import datetime
+import time
 import re
 import requests
 import csv
@@ -191,13 +192,14 @@ def addtodb(table_tup):
    print '####   Exiting addtodb   ####'
 def main():
     ###Need to enter number of page results matching start/end dates specified###
+    start = time.time()
     startdate = getLatestDate()
-    startdate = '08/07/2014'
     enddate = datetime.date.today().strftime('%m/%d/%Y')
-    enddate = '08/10/2014'
+    enddate = '08/12/2014'
     for html in makeHtmlRepo(scrapeHTMLinks(startdate,enddate)):
         addtodb(Make_rest_rows(html,startdate,enddate))
-
+    duration = time.time() - start
+    print "That took {} seconds".format(duration)
 if __name__ == "__main__":
     main()
     

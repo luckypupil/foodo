@@ -660,16 +660,17 @@ line-height: initial;
   width: 9em;
 }
 .author-column {
-  margin-top: 1rem;
+  margin: 1.2rem;
   padding: 3px auto;
   text-align: center;
   background-color: white
 }
 .article-body-column {
   position: static;
-  margin: .75rem;
+  margin: 1.2rem 1.2rem 1.2rem 0;
   padding: 1rem 2rem 2rem;
-  background-color: white
+  background-color: white;
+  float: right;
 }
 .mobile-comments {
   padding-left: 0rem;
