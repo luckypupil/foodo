@@ -286,6 +286,7 @@ b {
 .main-column.content.about {
   width: 100%;
   background-image: none;
+  background-color: white;
 }
 .navbar {
   background-color: transparent;
@@ -381,6 +382,7 @@ b {
   padding: 1rem 1.8rem;
   display: block;
   margin-left: 45%;
+  border-radius: 7px;
 }
 .article {
   position: relative;
@@ -1359,7 +1361,7 @@ padding-top: 1rem;
     margin: -20px 0 0 5px;
     position: absolute;
     display: inline-block;
-    border-radius: 7px;
+    
   }
   .section {
     padding: 27px 10px;
