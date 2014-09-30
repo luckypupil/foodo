@@ -195,7 +195,6 @@ def main():
     start = time.time()
     startdate = getLatestDate()
     enddate = datetime.date.today().strftime('%m/%d/%Y')
-    enddate = '09/01/2014'
     for html in makeHtmlRepo(scrapeHTMLinks(startdate,enddate)):
         addtodb(Make_rest_rows(html,startdate,enddate))
     duration = time.time() - start
