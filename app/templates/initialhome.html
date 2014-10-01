@@ -2,16 +2,6 @@
 {% block head %}
 <head>
   {% block jsInit %}
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-55313513-1', 'auto');
-  ga('send', 'pageview');
-
-  </script>
   <script type="text/javascript" src="{{ url_for('static',filename='js/map.js') }}"></script>
   <script type="text/javascript">
   function geoload() {
@@ -26,6 +16,8 @@
   <meta name="generator" content="Webflow">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/foodo2.webflow.css') }}">
   <link rel="shortcut icon" type="image/x-icon" href="https://s3.amazonaws.com/tisk-assets/img/logo/profile_page_logo-20140827-favicon.ico">
+  <script type="text/javascript" src="{{ url_for('static', filename='js/ga.js') }}"></script>
+</head>
 {% endblock %}
 {% block content %}
   <div class="w-clearfix all-content initial">
