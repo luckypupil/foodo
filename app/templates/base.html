@@ -2,15 +2,6 @@
 <html data-wf-site="536cd5dac1161b086f47884d">
 {% block head %}
 <head>
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-55313513-1', 'auto');
-  ga('send', 'pageview');
-  </script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
   {% block jsInit %} {% endblock %}
@@ -28,7 +19,6 @@
     });
   </script>
   <meta charset="utf-8">
-
   {% block title %}<title>Tisk</title>{% endblock %}
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
   <meta name="generator" content="Webflow">
@@ -45,6 +35,7 @@
     });
   </script>
   <link rel="shortcut icon" type="image/x-icon" href="https://s3.amazonaws.com/tisk-assets/img/logo/profile_page_logo-20140827-favicon.ico">
+  <script type="text/javascript" src="{{ url_for('static', filename='js/ga.js') }}"></script>
 </head>
 {% endblock %}
 <body>
