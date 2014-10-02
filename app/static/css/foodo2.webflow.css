@@ -200,7 +200,7 @@ b {
 .black_overlay.main {
   -moz-opacity: 0.50;
   filter: alpha(opacity=50);
-  opacity:.50;
+  opacity:.45;
 }
 #main-search {
   margin-top: 7%;
@@ -1067,7 +1067,7 @@ padding-top: 1rem;
   .black_overlay.main {
   -moz-opacity: 0.70;
   filter: alpha(opacity=70);
-  opacity:.70;
+  opacity:.40;
   }
   .nav-link-profile {
     display:none;
